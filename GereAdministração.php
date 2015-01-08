@@ -18,9 +18,9 @@ if(isset($_GET["logout"])){
 				return "Não foi possivel adicionar o Utilizador!";
 			}
 		}
-        public function editarUtilizador($nome, $username, $password, $tipoUtilizador, $dataRegisto, $morada, $dataNascimento, $funcao, $caminhoFoto, $numero, $telefone){
+        public function editarUtilizador($id, $nome, $username, $password, $tipoUtilizador, $dataRegisto, $morada, $dataNascimento, $funcao, $caminhoFoto, $numero, $telefone){
             $daoAdmin = new DaoAdminstracao();
-            if($daoAdmin->editarUtilizador($nome, $username, $password, $tipoUtilizador, $dataRegisto, $morada, $dataNascimento, $funcao, $caminhoFoto, $numero, $telefone)){
+            if($daoAdmin->editarUtilizador($id, $nome, $username, $password, $tipoUtilizador, $dataRegisto, $morada, $dataNascimento, $funcao, $caminhoFoto, $numero, $telefone)){
                 return "O Utilizador foi editado com sucesso!";
             } else {
                 return "Os dados dos utilizadores não foram editados com sucesso!";
