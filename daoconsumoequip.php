@@ -52,10 +52,7 @@
 			}
 			
 			if($sucesso_funcao){
-				return "Consumo de equipamento registado com sucesso:<br />" .
-				$tipo . "<br />"  .
-				$marca . " " . $modelo . "<br />" .
-				$matricula . "<br />";
+				return "Consumo de equipamento registado com sucesso<br />";
 			}else{
 				return "Erro ao registar o consumo de equipamento!<br />";
 			}
