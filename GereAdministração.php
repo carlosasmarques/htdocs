@@ -8,11 +8,20 @@ if(isset($_GET["logout"])){
         unset($_SESSION);
 }
 
-	class GereAdministracao{
+	public class GereAdministracao extends Utilizador{
+    $utilizador = new Utilizador();
+$utilizador->nome = $_POST["nome"];
+$utilizador->username = $_POST["username"];
+$utilizador->password = $_POST["tipoUtilizador"];
+$utilizador->dataRegisto = $_POST["morada"];
+$utilizador->dataNascimento = $_POST["dataNascimento"];
+$utilizador->funcao = $_POST["caminhoFoto"];
+$utilizador->numero = $_POST["numero"];
+$utilizador->telefone = $_POST["telefone"];
+		public function adicionarUtilizador(){
 
-		public function adicionarUtilizador($nome, $username, $password, $tipoUtilizador, $dataRegisto, $morada, $dataNascimento, $funcao, $caminhoFoto, $numero, $telefone){
             $daoAdmin = new DaoAdminstracao();
-			if($daoAdmin->adicionarUtilizador($nome, $username, $password, $tipoUtilizador, $dataRegisto, $morada, $dataNascimento, $funcao, $caminhoFoto, $numero, $telefone)){
+			if($daoAdmin->adicionarUtilizador($utilizador)){
 				return "O Utilizador foi adicionado com sucesso!";
 			} else {
 				return "Não foi possivel adicionar o Utilizador!";

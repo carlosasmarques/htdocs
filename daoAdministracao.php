@@ -17,11 +17,14 @@ class DaoAdministracao{
         $this->LigacaoBD == null;
     }
 
-    public function adicionarUtilizador($nome, $username, $password, $tipoUtilizador, $dataRegisto, $morada, $dataNascimento, $funcao, $caminhoFoto, $numero, $telefone){
+    public function adicionarUtilizador($utilizador){
         try{
             $instrucao = $LigacaoBD->prepare("INSERT INTO Utilizadores (
 				U_numeroFuncionario, U_nome, U_morada, U_contactoTelefonico, U_dataNascimento, U_nomeUtilizador, U_palavraPasse, U_tipoUtilizador, U_dataRegisto, U_fotografia, U_funcao, U_activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $instrucao->bind_param($numero, $nome, $morada, $telefone, $dataNascimento, $username, $password, $tipoUtilizador, $dataRegisto, $caminhoFoto, $funcao, "True");
+            $instrucao->bind_param($utilizador->numero, $utilizador->nome,
+                $utilizador->morada, $utilizador->telefone, $utilizador->dataNascimento,
+                $utilizador->username, $utilizador->password, $utilizador->tipoUtilizador,
+                $utilizador->dataRegisto, $utilizador->caminhoFoto, $utilizador->funcao, "True");
             // Executar
 
             $sucesso_funcao = $instrucao->execute();
