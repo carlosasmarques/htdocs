@@ -26,7 +26,7 @@ DaoViaturas
 GereAdministracao
 GereUtentes
 Utilizador
-
+DaoEquipamentos
 =======
 -----------------------------+--------+-----------+
          Classes             | Existe | Concluida |
