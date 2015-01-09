@@ -151,7 +151,7 @@ class DaoEquipamento{
         }
     }
 
-    function reporStock($id, $quantidadeDisponivel){
+    function reporStockEquip($id, $quantidadeDisponivel){
         try{
             $instrucao = $LigacaoBD->prepare("UPDATE EQUIPAMENTOS SET (E_quantidadeDisponivel) VALUES(?) WHERE E_id = ?");
             $instrucao->bind_param($quantidadeDisponivel,$id);

@@ -27,6 +27,7 @@ GereAdministracao
 GereUtentes
 Utilizador
 DaoEquipamentos
+GereEquipamentos
 =======
 -----------------------------+--------+-----------+
          Classes             | Existe | Concluida |
