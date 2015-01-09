@@ -6,3 +6,22 @@ Classes a desenvolver por Marco Beludo e Diogo Novais
 - GereConsumos
 
 - Todas as classes DAO
+
+Classes Feitas
+
+DaoAbastecimentos
+DaoAcoesUtilizadores
+DaoAdministracao
+DaoConsumoEquip
+DaoInspecoes
+DaoManutencoesExternas
+DaoManutencoesInternas
+DaoManutencoesFuturas
+DaoMensagens
+DaoTipoEquip
+DaoUtentes
+DaoUtilizador
+DaoViaturas
+GereAdministracao
+GereUtentes
+Utilizador
