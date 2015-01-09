@@ -1,5 +1,6 @@
 Classes a desenvolver por Marco Beludo e Diogo Novais
 
+<<<<<<< HEAD
 - GereAdministracao
 - GereEquipamentos
 - GereTipoEquipamentos
@@ -25,3 +26,15 @@ DaoViaturas
 GereAdministracao
 GereUtentes
 Utilizador
+
+=======
+-----------------------------+--------+-----------+
+         Classes             | Existe | Concluida |
+-----------------------------+--------+-----------+
+- GereAdministracao          |        |           |
+- GereEquipamentos           |        |           |
+- GereTipoEquipamentos       |        |           |
+- GereConsumos               |        |           |
+                             |        |           |
+- Todas as classes DAO       |        |           |
+>>>>>>> origin/master
