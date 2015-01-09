@@ -28,6 +28,7 @@ GereUtentes
 Utilizador
 DaoEquipamentos
 GereEquipamentos
+GereTipoEquip
 =======
 -----------------------------+--------+-----------+
          Classes             | Existe | Concluida |

@@ -55,5 +55,22 @@
                 return NULL;
             }
         }
+
+        function ativarDesativarTipoEquip($id, $ativo){
+            try{
+                $instrucao = $LigacaoBD->prepare("UPDATE TIPO_ARTIGO SET (TA_ativo) VALUES(?) WHERE TA_id = ?");
+                $instrucao->bind_param($ativo, $id);
+                //Executar
+
+                $sucesso_funcao = $instrucao->execute();
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }
+            if($sucesso_funcao){
+                return "True";
+            } else {
+                return "False";
+            }
+        }
     }
 ?>
