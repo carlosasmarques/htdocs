@@ -8,18 +8,9 @@ if(isset($_GET["logout"])){
         unset($_SESSION);
 }
 
-	public class GereAdministracao extends Utilizador{
-    $utilizador = new Utilizador();
-$utilizador->nome = $_POST["nome"];
-$utilizador->username = $_POST["username"];
-$utilizador->password = $_POST["tipoUtilizador"];
-$utilizador->dataRegisto = $_POST["morada"];
-$utilizador->dataNascimento = $_POST["dataNascimento"];
-$utilizador->funcao = $_POST["caminhoFoto"];
-$utilizador->numero = $_POST["numero"];
-$utilizador->telefone = $_POST["telefone"];
+	class GereAdministracao{
 		public function adicionarUtilizador(){
-
+            $utilizador = new Utilizador($_POST["nome"], $_POST["numero"],$_POST["morada"], $_POST["telefone"], $_POST["activo"], $_POST["tipoUtilizador"], $_POST["username"], $_POST["password"], $_POST["dataRegisto"], $_POST["dataNascimento"], $_POST["funcao"]);
             $daoAdmin = new DaoAdminstracao();
 			if($daoAdmin->adicionarUtilizador($utilizador)){
 				return "O Utilizador foi adicionado com sucesso!";
@@ -27,15 +18,17 @@ $utilizador->telefone = $_POST["telefone"];
 				return "Não foi possivel adicionar o Utilizador!";
 			}
 		}
-        public function editarUtilizador($id, $nome, $username, $password, $tipoUtilizador, $dataRegisto, $morada, $dataNascimento, $funcao, $caminhoFoto, $numero, $telefone){
+        public function editarUtilizador(){
+            $utilizador = new Utilizador($_POST["nome"], $_POST["numero"],$_POST["morada"], $_POST["telefone"], $_POST["activo"], $_POST["tipoUtilizador"], $_POST["username"], $_POST["password"], $_POST["dataRegisto"], $_POST["dataNascimento"], $_POST["funcao"]);
             $daoAdmin = new DaoAdminstracao();
-            if($daoAdmin->editarUtilizador($id, $nome, $username, $password, $tipoUtilizador, $dataRegisto, $morada, $dataNascimento, $funcao, $caminhoFoto, $numero, $telefone)){
+            if($daoAdmin->editarUtilizador($utilizador)){
                 return "O Utilizador foi editado com sucesso!";
             } else {
                 return "Os dados dos utilizadores não foram editados com sucesso!";
             }
         }
-        public function pesquisarNome($nome){
+        public function pesquisarNome(){
+            $nome = $_POST["nome"];
             $daoAdmin = new DaoAdminstracao();
             if(($utilizador = $daoAdmin->pesquisarNome($nome))!= NULL){
                 return $utilizador;
@@ -43,7 +36,8 @@ $utilizador->telefone = $_POST["telefone"];
                 return NULL;
             }
         }
-        public function pesquisarNumero($numero){
+        public function pesquisarNumero(){
+            $numero = $_POST["numero"];
             $daoAdmin = new DaoAdminstracao();
             if(($utilizador = $daoAdmin->pesquisarNumero($numero))!= NULL){
                 return $utilizador;
