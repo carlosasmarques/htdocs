@@ -1,8 +1,11 @@
 Classes a desenvolver por Marco Beludo e Diogo Novais
 
-- GereAdministracao
-- GereEquipamentos
-- GereTipoEquipamentos
-- GereConsumos
-
-- Todas as classes DAO
+-----------------------------+--------+-----------+
+         Classes             | Existe | Concluida |
+-----------------------------+--------+-----------+
+- GereAdministracao          |        |           |
+- GereEquipamentos           |        |           |
+- GereTipoEquipamentos       |        |           |
+- GereConsumos               |        |           |
+                             |        |           |
+- Todas as classes DAO       |        |           |
