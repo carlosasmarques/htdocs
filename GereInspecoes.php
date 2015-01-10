@@ -1,0 +1,85 @@
+<?php
+include "conf.php";
+session_start();
+// Ligação
+
+if(isset($_GET["logout"])){
+    if($_GET["logout"]== true)
+        unset($_SESSION);
+}
+    class GereInspecoes{
+        public function adicionarInspecaoPer(){
+            $inspecaoPer = new inspecao($_POST["id_viatura"],$_POST["dataLimite"],$_POST["estado"]);
+            $daoInspecao = new DaoInspecoes();
+            
+            if($daoInspecao->adicionarInspecaoPer($inspecaoPer)){
+				return "A inspeção foi adicionada com sucesso!";
+			} else {
+				return "Não foi possivel adicionar a inspeção!";
+			}    
+        }
+        public function editarInspecaoPer(){
+            $inspecao = new inspecao($_POST["id_viatura"],$_POST["dataLimite"],$_POST["estado"]);
+            $daoInspecao = new DaoInspecoes();
+            
+            if($daoInspecao->editarInspecao($inspecao)){
+				return "A inspeção foi editada com sucesso!";
+			} else {
+				return "Não foi possivel editar a inspeção!";
+			}  
+ 
+        }
+        public function registarComoFeita(){
+            $idInspecao = new inspecao($_POST["id_inspecao"]);
+            $daoInspecao = new DaoInspecoes();
+            if($inspecao->registarComoFeita($idInspecao)){
+               return "A inspeção foi registada com sucesso!";
+                } else {
+                    return "Não foi possivel registar a inspeção!";
+		}  
+        }
+        public function pesquisarInspecaoMatric(){
+            $matricula = new inspecao($_POST["matricula"]);
+            $daoInspecao = new DaoInspecoes();
+            if($inspecao = $daoViaturas->pesquisarInspecaoMatric($matricula)!= NULL){
+                    return $inspecao;
+                } else {
+                	return NULL;
+		}
+        }
+        public function pesquisarInspecaoMarca(){
+            $marca = new inspecao($_POST["marca"]);
+            $daoInspecao = new DaoInspecoes();
+            if($inspecao = $daoViaturas->pesquisarInspecaoMarca($marca)!= NULL){
+                    return $inspecao;
+                } else {
+                	return NULL;
+		}
+        }
+        private function listarInspecoesPer(){
+            $daoInspecao = new DaoInspecoes();
+            if($inspecao = $daoInspecao->listarInspecoesPer($idViatura)!= NULL){
+                    return $viaturas;
+                } else {
+                	return NULL;
+		}
+        }
+        private function verInspecaoPer(){
+            $id = new inspecao($_POST["id"]);
+            $daoInspecao = new DaoInspecoes();
+            if($inspecao = $daoInspecao->verInspecaoPer($id)!= NULL){
+                    return $inspecao;
+                } else {
+                	return NULL;
+		}
+        }
+        public function verificarInspecaoPer(){
+            $daoInspecao = new DaoInspecoes();
+            if($inspecao = $daoInspecao->verificarInspecaoPer()!= NULL){
+                    return $inspecao;
+                } else {
+                	return NULL;
+		}
+        }
+    }
+?>
