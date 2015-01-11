@@ -9,7 +9,7 @@ if(isset($_GET["logout"])){
 }
     class GereViaturas{
         public function adicionarViatura(){
-             $viatura = new Viatura($_POST["marca"], $_POST["modelo"], $_POST["matricula"], $_POST["dataMatricula"], $_POST["tipoViatura"], $_POST["combustivel"], 
+             $viatura = new Viaturas($_POST["marca"], $_POST["modelo"], $_POST["matricula"], $_POST["dataMatricula"], $_POST["tipoViatura"], $_POST["combustivel"], 
                      $_POST["capacidadeDeposito"],$_POST["consumoMedio"],$_POST["lugaresSentados"],$_POST["lugaresDeitados"],$_POST["endereçoFoto"]);
              $daoViatura = new DaoViaturas();
              if($daoViaturas->adicionarViatura($viatura)){
@@ -19,7 +19,7 @@ if(isset($_GET["logout"])){
 			}
         }
         public function desactivarViatura(){
-            $idViatura = new Viatura($_POST["id"]);
+            $idViatura = new Viaturas($_POST["id"]);
             $daoViatura = new DaoViaturas();
             if($daoViaturas->ativarDesativarViatura("TRUE" ,$idViatura)){// duvida no param estado
 				return "O estado da viatura foi alterado para desactiva";
@@ -29,7 +29,7 @@ if(isset($_GET["logout"])){
                         }
         }
         public function ativarDesativarViatura(){
-            $idViatura = new Viatura($_POST["id"]);
+            $idViatura = new Viaturas($_POST["id"]);
             $daoViatura = new DaoViaturas();
             if($daoViaturas->adicionarViatura("FALSE" ,$idViatura)){// duvida no param estado
 				return "O estado da viatura foi alterado para activa";
@@ -39,7 +39,7 @@ if(isset($_GET["logout"])){
                         }
         }
         public function editarViatura(){
-            $viatura = new Viatura($_POST["id"], $_POST["marca"], $_POST["modelo"], $_POST["matricula"], $_POST["dataMatricula"], $_POST["tipoViatura"], $_POST["combustivel"], 
+            $viatura = new Viaturas($_POST["id"], $_POST["marca"], $_POST["modelo"], $_POST["matricula"], $_POST["dataMatricula"], $_POST["tipoViatura"], $_POST["combustivel"], 
                      $_POST["capacidadeDeposito"],$_POST["consumoMedio"],$_POST["lugaresSentados"],$_POST["lugaresDeitados"],$_POST["endereçoFoto"],$_POST["estado"]);
             $daoViatura = new DaoViaturas();
             if($daoViaturas->editarViatura($viatura)){
@@ -49,7 +49,7 @@ if(isset($_GET["logout"])){
 			}
         }
         public function pesquisaPorMarca(){
-            $marcaViatura = new Viatura($_POST["marca"]);
+            $marcaViatura = new Viaturas($_POST["marca"]);
             $daoViatura = new DaoViaturas();
             if($viatura = $daoViaturas->pesquisarPorMarca($marcaViatura)!= NULL){
                     return $viatura;
@@ -58,7 +58,7 @@ if(isset($_GET["logout"])){
 		}
         }
         public function pesquisaPorMatricula(){
-            $matriculaViatura = new Viatura($_POST["matricula"]);
+            $matriculaViatura = new Viaturas($_POST["matricula"]);
             $daoViatura = new DaoViaturas();
             if($viatura = $daoViaturas->pesquisarPorMatricula($matriculaViatura)!= NULL){
                     return $viatura;
@@ -67,7 +67,7 @@ if(isset($_GET["logout"])){
 		}
         }
         private function verViatura(){
-            $idViatura = new Viatura($_POST["id"]);
+            $idViatura = new Viaturas($_POST["id"]);
             $daoViatura = new DaoViaturas();
             if($viatura = $daoViaturas->verViatura($idViatura)!= NULL){
                     return $viatura;
@@ -77,7 +77,7 @@ if(isset($_GET["logout"])){
         }
         private function listarViaturas(){
             $daoViatura = new DaoViaturas();
-            if($viaturas = $daoViaturas->listarViaturas($idViatura)!= NULL){
+            if($viaturas = $daoViaturas->listarViaturas()!= NULL){
                     return $viaturas;
                 } else {
                 	return NULL;
