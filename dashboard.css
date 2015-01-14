@@ -1,0 +1,520 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+
+body {
+    padding-top: 0px;
+    width: 1200px;
+}
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+
+.navbar-fixed-top {
+    border: 0;
+    width: 1200px;
+    background-color: #FFCC33;
+}
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+
+.sidebar {
+    display: none;
+}
+@media (min-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 135px;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: block;
+        padding: 20px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        /* Scrollable contents if viewport is shorter than content. */
+        background-color: #f5f5f5;
+        border-right: 1px solid #eee;
+    }
+}
+/* Sidebar navigation */
+
+.nav-sidebar {
+    margin-right: -21px;
+    /* 0px padding + 1px border */
+    margin-bottom: 0px;
+    margin-left: -20px;
+}
+.nav-sidebar > li > a {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+    color: #fff;
+    background-color: #428bca;
+}
+/*
+ * Main content
+ */
+
+.conteudo {
+    margin-top: 5px;
+    background-color: #EDE9E3;
+    width: 80%;
+    float: left;
+    margin-left: 5px;
+}
+.naviga {
+    width: 20%;
+    float: left;
+}
+.GSMenus {
+    padding-left: 10px;
+    font-size: 25px;
+}
+/*
+*popup
+*/
+
+.modalDialog {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 25%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+/*
+*opçoes
+*/
+
+.modalDialog:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+.modalDialog > div {
+    width: 400px;
+    height: 200px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: #fff;
+    background: -moz-linear-gradient(#fff, #999);
+    background: -webkit-linear-gradient(#fff, #999);
+    background: -o-linear-gradient(#fff, #999);
+}
+.close {
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+.close:hover {
+    background: #00d9ff;
+}
+.main {
+    padding: 20px;
+}
+@media (min-width: 768px) {
+    .main {
+        margin-left: 5px;
+        margin-top: 5px;
+        width: 100%;
+    }
+}
+.main .page-header {
+    margin-top: 0;
+}
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+    margin-bottom: 30px;
+    text-align: center;
+}
+.placeholders h4 {
+    margin-bottom: 0;
+}
+.placeholder {
+    margin-bottom: 20px;
+}
+.placeholder img {
+    display: inline-block;
+    border-radius: 50%;
+}
+.search {
+    width: 140px;
+    float: right;
+    height: 30px;
+}
+.pesquisar {
+    width: 300px;
+    float: right;
+    display: inline;
+}
+.pesquisara {
+    width: 150px;
+    height: 30px;
+    float: left;
+    border-radius: 4px;
+}
+.Botao {
+    border: 1px solid black;
+    text-align: center;
+    padding-top: 5px;
+    border-radius: 4px;
+    background-color: white;
+    color: black;
+    width: 120px;
+    height: 35px;
+    float: left;
+}
+.Botao:hover {
+    border: 1px solid white;
+    background-color: black;
+}
+.Adicionar {
+    text-decoration: none;
+    color: gray;
+}
+.Adicionar:hover {
+    text-decoration: none;
+    color: white;
+}
+.tabela {
+    margin-left: 25%;
+    width: 70%
+}
+.Banner {
+    top: 0;
+    left: 0;
+}
+.textob {
+    margin-bottom: -5px;
+    text-align: center;
+}
+.texto {
+    margin-top: -10px;
+    text-align: center;
+}
+.form_inline {
+    width: 49%;
+    display: inline;
+    padding-left: 5px;
+}
+.drop {
+    margin-top: 10px;
+    width: 150px;
+    height: 30px;
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+}
+.drop:hover {
+    background-color: black;
+    color: white;
+}
+.drop-menu {
+    border-radius: 4px;
+    height: 50px;
+    width: 135px;
+    display: block;
+    text-align: center;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}
+.drop-menu:hover .sub-menu {
+    display: inline-block;
+}
+.sub-menu {
+    width: 130px;
+    display: none;
+}
+.sub-menu li {
+    background-color: #FFCC33;
+    margin-left: -40px;
+    list-style-type: none;
+    display: block;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+.sub-menu a {
+    color: black;
+}
+.sub-menu a:hover {
+    color: gray;
+}
+.sub-menu li:hover {
+    border-bottom: 1px dotted #bababa;
+    text-decoration: none;
+}
+.op {
+    float: left;
+}
+.botaoAdi {
+    float: right;
+    width: 150px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: white;
+}
+.botaoN {
+    width: 100px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: white;
+}
+.botaoA {
+    width: 100px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #90ee90;
+}
+.botaoD {
+    width: 100px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #ffa500;
+}
+#cssmenu {
+    float: left;
+    height: auto;
+    width: 25%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    line-height: 1;
+}
+#cssmenu ul,
+#cssmenu ul li,
+#cssmenu ul ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#cssmenu ul {
+    position: relative;
+    z-index: 597;
+    float: left;
+}
+#cssmenu ul li {
+    float: left;
+    min-height: 1px;
+    line-height: 1em;
+    vertical-align: middle;
+    position: relative;
+}
+#cssmenu ul li.hover,
+#cssmenu ul li:hover {
+    position: relative;
+    z-index: 599;
+    cursor: default;
+}
+#cssmenu ul ul {
+    visibility: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    z-index: 598;
+    width: 100%;
+}
+#cssmenu ul ul li {
+    float: none;
+}
+#cssmenu ul ul ul {
+    top: -2px;
+    right: 0;
+}
+#cssmenu ul li:hover > ul {
+    visibility: visible;
+}
+#cssmenu ul ul {
+    top: 1px;
+    left: 99%;
+}
+#cssmenu ul li {
+    float: none;
+}
+#cssmenu ul ul {
+    margin-top: 1px;
+}
+#cssmenu ul ul li {
+    font-weight: normal;
+}
+/* Custom CSS Styles */
+
+#cssmenu {
+    width: 200px;
+    background: #EDE9E3;
+    font-family: 'Oxygen Mono', Tahoma, Arial, sans-serif;
+    zoom: 1;
+    font-size: 12px;
+}
+#cssmenu:before {
+    content: '';
+    display: block;
+}
+#cssmenu:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+#cssmenu a {
+    display: block;
+    padding: 15px 20px;
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+#cssmenu > ul {
+    width: 200px;
+}
+#cssmenu ul ul {
+    width: 200px;
+}
+#cssmenu > ul > li > a {
+    border-bottom: 1px solid black;
+    text-align: left;
+    padding-left: 25px;
+    color: black;
+}
+#cssmenu > ul > li > a:hover {
+    color: black;
+}
+#cssmenu > ul > li.active a {
+    background: #EDE9E3;
+}
+#cssmenu > ul > li a:hover,
+#cssmenu > ul > li:hover a {
+    background: #EDE9E3;
+}
+#cssmenu li {
+    position: relative;
+}
+#cssmenu ul li.has-sub > a:after {
+    content: '+';
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    margin-top: -6px;
+}
+#cssmenu ul ul li.first {
+    -webkit-border-radius: 0 3px 0 0;
+    -moz-border-radius: 0 3px 0 0;
+    border-radius: 0 3px 0 0;
+}
+#cssmenu ul ul li.last {
+    -webkit-border-radius: 0 0 3px 0;
+    -moz-border-radius: 0 0 3px 0;
+    border-radius: 0 0 3px 0;
+    border-bottom: 0;
+}
+#cssmenu ul ul {
+    -webkit-border-radius: 0 3px 3px 0;
+    -moz-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
+}
+#cssmenu ul ul {
+    border: 1px solid black;
+}
+#cssmenu ul ul a {
+    font-size: 12px;
+    color: black;
+}
+#cssmenu ul ul a:hover {
+    color: black;
+}
+#cssmenu ul ul li {
+    border-bottom: 1px solid black;
+}
+#cssmenu ul ul li:hover > a {
+    background: #EDE9E3;
+    color: black;
+}
+#cssmenu.align-right > ul > li > a {
+    border-left: 4px solid black;
+    border-right: none;
+}
+#cssmenu.align-right {
+    float: right;
+}
+#cssmenu.align-right li {
+    text-align: right;
+}
+#cssmenu.align-right ul li.has-sub > a:before {
+    content: '+';
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    margin-top: -6px;
+}
+#cssmenu.align-right ul li.has-sub > a:after {
+    content: none;
+}
+#cssmenu.align-right ul ul {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    z-index: 598;
+    width: 100%;
+}
+#cssmenu.align-right ul ul li.first {
+    -webkit-border-radius: 3px 0 0 0;
+    -moz-border-radius: 3px 0 0 0;
+    border-radius: 3px 0 0 0;
+}
+#cssmenu.align-right ul ul li.last {
+    -webkit-border-radius: 0 0 0 3px;
+    -moz-border-radius: 0 0 0 3px;
+    border-radius: 0 0 0 3px;
+}
+#cssmenu.align-right ul ul {
+    -webkit-border-radius: 3px 0 0 3px;
+    -moz-border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
+}
+#imgpos {
+    position: absolute;
+    left: 78%;
+    top: 58%
+}
