@@ -18,10 +18,8 @@
 	class BaseDados{
 		private $DBH;
 		
-		function __construct(){}
-
 		// Ligação á base de dados
-		public function ligar($host, $db, $user, $pass){
+		function __construct($host, $db, $user, $pass){}
 			try{
 				$this->DBH = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
 			}catch(PDOException $e) {
