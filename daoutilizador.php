@@ -1,11 +1,13 @@
 <?php
 
 include "conf.php";
-
+include "utilizador.php";
 
 class DaoUtilizador{
 
     private $LigacaoBD;
+     
+    
     // Ligar á base de dados
     function __construct(){
         try{
@@ -58,5 +60,32 @@ class DaoUtilizador{
             echo $e->getMessage();
         }
     }
+    
+    /*
+     * 
+     * FAZER DESTA FORMA AS RESTANTES FUNÇÕES DOS DAO, DEVE DEVOLVER OBJETO 
+     */
+    
+    function verDadosUtilizadorUser($username){
+          
+        try{
+            $instrucao = $LigacaoBD->prepare("SELECT * FROM Utilizadores WHERE U_NOMEUTILIZADOR = ?");
+            $instrucao->bind_param($username);
+            $sucesso_funcao = $instrucao->execute();
+            if($sucesso_funcao){
+                $instrucao->setFetchMode(PDO::FETCH_ASSOC);
+                $registo = $instrucao->fetch();
+            }
+            $utilizador = new Utilizador($registo["u_nome"], $registo["u_numerofuncionario"], $registo["u_id"], 
+                                         $registo["u_morada"], $registo["u_contatotelefonico"], $registo["u_ativo"],
+                                         $registo["u_tipoutilizador"], $registo["u_nomeutilizador"], $registo["u_password"],
+                                         $registo["u_dataregisto"], $registo["u_datanascimento"], $registo["u_funcao"], 
+                                         $registo["u_fotografia"]);
+            return $utilizador;
+        } catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+    
 }
 ?>
