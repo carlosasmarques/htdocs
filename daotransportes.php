@@ -118,6 +118,8 @@
 		
 		public function pesquisarTransViatura($matricula){
 			$dados = null;
+                        
+                        $transporte = new transporte("", "", "");
 
 			try{
 				// Pesquisar transportes de uma dada viatura por nome de utente
@@ -135,8 +137,15 @@
 				if($sucesso_funcao){
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
 					while($registo = $instrucao->fetch()){
-						$dados[] = $registo;
-					}
+					
+                                        $transporte->setId($registo["t_id"]);
+                                        
+                                        /*
+                                         * FALTA ACABAR
+                                         */
+                                        
+                                        $dados[] = $transporte;
+                                        }
 				}
 			}catch(PDOException $e){
 				echo $e->getMessage();
