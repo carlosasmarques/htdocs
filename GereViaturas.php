@@ -28,16 +28,27 @@ if(isset($_GET["logout"])){
                         
                         }
         }
-        public function ativarDesativarViatura(){
+        public function ativarViatura(){
             $idViatura = new Viaturas($_POST["id"]);
             $daoViatura = new DaoViaturas();
-            if($daoViaturas->adicionarViatura("FALSE" ,$idViatura)){// duvida no param estado
-				return "O estado da viatura foi alterado para activa";
-			}else{
+            if($daoViaturas->adicionarViatura("TRUE" ,$idViatura)){
+			return "O estado da viatura foi alterado para activa";
+		}else{
                         return "Erro ao alterar o estado da viatura!";
                         
                         }
         }
+        public function desativarViatura(){
+            $idViatura = new Viaturas($_POST["id"]);
+            $daoViatura = new DaoViaturas();
+            if($daoViaturas->adicionarViatura("FALSE" ,$idViatura)){
+			return "O estado da viatura foi alterado para activa";
+		}else{
+                        return "Erro ao alterar o estado da viatura!";
+                        
+                        }
+        }
+        
         public function editarViatura(){
             $viatura = new Viaturas($_POST["id"], $_POST["marca"], $_POST["modelo"], $_POST["matricula"], $_POST["dataMatricula"], $_POST["tipoViatura"], $_POST["combustivel"], 
                      $_POST["capacidadeDeposito"],$_POST["consumoMedio"],$_POST["lugaresSentados"],$_POST["lugaresDeitados"],$_POST["endereçoFoto"],$_POST["estado"]);
