@@ -3,8 +3,8 @@
 		acessobd.php - classe para manipular a base de dados
 		
 		funções:
-			|- ligar($host, $db, $user, $pass)
-			|- desligar()
+			|- construct($host, $db, $user, $pass)
+			|- destruct()
 			|- inserir($sql, $dados[] = null)
 			|- editar($sql, $dados[] = null)
 			|- apagar($sql, $id = 0)
@@ -19,7 +19,7 @@
 		private $DBH;
 		
 		// Ligação á base de dados
-		function __construct($host, $db, $user, $pass){}
+		function __construct($host, $db, $user, $pass){
 			try{
 				$this->DBH = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
 			}catch(PDOException $e) {
