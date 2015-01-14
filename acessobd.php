@@ -2,7 +2,7 @@
 	/*
 		acessobd.php - classe para manipular a base de dados
 		
-		funï¿½ï¿½es:
+		funções:
 			|- construct($host, $db, $user, $pass)
 			|- destruct()
 			|- inserir($sql, $dados[] = null)
@@ -16,9 +16,9 @@
 	include "conf.php";
 
 	class BaseDados{
-		public $DBH;
+		private $DBH;
 		
-		// Ligaï¿½ï¿½o ï¿½ base de dados
+		// Ligação á base de dados
 		function __construct($host, $db, $user, $pass){
 			try{
 				$this->DBH = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
@@ -34,7 +34,7 @@
 			(assim que seja apagada a ultima referencia ao objeto)
 		*/
 		function __destruct(){
-			$this->DBH == null;
+			$this->LigacaoBD == null;
 		}
 		
 		// inserir dados numa tabela
@@ -133,12 +133,5 @@
 			}
 			return $dados;
 		}
-
-        public function getDBH()
-        {
-            return $this->DBH;
-        }
-
-
 	}
 ?>

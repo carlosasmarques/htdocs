@@ -14,9 +14,10 @@ class Utilizador{
     public $dataNascimento;
     public $funcao;
 
-    function __construct($nome, $numero, $morada, $telefone, $activo, $tipoUtilizador, $username, $password, $dataRegisto, $dataNascimento, $funcao){
+    function __construct($nome, $numero, $id, $morada, $telefone, $activo, $tipoUtilizador, $username, $password, $dataRegisto, $dataNascimento, $funcao){
         $this->nome = $nome;
         $this->numero = $numero;
+        $this->id = $id;
         $this->morada = $morada;
         $this->telefone = $telefone;
         $this->activo = $activo;

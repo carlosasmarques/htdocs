@@ -1,12 +1,25 @@
 <?php
-include "acessobd.php";
-
+include "conf.php";
 class DaoAdministracao{
+
+    private $LigacaoBD;
+    function __construct(){
+        try{
+            $this->LigacaoBD = new PDO("mysql:host=$servidor;dbname=$bd", $user, $pass);
+        }catch(PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+        return true;
+    }
+
+    function __destruct(){
+        $this->LigacaoBD == null;
+    }
 
     public function adicionarUtilizador($utilizador){
         try{
-            $DBH = getDBH();
-            $instrucao = $DBH->prepare("INSERT INTO Utilizadores (
+            $instrucao = $LigacaoBD->prepare("INSERT INTO Utilizadores (
 				U_numeroFuncionario, U_nome, U_morada, U_contactoTelefonico, U_dataNascimento, U_nomeUtilizador, U_palavraPasse, U_tipoUtilizador, U_dataRegisto, U_fotografia, U_funcao, U_activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $instrucao->bind_param($utilizador->numero, $utilizador->nome,
                 $utilizador->morada, $utilizador->telefone, $utilizador->dataNascimento,
