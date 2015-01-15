@@ -105,10 +105,10 @@
 		
 		function pesquisaConsumoEquip($id){
 			$dados = null;
-
+			$ConsumoEquip = new ConsumoEquip("","","","");
 			try{
 				// Pesquisar consumo de equipamentos por artigo
-				$instrucao = $LigacaoBD->prepare("SELECT * FROM CONSUMO_ARTIGOS WHERE E_ID=?");
+				$instrucao = $LigacaoBD->prepare("SELECT E_DESCRICAO, C_QUANTIDADECONSUMIDA, C_DATA, C_DESCRICAOCONSUMO FROM CONSUMO_ARTIGOS, EQUIPAMENTOS WHERE CONSUMO_ARTIGOS.E_ID = EQUIPAMENTOS.E_ID AND E_ID=?");
 				$instrucao->bind_param($id);
 
 				// Executar
@@ -118,20 +118,25 @@
 				if($sucesso_funcao){
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
 					while($registo = $instrucao->fetch()){
-						$dados[] = new ConsumoEquip($registo["E_id"], $registo["C_quantidadeConsumida"], $registo["C_data"], $registo["C_descricaoConsumo"]);
-					}return $dados;
+					$ConsumoEquip->setDescricao($registo["E_descricao"]);
+						$ConsumoEquip->setQuantidade($registo["C_quantidadeConsumida"]);
+						$ConsumoEquip->setData($registo["C_data"]);
+						$ConsumoEquip->setDescconsumo($registo["C_descricaoConsumo");
+						$dados[] = $ConsumoEquip;
+					}
 				}
 			}catch(PDOException $e){
 				echo $e->getMessage();
 			}
+			return $dados;
 		}
 		
 		public function pesquisaConsumoData($dataDeConsumo){
 			$dados = null;
-
+			$ConsumoEquip = new ConsumoEquip("","","","");
 			try{
 				// Pesquisar consumo de equipamentos por data
-				$instrucao = $LigacaoBD->prepare("SELECT * FROM CONSUMO_ARTIGOS WHERE C_DATA='?'");
+				$instrucao = $LigacaoBD->prepare("SELECT E_DESCRICAO, C_QUANTIDADECONSUMIDA, C_DATA, C_DESCRICAOCONSUMO FROM CONSUMO_ARTIGOS, EQUIPAMENTOS WHERE CONSUMO_ARTIGOS.E_ID = EQUIPAMENTOS.E_ID AND C_DATA='?'");
 				$instrucao->bind_param($dataDeConsumo);
 
 				// Executar
@@ -141,26 +146,31 @@
 				if($sucesso_funcao){
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
 					while($registo = $instrucao->fetch()){
-						$dados[] = new ConsumoEquip($registo["E_id"], $registo["C_quantidadeConsumida"], $registo["C_data"], $registo["C_descricaoConsumo"]);
-					}return $dados;
+						$ConsumoEquip->setDescricao($registo["E_descricao"]);
+						$ConsumoEquip->setQuantidade($registo["C_quantidadeConsumida"]);
+						$ConsumoEquip->setData($registo["C_data"]);
+						$ConsumoEquip->setDescconsumo($registo["C_descricaoConsumo");
+						$dados[] = $ConsumoEquip;
+					}
 				}
 			}catch(PDOException $e){
 				echo $e->getMessage();
 			}
+			return $dados;
 		}
 		
 
 		
 		public function listarConsumoEquip(){
 			$dados = null;
-
+			$ConsumoEquip = new ConsumoEquip("","","","");
 			try{
 				// Obter apenas os dados necessários dos consumos de equipamentos
 				
 				/**********************************************************************
 					Nota: Os equipamentos não têm nome registado na base de dados!!!
 				***********************************************************************/
-				$instrucao = $LigacaoBD->prepare("SELECT E_DESCRICAO, C_QUANTIDADECONSUMIDA, C_DATA FROM CONSUMO_ARTIGOS, EQUIPAMENTOS WHERE CONSUMO_ARTIGOS.E_ID = EQUIPAMENTOS.E_ID");
+				$instrucao = $LigacaoBD->prepare("SELECT E_DESCRICAO, C_QUANTIDADECONSUMIDA, C_DATA, C_DESCRICAOCONSUMO FROM CONSUMO_ARTIGOS, EQUIPAMENTOS WHERE CONSUMO_ARTIGOS.E_ID = EQUIPAMENTOS.E_ID");
 
 				// Executar
 				$sucesso_funcao = $instrucao->execute();
@@ -169,12 +179,17 @@
 				if($sucesso_funcao){
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
 					while($registo = $instrucao->fetch()){
-						$dados[] = new ConsumoEquip($registo["E_descricao"], $registo["C_quantidadeConsumida"], $registo["C_data"]);
-					}return $dados;
+						$ConsumoEquip->setDescricao($registo["E_descricao"]);
+						$ConsumoEquip->setQuantidade($registo["C_quantidadeConsumida"]);
+						$ConsumoEquip->setData($registo["C_data"]);
+						$ConsumoEquip->setDescconsumo($registo["C_descricaoConsumo");
+						$dados[] = $ConsumoEquip;
+					}
 				}
 			}catch(PDOException $e){
 				echo $e->getMessage();
 			}
+			return $dados;
 		}
 	}
 ?>
