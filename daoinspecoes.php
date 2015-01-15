@@ -138,7 +138,7 @@
                                             $inspecoes->setI_DATAINSPECAO($registo["t_I_DATAINSPECAO"]);
                                             $inspecoes->setI_ESTADO($registo["t_I_ESTADO"]);
                                             
-						$dados[] = $registo;
+						$dados[] = $inspecoes;
 					}
 				}
 			}catch(PDOException $e){
@@ -170,7 +170,7 @@
                                             $pesquisar->setI_ESTADO($registo["t_I_ESTADO"]);
                                             
                                             
-						$dados[] = $registo;
+						$dados[] = $pesquisar;
 					}
 				}
 			}catch(PDOException $e){
@@ -201,7 +201,7 @@
                                             $verificar->setestado($registo["t_estado"]);
                                            
                                             
-						$dados[] = $registo;
+						$dados[] = $verificar;
 					}
 				}
 			}catch(PDOException $e){

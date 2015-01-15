@@ -12,6 +12,7 @@ class Inspecoes {
     private $idInspecoes;
     private $dataLimite;
     private $estado;
+    private $idViatura;
      /*
          * Construtor da classe Inspecoes
          * 
@@ -24,6 +25,7 @@ class Inspecoes {
         $this->idInspecoes = $idInspecoes;
         $this->dataLimite = $dataLimite;
         $this->estado = $estado;
+        $this->idViatura = $idViatura;
     }
     /*
          * Getter da classe Inspecoes
@@ -38,6 +40,24 @@ class Inspecoes {
          * @param idInspecoes
          * @return   
          */
+    function getIdViatura() {
+        return $this->idViatura;
+    }
+/*
+         * Setter da classe Inspecoes
+         * @param idInspecoes
+         * @return   
+         */
+   
+    function setIdViatura($idViatura) {
+        $this->idViatura = $idViatura;
+    }
+/*
+         * Getter da classe Inspecoes
+         * @param 
+         * @return dataLimite  
+         */
+    
     function setIdInspecoes($idInspecoes) {
         $this->idInspecoes = $idInspecoes;
     }

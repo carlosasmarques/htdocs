@@ -118,7 +118,7 @@
                                             $pesquisar->setV_MODELO($registo["t_V_MODELO"]);
                                             
                                             
-                                            $dados[] = $registo;
+                                            $dados[] = $pesquisar;
 					}
 				}
 			}catch(PDOException $e){
@@ -173,7 +173,8 @@
 		
 		public function pesquisarTransFunc($nome){
 			$dados = null;
-
+                        
+                        $transfunc = new transfunc();
 			try{
 				// Pesquisar transportes de uma dada viatura por nome de utente
 				$instrucao = $LigacaoBD->prepare("SELECT T_ID, UT_NOME, T_DATATRANSPORTE, T_ORIGEM, T_DESTINO, V_MARCA, V_MODELO FROM UTILIZADORES, VIATURA, TRANSPORTES WHERE TRANSPORTES.V_ID = VIATURA.V_ID AND TRANSPORTES.U_ID = UTENTES.UT_ID AND U_NOME=?");
@@ -186,7 +187,17 @@
 				if($sucesso_funcao){
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
 					while($registo = $instrucao->fetch()){
-						$dados[] = $registo;
+						
+                                            $transfunc->setT_ID($registo["t_T_ID"]);
+                                            $transfunc->setUT_NOME($registo["t_UT_NOME"]);
+                                            $transfunc->setT_DATATRANSPORTE($registo["t_T_DATATRANSPORTE"]);
+                                            $transfunc->setT_ORIGEM($registo["t_T_ORIGEM"]);
+                                            $transfunc->setT_DESTINO($registo["t_T_DESTINO"]);
+                                            $transfunc->setV_MARCA($registo["t_V_MARCA"]);
+                                            $transfunc->setV_MODELO($registo["t_V_MODELO"]);
+                                            
+                                            
+                                            $dados[] = $transfunc;
 					}
 				}
 			}catch(PDOException $e){

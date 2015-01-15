@@ -149,7 +149,7 @@
                                             $abastecimento->setA_CONSUMOMEDIO($registo["t_A_CONSUMOMEDIO"]);
                                             
                                             
-						 $dados[] = $registo;
+						 $dados[] = $abastecimento;
 					}
 				}
 			}catch(PDOException $e){
