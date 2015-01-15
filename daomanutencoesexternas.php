@@ -83,9 +83,9 @@
 			}
 		}
 		
-		public function pesquisarManutExtMarca($marca){
+            /*	public function pesquisarManutExtMarca($marca){
 			$dados = null;
-
+                        $manutencaoExt = new manutencaoExter(0,"","","","","","");
 			try{
 				// Pesquisar manutenções externas de uma dada marca de viaturas
 				
@@ -99,22 +99,29 @@
 				if($sucesso_funcao){
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
 					while($registo = $instrucao->fetch()){
-						$dados[] = $registo;
+                                            $manutencaoExt->setIdManutencaoExter($registo["me_id"]);
+                                            $manutencaoExt->setOficina($registo["me_ofi"]);
+                                            $manutencaoExt->setDescricaoAvaria($registo["me_desA"]);
+                                            $manutencaoExt->setDescReparacao($registo["me_desR"]);
+                                            $manutencaoExt->setDataAvaria($registo["me_dataA"]);
+                                            $manutencaoExt->setDataReparacao($registo["me_dataR"]);
+                                            $manutencaoExt->setCustoReparacao($registo["me_custo"]);
+                                            $dados[] = $registo;
 					}
-				}
+                                }
 			}catch(PDOException $e){
 				echo $e->getMessage();
 			}
 			return $dados;
-		}
+		}*/
 		
 		public function pesquisarManutExtMatric($matricula){
 			$dados = null;
-
+                        $manutencaoExt = new manutencaoExter(0,"","","","","","");
 			try{
 				// Pesquisar manutenções externas de uma dada viatura por matricula
 				
-				$instrucao = $LigacaoBD->prepare("SELECT ME_ID, V_MARCA, V_MATRICULA, ME_DATAREPARACAO FROM MANUTENCOESEXTERNAS, VIATURA WHERE MANUTENCOESEXTERNAS.V_ID = VIATURA.V_ID AND V_MATRICULA=?");
+				$instrucao = $LigacaoBD->prepare("SELECT V_ID FROM VIATURA WHERE V_MATRICULA like ?");
 				$instrucao->bind_param($matricula);
 
 				// Executar
@@ -124,9 +131,34 @@
 				if($sucesso_funcao){
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
 					while($registo = $instrucao->fetch()){
-						$dados[] = $registo;
+                                            $idViatura = $registo;
+                                        }
+                                }
+                                
+                                // Pesquisar manutenções externas de uma dada viatura por id
+                                
+                                $instrucao = $LigacaoBD->prepare("SELECT * FROM MANUTENCOESEXTERNAS WHERE V_ID like ?");
+                                $instrucao->bind_param($idViatura);
+                                
+                                
+                                // Executar
+				$sucesso_funcao = $instrucao->execute();
+                                
+                                // Percorrer os dados da query e guardar num array
+				if($sucesso_funcao){
+					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
+					while($registo1 = $instrucao->fetch()){
+                                            $manutencaoExt->setIdManutencaoExter($registo1["me_id"]);
+                                            $manutencaoExt->setOficina($registo1["me_ofi"]);
+                                            $manutencaoExt->setDescricaoAvaria($registo1["me_desA"]);
+                                            $manutencaoExt->setDescReparacao($registo1["me_desR"]);
+                                            $manutencaoExt->setDataAvaria($registo1["me_dataA"]);
+                                            $manutencaoExt->setDataReparacao($registo1["me_dataR"]);
+                                            $manutencaoExt->setCustoReparacao($registo1["me_custo"]);
+                                            $dados[] = $manutencaoExt;
 					}
-				}
+                                }
+                                
 			}catch(PDOException $e){
 				echo $e->getMessage();
 			}
@@ -135,10 +167,10 @@
 		
 		public function listarManutExternas(){
 			$dados = null;
-
+                        $manutencaoExt = new manutencaoExter(0,"","","","","","");   
 			try{
 				// Obter apenas os dados necessários das manutenções externas
-				$instrucao = $LigacaoBD->prepare("SELECT ME_ID, V_MARCA, V_MATRICULA, ME_DATAREPARACAO FROM MANUTENCOESEXTERNAS, VIATURA WHERE MANUTENCOESEXTERNAS.V_ID = VIATURA.V_ID");
+				$instrucao = $LigacaoBD->prepare("SELECT * FROM MANUTENCOESEXTERNAS");
 
 				// Executar
 				$sucesso_funcao = $instrucao->execute();
@@ -147,9 +179,16 @@
 				if($sucesso_funcao){
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
 					while($registo = $instrucao->fetch()){
-						$dados[] = $registo;
+                                            $manutencaoExt->setIdManutencaoExter($registo["me_id"]);
+                                            $manutencaoExt->setOficina($registo["me_ofi"]);
+                                            $manutencaoExt->setDescricaoAvaria($registo["me_desA"]);
+                                            $manutencaoExt->setDescReparacao($registo["me_desR"]);
+                                            $manutencaoExt->setDataAvaria($registo["me_dataA"]);
+                                            $manutencaoExt->setDataReparacao($registo["me_dataR"]);
+                                            $manutencaoExt->setCustoReparacao($registo["me_custo"]);
+                                            $dados[] = $manutencaoExt;
 					}
-				}
+                                }
 			}catch(PDOException $e){
 				echo $e->getMessage();
 			}
@@ -158,10 +197,10 @@
 		
 		public function verManutExternas($id){
 			$dados = null;
-
+                        $manutencaoExt = new manutencaoExter(0,"","","","","","");
 			try{
 				// Obter os dados da manutenção futura especificada
-				$instrucao = $LigacaoBD->prepare("SELECT V_MATRICULA, ME_DESCRICAOREPARACAO, ME_DATAAVARIA FROM MANUTENCOESFUTURAS, VIATURA WHERE MANUTENCOESFUTURAS.V_ID = VIATURA.V_ID AND ME_ID=?");
+				$instrucao = $LigacaoBD->prepare("SELECT * FROM MANUTENCOESEXTERNAS WHERE ME_ID like ?");
 				$instrucao->bind_param($id);
 
 				// Executar
@@ -170,11 +209,22 @@
 				// Se o id foi encontrado, obter os dados
 				if($sucesso_funcao){
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
-					$dados = $instrucao->fetch();
+					while($registo = $instrucao->fetch()){
+                                            $manutencaoExt->setIdManutencaoExter($registo["me_id"]);
+                                            $manutencaoExt->setOficina($registo["me_ofi"]);
+                                            $manutencaoExt->setDescricaoAvaria($registo["me_desA"]);
+                                            $manutencaoExt->setDescReparacao($registo["me_desR"]);
+                                            $manutencaoExt->setDataAvaria($registo["me_dataA"]);
+                                            $manutencaoExt->setDataReparacao($registo["me_dataR"]);
+                                            $manutencaoExt->setCustoReparacao($registo["me_custo"]);
+                                            $dados[] = $manutencaoExt;
+					}
+                                
 				}
 			}catch(PDOException $e){
 				echo $e->getMessage();
 			}
 			return $dados;
 		}
+        }
 ?>

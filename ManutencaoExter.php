@@ -16,7 +16,8 @@
  * - Custo da reparação do veículo.
  */
 class manutencaoExter {
-   private $idManutencaoExter; 
+   private $idManutencaoExter;
+   private $idViatura;
    private $oficina;
    private $descricaoAvaria;
    private $descReparacao;
@@ -27,6 +28,7 @@ class manutencaoExter {
          * Construtor da classe ManutencaoExter
          * 
          * @param idManutencaoExter
+         * @param idViatura    
          * @param oficina
          * @param descricaoAvaria
          * @param descReparacao
@@ -35,8 +37,9 @@ class manutencaoExter {
          * @param custoReparacao
          * @return 
          *          */
-   function __construct($idManutencaoExter, $oficina, $descricaoAvaria, $descReparacao, $dataAvaria, $dataReparacao, $custoReparacao) {
+   function __construct($idManutencaoExter, $idViatura, $oficina, $descricaoAvaria, $descReparacao, $dataAvaria, $dataReparacao, $custoReparacao) {
        $this->idManutencaoExter = $idManutencaoExter;
+       $this->$idViatura = $idViatura;
        $this->oficina = $oficina;
        $this->descricaoAvaria = $descricaoAvaria;
        $this->descReparacao = $descReparacao;
@@ -53,6 +56,15 @@ class manutencaoExter {
        return $this->idManutencaoExter;
    }
 /*
+         * Getter da classe ManutencaoExter
+         * @param 
+         * @return idViatura
+         */
+   function getIdViatura() {
+       return $this->idViatura;
+   }   
+/*
+         * 
          * Getter da classe ManutencaoExter
          * @param 
          * @return oficina
@@ -107,6 +119,14 @@ class manutencaoExter {
          */
    function setIdManutencaoExter($idManutencaoExter) {
        $this->idManutencaoExter = $idManutencaoExter;
+   }
+   /*
+         * Setter da classe ManutencaoExter
+         * @param idViatura
+         * @return 
+         */
+   function setIdViatura($idViatura) {
+       $this->idViatura = $idViatura;
    }
 /*
          * Setter da classe ManutencaoExter
