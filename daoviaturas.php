@@ -160,7 +160,7 @@
 		
 		public function pesquisarPorMatricula($matricula){
 			$dados = null;
-
+                        $viatura = new Viaturas();
 			try{
 				// Pesquisar por matricula
 				$instrucao = $LigacaoBD->prepare("SELECT * FROM viaturas WHERE V_matricula=?");
@@ -197,7 +197,7 @@
 		
 		public function verViatura($id){
 			$dados = null;
-
+                        $viatura = new Viaturas();
 			try{
 				// Obter os dados da viatura com o id especificado
 				$instrucao = $LigacaoBD->prepare("SELECT * FROM viaturas WHERE id=?");
@@ -234,7 +234,7 @@
 		
 		public function listarViaturas(){
 			$dados = null;
-
+                        $viatura = new Viaturas();
 			try{
 				// Obter apenas os dados necessários das viaturas
 				$instrucao = $LigacaoBD->prepare("SELECT id, V_tipoViatura, V_marca, V_matricula,
