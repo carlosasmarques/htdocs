@@ -105,7 +105,7 @@ class DaoUtilizador{
             }
             $utilizador = new Utilizador($registo["u_nome"], $registo["u_numerofuncionario"], $registo["u_id"], 
                                          $registo["u_morada"], $registo["u_contatotelefonico"], $registo["u_ativo"],
-                                         $registo["u_tipoutilizador"], $registo["u_nomeutilizador"], $registo["u_password"],
+                                         $registo["u_tipoutilizador"], $registo["u_nomeutilizador"], $registo["u_palavrapasse"],
                                          $registo["u_dataregisto"], $registo["u_datanascimento"], $registo["u_funcao"], 
                                          $registo["u_fotografia"]);
             return $utilizador;
