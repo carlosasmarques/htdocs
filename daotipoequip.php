@@ -37,6 +37,8 @@
         }
 
         public function listarTiposEquip(){
+            
+            $listar = new listar();
             try{
                 $instrucao = $LigacaoBD->prepare("SELECT * FROM Tipo_Artigo");
                 //Executar
@@ -48,7 +50,12 @@
             if($sucesso_funcao){
                 $instrucao->setFetchMode(PDO::FETCH_ASSOC);
                 while($registo = $instrucao->fetch()){
-                    $dados[] = $registo;
+                    
+                    $listar->setidTipoArtigos($registo["t_idTipoArtigos"]);
+                    $listar->setnome($registo["t_nome"]);
+                    
+                    
+                    $dados[] = $listar;
                 }
                 return $dados;
             } else {
