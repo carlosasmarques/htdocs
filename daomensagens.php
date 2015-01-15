@@ -70,6 +70,7 @@ class DaoMensagens{
     }
 
     function VerMensagemEnv($id){
+        $mensagem = new MensEnv();
         try{
             // Preparar a instrução sql de inserção
             $instrucao = $LigacaoBD->prepare("SELECT * FROM MENSAGENSENVIADAS WHERE MENV_id = ?");
@@ -85,7 +86,14 @@ class DaoMensagens{
 
         if($sucesso_funcao){
             while($registo = $instrucao->fetch()){
-                $mensagem = $registo;
+                $mensagem ->setAssunto($registo["m_ass"]);
+                $mensagem ->setDataEnvio($registo["m_dataenv"]);
+                $mensagem ->setDestinatario($registo["m_des"]);
+                $mensagem ->setHoraEnvio($registo["m_horaenv"]);
+                $mensagem ->setIdMensEnv($registo["m_idmensenv"]);
+                $mensagem ->setLida($registo["m_lida"]);
+                $mensagem ->setMensagem($registo["m_mens"]);
+                $mensagem ->setRemetente($registo["m_rem"]);
             }
             return $mensagem;
         }else{
@@ -94,6 +102,7 @@ class DaoMensagens{
     }
 
     function pesquisarMensagensDest($destinatario){
+            $mensagem = new MensRec();
             try{
                 // Preparar a instrução sql de inserção
                 $instrucao = $LigacaoBD->prepare("SELECT * FROM MENSAGENSENVIADAS WHERE MENV_destinatario = ?");
@@ -109,7 +118,15 @@ class DaoMensagens{
 
             if($sucesso_funcao){
                 while($registo = $instrucao->fetch()){
-                    $dados[] = $registo;
+                    $mensagem ->setAssunto($registo["m_ass"]);
+                    $mensagem ->setDataEnvio($registo["m_dataenv"]);
+                    $mensagem ->setDestinatario($registo["m_des"]);
+                    $mensagem ->setHoraEnvio($registo["m_horaenv"]);
+                    $mensagem ->setIdMensEnv($registo["m_idmensenv"]);
+                    $mensagem ->setLida($registo["m_lida"]);
+                    $mensagem ->setMensagem($registo["m_mens"]);
+                    $mensagem ->setRemetente($registo["m_rem"]);
+                    $dados[] = $mensagem;
                 }
                 return $dados;
             }else{
@@ -118,6 +135,7 @@ class DaoMensagens{
     }
 
     function listarMensagensEnviadas(){
+        $mensagem = new MensEnv();
         try{
             // Preparar a instrução sql de inserção
             $instrucao = $LigacaoBD->prepare("SELECT * FROM MENSAGENSENVIADAS");
@@ -132,7 +150,15 @@ class DaoMensagens{
 
         if($sucesso_funcao){
             while($registo = $instrucao->fetch()){
-                $dados[] = $registo;
+                    $mensagem ->setAssunto($registo["m_ass"]);
+                    $mensagem ->setDataEnvio($registo["m_dataenv"]);
+                    $mensagem ->setDestinatario($registo["m_des"]);
+                    $mensagem ->setHoraEnvio($registo["m_horaenv"]);
+                    $mensagem ->setIdMensEnv($registo["m_idmensenv"]);
+                    $mensagem ->setLida($registo["m_lida"]);
+                    $mensagem ->setMensagem($registo["m_mens"]);
+                    $mensagem ->setRemetente($registo["m_rem"]);
+                    $dados[] = $mensagem;
             }
             return $dados;
         }else{
@@ -162,6 +188,7 @@ class DaoMensagens{
     }
 
     function VerMensagemRec($id){
+        $mensagem = new MensRec();
         try{
             // Preparar a instrução sql de inserção
             $instrucao = $LigacaoBD->prepare("SELECT * FROM MENSAGENSRECEBIDAS WHERE MR_id = ?");
@@ -177,7 +204,15 @@ class DaoMensagens{
 
         if($sucesso_funcao){
             while($registo = $instrucao->fetch()){
-                $mensagem = $registo;
+                    $mensagem ->setAssunto($registo["m_ass"]);
+                    $mensagem ->setDataEnvio($registo["m_dataenv"]);
+                    $mensagem ->setDestinatario($registo["m_des"]);
+                    $mensagem ->setHoraEnvio($registo["m_horaenv"]);
+                    $mensagem ->setIdMensEnv($registo["m_idmensenv"]);
+                    $mensagem ->setLida($registo["m_lida"]);
+                    $mensagem ->setMensagem($registo["m_mens"]);
+                    $mensagem ->setRemetente($registo["m_rem"]);
+                    
             }
             return $mensagem;
         }else{
@@ -186,6 +221,7 @@ class DaoMensagens{
     }
 
     function pesquisarMensagensRem($remetente){
+        $mensagem = new MensRec();
         try{
             // Preparar a instrução sql de inserção
             $instrucao = $LigacaoBD->prepare("SELECT * FROM MENSAGENSRECEBIDAS WHERE MENV_remetente = ?");
@@ -201,7 +237,15 @@ class DaoMensagens{
 
         if($sucesso_funcao){
             while($registo = $instrucao->fetch()){
-                $dados[] = $registo;
+                    $mensagem ->setAssunto($registo["m_ass"]);
+                    $mensagem ->setDataEnvio($registo["m_dataenv"]);
+                    $mensagem ->setDestinatario($registo["m_des"]);
+                    $mensagem ->setHoraEnvio($registo["m_horaenv"]);
+                    $mensagem ->setIdMensEnv($registo["m_idmensenv"]);
+                    $mensagem ->setLida($registo["m_lida"]);
+                    $mensagem ->setMensagem($registo["m_mens"]);
+                    $mensagem ->setRemetente($registo["m_rem"]);
+                    $dados[] = $mensagem;
             }
             return $dados;
         }else{
@@ -210,6 +254,7 @@ class DaoMensagens{
     }
 
     function listarMensagensRec(){
+        $mensagem = new MensRec();
         try{
             // Preparar a instrução sql de inserção
             $instrucao = $LigacaoBD->prepare("SELECT * FROM MENSAGENSRECEBIDAS");
@@ -224,7 +269,15 @@ class DaoMensagens{
 
         if($sucesso_funcao){
             while($registo = $instrucao->fetch()){
-                $dados[] = $registo;
+                    $mensagem ->setAssunto($registo["m_ass"]);
+                    $mensagem ->setDataEnvio($registo["m_dataenv"]);
+                    $mensagem ->setDestinatario($registo["m_des"]);
+                    $mensagem ->setHoraEnvio($registo["m_horaenv"]);
+                    $mensagem ->setIdMensEnv($registo["m_idmensenv"]);
+                    $mensagem ->setLida($registo["m_lida"]);
+                    $mensagem ->setMensagem($registo["m_mens"]);
+                    $mensagem ->setRemetente($registo["m_rem"]);
+                    $dados[] = $mensagem;
             }
             return $dados;
         }else{

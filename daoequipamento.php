@@ -106,11 +106,10 @@ class DaoEquipamento{
 
             return $dados[];
             
-        }else{
-            return NULL;
+  }catch(PDOException $e){
+            echo $e->getMessage();
         }
     }
-
     function editarEquipamento($equipamento){
         try{
             $instrucao = $LigacaoBD->prepare("UPDATE EQUIPAMENTOS SET (E_descricao, E_codigo, E_quantidadeDisponivel, E_quantidadeMinima, E_activo, E_precoCompra, E_dataCompra) WHERE E_id = ?");
@@ -237,9 +236,7 @@ class DaoEquipamento{
             }
 
             return $dados[];
-        }else{
-            return NULL;
-        }
+
     }
 }
 ?>
