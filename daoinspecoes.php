@@ -118,7 +118,8 @@
 		
 		public function pesquisarInspecaoMatric($matricula){
 			$dados = null;
-
+                        
+                        $inspecoes = new inspecoes();
 			try{
 				// Pesquisar inspeções de uma dada viatura por matricula
 				$instrucao = $LigacaoBD->prepare("SELECT I_ID, V_ID, I_DATAINSPECAO, I_ESTADO FROM INSPECOES, VIATURA WHERE INSPECOES.V_ID = VIATURA.V_ID AND V_MATRICULA=?");
@@ -131,6 +132,12 @@
 				if($sucesso_funcao){
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
 					while($registo = $instrucao->fetch()){
+                                            
+                                            $inspecoes->setI_ID($registo["t_I_ID"]);
+                                            $inspecoes->setV_ID($registo["t_V_ID"]);
+                                            $inspecoes->setI_DATAINSPECAO($registo["t_I_DATAINSPECAO"]);
+                                            $inspecoes->setI_ESTADO($registo["t_I_ESTADO"]);
+                                            
 						$dados[] = $registo;
 					}
 				}
@@ -142,7 +149,8 @@
 		
 		public function pesquisarInspecaoMarca($marca){
 			$dados = null;
-
+                        
+                        $pesquisar = new pesquisar();
 			try{
 				// Pesquisar inspeções de uma dada viatura por marca
 				$instrucao = $LigacaoBD->prepare("SELECT I_ID, V_ID, I_DATAINSPECAO, I_ESTADO FROM INSPECOES, VIATURA WHERE INSPECOES.V_ID = VIATURA.V_ID AND V_MARCA=?");
@@ -155,6 +163,13 @@
 				if($sucesso_funcao){
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
 					while($registo = $instrucao->fetch()){
+                                            
+                                            $pesquisar->setI_ID($registo["t_I_ID"]);
+                                            $pesquisar->setV_ID($registo["t_V_ID"]);
+                                            $pesquisar->setI_DATAINSPECAO($registo["t_I_DATAINSPECAO"]);
+                                            $pesquisar->setI_ESTADO($registo["t_I_ESTADO"]);
+                                            
+                                            
 						$dados[] = $registo;
 					}
 				}
@@ -166,7 +181,8 @@
 		
 		public function verificarInspecaoPer(){
 			$dados = null;
-
+                        
+                        $verificar = new verificar();
 			try{
 				// Obter as inspeções que ainda não foram efetuadas (estado = false)
 				$instrucao = $LigacaoBD->prepare("SELECT * FROM INSPECOES WHERE I_ESTADO=false");
@@ -178,6 +194,13 @@
 				if($sucesso_funcao){
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
 					while($registo = $instrucao->fetch()){
+                                            
+                                            $verificar->setidInspecoes($registo["t_idInspecoes"]);
+                                            $verificar->setidViatura($registo["t_idViatura"]);
+                                            $verificar->setdataLimite($registo["t_dataLimite"]);
+                                            $verificar->setestado($registo["t_estado"]);
+                                           
+                                            
 						$dados[] = $registo;
 					}
 				}
@@ -189,7 +212,8 @@
 		
 		public function listarInspecoesPer(){
 			$dados = null;
-
+                        
+                        $listar = new listar();
 			try{
 				// Obter apenas os dados necessários das inspeções
 				$instrucao = $LigacaoBD->prepare("SELECT I_ID, V_MATRICULA, I_DATAINSPECAO, I_ESTADO FROM INSPECOES, VIATURA WHERE INSPECOES.V_ID = VIATURA.V_ID");
@@ -201,6 +225,11 @@
 				if($sucesso_funcao){
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
 					while($registo = $instrucao->fetch()){
+                                            
+                                            $listar->setI_ID($registo["t_I_ID"]);
+                                            
+                                            //FALTA ALTERA V_MATRICULA
+                                            
 						$dados[] = $registo;
 					}
 				}

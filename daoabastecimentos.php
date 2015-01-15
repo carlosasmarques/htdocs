@@ -92,7 +92,8 @@
 		
 		public function pesquisarAbastecimento($id_viatura){
 			$dados = null;
-
+                        
+                        $abastecer = new abastecer();
 			try{
 				// Pesquisar abastecimentos de uma dada viatura
 				$instrucao = $LigacaoBD->prepare("SELECT * FROM ABASTECIMENTOS WHERE V_ID=?");
@@ -105,7 +106,15 @@
 				if($sucesso_funcao){
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
 					while($registo = $instrucao->fetch()){
-						$dados[] = $registo;
+                                            
+                                            $abastecer->setIdAbastecimentos($registo["t_idabastecimentos"]);
+                                            $abastecer->setQuantidadeCombustivel($registo["t_quantidadecombustivel"]);
+                                            $abastecer->setQuilometragemActual($registo["t_quilometragemactual"]);
+                                            $abastecer->setDataAbastecimento($registo["t_dataabastecimento"]);
+                                            $abastecer->setMediaDesteAbastecimento($registo["t_mediadesteabastecimento"]);
+                                            
+                                            
+						$dados[] = $abastecer;
 					}
 				}
 			}catch(PDOException $e){
@@ -116,7 +125,8 @@
 		
 		public function listarAbastecimentos(){
 			$dados = null;
-
+                        
+                        $abastecimento = new abastecimento();
 			try{
 				// Obter apenas os dados necessários dos abastecimentos
 				
@@ -132,7 +142,14 @@
 				if($sucesso_funcao){
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
 					while($registo = $instrucao->fetch()){
-						$dados[] = $registo;
+                                            
+                                            $abastecimento->setA_ID($registo["t_A_ID"]);
+                                            $abastecimento->setA_QUANTIDADECOMBUSTIVEL($registo["t_A_QUANTIDADECOMBUSTIVEL"]);
+                                            $abastecimento->setA_QUILOMETRAGEMATUAL($registo["t_A_QUILOMETRAGEMATUAL"]);
+                                            $abastecimento->setA_CONSUMOMEDIO($registo["t_A_CONSUMOMEDIO"]);
+                                            
+                                            
+						 $dados[] = $registo;
 					}
 				}
 			}catch(PDOException $e){
@@ -145,7 +162,7 @@
 			$dados = null;
 
 			try{
-				// Obter os dados do abastecimento especificado
+				// Obter os dados do abastecimento especificado   FALTA ALTERAR
 				
 				/**********************************************************************
 					Nota: Os abastecimentos não têm local registado na base de dados!!!

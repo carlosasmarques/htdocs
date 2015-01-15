@@ -93,7 +93,8 @@
 		
 		public function pesquisarTransUtente($nome){
 			$dados = null;
-
+                        
+                        $pesquisar = new pesquisar();
 			try{
 				// Pesquisar transportes de uma dado utente pesquisando por nome
 				
@@ -107,7 +108,17 @@
 				if($sucesso_funcao){
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
 					while($registo = $instrucao->fetch()){
-						$dados[] = $registo;
+						
+                                            $pesquisar->setT_ID($registo["t_T_ID"]);
+                                            $pesquisar->setUT_NOME($registo["t_UT_NOME"]);
+                                            $pesquisar->setT_DATATRANSPORTE($registo["t_T_DATATRANSPORTE"]);
+                                            $pesquisar->setT_ORIGEM($registo["t_T_ORIGEM"]);
+                                            $pesquisar->setT_DESTINO($registo["t_T_DESTINO"]);
+                                            $pesquisar->setV_MARCA($registo["t_V_MARCA"]);
+                                            $pesquisar->setV_MODELO($registo["t_V_MODELO"]);
+                                            
+                                            
+                                            $dados[] = $registo;
 					}
 				}
 			}catch(PDOException $e){
@@ -119,7 +130,7 @@
 		public function pesquisarTransViatura($matricula){
 			$dados = null;
                         
-                        $transporte = new transporte("", "", "");
+                        $transporte = new transporte();
 
 			try{
 				// Pesquisar transportes de uma dada viatura por nome de utente
@@ -138,11 +149,13 @@
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
 					while($registo = $instrucao->fetch()){
 					
-                                        $transporte->setId($registo["t_id"]);
-                                        
-                                        /*
-                                         * FALTA ACABAR
-                                         */
+                                        $transporte->setT_ID($registo["t_T_ID"]);
+                                        $transporte->setUT_NOME($registo["t_UT_NOME"]);
+                                        $transporte->setT_DATATRANSPORTE($registo["t_T_DATATRANSPORTE"]);
+                                        $transporte->setT_ORIGEM($registo["t_T_ORIGEM"]);
+                                        $transporte->setT_DESTINO($registo["t_T_DESTINO"]);
+                                        $transporte->setV_MARCA($registo["t_V_MARCA"]);
+                                        $transporte->setV_MODELO($registo["t_V_MODELO"]);
                                         
                                         $dados[] = $transporte;
                                         }

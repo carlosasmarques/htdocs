@@ -141,7 +141,7 @@
 		}
 		
 		public function getFoto(){
-			$return $this->fotografia;
+			$this->fotografia;
 		}
 	}
 ?>
