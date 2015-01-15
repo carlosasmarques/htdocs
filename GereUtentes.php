@@ -1,61 +1,108 @@
 <?php
+include "conf.php";
+session_start();
+// Ligação
+
+if(isset($_GET["logout"])){
+    if($_GET["logout"]== true)
+        unset($_SESSION);
+}
+
     class GereUtentes{
         
-        
-        public function adicionarUtente($id,$nome,$numeroSNS,$morada,$telefone,$dataNascimento,$dataRegisto){
+        public function adicionarUtente(){
 
-            $utente = new DaoUtentes($bd->DBH);
-            
-            if($utente->adicionarUtente($id,$nome,$numeroSNS,$morada,$telefone,$dataNascimento,$dataRegisto)){
-                return true;
+
+            $utente = new Utentes($_POST["nome"],$_POST["$numeroSNS"],$_POST["$morada"],$_POST["$telefone"],$_POST["$dataNascimento"],$_POST["$dataRegisto"]);
+            if($utente->adicionarUtente($utente)){
+                return "O Utente foi adicionado com sucesso!";
             }
-                return false;
+                return "O Utente não foi adicionado com sucesso!";
        
         }
-        public function editarDadosUtente($id,$nome,$numeroSNS,$morada,$telefone,$dataNascimento,$dataRegisto){
-            
-            if($utente->editarDadosUtente($id,$nome,$numeroSNS,$morada,$telefone,$dataNascimento,$dataRegisto)){
-                return true;
+
+        
+        
+        function editarDadosUtente(){
+            $utente = new Utentes($_POST["idI"], $_POST["nome"], $_POST["$numeroSNS"], $_POST["$morada"], $_POST["$telefone"], $_POST["$dataNascimento"], $_POST["$dataRegisto"]);
+            $daoutentes = new DaoUtentes();
+            if($daoutentes->editarEquipamento($utente)){
+                return "O Utente foi bem editado!";
+            } else {
+                return "O Utente não foi bem editado!";
             }
-                return false;
+
         }
+        
+ 
         public function desativarUtente($id){
             
-            if($utente->desativarUtente(false,$id)){
-                return true;
+
+            $idUtentes = $_POST["id"];
+            $daoUtentes = DaoUtentes();
+            if($utente = $daoUtentes -> desativarUtente($idUtentes,"False")){
+                return "O Utente foi desativado com sucesso!";
             }
-                return false; 
+
+                return "O Utente não foi desativado com sucesso!"; 
         }
+        
         public function ativarUtente($id){
             
-            if($utente->ativarUtente(true,$id)){
-                return true;
+
+            $idUtentes = $_POST["id"];
+            $daoUtentes = DaoUtentes();
+            if($utente = $daoUtentes -> ativarUtente($idUtentes,"True")){
+                return "O Utente foi ativado com sucesso!";
             }
-                return false;
+
+                return "O Utente não foi ativado com sucesso!"; 
         }
-        public function pesquisarUtenteNome($nome){
+
+        
+        public function pesquisarUtenteNome(){
             
-            if($utente->pesquisarUtenteNome($nome)){
+
+            $utenteNome = $POST["utenteNome"];
+            $daoutentes = new DaoUtentes();
+            if($utente = $daoutentes->pesquisarUtenteNome($utenteNome) != NULL){
                 return $utente;
             }
                 return null;
         }
-        public function pesquisarUtenteNumero($n_utente){
+
+        public function pesquisarUtenteNumero(){
             
-            if($utente->pesquisarUtenteNumero($n_utente)){
+
+            $utenteNum = $POST["$utenteNum"];
+            $daoutentes = new DaoUtentes();
+            if($utente = $daoutentes->pesquisarUtenteNumero($utenteNum) != NULL){
                 return $utente;
             }
                 return null;
         }
+
         private function verUtente(){
             
             
+             $idUtente = $_POST["id"];
+             $daoUtente = new DaoUtentes();
+                if(($utente = $daoUtente->verEquipamento($idUtente))){
+                   return $utente;
+                } else {
+                   return NULL;
+                }
+
         }
         private function listarUtentes(){
-           return $utente->listarUtentes();
+
+           $daoUtentes = new DaoUtentes();
+           if(($utentes = $daoUtentes -> listarUtentes()) != NULL){
+               return $utentes;
+           }else{
+               return NULL;
+           }
         }
-        
-        
     }
 ?>
 
