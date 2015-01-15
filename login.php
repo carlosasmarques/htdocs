@@ -1,62 +1,51 @@
 <?php
-include ("./acessoBd.php");
+	// login.php - trata de iniciar a sessão dos utilizadores
 
-if (empty($_POST["username"]) && empty($_POST["password"])) {
-    echo "<h2 id='red'>Tem de introduzir no formulário
-            de Login o seu Username e a sua password.</h2>";
-    echo ("<h2 id='red'>Tente novamente.");
-} else {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+	include "acessobd.php";
+	include "daoutilizador.php";
 
+	if(
+		isset($_POST["username"]) && !empty($_POST["username"]) &&
+		isset($_POST["password"]) && !empty($_POST["password"])
+	){
+		
+		// abrir ligação à base de dados
+		$bd = new BaseDados();
+		$daoutilizador = new DaoUtilizador();
 
-    //objecto de acesso aos dados
-    $a = new Utilizador();
-   
-    function obtemUtilizadorUsername($user){
-        
-        $daoutilizador = new DaoUtilizador();
-        if($utilizador = $daoutilizador->verDadosUtilizador($user)!= NULL){
-            return $utilizador;
-        } else {
-            return NULL;
-        }
-    }
-      
-    //carrega o utilizador com o username dado
-    $z = $a->obtemUtilizadorUsername($username);
-     
-    //verifica se foi carregado alguma coisa na variável
-    if ($z < 0){
-        include_once 'index.php';
-        echo ("<h2 id='red'>Não há nenhum utilizador com esse username.</h2>");
-        echo ("<h2 id='red'>Tente novamente.</h2>");
-    }else{
-        foreach ($a->getUtilizador() as $utilizador) {
-            $u = $utilizador->getUsername();
-            $p = $utilizador->getPassword();
-            $t = $utilizador->getTipoUtilizador();
-        }
-        //verifica se o username que veio da base de dados é igual ao inserido
-        if ($u != $username){
-            echo ("<h2 class='text-center'>Não há nenhum utilizador com esse username.</h2>");
-            echo ("<h2 class='text-center'>Tente novamente.</h2>");
-            include_once ("./index.php");      
-        }elseif($p == $password){
-            if (!strcmp($t, "Administrador")){
-                $_SESSION["user"] = $u;
-                include ("./admin/inicial.php");
-            }
-            if (!strcmp($t, "Funcionario")){  
-                $_SESSION["user"] = $u; 
-                include ("./inicial.php");
-            }  
-        }else{
-            include_once 'index.php';
-            echo ("<h2 id='red'>A password que introduziu está incorrecta.</h2>");
-            echo ("<h2 id='red'>Tente novamente.");
-        }
-    }
-}
-
+		// carrega o utilizador com o username dado
+		$utilizador = $daoutilizador->obtemUtilizadorUsername($_POST["username"]);
+		 
+		// verifica se foi carregado um objeto na variável "utilizador"
+		if ($utilizador = null){
+			header("Location: index.php?erro=1");
+		}else{
+			/*
+				foreach ($a->getUtilizador() as $utilizador) {
+					$u = $username->getUsername();
+					$p = $username->getPassword();
+					$t = $username->getTipoUtilizador();
+					$a = username->getActivo();
+				}
+			*/
+			
+			//verifica se o username que veio da base de dados é igual ao inserido
+			if(
+				!strcmp($_POST["username"], $username->getUsername()) &&
+				!strcmp($_POST["password"], $username->getPassword()) &&
+				$username->getActivo() == true
+			){
+				// Guardar o nome de utilizador da sessão
+				$_SESSION["user"] = $username->getUsername(); 
+				
+				// Verificar se se trata de um utilizador comum ou administrador
+				$_SESSION["tipo_user"] = $username->getTipoUtilizador();
+					
+			}else{
+				header("Location: index.php?erro=1");
+			}
+		}
+	}else{
+		header("Location: index.php?erro=1");
+	}
 ?>
