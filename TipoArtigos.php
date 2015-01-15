@@ -1,5 +1,5 @@
 <?php
-/**Classe para objectos TipoEquip
+/**Classe para objectos TipoArtigos
  * Esta classe contem um atributo que define os tipos de artigo existentes.
  * O tipo de artigo pode tomar os valores por defeito:
  * – Equipamentos de bombeiros
@@ -7,11 +7,11 @@
  * – Material de manutenção automóvel
  * – Equipamentos diversos
 */
-    Class TipoEquip{
+    Class TipoArtigos{
         private $idTipoArtigos;
         private $nome;
         /**
-	 * Construtor da Classe TipoEquip
+	 * Construtor da Classe TipoArtigos
 	 * @param idTipoArtigos
 	 * @param nome
 	 * @return 
@@ -21,7 +21,7 @@
             $this->nome = $nome;
         }
         /**
-	 * Getter da classe TipoEquip
+	 * Getter da classe TipoArtigos
 	 * @param 
 	 * @return idTipoArtigos
 	 */
@@ -29,7 +29,7 @@
             return $this->idTipoArtigos;
         }
 	/**
-	 * Getter da classe TipoEquip
+	 * Getter da classe TipoArtigos
 	 * @param 
 	 * @return nome
 	 */
@@ -37,7 +37,7 @@
             return $this->nome;
         }
 	/**
-	 * Setter da classe TipoEquip
+	 * Setter da classe TipoArtigos
 	 * @param idTipoArtigos
 	 * @return 
 	 */
@@ -45,7 +45,7 @@
             $this->idTipoArtigos = $idTipoArtigos;
         }
 	/**
-	 * Setter da classe TipoEquip
+	 * Setter da classe TipoArtigos
 	 * @param nome
 	 * @return
 	 */

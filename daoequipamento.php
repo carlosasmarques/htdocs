@@ -81,6 +81,7 @@ class DaoEquipamento{
     }
 
     function pesquisaEquipTipo($tipoArtigo){
+        $equipamento = new Equipamentos()
         try{
             $instrucao = $LigacaoBD->prepare("SELECT TA_id FROM EQUIPAMENTOS WHERE TA_nome = ?");
             $instrucao->bind_param($tipoArtigo);
@@ -89,8 +90,16 @@ class DaoEquipamento{
             $instrucao->FETCH(PDO::FETCH_ASSOC);
             if($sucesso_funcao){
                 WHILE($registo = $instrucao->fetch()){
-                    $id = $registo;
+                    $id[] = $registo;
                 }
+                while($id->setFetchMode(PDO::FETCH_ASSOC)){
+                    $equipamento->setId($registo["e_id"]);
+                    $dados[]=$equipamento;
+                }
+                    
+                    
+                
+                
             }else{
                 return NULL;
             }
