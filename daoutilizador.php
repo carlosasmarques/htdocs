@@ -26,6 +26,33 @@ class DaoUtilizador{
     function __destruct(){
         $this->LigacaoBD == null;
     }
+    
+    function adicionarUtilizador(Utilizador $utilizador){
+        
+    
+        try{
+            $instrucao = $LigacaoBD->prepare("insert into utilizadores (U_ID, U_NUMEROFUNCIONARIO, U_NOME, U_MORADA, 
+                                              U_CONTACTOTELEFONICO, U_DATANASCIMENTO, U_NOMEUTILIZADOR, U_PALAVRAPASSE,
+                                              U_TIPOUTILIZADOR, U_DATAREGISTO, U_FOTOGRAFIA, U_ATIVO, U_FUNCAO) values 
+                                              (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $instrucao->bind_param($utilizador->getIdUtilizadores(), $utilizador->getNumero(), $utilizador->getNome(),
+                                   $utilizador->getMorada(), $utilizador->getTelefone(), $utilizador->getDataNascimento(),
+                                   $utilizador->getUsername(), $utilizador->getPassword(), $utilizador->getTipoUtilizador(),
+                                   $utilizador->getDataRegisto(), $utilizador->getFoto(), $utilizador->getActivo(), 
+                                   $utilizador->getFuncao());
+            $sucesso_funcao = $instrucao->execute();
+            $instrucao->close();
+
+        } catch(PDOException $e){
+            echo $e->getMessage();
+        }
+        if($sucesso_funcao){
+            return "True";
+        }else{
+            return "False";
+        }
+    }
+    
     function alterarPalavraPasse($palavraPasse, $id){
         try{
             $instrucao = $LigacaoBD->prepare("UPDATE Utilizadores SET (U_palavraPasse = ? WHERE U_id = ?) VALUES (?, ?)");
