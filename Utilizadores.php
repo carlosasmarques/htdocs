@@ -1,30 +1,30 @@
 <?php
 /**Classe para objectos Utilizadores
- * Esta classe contem os atributos necessários para gerir os utilizadores.
+ * Esta classe contem os atributos necessï¿½rios para gerir os utilizadores.
  * Atributo nome:
  * -Nome do utilizador.
  * Atributo numero:
- * -Número de funcionário de utilizador.
+ * -Nï¿½mero de funcionï¿½rio de utilizador.
  * Atributo username:
  * -Username do utilizador.
  * Atributo password:
  * -Password do utilizador.
  * Atributo tipoUtilizador:
- * -Indica o tipo de utilizador se é “Administrador” ou “Funcionário”. O tipoUtilizador vai influenciar as permissões que o utilizador tem sobre a aplicação.
+ * -Indica o tipo de utilizador se ï¿½ ï¿½Administradorï¿½ ou ï¿½Funcionï¿½rioï¿½. O tipoUtilizador vai influenciar as permissï¿½es que o utilizador tem sobre a aplicaï¿½ï¿½o.
  * Atributo dataDeRegisto:
- * -Data em que o utilizador foi registado na aplicação.
+ * -Data em que o utilizador foi registado na aplicaï¿½ï¿½o.
  * Atributo morada:
  * -Morada do utilizador.
  * Atributo telefone:
- * -Contacto telefónico do utilizador.
+ * -Contacto telefï¿½nico do utilizador.
  * Atributo dataNascimento:
  * -Data de nascimento do utilizador.
  * Atributo funcao:
- * -Indica a função do utilizador.
+ * -Indica a funï¿½ï¿½o do utilizador.
  * Atributo ativo:
- * -Indica se o utilizador está ativo ou desativo no sistema.
+ * -Indica se o utilizador estï¿½ ativo ou desativo no sistema.
  * Atributo caminhoFoto:
- * -Guarda a localização do ficheiro de imagem usada no perfil do utilizador.
+ * -Guarda a localizaï¿½ï¿½o do ficheiro de imagem usada no perfil do utilizador.
 */
     class Utilizadores{
         private $idUtilizadores;
@@ -73,6 +73,8 @@
             $this->ativo = $ativo;
             $this->caminhoFoto = $caminhoFoto;
         }
+
+
         /**
 	 * Getter da classe Utilizadores
 	 * @param 
