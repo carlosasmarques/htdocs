@@ -3,8 +3,8 @@
 
 	$servidor = "localhost";
 	$bd = "fmt";
-	$user = "utilizador";
-	$pass = "password";
+	$user = "root";
+	$pass = "";
 	$lingua = "pt-pt";
 	// $outros = "valor";
 ?>
