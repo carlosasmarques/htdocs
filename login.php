@@ -8,12 +8,10 @@ if (empty($_POST["username"]) && empty($_POST["password"])) {
 } else {
     $username = $_POST["username"];
     $password = $_POST["password"];
-    
-    //abrir ligação à base de dados
-    $db = new BaseDados();
+
 
     //objecto de acesso aos dados
-    $a = new GereAdministracao($db);
+    $a = new Utilizador();
    
     function obtemUtilizadorUsername($user){
         
