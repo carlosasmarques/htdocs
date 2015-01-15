@@ -19,9 +19,14 @@
 		public $DBH;
 		
 		// Liga��o � base de dados
-		function __construct($host, $db, $user, $pass){
+		function __construct(){
+			global $servidor;
+			global $bd;
+			global $user;
+			global $pass;
+			
 			try{
-				$this->DBH = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+				$this->DBH = new PDO("mysql:host=$servidor;dbname=$bd", $user, $pass);
 			}catch(PDOException $e) {
 				echo $e->getMessage();
 				return false;
