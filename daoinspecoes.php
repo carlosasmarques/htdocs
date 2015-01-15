@@ -228,7 +228,7 @@
                                             
                                             $listar->setI_ID($registo["t_I_ID"]);
                                             
-                                            //FALTA ALTERA V_MATRICULA
+                                            
                                             
 						$dados[] = $registo;
 					}

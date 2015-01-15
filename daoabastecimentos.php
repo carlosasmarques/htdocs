@@ -162,7 +162,7 @@
 			$dados = null;
 
 			try{
-				// Obter os dados do abastecimento especificado   FALTA ALTERAR
+				// Obter os dados do abastecimento especificado   
 				
 				/**********************************************************************
 					Nota: Os abastecimentos não têm local registado na base de dados!!!
