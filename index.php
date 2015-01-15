@@ -1,9 +1,4 @@
-<?php
-include "login.php";
 
-$administrador = new GereAdministracao();
-if($administrador->listarUtilizadores() != NULL){
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,9 +60,7 @@ if($administrador->listarUtilizadores() != NULL){
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-<?php
-    } else {
-?>  <div class="container">
+<div class="container">
         <br>
         <br>
         <br>
@@ -97,8 +90,6 @@ if($administrador->listarUtilizadores() != NULL){
         <a class="btn btn-lg btn-primary btn-block" title="Pressione para concluir o registo" onsubmit="GereAdministração.php">Registar</a>
 		</form>
     </div>
-<?php
-    }
-?>
+
 </body>
 </html>
