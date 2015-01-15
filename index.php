@@ -61,7 +61,7 @@
             <label class="">
                 <a href="esquecer_pass.html">Esqueceu-se da palavra-passe?</a>
             </label>
-            <a class="btn btn-lg btn-primary btn-block" title="Pressione para concluir a autenticação" onsubmit="login.php">Entrar</a>
+			<input class="btn btn-lg btn-primary btn-block" type="submit" id= "input-login" name="input-login" value="Entrar" />
         </form>
     </div>
     <!-- /container -->
