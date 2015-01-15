@@ -35,14 +35,13 @@
 			$this->LigacaoBD == null;
 		}
 		
-		public function adicionarConsumoEquip($quantidade_consumida, $dataDeConsumo, $descricaoConsumo){
+		function adicionarConsumoEquip(ConsumoEquip $consumoequip){
 		
 			try{
 				// Preparar a instrução sql de inserção
-				$instrucao = $LigacaoBD->prepare("INSERT INTO CONSUMO_ARTIGOS (
-				C_QUANTIDADECONSUMIDA, C_DATA, C_DESCRICAOCONSUMO) VALUES (?, ?, ?)");
-				$instrucao->bind_param($quantidade_consumida, $dataDeConsumo, $descricaoConsumo);
-				
+				$instrucao = $LigacaoBD->prepare("INSERT INTO CONSUMO_ARTIGOS (E_ID, C_QUANTIDADECONSUMIDA, C_DATA, C_DESCRICAOCONSUMO)
+												VALUES (?, ?, ?, ?)");
+				$instrucao->bind_param($consumoequip->getIdEquip(), $consumoequip->getQuantidade(), $consumoequip->getData(), $consumoequip->getDescricao() );
 				// Executar
 				$sucesso_funcao = $instrucao->execute();
 				$instrucao->close();
@@ -58,7 +57,7 @@
 			}
 		}
 		
-		public function verConsumoEquip($id){
+		function verConsumoEquip($id){
 			$dados = null;
 
 			try{
@@ -72,12 +71,13 @@
 				// Se o id foi encontrado, obter os dados
 				if($sucesso_funcao){
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
-					$dados = $instrucao->fetch();
+					$registo = $instrucao->fetch();
 				}
+				$dados = new ConsumoEquip($registo["E_id"], $registo["C_quantidadeConsumida"], $registo["C_data"], $registo["C_descricaoConsumo"]);
+				return $dados;
 			}catch(PDOException $e){
 				echo $e->getMessage();
 			}
-			return $dados;
 		}
 		
 		public function editarConsumoEquip($id, $quantidade_consumida, $dataDeConsumo, $descricaoConsumo){
@@ -103,7 +103,7 @@
 			}
 		}
 		
-		public function pesquisaConsumoEquip($id){
+		function pesquisaConsumoEquip($id){
 			$dados = null;
 
 			try{
@@ -118,13 +118,12 @@
 				if($sucesso_funcao){
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
 					while($registo = $instrucao->fetch()){
-						$dados[] = $registo;
-					}
+						$dados[] = new ConsumoEquip($registo["E_id"], $registo["C_quantidadeConsumida"], $registo["C_data"], $registo["C_descricaoConsumo"]);
+					}return $dados;
 				}
 			}catch(PDOException $e){
 				echo $e->getMessage();
 			}
-			return $dados;
 		}
 		
 		public function pesquisaConsumoData($dataDeConsumo){
@@ -142,13 +141,12 @@
 				if($sucesso_funcao){
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
 					while($registo = $instrucao->fetch()){
-						$dados[] = $registo;
-					}
+						$dados[] = new ConsumoEquip($registo["E_id"], $registo["C_quantidadeConsumida"], $registo["C_data"], $registo["C_descricaoConsumo"]);
+					}return $dados;
 				}
 			}catch(PDOException $e){
 				echo $e->getMessage();
 			}
-			return $dados;
 		}
 		
 
@@ -171,13 +169,12 @@
 				if($sucesso_funcao){
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
 					while($registo = $instrucao->fetch()){
-						$dados[] = $registo;
-					}
+						$dados[] = new ConsumoEquip($registo["E_descricao"], $registo["C_quantidadeConsumida"], $registo["C_data"]);
+					}return $dados;
 				}
 			}catch(PDOException $e){
 				echo $e->getMessage();
 			}
-			return $dados;
 		}
 	}
 ?>
