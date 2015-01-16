@@ -10,9 +10,10 @@
  */
 class Inspecoes {
     private $idInspecoes;
+    private $idViatura;
     private $dataLimite;
     private $estado;
-    private $idViatura;
+    
      /*
          * Construtor da classe Inspecoes
          * 
@@ -21,11 +22,12 @@ class Inspecoes {
          * @param estado
          * @return 
          *          */
-    function __construct($idInspecoes, $dataLimite, $estado) {
+    function __construct($idInspecoes, $idViatura,$dataLimite, $estado) {
         $this->idInspecoes = $idInspecoes;
+        $this->idViatura = $idViatura;
         $this->dataLimite = $dataLimite;
         $this->estado = $estado;
-        $this->idViatura = $idViatura;
+        
     }
     /*
          * Getter da classe Inspecoes

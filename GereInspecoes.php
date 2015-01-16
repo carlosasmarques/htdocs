@@ -1,5 +1,6 @@
 <?php
 include "conf.php";
+
 session_start();
 // Ligação
 
@@ -56,7 +57,7 @@ if(isset($_GET["logout"])){
                 	return NULL;
 		}
         }
-        private function listarInspecoesPer(){
+        public function listarInspecoesPer(){
             $daoInspecao = new DaoInspecoes();
             if($inspecao = $daoInspecao->listarInspecoesPer($idViatura)!= NULL){
                     return $viaturas;
@@ -64,7 +65,7 @@ if(isset($_GET["logout"])){
                 	return NULL;
 		}
         }
-        private function verInspecaoPer(){
+        public function verInspecaoPer(){
             $id = new inspecoes($_POST["id"]);
             $daoInspecao = new DaoInspecoes();
             if($inspecao = $daoInspecao->verInspecaoPer($id)!= NULL){
