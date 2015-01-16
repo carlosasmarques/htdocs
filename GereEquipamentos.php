@@ -1,5 +1,7 @@
 <?php
 include "conf.php";
+include "daoequipamento.php";
+
 session_start();
 // Ligação
 
@@ -71,8 +73,9 @@ class GereEquipamentos{
     function reporStockEquip(){
         $idEquipamento = $_POST["id"];
         $quantidadeDisponivel = $_POST["quantidadeDisponivel"];
+        $precoUnidade = $_POST["precoU"];
         $daoEquipamento = new DaoEquipamento();
-        if($daoEquipamento->reporStockEquip($idEquipamento, $quantidadeDisponivel)){
+        if($daoEquipamento->reporStockEquip($idEquipamento,$quantidadeDisponivel,$precoUnidade)){
             return "O stock do equipamento foi reposto com sucesso!";
         } else {
             return "O stock do equipamento não foi bem reposto";

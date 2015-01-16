@@ -104,7 +104,7 @@ class DaoEquipamento{
                 return NULL;
             }
 
-            return $dados[];
+            return $dados;
             
   }catch(PDOException $e){
             echo $e->getMessage();
@@ -235,7 +235,7 @@ class DaoEquipamento{
                 return NULL;
             }
 
-            return $dados[];
+            return $dados;
 
     }
 }

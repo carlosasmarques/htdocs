@@ -1,24 +1,25 @@
 <?php
 /**Classe para objectos Equipamentos
- * Esta classe contem os atributos necessários para gerir os equipamentos.
+ * Esta classe contem os atributos necessï¿½rios para gerir os equipamentos.
  * Atributo preco:
- * -Valor do preço do artigo.
+ * -Valor do preï¿½o do artigo.
  * Atributo quantidadeMinima:
- * -Valor da quantidade mínima aceitável em stock.
+ * -Valor da quantidade mï¿½nima aceitï¿½vel em stock.
  * Atributo quantidadeExistente:
  * -Valor da quantidade existente em stock.
  * Atributo descricao:
- * -Descrição do artigo.
+ * -Descriï¿½ï¿½o do artigo.
  * Atributo codigo:
- * -Código do artigo.
+ * -Cï¿½digo do artigo.
  * Atributo data:
  * -Data de quando do artigo foi inserido no sistema.
  * Atributo activo:
- * -Indica se o equipamento está ou não ativo no sistema.
+ * -Indica se o equipamento estï¿½ ou nï¿½o ativo no sistema.
 */
     Class Equipamentos{
         private $idEquipamentos;
         private $preco;
+        private $tipoEquipamentos;
         private $quantidadeMinima;
         private $quantidadeExistente;
         private $descricao;
@@ -29,6 +30,7 @@
 	 * Construtor da Classe Equipamentos
 	 * @param idEquipamentos
 	 * @param preco
+         * @param tipoEquipamentos
          * @param quantidadeMinima
          * @param quantidadeExistente
          * @param descricao
@@ -37,9 +39,10 @@
          * @param activo
 	 * @return 
 	 */
-        function __construct($idEquipamentos, $preco, $quantidadeMinima, $quantidadeExistente, $descricao, $codigo, $data, $activo) {
+        function __construct($idEquipamentos, $preco, $tipoEquipamentos,$quantidadeMinima, $quantidadeExistente, $descricao, $codigo, $data, $activo) {
             $this->idEquipamentos = $idEquipamentos;
             $this->preco = $preco;
+            $this->tipoEquipamentos = $tipoEquipamentos;
             $this->quantidadeMinima = $quantidadeMinima;
             $this->quantidadeExistente = $quantidadeExistente;
             $this->descricao = $descricao;
@@ -62,6 +65,14 @@
 	 */
         function getPreco() {
             return $this->preco;
+        }
+        /**
+	 * Getter da classe Equipamentos
+	 * @param 
+	 * @return tipoEquipamentos
+	 */
+        function getTipoEquipamentos() {
+            return $this->tipoEquipamentos;
         }
         /**
 	 * Getter da classe Equipamentos
@@ -126,6 +137,14 @@
 	 */
         function setPreco($preco) {
             $this->preco = $preco;
+        }
+        /**
+	 * Setter da classe Equipamentos
+	 * @param tipoEquipamentos
+	 * @return 
+	 */
+        function setTipoEquipamentos($tipoEquipamentos) {
+            $this->tipoEquipamentos = $tipoEquipamentos;
         }
         /**
 	 * Setter da classe Equipamentos
