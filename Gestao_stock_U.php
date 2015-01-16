@@ -207,7 +207,7 @@
                                         for($i=0; $i<count($equipamentos); $i++){
                                                 echo'<div class="list-group-item">';
 
-                                                // substituir pelos getters certos
+                                               
                                                 echo'    <span style="min-width: 40px; display: inline-block;">' . $equipamentos[$i]->getCodigo() . '</span> ';
                                                 echo'    <span style="min-width: 100px; display: inline-block;">' . $equipamentos[$i]->getDescricao() . '</span>';
                                                 echo'    <span style="min-width: 90px; display: inline-block;">' . $equipamentos[$i]->getTipoEquipamentos() . '</span>';
