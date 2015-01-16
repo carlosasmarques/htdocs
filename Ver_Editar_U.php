@@ -1,12 +1,11 @@
 <?php
-    include "Equipamentos.php";
-    include "GereEquipamentos.php";
-    
-    $gere_equipamento = new GereEquipamentos();
-    $equipamentos = new Equipamentos(0,"","",0,0,"",0,"",false);
-    
+	include "Equipamentos.php";
+	include "GereEquipamentos.php";
+	
+        $gere_equipamento = new GereEquipamentos();
+        $equipamentos = new Equipamentos(0,"","",0,0,"",0,"",false);
 
-    
+        $equipamentos = $gere_equipamento->verEquipamento();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +18,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>FMT | Adicionar Novo Artigo</title>
+    <title>FMT | Ver/Editar</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap.min.css" rel="stylesheet">
@@ -54,6 +53,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+
                 <a class="navbar-brand" href="inicial.html">FireManTool</a>
             </div>
             <div class="navbar-collapse collapse" style="background-color: #FFCC33;">
@@ -127,101 +127,67 @@
                         </li>
                         <li><a href="Gestao_stock_U.html">Gestão de Stocks</a>
                         </li>
-                        <li class="active">Adicionar Novo Artigo</li>
+                        <li class="active">Ver/Editar</li>
                     </ol>
-                    <h1 class="page-header">Adicionar Novo Artigo</h1>
+                    <h1 class="page-header">Ver/Editar</h1>
 
 
 
-                    <div class="table-responsive">
 
-
-
-                    </div>
-                    <div id="openModal" class="modalDialog">
-                        <div>
-                            <a href="#close" title="Close" class="close">X</a>
-
-                            <form method="POST" action="Adicionar_Stock.php">
-                                <div class="form-group">
-                                    <label class="DescricaodoArtigo">Quantidade a Repor:</label>
-                                    <input type="text" class="form-control" name="qtre" id="quantidadeDisponivel" placeholder="Inserir os dados">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="qtminimapermitida">Introduza o Preço de cada Unidade:</label>
-                                    <input type="text" class="form-control" name="precoU" id="precoU" placeholder="Inserir os dados">
-                                </div>
-
-                                <div class="pull-right">
-                                    <div class="btn-group">
-                                        <a class="btn btn-default" href="./Gestao_stock_U.html">Confirmar</a>
-                                    </div>
-                                    <div class="btn-group">
-                                        <a class="btn btn-default" href="./Gestao_stock_U.html">Voltar</a>
-                                    </div>
-                                </div>
-                            </form>
-                        <?php
-                            if(isset($_POST["quantidadeDisponivel"]) && !empty($_POST["quantidadeDisponivel"])&& isset($_POST["precoU"]) && !empty($_POST["precoU"])){
-                                $equipamentos = $gere_equipamento->reporStockEquip();   
-                            }
-                        ?>
-                        </div>
-                    </div>
 
                     <div class="col-sm-6 col-md-4">
-                        <form method="POST" action="Adicionar_Stock.php">
+                        <form  method="POST" action="Ver_Editar_U.php">
                             <div class="form-group">
                                 <label class="CodigodoArtigo">Código do Artigo:</label>
-                                <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Inserir o Código de Artigo">
+                                <input type="text" class="form-control" id="codigo" value=" '.$equipamentos[$i]->getCodigo().'">
                             </div>
 
                             <div class="form-group">
                                 <label class="PreçodoArtigo">Preço do Artigo:</label>
                                 <br>
-                                <input type="text" class="form-control" name="precoCompra" id="precoCompra" placeholder="Inserir o preço em Euros">
-
-
-
+                                <input type="text" class="form-control" id="precoCompra" value=" '.$equipamentos[$i]->getPreco().'">
+                               
                             </div>
-
                             <div class="form-group">
-                                <label class="TipodeArtigo">Tipo de Artigo:</label>
-                                <select class="form-control" name="tipoArtigo" id="tipoArtigo">
-                                    <option>Equipamento De Bombeiros</option>
-                                    <option>Equipamento Primeiros Socorros</option>
-                                    <option>Equipamento Manutencão Automóvel</option>
-                                    <option>Equipamento Diverso</option>
-                                </select>
+                                <label class="qtminimapermitida">Data da Compra:</label>
+                                <input type="date" class="form-control" name="dataCompra" id="dataCompra" >
                             </div>
+                            <div class="form-group">
+                                <label class="qtminimapermitida">Quantidade Disponível:</label>
+                                <input type="text" class="form-control" id="quantidadeDisponivel" value=" '.$equipamentos[$i]->getQuantidadeExistente().'">
+                            </div>
+
                         </form>
 
                     </div>
                     <div class="col-sm-6 col-md-4">
-                        <form method="POST" action="Adicionar_Stock.php">
+                        <form  method="POST" action="Ver_Editar_U.php">
                             <div class="form-group">
                                 <label class="DescricaodoArtigo">Descrição do Artigo:</label>
-                                <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Inserir a Descrição do Artigo">
+                                <input type="text" class="form-control" id="descricao" value=" '.$equipamentos[$i]->getDescricao().'">
                             </div>
 
                             <div class="form-group">
                                 <label class="qtminimapermitida">Quantidade Mínima Permitida:</label>
-                                <input type="text" class="form-control" name="quantidadeMinima" id="quantidadeMinima" placeholder="Inserir a Quantidade Mínima Permitida">
+                                <input type="text" class="form-control" id="quantidadeMinima" value=" '.$equipamentos[$i]->getQuantidadeMinima().'">
                             </div>
 
                             <div class="form-group">
-                                <label class="qtminimapermitida">Data da Compra:</label>
-                                <input type="date" class="form-control" name="dataCompra" id="dataCompra">
+                                <label class="TipodeArtigo">Tipo de Artigo:</label>
+                                <select class="form-control" name="tipoArtigo" id="tipoArtigo" value=" '.$equipamentos[$i]->getTipoEquipamentos().'">
+                                    <option>Equipamento de Combate a Incendios</option>
+                                    <option>Equipamento Médico</option>
+                                    <option>Equipamento Mecânico</option>
+                                </select>
                             </div>
                             <div class="pull-right">
                                 <a href="./Gestao_stock_U.html" class="btn btn-danger btn-xl pull-right"> Voltar </a>
-                                <a class="btn btn-primary btn-xl pull-right" href="./Gestao_stock_U.html"> Adicionar Novo </a>
+                                <a class="btn btn-primary btn-xl pull-right" > Guardar Alterações </a>
                                 <br/>
                             </div>
                         </form>
                         <?php
-                            if(isset($_POST["codigo"]) && !empty($_POST["codigo"])&& isset($_POST["precoCompra"]) && !empty($_POST["precoCompra"]) && isset($_POST["descricao"]) && !empty($_POST["descricao"]) && isset($_POST["quantidadeMinima"]) && !empty($_POST["quantidadeMinima"]) && isset($_POST["dataCompra"]) && !empty($_POST["dataCompra"])){
+                            if(isset($_POST["quantidadeDisponivel"]) && !empty($_POST["quantidadeDisponivel"])&&isset($_POST["tipoArtigo"]) && !empty($_POST["tipoArtigo"])&& isset($_POST["codigo"]) && !empty($_POST["codigo"])&& isset($_POST["precoCompra"]) && !empty($_POST["precoCompra"]) && isset($_POST["descricao"]) && !empty($_POST["descricao"]) && isset($_POST["quantidadeMinima"]) && !empty($_POST["quantidadeMinima"]) && isset($_POST["dataCompra"]) && !empty($_POST["dataCompra"])){
                                 $equipamentos = $gere_equipamento->adicionarEquipamentos();   
                             }
                         ?>
@@ -229,8 +195,8 @@
 
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
 
     <!-- Bootstrap core JavaScript

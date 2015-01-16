@@ -61,7 +61,7 @@ class GereEquipamentos{
     }
 
     function verEquipamento(){
-        $idEquipamento = $_POST["id"];
+        $idEquipamento = $_GET["id"];
         $daoEquipamento = new DaoEquipamento();
         if(($equipamento = $daoEquipamento->verEquipamento($idEquipamento))){
             return $equipamento;
@@ -71,7 +71,7 @@ class GereEquipamentos{
     }
 
     function reporStockEquip(){
-        $idEquipamento = $_POST["id"];
+        $idEquipamento = $_GET["id"];
         $quantidadeDisponivel = $_POST["quantidadeDisponivel"];
         $precoUnidade = $_POST["precoU"];
         $daoEquipamento = new DaoEquipamento();
