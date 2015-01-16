@@ -13,7 +13,7 @@ if ($bd->contar("utilizadores") == 0){
 function inserirAdministrador(){
     $nome = "Administrador";
     $numero = "0";
-    $username = "adminstrador";
+    $username = "administrador";
     $password = "1234";
     $tipoUtilizador = "0";
     $dataDeRegisto = "now()";
@@ -25,7 +25,11 @@ function inserirAdministrador(){
     $caminhoFoto = "./fotografias/administrador.png";
     
     $admin = new Utilizadores(NULL, $nome, $numero, $username, $password, $tipoUtilizador, $dataDeRegisto, $morada, 
-                              $telefone, $dataNascimento, $funcao, $ativo, $caminhoFoto)
+                              $telefone, $dataNascimento, $funcao, $ativo, $caminhoFoto);
+    
+    $daoUtilizador = new DaoUtilizador();
+    
+    $daoUtilizador->adicionarUtilizador($utilizador);
 }
 
 ?>
