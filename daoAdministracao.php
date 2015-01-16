@@ -103,14 +103,13 @@ class DaoAdministracao{
 
     public function listarUtilizadores(){
         try{
-            $instrucao = $LigacaoBD->prepare("SELECT * FROM Utilizadores");
+            $bd = new BaseDados();
+            $instrucao = $bd->query("SELECT * FROM Utilizadores", NULL);
             //Executar
-
-            $sucesso_funcao = $instrucao->execute();
         }catch(PDOException $e){
             echo $e->getMessage();
         }
-        if($sucesso_funcao){
+        if($instrucao != NULL){
             $instrucao->setFetchMode(PDO::FETCH_ASSOC);
             while($registo = $instrucao->fetch()){
                 $dados[] = $registo;
