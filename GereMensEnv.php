@@ -9,7 +9,7 @@ if(isset($_GET["logout"])){
 }
     class GereMensEnv{
         public function enviarMensagem(){
-            $destinatario = new MensEnv($_POST["destinatario"]);
+            $destinatario = new MensEnv($_POST["destinatario"],$_POST["assunto"],$_POST["mensagem"]);
             $daomensagem = new DaoMensagens();
             if(($mensagem = $daomensagem ->enviarMensagem($destinatario)) != NULL ){
                 return "mensagem enviada com sucesso";
