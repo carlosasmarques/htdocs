@@ -310,7 +310,7 @@
                             
                          <?php
                            if(isset($_POST["dataTransporte"]) && !empty($_POST["dataTransporte"])&& isset($_POST["horaDePartida"]) && !empty($_POST["horaDePartida"]) && isset($_POST["horaDeChegada"]) && !empty($_POST["horaDeChegada"]) && isset($_POST["origem"]) && !empty($_POST["origem"]) && isset($_POST["destino"]) && !empty($_POST["destino"]) && isset($_POST["observacoes"]) && !empty($_POST["observacoes"])&& isset($_POST["quilometrospartida"]) && !empty($_POST["quilometrospartida"])&& isset($_POST["quilometroschegada"]) && !empty($_POST["quilometroschegada"])){
-                                $utentes = $gere_utentes->adicionarUtente();   
+                                $transportes = $gere_transportes->adicionarTransporte();   
                             }
                            
                            ?>
