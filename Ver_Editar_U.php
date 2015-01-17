@@ -139,7 +139,7 @@
                         <form  method="POST" action="Ver_Editar_U.php">
                             <div class="form-group">
                                 <label class="CodigodoArtigo">Código do Artigo:</label>
-                                <input type="text" class="form-control" id="codigo" value=" echo '.$equipamentos[$i]->getCodigo().'">
+                                <input type="text" class="form-control" id="codigo" value="<?php echo $equipamentos[$i]->getCodigo() ?>">
                             </div>
 
                             <div class="form-group">

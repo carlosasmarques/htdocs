@@ -13,6 +13,8 @@
  */
 class Abastecimentos {
     private $idAbastecimentos;
+    private $matricula;
+    private $localAbast;
     private $quantidadeCombustivel;
     private $quilometragemActual;
     private $dataAbastecimento;
@@ -27,8 +29,10 @@ class Abastecimentos {
          * @param mediaDesteAbastecimento
          * @return 
          *          */
-    function __construct($idAbastecimentos, $quantidadeCombustivel, $quilometragemActual, $dataAbastecimento, $mediaDesteAbastecimento) {
+    function __construct($idAbastecimentos, $matricula ,$localAbast ,$quantidadeCombustivel, $quilometragemActual, $dataAbastecimento, $mediaDesteAbastecimento) {
         $this->idAbastecimentos = $idAbastecimentos;
+        $this->matricula = $matricula;
+        $this->localAbast = $localAbast;
         $this->quantidadeCombustivel = $quantidadeCombustivel;
         $this->quilometragemActual = $quilometragemActual;
         $this->dataAbastecimento = $dataAbastecimento;
@@ -42,6 +46,12 @@ class Abastecimentos {
          */
     function getIdAbastecimentos() {
         return $this->idAbastecimentos;
+    }
+    function getMatricula() {
+        return $this->matricula;
+    }
+    function getLocalAbast() {
+        return $this->localAbast;
     }
       /*
          * Setter da classe Abastecimentos
@@ -91,7 +101,13 @@ class Abastecimentos {
     function setQuantidadeCombustivel($quantidadeCombustivel) {
         $this->quantidadeCombustivel = $quantidadeCombustivel;
     }
-    /*
+    function setMatricula($matricula) {
+        $this->matricula = $matricula;
+    }
+    function setLocalAbast($localAbast) {
+        $this->localAbast = $localAbast;
+    }
+    /*$matricula$localAbast
          * Setter da classe Abastecimentos
          * @param quilometragemActual
          * @return 

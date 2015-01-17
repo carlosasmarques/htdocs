@@ -20,7 +20,7 @@ if(isset($_GET["logout"])){
 			}
 		}
         public function editarUtilizador(){
-            $utilizador = new Utilizador($_POST["nome"], $_POST["numero"],$_POST["morada"], $_POST["telefone"], $_POST["activo"], $_POST["tipoUtilizador"], $_POST["username"], $_POST["password"], $_POST["dataRegisto"], $_POST["dataNascimento"], $_POST["funcao"]);
+            $utilizador = new Utilizador($idUtilizador,$_POST["nome"], $_POST["numero"],$_POST["morada"], $_POST["telefone"], $_POST["activo"], $_POST["tipoUtilizador"], $_POST["username"], $_POST["password"], $_POST["dataRegisto"], $_POST["dataNascimento"], $_POST["funcao"]);
             $daoAdmin = new DaoAdminstracao();
             if($daoAdmin->editarUtilizador($utilizador)){
                 return "O Utilizador foi editado com sucesso!";
@@ -46,17 +46,17 @@ if(isset($_GET["logout"])){
                 return NULL;
             }
         }
-        public function activaConta($id){
+        public function activaConta($idUtilizador){
             $daoAdmin = new DaoAdministracao();
-            if($daoAdmin->ativarDesativarConta($id, "True")){
+            if($daoAdmin->ativarDesativarConta($idUtilizador, "True")){
                 return "A conta do Utilizador foi ativado com sucesso!";
             } else {
                 return "A conta do Utilizador não foi ativada com sucesso!";
             }
         }
-        public function desactivaConta($id){
+        public function desactivaConta($idUtilizador){
             $daoAdmin = new DaoAdministracao();
-            if($daoAdmin->ativarDesativarConta($id, "False")){
+            if($daoAdmin->ativarDesativarConta($idUtilizador, "False")){
                 return "A conta do Utilizador foi desativado com sucesso!";
             } else {
                 return "A conta do Utilizador não foi desativada com sucesso!";

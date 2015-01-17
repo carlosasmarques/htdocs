@@ -10,7 +10,7 @@ if(isset($_GET["logout"])){
 }
     class GereInspecoes{
         public function adicionarInspecaoPer(){
-            $inspecaoPer = new inspecoes($_POST["id_viatura"],$_POST["dataLimite"],$_POST["estado"]);
+            $inspecaoPer = new inspecoes($idInspecao,$_POST["dataLimite"],$_POST["estado"]);
             $daoInspecao = new DaoInspecoes();
             
             if($daoInspecao->adicionarInspecaoPer($inspecaoPer)){
@@ -20,7 +20,7 @@ if(isset($_GET["logout"])){
 			}    
         }
         public function editarInspecaoPer(){
-            $inspecao = new inspecoes($_POST["id_viatura"],$_POST["dataLimite"],$_POST["estado"]);
+            $inspecao = new inspecoes($idInspecao,$_POST["dataLimite"],$_POST["estado"]);
             $daoInspecao = new DaoInspecoes();
             
             if($daoInspecao->editarInspecao($inspecao)){
@@ -30,10 +30,10 @@ if(isset($_GET["logout"])){
 			}  
  
         }
-        public function registarComoFeita(){
-            $idInspecao = new inspecoes($_POST["id_inspecao"]);
+        public function registarComoFeita($idInsp){
+            $idInspecao = new inspecoes();
             $daoInspecao = new DaoInspecoes();
-            if($inspecao->registarComoFeita($idInspecao)){
+            if($inspecao->registarComoFeita($idInsp)){
                return "A inspeção foi registada com sucesso!";
                 } else {
                     return "Não foi possivel registar a inspeção!";

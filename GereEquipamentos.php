@@ -50,7 +50,7 @@ class GereEquipamentos{
         }
     }
 
-    function editarEquipamento($idEquipamento){
+    function editarEquipamento($idEquip){
         $equipamento = new Equipamento($idEquipamento, $_POST["descricao"], $_POST["tipoArtigo"], $_POST["codigo"], $_POST["quantidadeDisponivel"], $_POST["quantidadeMinima"], $_POST["precoCompra"], $_POST["dataCompra"], "True");
         $daoEquipamento = new DaoEquipamento();
         if($daoEquipamento->editarEquipamento($equipamento)){
@@ -60,48 +60,51 @@ class GereEquipamentos{
         }
     }
 
-    function verEquipamento($idEquipamento){
+    function verEquipamento($idEquip){
+        $idEquipamento = new Equipamentos();
         $daoEquipamento = new DaoEquipamento();
-        if(($equipamento = $daoEquipamento->verEquipamento($idEquipamento))){
+        if(($equipamento = $daoEquipamento->verEquipamento($idEquip))){
             return $equipamento;
         } else {
             return NULL;
         }
     }
 
-    function reporStockEquip(){
-        $idEquipamento = $_GET["id"];
+    function reporStockEquip($idEquip){
         $quantidadeDisponivel = $_POST["quantidadeDisponivel"];
         $precoUnidade = $_POST["precoU"];
         $daoEquipamento = new DaoEquipamento();
-        if($daoEquipamento->reporStockEquip($idEquipamento,$quantidadeDisponivel,$precoUnidade)){
+        if($daoEquipamento->reporStockEquip($idEquip,$quantidadeDisponivel,$precoUnidade)){
             return "O stock do equipamento foi reposto com sucesso!";
         } else {
             return "O stock do equipamento não foi bem reposto";
         }
     }
 
-    function desativarEquip($idEquipamento){
+    function desativarEquip($idEquip){
+        $idEquipamento = new Equipamentos();
         $daoEquipamento = new DaoEquipamento();
-        if($daoEquipamento->activarDesativarEquip($idEquipamento, "False")){
+        if($daoEquipamento->activarDesativarEquip($idEquip, "False")){
             return "O Equipamento foi desativado com sucesso!";
         } else {
             return "O Equipamento não foi desativado com sucesso!";
         }
     }
 
-    function ativarEquip($idEquipamento){
+    function ativarEquip($idEquip){
+        $idEquipamento = new Equipamentos();
         $daoEquipamento = new DaoEquipamento();
-        if($daoEquipamento->activarDesativarEquip($idEquipamento, "True")){
+        if($daoEquipamento->activarDesativarEquip($idEquip, "True")){
             return "O Equipamento foi ativado com sucesso!";
         } else {
             return "O Equipamento não foi ativado com sucesso!";
         }
     }
 
-    function verificaStockEquip($idEquipamento){
+    function verificaStockEquip($idEquip){
+        $idEquipamento = new Equipamentos();
         $daoEquipamento = new DaoEquipamento();
-        if(($equipamento = $daoEquipamento->verificaStockEquip($idEquipamento)) != NULL){
+        if(($equipamento = $daoEquipamento->verificaStockEquip($idEquip)) != NULL){
             return $equipamento;
         } else {
             return NULL;

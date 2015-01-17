@@ -1,5 +1,6 @@
 <?php
 include "conf.php";
+include "daoabastecimentos.php";
 session_start();
 // Ligação
 
@@ -9,7 +10,7 @@ if(isset($_GET["logout"])){
 }
     class GereAbastecimentos{
         public function adicionarAbastecimento(){
-            $abastecimento = new abastecimentos($_POST["matricula"],$_POST["quantidadeCombustivel"],$_POST["dataAbastecimento"],$_POST["mediaDesteAbastecimento"]);
+            $abastecimento = new abastecimentos($_POST["matricula"],$_POST["localAbast"],$_POST["quantidadeCombustivel"],$_POST["quilometragem"],$_POST["dataAbastecimento"],$_POST["mediaDesteAbastecimento"]);
             $daoAbastecimento = new DaoAbastecimentos();
             if($daoAbastecimento->adicionarAbastecimento($abastecimento)){
 				return "O abastecimento foi adicionado com sucesso!";
@@ -17,8 +18,8 @@ if(isset($_GET["logout"])){
 				return "Não foi possivel adicionar o abastecimento!";
 			}
         }
-        public function editarAbastecimento(){
-            $abastecimento = new abastecimentos($_POST["id"], $_POST["matricula"],$_POST["quantidadeCombustivel"],$_POST["dataAbastecimento"],$_POST["mediaDesteAbastecimento"]);
+        public function editarAbastecimento($idAbast){
+            $abastecimento = new abastecimentos($idAbast, $_POST["matricula"],$_POST["localAbast"],$_POST["quantidadeCombustivel"],$_POST["quilometragem"],$_POST["dataAbastecimento"],$_POST["mediaDesteAbastecimento"]);
             $daoAbastecimento = new DaoAbastecimentos();
             if($daoAbastecimento->editarAbastecimento($abastecimento)){
 				return "O abastecimento foi editado com sucesso!";
@@ -27,10 +28,10 @@ if(isset($_GET["logout"])){
 			}
        
         }
-        public function pesquisarAbastecimento(){
-            $id = new abastecimentos($_POST["id_viatura"]);
+        public function pesquisarAbastecimento($idAbast){
+            $idAbastecimentos = new abastecimentos();
             $daoAbastecimentos = new DaoAbastecimentos();
-            if($abastecimento = $daoAbastecimentos->pesquisarAbastecimento($id)!= NULL){
+            if($abastecimento = $daoAbastecimentos->pesquisarAbastecimento($idAbast)!= NULL){
                     return $abastecimento;
                 } else {
                 	return NULL;
@@ -44,10 +45,10 @@ if(isset($_GET["logout"])){
                 	return NULL;
 		}
         }
-        private function verAbastecimento(){
-            $id = new abastecimentos($_POST["id"]);
+        private function verAbastecimento($idAbast){
+            $idAbastecimentos = new abastecimentos();
             $daoAbastecimentos = new DaoAbastecimentos();
-            if($abastecimento = $daoAbastecimentos->verAbastecimento($id)!= NULL){
+            if($abastecimento = $daoAbastecimentos->verAbastecimento($idAbast)!= NULL){
                     return $abastecimento;
                 } else {
                 	return NULL;

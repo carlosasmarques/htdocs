@@ -4,7 +4,7 @@
     
     $gere_equipamento = new GereEquipamentos();
     $equipamentos = new Equipamentos(0,"","",0,0,"",0,"",false);
-    
+    $idEquip = $_GET["id"];
     $equipamentos = $gere_equipamento->listarEquipamentos();
 
 ?>
@@ -135,16 +135,32 @@
 
                         <div class="pull-left">
                             <form class="form-inline">
-                                <div class="btn-group">
+                                <div method="POST" class="btn-group">
                                     &nbsp;&nbsp;
-                                    <select class="form-control">
-                                        <option value="descriçao">Nome</option>
-                                        <option value="codigo">Código</option>
-                                        <option value="tipo">Tipo</option>
+                                    <select id="option" class="form-control">
+                                        <option id="nome" value="nome">Nome</option>
+                                        <option id="codigo" value="codigo">Código</option>
+                                        <option id="tipo" value="tipo">Tipo</option>
                                     </select>
                                     &nbsp;
-                                    <input class="form-control" type="text" id="procurar" placeholder="Procurar">
-
+                                    <input  class="form-control" type="text" id="procurar" placeholder="Procurar">
+                                   <?php
+                                            if($_POST["option"]==$_POST["codigo"]){
+                                                if(isset($_POST["procurar"]) && !empty($_POST["procurar"])){
+                                                    $equipamentos = $gere_equipamento ->pesquisaEquipCodigo();
+                                                }
+                                            }
+                                            if($_POST["option"]==$_POST["tipo"]){
+                                                if(isset($_POST["procurar"]) && !empty($_POST["procurar"])){
+                                                    $equipamentos = $gere_equipamento ->pesquisaEquipTipo();
+                                                }
+                                            }
+                                            if($_POST["option"]==$_POST["nome"]){
+                                                if(isset($_POST["procurar"]) && !empty($_POST["procurar"])){
+                                                    $equipamentos = $gere_equipamento ->pesquisarEquipNome();
+                                                }
+                                            }
+        			   ?>
 
                                     <br />
                                     <br />
@@ -160,22 +176,26 @@
                         <div>
                             <a href="#close" title="Close" class="close">X</a>
 
-                            <form>
+                            <form method="POST">
                                 <div class="form-group">
                                     <label class="DescricaodoArtigo">Quantidade a Repor:</label>
-                                    <input type="text" class="form-control" id="nf" placeholder="Inserir os dados">
+                                    <input type="text" class="form-control" id="QtR" placeholder="Inserir os dados">
                                 </div>
 
                                 <div class="form-group">
                                     <label class="qtminimapermitida">Introduza o Preço de cada Unidade:</label>
-                                    <input type="text" class="form-control" id="nu" placeholder="Inserir os dados">
+                                    <input type="text" class="form-control" id="PrecoU" placeholder="Inserir os dados">
                                 </div>
 
                                 <a href="./Gestao_stock_U.html" class="btn btn-danger btn-xl pull-right"> Voltar </a>
                                 <a class="btn btn-primary btn-xl pull-right" href="./Gestao_stoc_U.html"> Adicionar Novo </a>
                                 <br/>
                             </form>
-
+                            <?php
+                                    if(isset($_POST["QtR"]) && !empty($_POST["QtR"]) && isset($_POST["PrecoU"]) && !empty($_POST["PrecoU"])){
+                                        $equipamentos = $gere_equipamento ->reporStockEquip($idEquip);
+                                    }
+                            ?>
                         </div>
                     </div>
 
