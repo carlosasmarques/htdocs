@@ -139,13 +139,13 @@
                         <form  method="POST" action="Ver_Editar_U.php">
                             <div class="form-group">
                                 <label class="CodigodoArtigo">Código do Artigo:</label>
-                                <input type="text" class="form-control" id="codigo" value=" '.$equipamentos[$i]->getCodigo().'">
+                                <input type="text" class="form-control" id="codigo" value=" echo '.$equipamentos[$i]->getCodigo().'">
                             </div>
 
                             <div class="form-group">
                                 <label class="PreçodoArtigo">Preço do Artigo:</label>
                                 <br>
-                                <input type="text" class="form-control" id="precoCompra" value=" '.$equipamentos[$i]->getPreco().'">
+                                <input type="text" class="form-control" id="precoCompra" value=" echo '.$equipamentos[$i]->getPreco().'">
                                
                             </div>
                             <div class="form-group">
@@ -154,7 +154,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="qtminimapermitida">Quantidade Disponível:</label>
-                                <input type="text" class="form-control" id="quantidadeDisponivel" value=" '.$equipamentos[$i]->getQuantidadeExistente().'">
+                                <input type="text" class="form-control" id="quantidadeDisponivel" value=" echo '.$equipamentos[$i]->getQuantidadeExistente().'">
                             </div>
 
                         </form>
@@ -164,17 +164,17 @@
                         <form  method="POST" action="Ver_Editar_U.php">
                             <div class="form-group">
                                 <label class="DescricaodoArtigo">Descrição do Artigo:</label>
-                                <input type="text" class="form-control" id="descricao" value=" '.$equipamentos[$i]->getDescricao().'">
+                                <input type="text" class="form-control" id="descricao" value=" echo '.$equipamentos[$i]->getDescricao().'">
                             </div>
 
                             <div class="form-group">
                                 <label class="qtminimapermitida">Quantidade Mínima Permitida:</label>
-                                <input type="text" class="form-control" id="quantidadeMinima" value=" '.$equipamentos[$i]->getQuantidadeMinima().'">
+                                <input type="text" class="form-control" id="quantidadeMinima" value=" echo '.$equipamentos[$i]->getQuantidadeMinima().'">
                             </div>
 
                             <div class="form-group">
                                 <label class="TipodeArtigo">Tipo de Artigo:</label>
-                                <select class="form-control" name="tipoArtigo" id="tipoArtigo" value=" '.$equipamentos[$i]->getTipoEquipamentos().'">
+                                <select class="form-control" name="tipoArtigo" id="tipoArtigo" value=" echo '.$equipamentos[$i]->getTipoEquipamentos().' ">
                                     <option>Equipamento de Combate a Incendios</option>
                                     <option>Equipamento Médico</option>
                                     <option>Equipamento Mecânico</option>
