@@ -1,6 +1,6 @@
 <?php
 /**Classe para objectos Transportes
- * Esta classe contem os atributos necessários para gerir os transportes de doentes.
+ * Esta classe contem os atributos necessï¿½rios para gerir os transportes de doentes.
  * Atributo dataTransporte:
  * -Data de transporte de doente.
  * Atributo horaDePartida:
@@ -12,15 +12,15 @@
  * Atributo destino:
  * -Local de destino de um transporte de doente.
  * Atributo observacoes:
- * -Observações importantes a ter em conta num transporte de doente.
+ * -Observaï¿½ï¿½es importantes a ter em conta num transporte de doente.
  * Atributo condicaoUtente:
- * -Informação sobre a condição de um utente aquando do seu transporte, um doente pode estar:
- *  – Acamado
- *  – Deitado
- *  – Cadeira de rodas
- *  – Sentado
+ * -Informaï¿½ï¿½o sobre a condiï¿½ï¿½o de um utente aquando do seu transporte, um doente pode estar:
+ *  ï¿½ Acamado
+ *  ï¿½ Deitado
+ *  ï¿½ Cadeira de rodas
+ *  ï¿½ Sentado
  * Atributo quilometros:
- * -Distancia de quilómetros efetuada para transportar o doente.
+ * -Distancia de quilï¿½metros efetuada para transportar o doente.
 */
     class Transportes{
         private $idTransportes;
@@ -31,7 +31,8 @@
         private $destino;
         private $observacoes;
         private $condicaoUtente;
-        private $quilometros;
+        private $quilometroschegada;
+        private $quilometrospartida;
         /**
 	 * Construtor da Classe Transportes
 	 * @param idTransportes
@@ -45,7 +46,7 @@
          * @param quilometros
 	 * @return 
 	 */
-        function __construct($idTransportes, $dataTransporte, $horaDePartida, $horaDeChegada, $origem, $destino, $observacoes, $condicaoUtente, $quilometros) {
+        function __construct($idTransportes, $dataTransporte, $horaDePartida, $horaDeChegada, $origem, $destino, $observacoes, $condicaoUtente, $quilometroschegada, $quilometrospartida) {
             $this->idTransportes = $idTransportes;
             $this->dataTransporte = $dataTransporte;
             $this->horaDePartida = $horaDePartida;
@@ -54,7 +55,8 @@
             $this->destino = $destino;
             $this->observacoes = $observacoes;
             $this->condicaoUtente = $condicaoUtente;
-            $this->quilometros = $quilometros;
+            $this->quilometroschegada = $quilometroschegada;
+            $this->quilometrospartida = $quilometrospartida;
         }
         /**
 	 * Getter da classe Transportes
@@ -125,8 +127,16 @@
 	 * @param 
 	 * @return quilometros
 	 */
-        function getQuilometros() {
-            return $this->quilometros;
+        function getQuilometroschegada() {
+            return $this->quilometroschegada;
+        }
+        /**
+	 * Setter da classe Transportes
+	 * @param idTransportes
+	 * @return 
+	 */
+         function getQuilometrospartida() {
+            return $this->quilometrospartida;
         }
         /**
 	 * Setter da classe Transportes
@@ -197,10 +207,13 @@
 	 * @param quilometros
 	 * @return 
 	 */
-        function setQuilometros($quilometros) {
-            $this->quilometros = $quilometros;
+        function setQuilometroschegada($quilometroschegada) {
+            $this->quilometroschegada = $quilometroschegada;
         }
 
+        function setQuilometrospartida($quilometrospartida) {
+            $this->quilometrospartida = $quilometrospartida;
+        }
 
     }
 ?>
