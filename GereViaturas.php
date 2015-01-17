@@ -20,7 +20,6 @@ if(isset($_GET["logout"])){
 			}
         }
         public function desactivarViatura($idViat){
-            $idViatura = new Viaturas();
             $daoViatura = new DaoViaturas();
             if($daoViaturas->ativarDesativarViatura("TRUE" ,$idViat)){// duvida no param estado
 				return "O estado da viatura foi alterado para desactiva";
@@ -30,7 +29,6 @@ if(isset($_GET["logout"])){
                         }
         }
         public function ativarViatura($idViat){
-            $idViatura = new Viaturas();
             $daoViatura = new DaoViaturas();
             if($daoViaturas->adicionarViatura("TRUE" ,$idViat)){
 			return "O estado da viatura foi alterado para activa";
@@ -40,7 +38,6 @@ if(isset($_GET["logout"])){
                         }
         }
         public function desativarViatura($idViat){
-            $idViatura = new Viaturas();
             $daoViatura = new DaoViaturas();
             if($daoViaturas->adicionarViatura("FALSE" ,$idViat)){
 			return "O estado da viatura foi alterado para activa";
@@ -79,7 +76,6 @@ if(isset($_GET["logout"])){
 		}
         }
         public function verViatura($idViat){
-            $idViatura = new Viaturas();
             $daoViatura = new DaoViaturas();
             if($viatura = $daoViaturas->verViatura($idViat)!= NULL){
                     return $viatura;
@@ -88,7 +84,6 @@ if(isset($_GET["logout"])){
 		}
         }
         public function listarViaturas(){
-            $idViatura = new Viaturas();
             $daoViatura = new DaoViaturas();
             if($viaturas = $daoViaturas->listarViaturas()!= NULL){
                     return $viaturas;

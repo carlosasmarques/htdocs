@@ -3,7 +3,7 @@
 	include "GereAbastecimentos.php";
 
         $gere_abastecimento = new GereAbastecimentos();
-        $abastecimento = new Abastecimentos(0, 0, "", "", "");
+        $abastecimento = new Abastecimentos(0,"","",0, "", "", "");
         
         $idAbast = $_GET["id"];
         $abastecimento =$gere_abastecimento->pesquisarAbastecimento($idAbast);

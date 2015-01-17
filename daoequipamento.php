@@ -81,7 +81,7 @@ class DaoEquipamento{
     }
 
     function pesquisaEquipTipo($tipoArtigo){
-        $equipamento = new Equipamentos(0, 0, 0, 0, "", 0, "", true);
+        $equipamento = new Equipamento("","","",0,0,"","", True);
         try{
             $instrucao = $LigacaoBD->prepare("SELECT * FROM EQUIPAMENTOS WHERE TA_nome like ?");
             $instrucao->bind_param($tipoArtigo);
@@ -129,7 +129,7 @@ class DaoEquipamento{
     }
 
     function verEquipamento($id){
-        $equipamento = new Equipamentos(0, 0, 0, 0, "", 0, "", true);
+        $equipamento = new Equipamento("","","",0,0,"","", True);
         try{
             $instrucao = $LigacaoBD->prepare("SELECT * FROM EQUIPAMENTOS WHERE E_id = ?");
             $instrucao->bind_param($id);
@@ -189,7 +189,7 @@ class DaoEquipamento{
 
     function verificaStockEquip($id){
                 
-        $equipamento = new Equipamentos(0, 0, 0, 0, "", 0, "", true);
+       $equipamento = new Equipamento("","","",0,0,"","", True);
         try{
             $instrucao = $LigacaoBD->prepare("SELECT E_quantidadeDisponivel, E_descricao FROM EQUIPAMENTOS WHERE E_id = ?");
             $instrucao->bind_param($id);
@@ -211,7 +211,7 @@ class DaoEquipamento{
     }
 
     function listarEquipamentos(){
-        $equipamento = new Equipamentos(0, 0, 0, 0, "", 0, "", true);
+        $equipamento = new Equipamento("","","",0,0,"","", True);
         try{
             $instrucao = $LigacaoBD->prepare("SELECT * FROM EQUIPAMENTOS");
             $sucesso_funcao = $instrucao->execute();

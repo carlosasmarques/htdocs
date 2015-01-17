@@ -1,12 +1,16 @@
 <?php
         include "Abastecimentos.php";
 	include "GereAbastecimentos.php";
+        include "Viaturas.php";
+	include "GereViaturas.php";
         
         $gere_abastecimento = new GereAbastecimentos();
-        $abastecimento = new Abastecimentos(0, 0, "", "", "");
-        
+        $abastecimento = new Abastecimentos(0,"","",0, "", "", "");
+        $gere_viaturas = new GereViaturas();
+        $viaturas = new Viaturas(0, "", "", "", "", "", 0, 0, 0, 0, 0, 0, "", true);
+        //$viaturas = new Viaturas(0, "", "", "", "", "", "", "", 0, "", 0, 0, "", true);
 
-
+        $viaturas = $gere_viaturas ->listarViaturas();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -126,11 +130,12 @@
 							<label class="viatura">Viatura:</label>
 							<select class="form-control">
 								<option id="matricula">Indique a matrícula da viatura...</option>
-								
-								<option value="hora">45-AI-10</option>
-								<option value="hora">13-AH-35</option>
-								<option value="hora">21-38-XT</option>
-								
+					<?php
+                                            for($i=0; $i<count($viaturas); $i++){
+							echo "<option>".$viaturas[$i]->getMatricula()."</option>";
+			
+                                            }
+                                        ?>			
 							</select>
 						</div>					
 					</form>
