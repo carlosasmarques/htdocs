@@ -50,8 +50,8 @@ class GereEquipamentos{
         }
     }
 
-    function editarEquipamento(){
-        $equipamento = new Equipamento($_POST["id"], $_POST["descricao"], $_POST["tipoArtigo"], $_POST["codigo"], $_POST["quantidadeDisponivel"], $_POST["quantidadeMinima"], $_POST["precoCompra"], $_POST["dataCompra"], "True");
+    function editarEquipamento($idEquipamento){
+        $equipamento = new Equipamento($idEquipamento, $_POST["descricao"], $_POST["tipoArtigo"], $_POST["codigo"], $_POST["quantidadeDisponivel"], $_POST["quantidadeMinima"], $_POST["precoCompra"], $_POST["dataCompra"], "True");
         $daoEquipamento = new DaoEquipamento();
         if($daoEquipamento->editarEquipamento($equipamento)){
             return "O Equipamento foi bem editado!";
@@ -60,8 +60,7 @@ class GereEquipamentos{
         }
     }
 
-    function verEquipamento(){
-        $idEquipamento = $_GET["id"];
+    function verEquipamento($idEquipamento){
         $daoEquipamento = new DaoEquipamento();
         if(($equipamento = $daoEquipamento->verEquipamento($idEquipamento))){
             return $equipamento;
@@ -82,8 +81,7 @@ class GereEquipamentos{
         }
     }
 
-    function desativarEquip(){
-        $idEquipamento = $_POST["id"];
+    function desativarEquip($idEquipamento){
         $daoEquipamento = new DaoEquipamento();
         if($daoEquipamento->activarDesativarEquip($idEquipamento, "False")){
             return "O Equipamento foi desativado com sucesso!";
@@ -92,8 +90,7 @@ class GereEquipamentos{
         }
     }
 
-    function ativarEquip(){
-        $idEquipamento = $_POST["id"];
+    function ativarEquip($idEquipamento){
         $daoEquipamento = new DaoEquipamento();
         if($daoEquipamento->activarDesativarEquip($idEquipamento, "True")){
             return "O Equipamento foi ativado com sucesso!";
@@ -102,8 +99,7 @@ class GereEquipamentos{
         }
     }
 
-    function verificaStockEquip(){
-        $idEquipamento = $_POST["id"];
+    function verificaStockEquip($idEquipamento){
         $daoEquipamento = new DaoEquipamento();
         if(($equipamento = $daoEquipamento->verificaStockEquip($idEquipamento)) != NULL){
             return $equipamento;

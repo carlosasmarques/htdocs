@@ -4,8 +4,8 @@
 	
         $gere_equipamento = new GereEquipamentos();
         $equipamentos = new Equipamentos(0,"","",0,0,"",0,"",false);
-
-        $equipamentos = $gere_equipamento->verEquipamento();
+        $idEquip = $_GET["id"];
+        $equipamentos = $gere_equipamento->verEquipamento($idEquip);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -188,7 +188,7 @@
                         </form>
                         <?php
                             if(isset($_POST["quantidadeDisponivel"]) && !empty($_POST["quantidadeDisponivel"])&&isset($_POST["tipoArtigo"]) && !empty($_POST["tipoArtigo"])&& isset($_POST["codigo"]) && !empty($_POST["codigo"])&& isset($_POST["precoCompra"]) && !empty($_POST["precoCompra"]) && isset($_POST["descricao"]) && !empty($_POST["descricao"]) && isset($_POST["quantidadeMinima"]) && !empty($_POST["quantidadeMinima"]) && isset($_POST["dataCompra"]) && !empty($_POST["dataCompra"])){
-                                $equipamentos = $gere_equipamento->adicionarEquipamentos();   
+                                $equipamentos = $gere_equipamento->editarEquipamento($idEquip);   
                             }
                         ?>
                     </div>
