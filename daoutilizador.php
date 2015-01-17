@@ -2,44 +2,45 @@
 	// daoutilizador.php - acesso aos dados dos utilizadores registados na base de dados
 
 	include_once "acessobd.php";
-	include_once "utilizador.php";
+
 
 	class DaoUtilizador{
-		private $LigacaoBD;
-
+		
 		public function __construct(){
 			$LigacaoBD = new BaseDados();
 		}
 		
 		 
 		
-		function adicionarUtilizador(Utilizador $utilizador){
-			
-		
-			try{
-				$instrucao = $LigacaoBD->prepare("insert into utilizadores (U_ID, U_NUMEROFUNCIONARIO, U_NOME, U_MORADA, 
-												  U_CONTACTOTELEFONICO, U_DATANASCIMENTO, U_NOMEUTILIZADOR, U_PALAVRAPASSE,
-												  U_TIPOUTILIZADOR, U_DATAREGISTO, U_FOTOGRAFIA, U_ATIVO, U_FUNCAO) values 
-												  (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-				$instrucao->bind_param($utilizador->getIdUtilizadores(), $utilizador->getNumero(), $utilizador->getNome(),
-									   $utilizador->getMorada(), $utilizador->getTelefone(), $utilizador->getDataNascimento(),
-									   $utilizador->getUsername(), $utilizador->getPassword(), $utilizador->getTipoUtilizador(),
-									   $utilizador->getDataRegisto(), $utilizador->getFoto(), $utilizador->getActivo(), 
-									   $utilizador->getFuncao());
-				$sucesso_funcao = $instrucao->execute();
-				$instrucao->close();
+    function adicionarUtilizador(Utilizadores $utilizador) {
 
-			} catch(PDOException $e){
-				echo $e->getMessage();
-			}
-			if($sucesso_funcao){
-				return "True";
-			}else{
-				return "False";
-			}
-		}
-		
-		function alterarPalavraPasse($palavraPasse, $id){
+        $LigacaoBD = new BaseDados();
+        
+        $dbh = $LigacaoBD->getDBH();
+        
+            $sql = ("insert into utilizadores (U_ID, U_NUMEROFUNCIONARIO, U_NOME, U_MORADA, 
+					       U_CONTACTOTELEFONICO, U_DATANASCIMENTO, U_NOMEUTILIZADOR, U_PALAVRAPASSE,
+					       U_TIPOUTILIZADOR, U_DATAREGISTO, U_FOTOGRAFIA, U_ATIVO, U_FUNCAO) values 
+                                               (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+
+					       //(:ID, :NUMEROFUNCIONARIO, :NOME, :MORADA, :CONTATOTELEFONICO, :DATANASCIMENTO, 
+                                               //:NOMEUTILIZADOR, :PALAVRAPASSE, :TIPOUTILIZADOR, :DATAREGISTO, :FOTOGRAFIA, 
+                                               //:ATIVO, :FUNCAO)");
+           /* $dados = array("ID" =>$utilizador->getIdUtilizadores(), "NUMEROFUNCIONARIO" =>$utilizador->getNumero(), 
+                           "NOME" =>$utilizador->getNome(), "MORADA" =>$utilizador->getMorada(), 
+                           "CONTATOTELEFONICO" =>$utilizador->getTelefone(), "DATANASCIMENTO" =>$utilizador->getDataNascimento(), 
+                           "NOMEUTILIZADOR" =>$utilizador->getUsername(), "PALAVRAPASSE" =>$utilizador->getPassword(), 
+                           "TIPOUTILIZADOR" =>$utilizador->getTipoUtilizador(), "DATAREGISTO" =>$utilizador->getDataDeRegisto(), 
+                           "FOTOGRAFIA" =>$utilizador->getCaminhoFoto(), "ATIVO" =>$utilizador->getAtivo(), "FUNCAO" =>$utilizador->getFuncao());
+            * 
+            */
+            
+            $LigacaoBD->inserir($sql, $utilizador);
+
+    }
+
+    function alterarPalavraPasse($palavraPasse, $id){
 			try{
 				$instrucao = $LigacaoBD->prepare("UPDATE Utilizadores SET (U_palavraPasse = ? WHERE U_id = ?) VALUES (?, ?)");
 				$instrucao->bind_param($palavraPasse, $id);

@@ -4,7 +4,7 @@
 	$servidor = "localhost";
 	$bd = "fmt";
 	$user = "root";
-	$pass = "";
+	$pass = "1234";
 	$lingua = "pt-pt";
 	// $outros = "valor";
 ?>

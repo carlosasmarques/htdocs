@@ -73,30 +73,7 @@ if($gereAdmin->listarUtilizadores() != NULL){
 
 <?php
 } else {
-    ?>
-    <div class="container">
-    <form class="form-signin" action="index.php" method="post">
-        <h2 class="form-signin-heading">Registar</h2>
-				<label class="form-control" for="nome">Nome</label><br />
-				<input class="form-control" type="text" name="nome" id="nome" size="40" maxlength="40" />
-				<label class="form-control" for="numero">Numero</label><br />
-				<input class="form-control" type="text" name="numero" id="numero" size="30" maxlength="30" />
-				<label class="form-control" for="password">Password</label><br />
-				<input class="form-control" type="password" name="password" id="password" size="40" maxlength="40" />
-				<label class="form-control" for="data-nascimento">Data de nascimento</label><br />
-				<input class="form-control" type="text" name="data-nascimento" id="data-nascimento" size="40" maxlength="40" />
-				<label class="form-control" for="funcao">Função</label><br />
-				<input class="form-control" type="text" name="funcao" id="funcao" size="40" maxlength="40" />
-				<label class="form-control" for="telefone">Telefone</label><br />
-				<input class="form-control" type="text" name="telefone" id="telefone" size="40" maxlength="40" />
-				<label class="form-control" for="morada">Morada</label><br />
-				<input class="form-control" type="text" name="morada" id="morada" size="40" maxlength="40" />
-				<label class="form-control" for="foto">Foto</label><br />
-				<input class="form-control" name="foto" id="foto" type="file" />
-			<input type="submit" name="submit" value="Guardar" />
-		</form>
-    </div>
-<?php
+include_once 'verificaSessao.php';
 }
     ?>
 </body>
