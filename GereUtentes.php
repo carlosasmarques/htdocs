@@ -1,7 +1,9 @@
 <?php
-include "conf.php";
+include_once "conf.php";
+include_once "daoutentes.php";
 session_start();
 // Ligação
+
 
 if(isset($_GET["logout"])){
     if($_GET["logout"]== true)
@@ -82,7 +84,7 @@ if(isset($_GET["logout"])){
                 return null;
         }
 
-        private function verUtente(){
+        public function verUtente(){
             
             
              $idUtente = $_POST["id"];
@@ -94,7 +96,7 @@ if(isset($_GET["logout"])){
                 }
 
         }
-        private function listarUtentes(){
+        public function listarUtentes(){
 
            $daoUtentes = new DaoUtentes();
            if(($utentes = $daoUtentes -> listarUtentes()) != NULL){

@@ -13,17 +13,17 @@
 
 	*/
 	
-	include "conf.php";
+	include_once "conf.php";
 
 	class BaseDados{
 		public $DBH;
 		
 		// Liga��o � base de dados
 		function __construct(){
-			global $servidor;
-			global $bd;
-			global $user;
-			global $pass;
+			$servidor = "localhost";
+			$bd = "fmt";
+			$user = "root";
+			$pass = 1234;
 			
 			try{
 				$this->DBH = new PDO("mysql:host=$servidor;dbname=$bd", $user, $pass);
@@ -43,14 +43,21 @@
 		}
 		
 		// inserir dados numa tabela
-		public function inserir($sql, $dados = null){
+		public function inserir($sql, Utilizadores $utilizador){
 			try{
 				$STH = $this->DBH->prepare($sql);
 				
+                                $STH->bindParam('idssdssssssis', $utilizador->getIdUtilizadores(), 
+                                                 $utilizador->getNumero(), $utilizador->getNome(), 
+                                                 $utilizador->getMorada(), $utilizador->getTelefone(), 
+                                                 $utilizador->getDataNascimento(), $utilizador->getUsername(), 
+                                                 $utilizador->getPassword(), $utilizador->getTipoUtilizador(), 
+                                                 $utilizador->getDataDeRegisto(), $utilizador->getCaminhoFoto(), 
+                                                 $utilizador->getAtivo(), $utilizador->getFuncao());
+                                
 				if(!$STH->execute($dados)){
 					echo "Ocorreu um erro ao inserir os dados!<br>";
 				}
-			
 			}catch(PDOException $e){
 				echo $e->getMessage();
 			}

@@ -1,6 +1,6 @@
 <?php
-	include "utentes.php";
-	include "gereutentes.php";
+	include_once "utentes.php";
+	include_once "gereutentes.php";
 	
 	$gere_utentes = new GereUtentes();
 	$utentes = new Utentes(0, "", 0, "", 0, "", "");

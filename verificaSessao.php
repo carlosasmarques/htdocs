@@ -7,7 +7,7 @@ $bd = new BaseDados();
 
 if ($bd->contar("utilizadores") == 0){
     
-    inserirAdministrador($administrador);
+    inserirAdministrador();
 }
 
 function inserirAdministrador(){
@@ -29,7 +29,7 @@ function inserirAdministrador(){
     
     $daoUtilizador = new DaoUtilizador();
     
-    $daoUtilizador->adicionarUtilizador($utilizador);
+    $daoUtilizador->adicionarUtilizador($admin);
 }
 
 ?>

@@ -29,7 +29,7 @@ if(isset($_GET["logout"])){
        
         }
         public function pesquisarAbastecimento($idAbast){
-            $idAbastecimentos = new abastecimentos();
+            //$idAbastecimentos = new abastecimentos();
             $daoAbastecimentos = new DaoAbastecimentos();
             if($abastecimento = $daoAbastecimentos->pesquisarAbastecimento($idAbast)!= NULL){
                     return $abastecimento;
@@ -46,7 +46,7 @@ if(isset($_GET["logout"])){
 		}
         }
         private function verAbastecimento($idAbast){
-            $idAbastecimentos = new abastecimentos();
+            //$idAbastecimentos = new abastecimentos();
             $daoAbastecimentos = new DaoAbastecimentos();
             if($abastecimento = $daoAbastecimentos->verAbastecimento($idAbast)!= NULL){
                     return $abastecimento;

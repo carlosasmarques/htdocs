@@ -1,24 +1,17 @@
 <?php
-include "conf.php";
+include_once "conf.php";
+include_once "acessobd.php";
+include_once "Utentes.php";
 
 class DaoUtentes{
 
     private $LigacaoBD;
-    function __construct(){
-        try{
-            $this->LigacaoBD = new PDO("mysql:host=$servidor;dbname=$bd", $user, $pass);
-        }catch(PDOException $e){
-            echo $e->getMessage();
-            return false;
-        }
-        return true;
+
+    public function __construct() {
+        $LigacaoBD = new BaseDados();
     }
 
-    function __destruct(){
-        $this->LigacaoBD == null;
-    }
-
-    public function adicionarUtilizador($utente){
+    public function adicionarUtente($utente){
         try{
             $instrucao = $LigacaoBD->prepare("INSERT INTO Utentes (
             UT_nome, UT_morada, UT_contactoTelefonico, UT_dataNascimento, UT_dataRegisto, UT_sns, UT_ativo) VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -26,7 +19,7 @@ class DaoUtentes{
                 $utente->morada, $utente->telefone, $utente->dataNascimento,
                 $utente->dataRegisto, $utente->sns, "True");
             // Executar
-
+    
             $sucesso_funcao = $instrucao->execute();
             $instrucao->close();
 

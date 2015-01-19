@@ -61,7 +61,7 @@ class GereEquipamentos{
     }
 
     function verEquipamento($idEquip){
-        $idEquipamento = new Equipamentos();
+        //$idEquipamento = new Equipamentos();
         $daoEquipamento = new DaoEquipamento();
         if(($equipamento = $daoEquipamento->verEquipamento($idEquip))){
             return $equipamento;
@@ -82,7 +82,7 @@ class GereEquipamentos{
     }
 
     function desativarEquip($idEquip){
-        $idEquipamento = new Equipamentos();
+        //$idEquipamento = new Equipamentos();
         $daoEquipamento = new DaoEquipamento();
         if($daoEquipamento->activarDesativarEquip($idEquip, "False")){
             return "O Equipamento foi desativado com sucesso!";
@@ -92,7 +92,7 @@ class GereEquipamentos{
     }
 
     function ativarEquip($idEquip){
-        $idEquipamento = new Equipamentos();
+       // $idEquipamento = new Equipamentos();
         $daoEquipamento = new DaoEquipamento();
         if($daoEquipamento->activarDesativarEquip($idEquip, "True")){
             return "O Equipamento foi ativado com sucesso!";
@@ -102,7 +102,7 @@ class GereEquipamentos{
     }
 
     function verificaStockEquip($idEquip){
-        $idEquipamento = new Equipamentos();
+      //  $idEquipamento = new Equipamentos();
         $daoEquipamento = new DaoEquipamento();
         if(($equipamento = $daoEquipamento->verificaStockEquip($idEquip)) != NULL){
             return $equipamento;
