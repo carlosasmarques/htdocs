@@ -1,5 +1,6 @@
 <?php
-include "conf.php";
+include_once "conf.php";
+include_once "daoutilizador.php";
 session_start();
 // Ligação
 
@@ -25,6 +26,19 @@ if(isset($_GET["logout"])){
                 } else {
                    return NULL;
         }
+        
+    }
+    
+        public function alterarDadosUtilizador(){
+        
+
+             
+             $utilizador = new Utilizador($_POST["$numero"],$_POST["$username"],$_POST["$funcao"],$_POST["$nome"],$_POST["$morada"],$_POST["$telefone"],$_POST["$dataNascimento"]);
+              if($utilizador->adicionarUtilizador($utilizador)){
+                return "O Utilizador foi alterado com sucesso!";
+            }
+                return "O Utilizador não foi alterado com sucesso!";
+       
         
     }
     }
