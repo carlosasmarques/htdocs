@@ -5,10 +5,10 @@
 
 
 	class DaoUtilizador{
-		public $LigacaoBD;
+		private $bd;
 		
 		public function __construct(){
-			$LigacaoBD = new BaseDados();
+			$bd = new BaseDados();
 		}
 		
 		 
@@ -21,32 +21,18 @@
                                                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
 
-					       //(:ID, :NUMEROFUNCIONARIO, :NOME, :MORADA, :CONTATOTELEFONICO, :DATANASCIMENTO, 
+			/* (:ID, :NUMEROFUNCIONARIO, :NOME, :MORADA, :CONTATOTELEFONICO, :DATANASCIMENTO, 
                                                //:NOMEUTILIZADOR, :PALAVRAPASSE, :TIPOUTILIZADOR, :DATAREGISTO, :FOTOGRAFIA, 
                                                //:ATIVO, :FUNCAO)");
-           /* $dados = array("ID" =>$utilizador->getIdUtilizadores(), "NUMEROFUNCIONARIO" =>$utilizador->getNumero(), 
+           $dados = array("ID" =>$utilizador->getIdUtilizadores(), "NUMEROFUNCIONARIO" =>$utilizador->getNumero(), 
                            "NOME" =>$utilizador->getNome(), "MORADA" =>$utilizador->getMorada(), 
                            "CONTATOTELEFONICO" =>$utilizador->getTelefone(), "DATANASCIMENTO" =>$utilizador->getDataNascimento(), 
                            "NOMEUTILIZADOR" =>$utilizador->getUsername(), "PALAVRAPASSE" =>$utilizador->getPassword(), 
                            "TIPOUTILIZADOR" =>$utilizador->getTipoUtilizador(), "DATAREGISTO" =>$utilizador->getDataDeRegisto(), 
                            "FOTOGRAFIA" =>$utilizador->getCaminhoFoto(), "ATIVO" =>$utilizador->getAtivo(), "FUNCAO" =>$utilizador->getFuncao());
-            * 
             */
 			
-				echo 'U_NUMEROFUNCIONARIO' . $utilizador->getNumero() . '<br>' .
-				'U_NOME' . $utilizador->getNome() . '<br>' .
-				'U_MORADA' . $utilizador->getMorada() . '<br>' .
-				'U_CONTACTOTELEFONICO' . $utilizador->getTelefone() . '<br>' .
-				'U_DATANASCIMENTO' . $utilizador->getDataNascimento() . '<br>' .
-				'U_NOMEUTILIZADOR' . $utilizador->getUsername() . '<br>' .
-				'U_PALAVRAPASSE' . $utilizador->getPassword() . '<br>' .
-				'U_TIPOUTILIZADOR' . $utilizador->getTipoUtilizador() . '<br>' .
-				'U_DATAREGISTO' . $utilizador->getDataDeRegisto() . '<br>' .
-				'U_FOTOGRAFIA' . $utilizador->getCaminhoFoto() . '<br>' .
-				'U_ATIVO' . $utilizador->getAtivo() . '<br>' .
-				'U_FUNCAO' . $utilizador->getFuncao();
-			
-			/*$dados_utilizador = array(
+			$dados_utilizador = array(
 				'U_NUMEROFUNCIONARIO' => $utilizador->getNumero(),
 				'U_NOME' => $utilizador->getNome(),
 				'U_MORADA' => $utilizador->getMorada(),
@@ -63,7 +49,7 @@
 			
 			
             
-            $LigacaoBD->inserir($sql, $dados_utilizador);*/
+            $bd->inserir($sql, $dados_utilizador);
 
     }
 
