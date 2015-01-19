@@ -43,25 +43,18 @@
 		}
 		
 		// inserir dados numa tabela
-		public function inserir($sql, Utilizadores $utilizador){
-			try{
-				$STH = $this->DBH->prepare($sql);
-				
-                                $STH->bindParam('idssdssssssis', $utilizador->getIdUtilizadores(), 
-                                                 $utilizador->getNumero(), $utilizador->getNome(), 
-                                                 $utilizador->getMorada(), $utilizador->getTelefone(), 
-                                                 $utilizador->getDataNascimento(), $utilizador->getUsername(), 
-                                                 $utilizador->getPassword(), $utilizador->getTipoUtilizador(), 
-                                                 $utilizador->getDataDeRegisto(), $utilizador->getCaminhoFoto(), 
-                                                 $utilizador->getAtivo(), $utilizador->getFuncao());
-                                
-				if(!$STH->execute($dados)){
-					echo "Ocorreu um erro ao inserir os dados!<br>";
-				}
-			}catch(PDOException $e){
-				echo $e->getMessage();
+		public function inserir($sql, $dados = null){
+		try{
+			$STH = $this->DBH->prepare($sql);
+			
+			if(!$STH->execute($dados)){
+				echo "Ocorreu um erro ao inserir os dados!<br>";
 			}
+		
+		}catch(PDOException $e){
+			echo $e->getMessage();
 		}
+	}
 		
 		// acutalizar dados de uma tabela
 		public function editar($sql, $dados = null){
