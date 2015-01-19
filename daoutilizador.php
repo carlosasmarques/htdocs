@@ -8,7 +8,7 @@
 		private $bd;
 		
 		public function __construct(){
-			$bd = new BaseDados();
+			$this->bd = new BaseDados();
 		}
 		
 		 
@@ -49,7 +49,7 @@
 			
 			
             
-            $bd->inserir($sql, $dados_utilizador);
+            $this->bd->inserir($sql, $dados_utilizador);
 
     }
 
