@@ -2,7 +2,7 @@
 	/*
 		acessobd.php - classe para manipular a base de dados
 		
-		fun��es:
+		funções:
 			|- construct($host, $db, $user, $pass)
 			|- destruct()
 			|- inserir($sql, $dados[] = null)
@@ -20,10 +20,10 @@
 		
 		// Liga��o � base de dados
 		function __construct(){
-			$servidor = "localhost";
-			$bd = "fmt";
-			$user = "root";
-			$pass = 1234;
+			global $servidor;
+			global $bd;
+			global $user;
+			global $pass;
 			
 			try{
 				$this->DBH = new PDO("mysql:host=$servidor;dbname=$bd", $user, $pass);
