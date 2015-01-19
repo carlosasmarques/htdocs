@@ -1,12 +1,12 @@
 <?php
-	include ".php";
-	include ".php"; // nao existe gere nem objeto de utilizador
+	include "Utilizadores.php";
+	include "GereUtilizadores.php"; 
         
 	
-	$gere_utilizador = new GereMensEnv();
-	$utilizador = new Utilizador () ;
+	$gere_utilizador = new GereUtilizadores();
+	$utilizador = new Utilizadores("", 0, "", "", "", "", "", 0, "", "", "", "");
 	
-	$utilizador = $gere_utilizador->;
+	$utilizador = $gere_utilizador->alterarDadosUtilizador();
 ?>
 
 <!DOCTYPE html>
@@ -140,20 +140,20 @@
 
 
                             <div class="col-sm-6 col-md-4">
-                                <form>
+                                <form  method="POST" action="alterar_utilizador.php">
                                     <div class="form-group">
                                         <label class="numerofuncionario">Número de Funcionário:</label>
-                                        <label class="form-control" id="nf"><?php echo $utilizador->get ?></label>
+                                        <label class="form-control" id="nf"><?php echo $utilizador->getNumero() ?></label>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="nomefuncionario">Nome Utilizador:</label>
-                                        <label class="form-control" id="nu"><?php echo $utilizador->get ?></label>
+                                        <label class="form-control" id="nu"><?php echo $utilizador->getUsername() ?></label>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="funcao">Função:</label>
-                                        <label class="form-control" id="f"><?php echo $utilizador->get ?></label>
+                                        <label class="form-control" id="f"><?php echo $utilizador->getFuncao() ?></label>
                                     </div>
                                 </form>
 
@@ -164,52 +164,68 @@
 
                                     <div class="form-group">
                                         <label class="password">Password Antiga:</label>
-                                        <input type="password" class="form-control" id="passantiga" value="<?php echo $utilizador-> ?>">
+                                        <input type="password" class="form-control" id="passantiga" value="<?php echo $utilizador->getPassword() ?>">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="password">Password Nova:</label>
-                                        <input type="password" class="form-control" id="passnova" value="<?php echo $utilizador-> ?>">
+                                        <input type="password" class="form-control" id="passnova">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="password">Confirmar Password:</label>
-                                        <input type="password" class="form-control" id="confirmarpass" value="<?php echo $utilizador-> ?>">
+                                        <input type="password" class="form-control" id="confirmarpass" >
                                     </div>
                                 </form>
-
+                                    
+                                <?php
+                                    if ($_POST['$password']) {
+                                    if (strcmp($passantiga, $password)) {
+                                    if (strcmp($passnova, $confirmarpass) ) {
+                                        $sql = "UPDATE acesso SET senha = '$passnova' ";
+                                    if ($sql == 0) {
+                                        echo 'salvo com sucesso';
+                                            }
+                                        }
+                                    else
+                                        echo 'as senhas não são iguais, tente novamente';
+                                        }
+                                    else
+                                        echo 'senha atual errada';
+                                        }
+                                ?>
                             </div>
                         </div>
 
                         <div class="col-sm-6 col-md-12">
                             <div class="col-sm-6 col-md-7">
-                                <form>
+                                <form  method="POST" action="alterar_utilizador.php">
                                     <div class="form-group">
                                         <label class="nome">Nome:</label>
-                                        <label class="form-control" id="nome"><?php echo $utilizador->get ?></label>
+                                        <label class="form-control" id="nome"><?php echo $utilizador->getNome() ?></label>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="morada">Morada:</label>
-                                        <label class="form-control" id="mor"><?php echo $utilizador->get ?></label>
+                                        <label class="form-control" id="mor"><?php echo $utilizador->getMorada() ?></label>
                                     </div>
                                 </form>
                             </div>
 
                             <div class="col-sm-6 col-md-3">
-                                <form>
+                                <form  method="POST" action="alterar_utilizador.php">
                                     <div class="form-group">
                                         <label class="contacto">Contacto:</label>
-                                        <label class="form-control" id="contacto"><?php echo $utilizador->get ?></label>
+                                        <label class="form-control" id="contacto"><?php echo $utilizador->getTelefone() ?></label>
                                     </div>
                                 </form>
                             </div>
 
                             <div class="col-sm-6 col-md-3">
-                                <form>
+                                <form  method="POST" action="alterar_utilizador.php">
                                     <div class="form-group">
                                         <label class="datanascimento">Data Nascimento:</label>
-                                        <label id="datadenascimento" class="form-control"><?php echo $utilizador->get ?></label>
+                                        <label id="datadenascimento" class="form-control"><?php echo $utilizador->getDataNascimento() ?></label>
                                     </div>
                                 </form>
 

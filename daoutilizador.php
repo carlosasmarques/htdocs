@@ -5,38 +5,51 @@
 
 
 	class DaoUtilizador{
+		private $bd;
 		
 		public function __construct(){
-			$LigacaoBD = new BaseDados();
+			$this->bd = new BaseDados();
 		}
 		
 		 
 		
-    function adicionarUtilizador(Utilizadores $utilizador) {
-
-        $LigacaoBD = new BaseDados();
+    function adicionarUtilizador(Utilizadores $utilizador){
         
-        $dbh = $LigacaoBD->getDBH();
-        
-            $sql = ("insert into utilizadores (U_ID, U_NUMEROFUNCIONARIO, U_NOME, U_MORADA, 
+            $sql = ("insert into utilizadores (U_NUMEROFUNCIONARIO, U_NOME, U_MORADA, 
 					       U_CONTACTOTELEFONICO, U_DATANASCIMENTO, U_NOMEUTILIZADOR, U_PALAVRAPASSE,
 					       U_TIPOUTILIZADOR, U_DATAREGISTO, U_FOTOGRAFIA, U_ATIVO, U_FUNCAO) values 
-                                               (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                               (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
 
-					       //(:ID, :NUMEROFUNCIONARIO, :NOME, :MORADA, :CONTATOTELEFONICO, :DATANASCIMENTO, 
+			/* (:ID, :NUMEROFUNCIONARIO, :NOME, :MORADA, :CONTATOTELEFONICO, :DATANASCIMENTO, 
                                                //:NOMEUTILIZADOR, :PALAVRAPASSE, :TIPOUTILIZADOR, :DATAREGISTO, :FOTOGRAFIA, 
                                                //:ATIVO, :FUNCAO)");
-           /* $dados = array("ID" =>$utilizador->getIdUtilizadores(), "NUMEROFUNCIONARIO" =>$utilizador->getNumero(), 
+           $dados = array("ID" =>$utilizador->getIdUtilizadores(), "NUMEROFUNCIONARIO" =>$utilizador->getNumero(), 
                            "NOME" =>$utilizador->getNome(), "MORADA" =>$utilizador->getMorada(), 
                            "CONTATOTELEFONICO" =>$utilizador->getTelefone(), "DATANASCIMENTO" =>$utilizador->getDataNascimento(), 
                            "NOMEUTILIZADOR" =>$utilizador->getUsername(), "PALAVRAPASSE" =>$utilizador->getPassword(), 
                            "TIPOUTILIZADOR" =>$utilizador->getTipoUtilizador(), "DATAREGISTO" =>$utilizador->getDataDeRegisto(), 
                            "FOTOGRAFIA" =>$utilizador->getCaminhoFoto(), "ATIVO" =>$utilizador->getAtivo(), "FUNCAO" =>$utilizador->getFuncao());
-            * 
             */
+			
+			$dados_utilizador = array(
+				'U_NUMEROFUNCIONARIO' => $utilizador->getNumero(),
+				'U_NOME' => $utilizador->getNome(),
+				'U_MORADA' => $utilizador->getMorada(),
+				'U_CONTACTOTELEFONICO' => $utilizador->getTelefone(),
+				'U_DATANASCIMENTO' => $utilizador->getDataNascimento(),
+				'U_NOMEUTILIZADOR' => $utilizador->getUsername(),
+				'U_PALAVRAPASSE' => $utilizador->getPassword(),
+				'U_TIPOUTILIZADOR' => $utilizador->getTipoUtilizador(),
+				'U_DATAREGISTO' => $utilizador->getDataDeRegisto(),
+				'U_FOTOGRAFIA' => $utilizador->getCaminhoFoto(),
+				'U_ATIVO' => $utilizador->getAtivo(),
+				'U_FUNCAO' => $utilizador->getFuncao()
+			);
+			
+			
             
-            $LigacaoBD->inserir($sql, $utilizador);
+            $this->bd->inserir($sql, $dados_utilizador);
 
     }
 

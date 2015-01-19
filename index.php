@@ -1,9 +1,15 @@
 <?php
-	// index.php - formulario de login dos utilizadores
-include "GereAdministracao.php";
-$gereAdmin = new GereAdministracao();
-if($gereAdmin->listarUtilizadores() != NULL){
-
+	/*
+		index.php - formulario de login dos utilizadores
+	
+		Era só jajão!
+	*/
+	
+	include "acessobd.php";
+	$bd = new BaseDados();
+	if($bd->contar("utilizadores") == 0){
+		header("Location: verificaSessao.php");
+	}
 
 ?>
 
@@ -70,11 +76,5 @@ if($gereAdmin->listarUtilizadores() != NULL){
         </form>
     </div>
     <!-- /container -->
-
-<?php
-} else {
-include_once 'verificaSessao.php';
-}
-    ?>
 </body>
 </html>
