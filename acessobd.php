@@ -20,13 +20,13 @@
 		
 		// Liga��o � base de dados
 		function __construct(){
-			global $servidor;
-			global $bd;
-			global $user;
-			global $pass;
+			global $conf_servidor;
+			global $conf_bd;
+			global $conf_user;
+			global $conf_pass;
 			
 			try{
-				$this->DBH = new PDO("mysql:host=$servidor;dbname=$bd", $user, $pass);
+				$this->DBH = new PDO("mysql:host=$conf_servidor;dbname=$conf_bd", $conf_user, $conf_pass);
 			}catch(PDOException $e) {
 				echo $e->getMessage();
 				return false;
