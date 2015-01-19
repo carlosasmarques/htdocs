@@ -1,9 +1,16 @@
 <?php
 include "conf.php";
+include "Equipamentos.php";
 
 class DaoEquipamento{
-    private $LigacaoBD;
+
+    public $LigacaoBD = null;
+    
     function __construct(){
+        global $servidor;
+        global $bd;
+        global $user;
+        global $pass;
         try{
             $this->LigacaoBD = new PDO("mysql:host=$servidor;dbname=$bd", $user, $pass);
         }catch(PDOException $e){
@@ -81,7 +88,7 @@ class DaoEquipamento{
     }
 
     function pesquisaEquipTipo($tipoArtigo){
-        $equipamento = new Equipamento("","","",0,0,"","", True);
+        $equipamento = new Equipamentos(0,"","",0,0,"",0,"",false);
         try{
             $instrucao = $LigacaoBD->prepare("SELECT * FROM EQUIPAMENTOS WHERE TA_nome like ?");
             $instrucao->bind_param($tipoArtigo);
@@ -129,7 +136,7 @@ class DaoEquipamento{
     }
 
     function verEquipamento($id){
-        $equipamento = new Equipamento("","","",0,0,"","", True);
+        $equipamento = new Equipamentos(0,"","",0,0,"",0,"",false);
         try{
             $instrucao = $LigacaoBD->prepare("SELECT * FROM EQUIPAMENTOS WHERE E_id = ?");
             $instrucao->bind_param($id);
@@ -189,7 +196,7 @@ class DaoEquipamento{
 
     function verificaStockEquip($id){
                 
-       $equipamento = new Equipamento("","","",0,0,"","", True);
+       $equipamento = new Equipamentos(0,"","",0,0,"",0,"",false);
         try{
             $instrucao = $LigacaoBD->prepare("SELECT E_quantidadeDisponivel, E_descricao FROM EQUIPAMENTOS WHERE E_id = ?");
             $instrucao->bind_param($id);
@@ -211,30 +218,39 @@ class DaoEquipamento{
     }
 
     function listarEquipamentos(){
-        $equipamento = new Equipamento("","","",0,0,"","", True);
+		$dados = array();
+		
+        //$equipamento = new Equipamentos(0,"","",0,0,"",0,"",false);
         try{
-            $instrucao = $LigacaoBD->prepare("SELECT * FROM EQUIPAMENTOS");
-            $sucesso_funcao = $instrucao->execute();
+			
+            $instrucao = $this->LigacaoBD->prepare("SELECT * FROM equipamentos");
+            //$sucesso_funcao = $instrucao->execute();
             $instrucao->FETCH(PDO::FETCH_ASSOC);
         }catch(PDOException $e){
             echo $e->getMessage();
         }
-       if($sucesso_funcao){
+		
+       if($instrucao->execute()){
+				
+				
                 WHILE($registo = $instrucao->fetch()){
-                    $equipamento->setIdEquipamentos($registo["e_id"]);
-                    $equipamento->setPreco($registo["e_preco"]);
-                    $equipamento->setQuantidadeMinima($registo["e_qtMin"]);
-                    $equipamento->setQuantidadeExistente($registo["e_qtExi"]);
-                    $equipamento->setDescricao($registo["e_des"]);
-                    $equipamento->setCodigo($registo["e_cod"]);
-                    $equipamento->setData($registo["e_data"]);
-                    $equipamento->setActivo($registo["e_act"]);
-                    $dados[]=$equipamento;
+				$dados[] = new Equipamentos($registo["E_ID"],$registo["E_PRECOCOMPRA"],$registo["TA_ID"],$registo["E_QUANTIDADEMINIMA"],$registo["E_QUANTIDADEDISPONIVEL"],$registo["E_DESCRICAO"],$registo["E_CODIGO"],$registo["E_DATACOMPRA"],$registo["E_ACTIVO"]);
+				//print_r ($dados);	
+					/*$equipamento->setIdEquipamentos($registo["E_ID"]);
+                    $equipamento->setDescricao($registo["E_DESCRICAO"]);
+                    $equipamento->setCodigo($registo["E_CODIGO"]);
+                    $equipamento->setQuantidadeExistente($registo["E_QUANTIDADEDISPONIVEL"]);
+                    $equipamento->setQuantidadeMinima($registo["E_QUANTIDADEMINIMA"]);
+                    $equipamento->setActivo($registo["E_ACTIVO"]);
+                    $equipamento->setPreco($registo["E_PRECOCOMPRA"]);
+                    $equipamento->setData($registo["E_DATACOMPRA"]);
+                    $dados[]=$equipamento;*/
                 } 
             }else{
+			
                 return NULL;
             }
-
+			
             return $dados;
 
     }

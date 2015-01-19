@@ -113,8 +113,13 @@ class GereEquipamentos{
 
     function listarEquipamentos(){
         $daoEquipamento = new DaoEquipamento();
-        if(($equipamentos = $daoEquipamento->listarEquipamentos()) != NULL){
-            return $equipamentos;
+		echo "ola4";
+		 
+		$equipamentos = $daoEquipamento->listarEquipamentos();
+		//print_r ($equipamentos);
+        if($equipamentos != NULL){
+            echo "ola5";
+			return $equipamentos;
         } else {
             return NULL;
         }
