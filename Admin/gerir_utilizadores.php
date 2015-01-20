@@ -6,7 +6,6 @@
 	
 	$utilizador = $gere_utilizador->listarUtilizador();
 
-	
 ?>
 <!DOCTYPE html>
 <html lang="en">
