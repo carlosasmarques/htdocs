@@ -1,5 +1,4 @@
 <?php
-	include "Equipamentos.php";
 	include "GereEquipamentos.php";
 	
         $gere_equipamento = new GereEquipamentos();
