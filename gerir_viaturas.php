@@ -61,7 +61,7 @@
                   <a><?php echo $_SESSION["user"]; ?><span class="caret"></span></a>
                   <ul class="sub-menu">
                     <li><a href="alterar_utilizador.php">Alterar Password</a></li>
-                    <li><a href="login.php?logout=1">Sair</a>
+                    <li><a href="login.php?logout=1">Sair</a></li>
                   </ul>
                </li>
 				

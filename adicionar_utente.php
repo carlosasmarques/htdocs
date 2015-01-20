@@ -1,5 +1,5 @@
 <?php
-	
+	include_once "sessaoOk.php";
 	include "GereUtentes.php";
 	
 	$gere_utentes = new GereUtentes();
@@ -61,11 +61,11 @@
             <div class="navbar-collapse collapse" style="background-color: #FFCC33;">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="drop-menu" style="z-index: 1">
-                        <a href="#">Utilizador <span class="caret"></span></a>
+                        <a><?php echo $_SESSION["user"]; ?><span class="caret"></span></a>
                         <ul class="sub-menu">
                             <li><a href="alterar_utilizador.php">Alterar Password</a>
                             </li>
-                            <li><a href="#">Sair</a>
+                            <li><a href="login.php?logout=1">Sair</a>
                             </li>
                         </ul>
                     </li>
