@@ -1,10 +1,15 @@
 <?php
-include "conf.php";
+
 include "Equipamentos.php";
+include_once "acessobd.php";
 
 class DaoEquipamento{
+    private $bd;
 
-    public $LigacaoBD = null;
+    public function __construct() {
+        $this->bd = new BaseDados();
+    }
+    /*public $LigacaoBD = null;
     
     function __construct(){
         global $conf_servidor;
@@ -22,7 +27,7 @@ class DaoEquipamento{
 
     function __destruct(){
         $this->LigacaoBD == null;
-    }
+    }*/
 
     function adicionarEquipamento($equipamento){
         try{
@@ -219,22 +224,12 @@ class DaoEquipamento{
 
     function listarEquipamentos(){
 		$dados = array();
-		
-        //$equipamento = new Equipamentos(0,"","",0,0,"",0,"",false);
-        try{
 			
-            $instrucao = $this->LigacaoBD->prepare("SELECT * FROM equipamentos");
-            //$sucesso_funcao = $instrucao->execute();
-            $instrucao->FETCH(PDO::FETCH_ASSOC);
-        }catch(PDOException $e){
-            echo $e->getMessage();
-        }
-		
-       if($instrucao->execute()){
-				
-				
-                WHILE($registo = $instrucao->fetch()){
-				$dados[] = new Equipamentos($registo["E_ID"],$registo["E_PRECOCOMPRA"],$registo["TA_ID"],$registo["E_QUANTIDADEMINIMA"],$registo["E_QUANTIDADEDISPONIVEL"],$registo["E_DESCRICAO"],$registo["E_CODIGO"],$registo["E_DATACOMPRA"],$registo["E_ACTIVO"]);
+            $instrucao = $this->bd->query("SELECT * FROM equipamentos");
+
+			
+              for($i=0; $i<count($instrucao); $i++){
+				$dados[] = new Equipamentos($instrucao[$i]["E_ID"],$instrucao[$i]["E_PRECOCOMPRA"],$instrucao[$i]["TA_ID"],$instrucao[$i]["E_QUANTIDADEMINIMA"],$instrucao[$i]["E_QUANTIDADEDISPONIVEL"],$instrucao[$i]["E_DESCRICAO"],$instrucao[$i]["E_CODIGO"],$instrucao[$i]["E_DATACOMPRA"],$instrucao[$i]["E_ACTIVO"]);
 				//print_r ($dados);	
 					/*$equipamento->setIdEquipamentos($registo["E_ID"]);
                     $equipamento->setDescricao($registo["E_DESCRICAO"]);
@@ -246,10 +241,6 @@ class DaoEquipamento{
                     $equipamento->setData($registo["E_DATACOMPRA"]);
                     $dados[]=$equipamento;*/
                 } 
-            }else{
-			
-                return NULL;
-            }
 			
             return $dados;
 

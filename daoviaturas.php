@@ -12,33 +12,15 @@
 			`- listarViaturas()
 	*/
 
-	include "conf.php";
+        include_once "acessobd.php";
         include "Viaturas.php";
 	 
 	class DaoViaturas{
-		private $LigacaoBD=null;
-		
-		// Ligar á base de dados
-		function __construct(){
-                        global $conf_servidor;
-                        global $conf_bd;
-                        global $conf_user;
-                        global $conf_pass;
-			try{
-                                $this->LigacaoBD = new PDO("mysql:host=$conf_servidor;dbname=$conf_bd", $conf_user, $conf_pass);
-                            }catch(PDOException $e){
-                                echo $e->getMessage();
-                                return false;
-                            }
-                            return true;
-                        }
-		/*
-		Desligar da base de dados
-		(assim que seja apagada a ultima referencia ao objeto)
-		*/
-		function __destruct(){
-			$this->LigacaoBD == null;
-		}
+            private $bd;
+
+            public function __construct() {
+                $this->bd = new BaseDados();
+            }
 		
 		public function adicionarViatura(
 		$matricula, $marca, $modelo, $tipo, $dataMatricula, $combustivel, $capacidadeDeposito, $quilometragem,
@@ -238,22 +220,15 @@
 		
 		public function listarViaturas(){
 			$dados = array();
-                        
-			try{
-				// Obter apenas os dados necessários das viaturas
-				$instrucao = $this->LigacaoBD->prepare("SELECT * FROM viatura");
 
-				// Percorrer os dados da query e guardar num array
-				if($instrucao->execute()){
-					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
-                                            while($registo = $instrucao->fetch()){
-                                                $dados[] = new Viaturas($registo["V_ID"],$registo["V_MATRICULA"],$registo["V_MARCA"],$registo["V_MODELO"],$registo["V_TIPOVIATURA"],$registo["V_DATAMATRICULA"],$registo["V_COMBUSTIVEL"],$registo["V_CAPACIDADEDEPOSITO"],$registo["V_QUILOMETRAGEM"],$registo["V_CONSUMOMEDIO"],$registo["V_NUMEROLUGARESSENTADOS"],$registo["V_NUMEROLUGARESDEITADOS"],$registo["V_FOTOGRAFIA"],$registo["V_ACTIVO"]);
+				$instrucao = $this->bd->query("SELECT * FROM viatura");
 
-                                            }
-				}
-			}catch(PDOException $e){
-				echo $e->getMessage();
-			}
+					for($i=0; $i<count($instrucao); $i++){
+                                                $dados[] = new Viaturas($instrucao[$i]["V_ID"],$instrucao[$i]["V_MATRICULA"],$instrucao[$i]["V_MARCA"],$instrucao[$i]["V_MODELO"],$instrucao[$i]["V_TIPOVIATURA"],$instrucao[$i]["V_DATAMATRICULA"],$instrucao[$i]["V_COMBUSTIVEL"],$instrucao[$i]["V_CAPACIDADEDEPOSITO"],$instrucao[$i]["V_QUILOMETRAGEM"],$instrucao[$i]["V_CONSUMOMEDIO"],$instrucao[$i]["V_NUMEROLUGARESSENTADOS"],$instrucao[$i]["V_NUMEROLUGARESDEITADOS"],$instrucao[$i]["V_FOTOGRAFIA"],$instrucao[$i]["V_ACTIVO"]);
+
+                                            
+                                        }
+
 			return $dados;
 		}
 	}

@@ -11,29 +11,15 @@
 			`- verManutInterna(id da manutenção interna)
 	*/
 
-	include "conf.php";
+	include_once "acessobd.php";
 	include "Transportes.php"; 
         
 	class DaoTransportes{
-		public $LigacaoBD=null;
+            private $bd;
 
-                function __construct(){
-                    global $conf_servidor;
-                    global $conf_bd;
-                    global $conf_user;
-                    global $conf_pass;
-                    try{
-                        $this->LigacaoBD = new PDO("mysql:host=$conf_servidor;dbname=$conf_bd", $conf_user, $conf_pass);
-                    }catch(PDOException $e){
-                        echo $e->getMessage();
-                        return false;
-                    }
-                    return true;
-                }
-
-                function __destruct(){
-                    $this->LigacaoBD == null;
-                }
+            public function __construct() {
+                $this->bd = new BaseDados();
+            }               
 
 		/*****************************************************************************
 			Nota: Não faz sentido passar a matricula da viatura porque a base de dados utiliza o id
@@ -220,26 +206,11 @@
                 function listarTransportes(){
 				$dados = array();
 
-                    try{
-
-                        $instrucao = $this->LigacaoBD->prepare("SELECT T_ID,U_NOME,T_DATATRANSPORTE,T_ORIGEM,T_DESTINO,V_MATRICULA FROM transportes,utilizadores,viatura where transportes.U_ID=utilizadores.U_ID and transportes.V_ID=viatura.V_ID");
-                        $instrucao->FETCH(PDO::FETCH_ASSOC);
-                    }catch(PDOException $e){
-                        echo $e->getMessage();
-                    }
-					
-                   if($instrucao->execute()){
-						
-
-                            WHILE($registo = $instrucao->fetch()){
-                                            $dados[] = Array($registo["T_ID"],$registo["U_NOME"],$registo["T_DATATRANSPORTE"],$registo["T_ORIGEM"],$registo["T_DESTINO"],$registo["V_MATRICULA"]);
-                                            	
-
-                            } 
-                        }else{
-
-                            return NULL;
-                        }
+                        $instrucao = $this->bd->query("SELECT T_ID,U_NOME,T_DATATRANSPORTE,T_ORIGEM,T_DESTINO,V_MATRICULA FROM transportes,utilizadores,viatura where transportes.U_ID=utilizadores.U_ID and transportes.V_ID=viatura.V_ID");
+                        for($i=0; $i<count($instrucao); $i++){
+                            $dados[] = Array($instrucao[$i]["T_ID"],$instrucao[$i]["U_NOME"],$instrucao[$i]["T_DATATRANSPORTE"],$instrucao[$i]["T_ORIGEM"],$registo["T_DESTINO"],$instrucao[$i]["V_MATRICULA"]);
+                        }                    	
+                        
 
                         return $dados;
 
