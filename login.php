@@ -19,15 +19,7 @@
 		if ($utilizador = null){
 			header("Location: index.php?erro=1");
 		}else{
-			/*
-				foreach ($a->getUtilizador() as $utilizador) {
-					$u = $username->getUsername();
-					$p = $username->getPassword();
-					$t = $username->getTipoUtilizador();
-					$a = username->getActivo();
-				}
-			*/
-			
+						
 			//verifica se o username que veio da base de dados é igual ao inserido
 			if(
 				!strcmp($_POST["username"], $username->getUsername()) &&
