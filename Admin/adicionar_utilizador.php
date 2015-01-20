@@ -1,5 +1,7 @@
 <?php
+include_once "../sessaoOk.php";
 $gereAdministracao = new GereAdministracao();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,17 +49,15 @@ $gereAdministracao = new GereAdministracao();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="inicial.php">FireManTool</a>
+                <a><?php echo $_SESSION["user"]; ?><span class="caret"></span></a>
             </div>
             <div class="navbar-collapse collapse" style="background-color: #FFCC33;">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="drop-menu" style="z-index: 1">
                         <a>Administrador <span class="caret"></span></a>
                         <ul class="sub-menu">
-                            <li><a href="alterar_utilizador.php">Perfil</a>
-                            </li>
-                            <li><a href="#">Sair</a>
-                            </li>
+                            <li><a href="alterar_utilizador.php">Perfil</a></li>
+                            <li><a href="../login.php?logout=1">Sair</a></li>
                         </ul>
                     </li>
 

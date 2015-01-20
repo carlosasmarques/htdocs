@@ -57,10 +57,8 @@
                     <li class="drop-menu" style="z-index: 1">
                          <a><?php echo $_SESSION["user"]; ?><span class="caret"></span></a>
                         <ul class="sub-menu">
-                            <li><a href="alterar_utilizador.php">Perfil</a>
-                            </li>
-                            <li><a href="../login.php?logout=1">Sair</a>
-                            </li>
+                            <li><a href="alterar_utilizador.php">Perfil</a></li>
+                            <li><a href="../login.php?logout=1">Sair</a></li>
                         </ul>
                     </li>
 
