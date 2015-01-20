@@ -38,27 +38,20 @@
 		/*****************************************************************************
 			Nota: Não faz sentido passar a matricula da viatura porque a base de dados utiliza o id
 		*****************************************************************************/
-		public function adicionarManutencaoInterna($id_viatura, $dataManutencao, $descricaoAvaria, $quantidadeMaterialGasto){
+		public function adicionarManutencaoInterna(manutencaoInter $manutencaoInter){
 		
-			try{
-				// Preparar a instrução sql de inserção
-				$instrucao = $LigacaoBD->prepare("INSERT INTO MANUTENCOESINTERNAS (V_ID, MI_DATAMANUETENCAO, MI_DESCRICAOMANUTENCAO, MI_QUANTIDADEMATERIALGASTO) VALUES (?, ?, ?, ?)");
-				$instrucao->bind_param($id_viatura, $dataManutencao, $descricaoAvaria, $quantidadeMaterialGasto);
-				
-				// Executar
-				$sucesso_funcao = $instrucao->execute();
-				$instrucao->close();
-				
-			}catch(PDOException $e){
-				echo $e->getMessage();
-			}
-			
-			if($sucesso_funcao){
-				return "Manutenção interna registada com sucesso<br />";
-			}else{
-				return "Erro ao registar a manutenção internas!<br />";
-			}
-		}
+			$sql = "INSERT INTO `fmt`.`manutencoesinternas` (`V_ID`, `MI_DATAMANUETENCAO`, `MI_DESCRICAOMANUTENCAO`, `MI_MATERIALGASTO`, `MI_QUANTIDADEMATERIALGASTO`) "
+                                . "VALUES (:V_ID, :MI_DATAMANUETENCAO, :MI_DESCRICAOMANUTENCAO, :MI_MATERIALGASTO, :MI_QUANTIDADEMATERIALGASTO);";
+		
+                          $dados_manutencaoInter = array (
+                              'V_ID'=> $manutencaoInter->get(), /*DVUIDA: NÃO EXISTE O ATRIBUTO*/
+                              'MI_DATAMANUETENCAO'=> $manutencaoInter->getDataManutencao(), 
+                              'MI_DESCRICAOMANUTENCAO'=> $manutencaoInter->getDescricaoAvaria(), 
+                              'MI_MATERIALGASTO'=> $manutencaoInter->get(),/*DVUIDA: NÃO EXISTE O ATRIBUTO*/
+                              'MI_QUANTIDADEMATERIALGASTO'=> $manutencaoInter->getQuantidadeMaterialGasto()
+                              );
+                        
+                }
 		
 		public function editarManutencaoInter($id, $id_viatura, $dataManutencao, $descricaoAvaria, $quantidadeMaterialGasto){
 			

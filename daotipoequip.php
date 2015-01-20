@@ -22,7 +22,6 @@
            $dados_tipoEquip = array('TA_NOME' => $tipoEquip->getNome());
            
            $this->bd->inserir($sql, $dados_tipoEquip);
-
         }
 
         public function listarTiposEquip(){

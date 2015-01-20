@@ -28,17 +28,20 @@
 		*****************************************************************************/
 		public function adicionarTransporte(Transportes $transporte){
 		
-                            $sql = "INSERT INTO `fmt`.`transportes` (`T_ID`, `T_DATATRANSPORTE`, `T_HORAPARTIDA`, `T_HORACHEGADA`, `T_ORIGEM`, `T_DESTINO`, `T_OBSERVACOES`) "
-                                    . "VALUES (:T_ID , :T_DATATRANSPORTE, :T_HORAPARTIDA, :T_HORACHEGADA, :T_ORIGEM, :T_DESTINO, :T_OBSERVACOES);";
+                            $sql = "INSERT INTO `fmt`.`transportes` (`U_ID`, `T_ID`, `T_DATATRANSPORTE`, `T_HORAPARTIDA`, `T_HORACHEGADA`, `T_ORIGEM`, `T_DESTINO`, `T_OBSERVACOES`, `T_CONDICAO`, `T_TOTALQUILOMETRO`) "
+                                    . "VALUES (:U_ID, :T_ID , :T_DATATRANSPORTE, :T_HORAPARTIDA, :T_HORACHEGADA, :T_ORIGEM, :T_DESTINO, :T_OBSERVACOES, :T_CONDICAO, :T_TOTALQUILOMETRO );";
                             
                             $dados_Transporte = array (
+                                'U_ID'=> $transporte -> getIdTransportes(),
                                 'T_ID'=> $transporte -> getIdTransportes(),
                                 'T_DATATRANSPORTE' => $transporte -> getDataTransporte(), 
                                 'T_HORAPARTIDA' => $transporte -> getHoraDePartida(), 
                                 'T_HORACHEGADA' => $transporte ->getHoraDeChegada(),
                                 'T_ORIGEM' => $transporte -> getOrigem(),
                                 'T_DESTINO' => $transporte -> getDestino(),
-                                'T_OBSERVACOES' => $transporte ->getObservacoes()
+                                'T_OBSERVACOES' => $transporte ->getObservacoes(),
+                                'T_CONDICAO' => $transporte ->getCondicaoUtente(), 
+                                'T_TOTALQUILOMETRO' => $transporte->getQuilometroschegada() - $transporte ->getQuilometrospartida() /* --DUVIDA-- */
                             );			
                         $this->bd->inserir($sql, $dados_Transporte);
                     
