@@ -12,6 +12,10 @@ if ($bd->contar("utilizadores") == 0){
 }
 
 function inserirAdministrador(){
+	
+	// definir o fuso horario para deixar de dar Warnings
+	date_default_timezone_set('Europe/Lisbon');
+	
     $nome = "Administrador";
     $numero = "0";
     $username = "administrador";
