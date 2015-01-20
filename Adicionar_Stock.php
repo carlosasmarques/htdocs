@@ -1,11 +1,10 @@
 <?php
-    include "Equipamentos.php";
     include "GereEquipamentos.php";
     
     $gere_equipamento = new GereEquipamentos();
     $equipamentos = new Equipamentos(0,"","",0,0,"",0,"",false);
-    
 
+	
     
 ?>
 <!DOCTYPE html>

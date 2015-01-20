@@ -31,8 +31,7 @@ class DaoEquipamento{
 
     function adicionarEquipamento($equipamento){
         try{
-            $instrucao = $LigacaoBD->prepare("INSERT INTO EQUIPAMENTO (
-				 TA_id , E_descricao, E_codigo, E_quantidadeDisponivel, E_quantidadeMinima, E_activo, E_precoCompra, E_dataCompra) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $instrucao = $this->bd->query("INSERT INTO equipamentos TA_id , E_descricao, E_codigo, E_quantidadeDisponivel, E_quantidadeMinima, E_activo, E_precoCompra, E_dataCompra) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             $instrucao->bind_param($equipamento->id, $equipamento->descricao, $equipamento->codigo,
             $equipamento->quantidadeDisponivel, $equipamento->quantidadeMinima, "True", $equipamento->precoCompra, $equipamento->dataCompra);
             // Executar
