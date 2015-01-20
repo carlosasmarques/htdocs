@@ -52,7 +52,7 @@ class DaoUtilizador {
 
     function verDadosUtilizador($id) {
         try {
-            $registo = $bd->query("SELECT * FROM Utilizadores WHERE U_ID = :U_ID", $id);
+            $registo = $this->bd->query("SELECT * FROM Utilizadores WHERE U_ID = :U_ID", $id);
  
             if (isset($dados)) {
                 $utilizador = new Utilizadores($registo["u_id"], $registo["u_nome"], $registo["u_numerofuncionario"], 
@@ -76,7 +76,7 @@ class DaoUtilizador {
         try {
             $user = array('U_USERNAME' => $nomeUtilizador);
             
-            $registo = $bd->query("SELECT * FROM Utilizadores WHERE U_USERNAME = :U_USERNAME", $user);
+            $registo = $this->bd->query("SELECT * FROM Utilizadores WHERE U_USERNAME = :U_USERNAME", $user);
  
             if (isset($dados)) {
                 $utilizador = new Utilizadores($registo["u_id"], $registo["u_nome"], $registo["u_numerofuncionario"], 
