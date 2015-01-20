@@ -14,55 +14,33 @@
 	include "conf.php";
 	 
 	class DaoConsumoEquip{
-		private $LigacaoBD;
+		private $bd;
 		
 		// Ligar á base de dados
-		function __construct(){
-			try{
-				$this->LigacaoBD = new PDO("mysql:host=$servidor;dbname=$bd", $user, $pass);
-			}catch(PDOException $e){
-				echo $e->getMessage();
-				return false;
-			}
-			return true;
-		}
+		public function __construct() {
+                     $this->bd = new BaseDados();
+                }
 		
 		/*
 		Desligar da base de dados
 		(assim que seja apagada a ultima referencia ao objeto)
 		*/
 		function __destruct(){
-			$this->LigacaoBD == null;
+			$this->bd== null;
 		}
 		
 		function adicionarConsumoEquip(ConsumoEquip $consumoequip){
 		
-			try{
-				// Preparar a instrução sql de inserção
-				$instrucao = $LigacaoBD->prepare("INSERT INTO CONSUMO_ARTIGOS (E_ID, C_QUANTIDADECONSUMIDA, C_DATA, C_DESCRICAOCONSUMO)
-												VALUES (?, ?, ?, ?)");
-				$instrucao->bind_param($consumoequip->getIdEquip(), $consumoequip->getQuantidade(), $consumoequip->getData(), $consumoequip->getDescricao() );
-				// Executar
-				$sucesso_funcao = $instrucao->execute();
-				$instrucao->close();
-				
-			}catch(PDOException $e){
-				echo $e->getMessage();
-			}
-			
-			if($sucesso_funcao){
-				return "Consumo de equipamento registado com sucesso<br />";
-			}else{
-				return "Erro ao registar o consumo de equipamento!<br />";
-			}
-		}
+                    /*fazer da mesma maneira que o daoutilizador*/
+                    
+                }
 		
 		function verConsumoEquip($id){
 			$dados = null;
 
 			try{
 				// Obter os dados do consumo com o id especificado
-				$instrucao = $LigacaoBD->prepare("SELECT * FROM CONSUMO_ARTIGOS WHERE id=?");
+				$instrucao = $bd->prepare("SELECT * FROM CONSUMO_ARTIGOS WHERE id=?");
 				$instrucao->bind_param($id);
 
 				// Executar
@@ -84,7 +62,7 @@
 			
 			try{
 				// Preparar a instrução sql de atualização
-				$instrucao = $LigacaoBD->prepare("UPDATE CONSUMO_ARTIGOS SET
+				$instrucao = $bd->prepare("UPDATE CONSUMO_ARTIGOS SET
 				C_QUANTIDADECONSUMIDA=?, C_DATA=?, C_DESCRICAOCONSUMO=? WHERE id=?");
 				$instrucao->bind_param($quantidade_consumida, $dataDeConsumo, $descricaoConsumo);
 				
@@ -108,7 +86,7 @@
 			$ConsumoEquip = new ConsumoEquip("","","","");
 			try{
 				// Pesquisar consumo de equipamentos por artigo
-				$instrucao = $LigacaoBD->prepare("SELECT E_DESCRICAO, C_QUANTIDADECONSUMIDA, C_DATA, C_DESCRICAOCONSUMO FROM CONSUMO_ARTIGOS, EQUIPAMENTOS WHERE CONSUMO_ARTIGOS.E_ID = EQUIPAMENTOS.E_ID AND E_ID=?");
+				$instrucao = $bd->prepare("SELECT E_DESCRICAO, C_QUANTIDADECONSUMIDA, C_DATA, C_DESCRICAOCONSUMO FROM CONSUMO_ARTIGOS, EQUIPAMENTOS WHERE CONSUMO_ARTIGOS.E_ID = EQUIPAMENTOS.E_ID AND E_ID=?");
 				$instrucao->bind_param($id);
 
 				// Executar
@@ -136,7 +114,7 @@
 			$ConsumoEquip = new ConsumoEquip("","","","");
 			try{
 				// Pesquisar consumo de equipamentos por data
-				$instrucao = $LigacaoBD->prepare("SELECT E_DESCRICAO, C_QUANTIDADECONSUMIDA, C_DATA, C_DESCRICAOCONSUMO FROM CONSUMO_ARTIGOS, EQUIPAMENTOS WHERE CONSUMO_ARTIGOS.E_ID = EQUIPAMENTOS.E_ID AND C_DATA='?'");
+				$instrucao = $bd->prepare("SELECT E_DESCRICAO, C_QUANTIDADECONSUMIDA, C_DATA, C_DESCRICAOCONSUMO FROM CONSUMO_ARTIGOS, EQUIPAMENTOS WHERE CONSUMO_ARTIGOS.E_ID = EQUIPAMENTOS.E_ID AND C_DATA='?'");
 				$instrucao->bind_param($dataDeConsumo);
 
 				// Executar
@@ -170,7 +148,7 @@
 				/**********************************************************************
 					Nota: Os equipamentos não têm nome registado na base de dados!!!
 				***********************************************************************/
-				$instrucao = $LigacaoBD->prepare("SELECT E_DESCRICAO, C_QUANTIDADECONSUMIDA, C_DATA, C_DESCRICAOCONSUMO FROM CONSUMO_ARTIGOS, EQUIPAMENTOS WHERE CONSUMO_ARTIGOS.E_ID = EQUIPAMENTOS.E_ID");
+				$instrucao = $bd->prepare("SELECT E_DESCRICAO, C_QUANTIDADECONSUMIDA, C_DATA, C_DESCRICAOCONSUMO FROM CONSUMO_ARTIGOS, EQUIPAMENTOS WHERE CONSUMO_ARTIGOS.E_ID = EQUIPAMENTOS.E_ID");
 
 				// Executar
 				$sucesso_funcao = $instrucao->execute();
