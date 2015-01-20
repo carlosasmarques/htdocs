@@ -48,10 +48,12 @@
 				$_SESSION["user"] = $utilizador->getUsername(); 
 				
 				// Verificar se se trata de um utilizador comum ou administrador
-				$_SESSION["tipo_user"] = $utilizador->getTipoUtilizador();
-				
-				// login ok
-				header("Location: inicial.php");	
+				if($utilizador->getTipoUtilizador() == "Administrador"){
+                    header("Location: Admin/inicial.php");
+                } else {
+                    header("Location: inicial.php");
+                }
+	
 			}else{
 				header("Location: index.php?erro=1");
 			}
