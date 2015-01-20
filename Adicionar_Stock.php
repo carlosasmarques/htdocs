@@ -188,10 +188,10 @@
                             <div class="form-group">
                                 <label class="TipodeArtigo">Tipo de Artigo:</label>
                                 <select class="form-control" name="tipoArtigo" id="tipoArtigo">
-                                    <option>Equipamento De Bombeiros</option>
-                                    <option>Equipamento Primeiros Socorros</option>
-                                    <option>Equipamento Manutencão Automóvel</option>
-                                    <option>Equipamento Diverso</option>
+                                    <option id="0">Equipamento De Bombeiros</option>
+                                    <option id="1">Equipamento Primeiros Socorros</option>
+                                    <option id="2">Equipamento Manutencão Automóvel</option>
+                                    <option id="3">Equipamento Diverso</option>
                                 </select>
                             </div>
                         </form>
@@ -220,8 +220,16 @@
                             </div>
                         </form>
                         <?php
-                            if(isset($_POST["codigo"]) && !empty($_POST["codigo"])&& isset($_POST["precoCompra"]) && !empty($_POST["precoCompra"]) && isset($_POST["descricao"]) && !empty($_POST["descricao"]) && isset($_POST["quantidadeMinima"]) && !empty($_POST["quantidadeMinima"]) && isset($_POST["dataCompra"]) && !empty($_POST["dataCompra"])){
-                                $equipamentos = $gere_equipamento->adicionarEquipamentos();   
+                            if(isset($_POST["tipoArtigo"]) && !empty($_POST["tipoArtigo"]) && isset($_POST["codigo"]) && !empty($_POST["codigo"])&& isset($_POST["precoCompra"]) && !empty($_POST["precoCompra"]) && isset($_POST["descricao"]) && !empty($_POST["descricao"]) && isset($_POST["quantidadeMinima"]) && !empty($_POST["quantidadeMinima"]) && isset($_POST["dataCompra"]) && !empty($_POST["dataCompra"])){
+                                $equipamentos->setCodigo($_POST["codigo"]);
+                                $equipamentos->setTipoEquipamentos(0);
+                                $equipamentos->setPreco($_POST["precoCompra"]);
+                                $equipamentos->setData($_POST["dataCompra"]);
+                                $equipamentos->setQuantidadeMinima($_POST["quantidadeMinima"]);
+                                $equipamentos->setDescricao($_POST["descricao"]);
+                                $equipamentos->setActivo(True);
+                                $equipamentos->setQuantidadeExistente(0);
+                                $equipamentos = $gere_equipamento->adicionarEquipamentos($equipamentos,$_POST["tipoArtigo"]);   
                             }
                         ?>
                     </div>

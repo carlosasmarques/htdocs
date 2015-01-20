@@ -29,24 +29,28 @@ class DaoEquipamento{
         $this->LigacaoBD == null;
     }*/
 
-    function adicionarEquipamento($equipamento){
-        try{
-            $instrucao = $this->bd->query("INSERT INTO equipamentos TA_id , E_descricao, E_codigo, E_quantidadeDisponivel, E_quantidadeMinima, E_activo, E_precoCompra, E_dataCompra) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            $instrucao->bind_param($equipamento->id, $equipamento->descricao, $equipamento->codigo,
-            $equipamento->quantidadeDisponivel, $equipamento->quantidadeMinima, "True", $equipamento->precoCompra, $equipamento->dataCompra);
-            // Executar
+    function adicionarEquipamento(Equipamentos $equipamentos,$tipoArtigo) {                                                                                                                      
 
-            $sucesso_funcao = $instrucao->execute();
-            $instrucao->close();
+        $instrucao = $this->bd->query("SELECT * FROM tipo_artigo where TA_ID=:TA_ID",$tipoArtigo);
+        
+        $tipo = $instrucao[0][1];
+        
+        $sql = "INSERT INTO `fmt`.`equipamentos` (`C_ID`,`TA_ID`,`E_DESCRICAO`, `E_CODIGO`, `E_QUANTIDADEDISPONIVEL`, `E_QUANTIDADEMINIMA`, `E_ACTIVO`, `E_PRECOCOMPRA`, `E_DATACOMPRA`) VALUES (:cd ,:tipoAtr ,:Eq_DESCRICAO, :Eq_CODIGO, :Eq_QUANTIDADEDISPONIVEL, :Eq_QUANTIDADEMINIMA, :`Eq_ACTIVO, :Eq_PRECOCOMPRA, :Eq_DATACOMPRA);";
 
-        }catch(PDOException $e){
-            echo $e->getMessage();
-        }
-        if($sucesso_funcao){
-            return "True";
-        }else{
-            return "False";
-        }
+        $dados_utilizador = array(
+            'cd'=>1,
+            'tipoAtr' => $tipo,
+            'Eq_DESCRICAO' => $equipamentos->getDescricao(),
+            'Eq_CODIGO' => $equipamentos->getCodigo(),
+            'Eq_QUANTIDADEDISPONIVEL' => $equipamentos->getQuantidadeExistente(),
+            'Eq_QUANTIDADEMINIMA' => $equipamentos->getQuantidadeMinima(),
+            'Eq_ACTIVO' => $equipamentos->getActivo(),
+            'Eq_PRECOCOMPRA' => $equipamentos->getPreco(),
+            'Eq_DATACOMPRA' => $equipamentos->getData(),
+ 
+        );
+
+        $this->bd->inserir($sql, $dados_utilizador);
     }
 
     function pesquisaEquipNome($descricao){
