@@ -1,6 +1,6 @@
 <?php
 
-    include "Inspecoes.php";
+    
     include "GereInspecoes.php";
     
     
@@ -162,12 +162,12 @@
                                                                         
 							
                                                         
-                                                        echo' <span style="min-width: 60px; display: inline-block;">' . $inspecoes[$i]->getidInspecoes() . '</span>';
+                                                        echo' <span style="min-width: 60px; display: inline-block;">' . $inspecoes[$i]->getIdInspecoes() . '</span>';
 							echo'<span style="min-width: 100px; display: inline-block;" >' . $inspecoes[$i]->getIdViatura() . '</span>';
 							echo'<span style="min-width: 120px; display: inline-block;" >' . $inspecoes[$i]->getDataLimite() . '</span>'; 
                                                         echo'<span style="min-width: 130px; display: inline-block;">' . $inspecoes[$i]->getEstado() . '</span>';
                                                         echo'<span style="min-width: 120px; display: inline-block;" >Efetuada</span> ';
-                                                        echo'<span style="min-width: 80px; display: inline-block;"><a href="inspecao_periodica_ver.php?id=' . $inspecoes[$i]->getidInspecoes() . ' " class="btn btn-xs" >Ver</a></span>';
+                                                        echo'<span style="min-width: 80px; display: inline-block;"><a href="inspecao_periodica_ver.php?id=' . $inspecoes[$i]->getid() . ' " class="btn btn-xs" >Ver</a></span>';
 							
 							echo'</div>';
                                                         

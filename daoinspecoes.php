@@ -14,12 +14,21 @@
 	*/
 
 	include "conf.php";
+        include "Inspecoes.php";
 	 
 	class DaoInspecoes{
-		private $LigacaoBD;
-		
-		// Ligar á base de dados
+            public $LigacaoBD = null;
+            
+            
+
+
+            // Ligar á base de dados
 		function __construct(){
+                    global $servidor;
+                    global $bd;
+                    global $user;
+                    global $pass;
+                    
 			try{
 				$this->LigacaoBD = new PDO("mysql:host=$servidor;dbname=$bd", $user, $pass);
 			}catch(PDOException $e){
@@ -211,22 +220,24 @@
 		}
 		
 		public function listarInspecoesPer(){
-			$dados = null;
+			$dados = array ();
                         
-                        $listar = new listar();
+                        
+                        
 			try{
 				// Obter apenas os dados necessários das inspeções
-				$instrucao = $LigacaoBD->prepare("SELECT I_ID, V_MATRICULA, I_DATAINSPECAO, I_ESTADO FROM INSPECOES, VIATURA WHERE INSPECOES.V_ID = VIATURA.V_ID");
+				$instrucao = $this->LigacaoBD->prepare("SELECT I_ID, V_MATRICULA, I_DATAINSPECAO, I_ESTADO FROM INSPECOES, VIATURA WHERE INSPECOES.V_ID = VIATURA.V_ID");
 
 				// Executar
 				$sucesso_funcao = $instrucao->execute();
 				
 				// Percorrer os dados da query e guardar num array
-				if($sucesso_funcao){
+				if($instrucao->execute()){
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
 					while($registo = $instrucao->fetch()){
+                                            $dados[] = new inspecoes ($registo["I_ID"],$registo["V_MATRICULA"],$registo["I_DATAINSPECAO"],
+                                                    $registo["I_ESTADO"]);
                                             
-                                            $listar->setI_ID($registo["t_I_ID"]);
                                             
                                             
                                             
