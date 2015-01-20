@@ -34,21 +34,20 @@ class DaoUtilizador {
         $this->bd->inserir($sql, $dados_utilizador);
     }
 
-    function alterarPalavraPasse($palavraPasse, $id) {
-        try {
-            $instrucao = $LigacaoBD->prepare("UPDATE Utilizadores SET (U_palavraPasse = ? WHERE U_id = ?) VALUES (?, ?)");
-            $instrucao->bind_param($palavraPasse, $id);
-            $sucesso_funcao = $instrucao->execute();
-            $instrucao->close();
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
-        if ($sucesso_funcao) {
-            return "True";
-        } else {
-            return "False";
-        }
-    }
+    function alterarPalavraPasse($palavraPasse, $id){
+			$dados = array(
+				'U_PALAVRAPASSE' => $palavraPasse,
+				'U_ID' => $id
+			);
+				
+			$instrucao = $this->bd->query("UPDATE utilizadores SET (U_PALAVRAPASSE = ? WHERE U_ID = ?) VALUES (?, ?)", $dados);
+				
+			if($instrucao != null){
+				return true;
+			}else{
+				return false;
+			}
+	}
 
     function verDadosUtilizador($id) {
         try {
