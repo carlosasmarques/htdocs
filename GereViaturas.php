@@ -84,8 +84,8 @@ if(isset($_GET["logout"])){
 		}
         }
         public function listarViaturas(){
-            $daoViatura = new DaoViaturas();
-            if($viaturas = $daoViaturas->listarViaturas()!= NULL){
+            $daoViatura = new daoviaturas();
+            if(($viaturas = $daoViatura->listarViaturas())!= NULL){
                     return $viaturas;
                 } else {
                 	return NULL;

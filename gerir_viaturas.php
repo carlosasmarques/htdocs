@@ -172,7 +172,7 @@
 									echo'    <span style="min-width: 100px; display: inline-block;">' . $viaturas[$i]->getConsumoMedio() . '</span>';
 									echo'</div>';
 								}
-								?>
+							?>
 						<br>
 
 		  </div>

@@ -13,21 +13,25 @@
 	*/
 
 	include "conf.php";
+        include "Viaturas.php";
 	 
 	class DaoViaturas{
-		private $LigacaoBD;
+		private $LigacaoBD=null;
 		
 		// Ligar á base de dados
 		function __construct(){
+                        global $conf_servidor;
+                        global $conf_bd;
+                        global $conf_user;
+                        global $conf_pass;
 			try{
-				$this->LigacaoBD = new PDO("mysql:host=$servidor;dbname=$bd", $user, $pass);
-			}catch(PDOException $e){
-				echo $e->getMessage();
-				return false;
-			}
-			return true;
-		}
-		
+                                $this->LigacaoBD = new PDO("mysql:host=$conf_servidor;dbname=$conf_bd", $conf_user, $conf_pass);
+                            }catch(PDOException $e){
+                                echo $e->getMessage();
+                                return false;
+                            }
+                            return true;
+                        }
 		/*
 		Desligar da base de dados
 		(assim que seja apagada a ultima referencia ao objeto)
@@ -233,36 +237,19 @@
 		}
 		
 		public function listarViaturas(){
-			$dados = null;
-                        $viatura = new Viaturas();
+			$dados = array();
+                        
 			try{
 				// Obter apenas os dados necessários das viaturas
-				$instrucao = $LigacaoBD->prepare("SELECT id, V_tipoViatura, V_marca, V_matricula,
-				V_combustivel, V_consumoMedio FROM viaturas");
+				$instrucao = $this->LigacaoBD->prepare("SELECT * FROM viatura");
 
-				// Executar
-				$sucesso_funcao = $instrucao->execute();
-				
 				// Percorrer os dados da query e guardar num array
-				if($sucesso_funcao){
+				if($instrucao->execute()){
 					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
                                             while($registo = $instrucao->fetch()){
-						$viatura->setActiva($registo["V_Ati"]);
-                                                $viatura->setCapacidadeDeposito($registo["V_CDe"]);
-                                                $viatura->setCombustivel($registo["V_Cum"]);
-                                                $viatura->setConsumoMedio($registo["V_ConM"]);
-                                                $viatura->setDataMatricula($registo["V_DataM"]);
-                                                $viatura->setEnderecoFoto($registo["V_EndFo"]);
-                                                $viatura->setIdViaturas($registo["V_IdV"]);
-                                                $viatura->setLugaresDeitados($registo["V_LDe"]);
-                                                $viatura->setLugaresSentados($registo["V_LSe"]);
-                                                $viatura->setMarca($registo["V_Marca"]);
-                                                $viatura->setMatricula($registo["V_Matri"]);
-                                                $viatura->setModelo($registo["V_Mod"]);
-                                                $viatura->setQuilometragem($registo["V_Quil"]);
-                                                $viatura->setTipo($registo["V_Tipo"]);
-                                                $dados = $viatura;
-					}
+                                                $dados[] = new Viaturas($registo["V_ID"],$registo["V_MATRICULA"],$registo["V_MARCA"],$registo["V_MODELO"],$registo["V_TIPOVIATURA"],$registo["V_DATAMATRICULA"],$registo["V_COMBUSTIVEL"],$registo["V_CAPACIDADEDEPOSITO"],$registo["V_QUILOMETRAGEM"],$registo["V_CONSUMOMEDIO"],$registo["V_NUMEROLUGARESSENTADOS"],$registo["V_NUMEROLUGARESDEITADOS"],$registo["V_FOTOGRAFIA"],$registo["V_ACTIVO"]);
+
+                                            }
 				}
 			}catch(PDOException $e){
 				echo $e->getMessage();
