@@ -16,24 +16,13 @@
             $this->LigacaoBD == null;
         }
 
-        public function adicionaTipoEquip($nome){
-            try{
-                $instrucao = $LigacaoBD->prepare("INSERT INTO Tipo_Artigo (
-				TA_nome ) VALUES (?)");
-                $instrucao->bind_param($nome);
-                // Executar
+        public function adicionaTipoEquip(TipoArtigos $tipoEquip){
+           $sql = "INSERT INTO `fmt`.`tipo_artigo` (`TA_NOME`) VALUES (:TA_NOME);";
+           
+           $dados_tipoEquip = array('TA_NOME' => $tipoEquip->getNome());
+           
+           $this->bd->inserir($sql, $dados_tipoEquip);
 
-                $sucesso_funcao = $instrucao->execute();
-                $instrucao->close();
-
-            }catch(PDOException $e){
-                echo $e->getMessage();
-            }
-            if($sucesso_funcao){
-                return "True";
-            }else{
-                return "False";
-            }
         }
 
         public function listarTiposEquip(){
