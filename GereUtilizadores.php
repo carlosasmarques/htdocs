@@ -1,6 +1,6 @@
 <?php
-include_once "conf.php";
-include_once "daoutilizador.php";
+
+include "daoutilizador.php";
 session_start();
 // Ligação
 
@@ -41,5 +41,14 @@ if(isset($_GET["logout"])){
        
         
     }
+            public function listarUtilizador(){
+
+           $daoutilizador = new DaoUtilizador();
+           if(($utilizador = $daoutilizador ->listarUtilizador()) != NULL){
+               return $utilizador;
+           }else{
+               return NULL;
+           }
+        }
     }
 ?>

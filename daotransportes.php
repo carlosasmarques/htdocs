@@ -208,7 +208,7 @@
 
                         $instrucao = $this->bd->query("SELECT T_ID,U_NOME,T_DATATRANSPORTE,T_ORIGEM,T_DESTINO,V_MATRICULA FROM transportes,utilizadores,viatura where transportes.U_ID=utilizadores.U_ID and transportes.V_ID=viatura.V_ID");
                         for($i=0; $i<count($instrucao); $i++){
-                            $dados[] = Array($instrucao[$i]["T_ID"],$instrucao[$i]["U_NOME"],$instrucao[$i]["T_DATATRANSPORTE"],$instrucao[$i]["T_ORIGEM"],$registo["T_DESTINO"],$instrucao[$i]["V_MATRICULA"]);
+                            $dados[] = Array($instrucao[$i]["T_ID"],$instrucao[$i]["U_NOME"],$instrucao[$i]["T_DATATRANSPORTE"],$instrucao[$i]["T_ORIGEM"],$instrucao[$i]["T_DESTINO"],$instrucao[$i]["V_MATRICULA"]);
                         }                    	
                         
 
