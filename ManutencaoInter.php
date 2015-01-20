@@ -10,8 +10,10 @@
  */
 class manutencaoInter {
     private $idManutencaoInter;
+    private $idViatura;
     private $dataManutencao;
     private $descricaoAvaria;
+    private $materialGasto;
     private $quantidadeMaterialGasto;
     /*
          * Construtor da classe ManutencaoInter
@@ -22,10 +24,12 @@ class manutencaoInter {
          * @param quantidadeMaterialGasto
          * @return 
          *          */ 
-    function __construct($idManutencaoInter, $dataManutencao, $descricaoAvaria, $quantidadeMaterialGasto) {
+    function __construct($idManutencaoInter, $idViatura, $dataManutencao, $descricaoAvaria, $materialGasto, $quantidadeMaterialGasto) {
         $this->idManutencaoInter = $idManutencaoInter;
+        $this->idViatura = $idViatura;
         $this->dataManutencao = $dataManutencao;
         $this->descricaoAvaria = $descricaoAvaria;
+        $this->materialGasto = $materialGasto;
         $this->quantidadeMaterialGasto = $quantidadeMaterialGasto;
     }
     /*
@@ -36,7 +40,12 @@ class manutencaoInter {
     function getIdManutencaoInter() {
         return $this->idManutencaoInter;
     }
-/*
+    
+    function getIdViatura() {
+        return $this->idViatura;
+    }
+    
+    /*
          * Getter da classe ManutencaoInter
          * @param 
          * @return dataManutencao
@@ -52,6 +61,11 @@ class manutencaoInter {
     function getDescricaoAvaria() {
         return $this->descricaoAvaria;
     }
+    
+    function getMaterialGasto() {
+        return $this->materialGasto;
+    }
+    
 /*
          * Getter da classe ManutencaoInter
          * @param 
@@ -68,6 +82,11 @@ class manutencaoInter {
     function setIdManutencaoInter($idManutencaoInter) {
         $this->idManutencaoInter = $idManutencaoInter;
     }
+    
+    function setIdViatura($idViatura) {
+        $this->idViatura = $idViatura;
+    }
+    
 /*
          * Getter da classe ManutencaoInter
          * @param dataManutencao
@@ -84,6 +103,11 @@ class manutencaoInter {
     function setDescricaoAvaria($descricaoAvaria) {
         $this->descricaoAvaria = $descricaoAvaria;
     }
+    
+    function setMaterialGasto($materialGasto) {
+        $this->materialGasto = $materialGasto;
+    }
+    
 /*
          * Getter da classe ManutencaoInter
          * @param quantidadeMaterialGasto
