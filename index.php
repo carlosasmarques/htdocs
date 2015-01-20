@@ -61,9 +61,16 @@
             <input type="password" class="form-control" placeholder="Palavra-passe" title="Introduza a sua palavra-passe de autenticação" name="password">
 			
 			<?php
-				if(isset($_GET["erro"]) && !empty($_GET["erro"]) && $_GET["erro"] == 1){
-					echo '<div class="alert alert-danger">Utilizador ou palavra-passe errados!</div>';
+				if(isset($_GET["erro"]) && !empty($_GET["erro"])){
+					if($_GET["erro"] == 1){
+						echo '<div class="alert alert-danger">Utilizador ou palavra-passe errados!</div>';
+					}
+					
+					if($_GET["erro"] == 2){
+						echo '<div class="alert alert-danger">Não inseriu o utilizador ou palavra-passe!</div>';
+					}
 				}
+				
 			?>
 			
             <label class="checkbox">
