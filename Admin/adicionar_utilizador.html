@@ -1,6 +1,3 @@
-<?php
-$gereAdministracao = new GereAdministracao();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -132,84 +129,96 @@ $gereAdministracao = new GereAdministracao();
                         </li>
                         <li class="active">Adicionar Utilizador</li>
                     </ol>
-                    <form style="width : 800px" method="post" action="<?php $gereAdministracao->adicionarUtilizador()?>">
-                    <div style="float: left">
-                    <img src="../exavatar.png" style="float: left" class="img-responsive" alt="Responsive image">
-                    <br style="clear: both">
-                    <input type="button" value="Escolher Imagem" style="float: left" class="btn btn-primary btn-xl">
-                        <br style="clear: both">
-                        <input type="radio" name="sex" value="male">Administrador
-                        <input type="radio" name="sex" value="female">Utilizador
-                    </div>
-                                <div style=" width: 600px; float: right">
 
-                                <br style="clear: both">
-                                    <div style="float: inherit; margin-right: 5px; margin-left: 5px">
+                    <div class="centered">
+                        <div class="pull-left">
+                            <img src="../exavatar.png" class="img-responsive" alt="Responsive image">
+                            <br />
+                            <a class="btn btn-primary btn-xl" href="#"> Escolher Imagem </a>
+
+                            <br />
+                            <br />
+                            <form>
+                                <input type="radio" name="sex" value="male">Administrador
+                                <br>
+                                <input type="radio" name="sex" value="female">Utilizador
+                            </form>
+
+                        </div>
+
+
+                        <div class="col-sm-6 col-md-4">
+                            <form>
+                                <div class="form-group">
                                     <label class="numerofuncionario">Número de Funcionário:</label>
-                                    <br style="clear: both">
-                                    <input type="text" style="width : 120px;" class="form-control" id="nf" placeholder="Inserir dados" name="numero" >
-                                        <br style="clear: both">
-                                    </div>
-                                    <div style="float: inherit; margin-right: 5px; margin-left: 5px">
+                                    <input type="text" class="form-control" id="nf" placeholder="Inserir dados">
+                                </div>
+
+                                <div class="form-group">
                                     <label class="nomefuncionario">Nome Utilizador:</label>
-                                    <br style="clear: both">
-                                    <input type="text" style="width : 120px;" class="form-control" id="nu" placeholder="Inserir dados" name="username">
-                                    <br style="clear: both">
-                                    </div>
-                                    <div style="float: inherit; margin-right: 5px; margin-left: 5px">
+                                    <input type="text" class="form-control" id="nu" placeholder="Inserir dados">
+                                </div>
+                            </form>
+
+                        </div>
+
+                        <div class="col-sm-6 col-md-4">
+                            <form>
+                                <div class="form-group">
                                     <label class="funcao">Função:</label>
-                                    <br style="clear: both">
-                                    <input type="text" style="width : 120px;" class="form-control" id="f" placeholder="Inserir dados" name="funcao">
-                                    <br style="clear: both">
-                                    </div>
-                                    <div style="float: inherit; margin-right: 5px; margin-left: 5px">
+                                    <input type="text" class="form-control" id="f" placeholder="Inserir dados">
+                                </div>
+
+                                <div class="form-group">
                                     <label class="password">Password:</label>
-                                <br style="clear: both">
-                                    <input type="password" style="width : 120px;" class="form-control" id="pass" placeholder="Inserir dados" name="password">
-                                <br style="clear: both">
-                                        </div>
-                                    <div style="float: inherit; margin-right: 5px; margin-left: 5px">
+                                    <input type="password" class="form-control" id="pass" placeholder="Inserir dados">
+                                </div>
+                            </form>
+
+                        </div>
+
+                        <div class="col-sm-6 col-md-8">
+                            <form>
+                                <div class="form-group">
                                     <label class="nome">Nome:</label>
-                                <br style="clear: both">
-                                    <input type="text" style="width : 120px;" class="form-control" id="nome" placeholder="Inserir dados" name="nome">
-                                <br style="clear: both">
-                                        </div>
-                                    <div style="float: inherit; margin-right: 5px; margin-left: 5px">
+                                    <input type="text" class="form-control" id="nome" placeholder="Inserir dados">
+                                </div>
+
+                                <div class="form-group">
                                     <label class="morada">Morada:</label>
-                                <br style="clear: both">
-                                    <input type="text" style="width : 120px;" class="form-control" id="mor" placeholder="Inserir dados" name="morada">
-                                <br style="clear: both">
-                                        </div>
-                                    <div style="float: inherit; margin-right: 5px; margin-left: 5px">
+                                    <input type="text" class="form-control" id="mor" placeholder="Inserir dados">
+                                </div>
+                            </form>
+                        </div>
+
+
+
+
+                        <div class="col-sm-6 col-md-4">
+                            <form>
+                                <div class="form-group">
                                     <label class="contacto">Contacto:</label>
-                                <br style="clear: both">
-                                    <input type="text" style="width : 120px;" class="form-control" id="contacto" placeholder="Inserir dados" name="contacto">
-                                <br style="clear: both">
-                                        </div>
-                                        <div style="float: inherit; margin-right: 5px; margin-left: 5px">
+                                    <input type="text" class="form-control" id="contacto" placeholder="Inserir dados">
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-sm-6 col-md-4">
+                            <form>
+                                <div class="form-group">
                                     <label class="datanascimento">Data Nascimento:</label>
-                                <br style="clear: both">
-                                    <input type="date" style="width : 170px;" class="form-control" id="datanascimento" name="dataNascimento">
-                                <br style="clear: both">
-                                      </div>
-                                    div style="float: inherit; margin-right: 5px; margin-left: 5px">
-                                    <label class="datanascimento">Tipo Utilizador:</label>
-                                    <br style="clear: both">
-                                    <input type="date" style="width : 170px;" class="form-control" value="Utilizador" id="tipoUtilizador" name="TipoUtilizador">
-                                    <br style="clear: both">
+                                    <input type="date" class="form-control" id="datanascimento">
                                 </div>
-                                </div>
+                            </form>
+
+                        </div>
+
                         <div class="pull-right">
                             <br />
                             <a href="gerir_utilizadores.php" class="btn btn-danger btn-xl"> Voltar </a>
-                            <input type="submit" class="btn btn-primary btn-xl"> Adicionar </a>
+                            <a class="btn btn-primary btn-xl" href="gerir_utilizadores.php"> Adicionar </a>
                             <br/>
                         </div>
-                            </form>
-                    </div>
-                </div>
-            </div>
-
 
                     </div>
 
