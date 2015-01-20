@@ -22,6 +22,7 @@
         private $telefone;
         private $dataNascimento;
         private $dataRegisto;
+		private $ativo;
         /**
 	 * Construtor da Classe Utentes
 	 * @param idUtentes
@@ -34,7 +35,7 @@
          * @param dataRegisto
 	 * @return 
 	 */
-        function __construct($idUtentes, $nome, $numeroSNS, $morada, $telefone, $dataNascimento, $dataRegisto) {
+        function __construct($idUtentes, $nome, $numeroSNS, $morada, $telefone, $dataNascimento, $dataRegisto, $ativo) {
             $this->idUtentes = $idUtentes;
             $this->nome = $nome;
             $this->numeroSNS = $numeroSNS;
@@ -42,6 +43,7 @@
             $this->telefone = $telefone;
             $this->dataNascimento = $dataNascimento;
             $this->dataRegisto = $dataRegisto;
+			$this->ativo = $ativo;
         }
         /**
 	 * Getter da classe Utentes
@@ -99,6 +101,9 @@
         function getDataRegisto() {
             return $this->dataRegisto;
         }
+		function getAtivo() {
+            return $this->ativo;
+        }
         /**
 	 * Setter da classe Utentes
 	 * @param idUtentes
@@ -154,6 +159,9 @@
 	 */
         function setDataRegisto($dataRegisto) {
             $this->dataRegisto = $dataRegisto;
+        }
+		function setAtivo($ativo) {
+            $this->ativo = $ativo;
         }
 
 

@@ -1,9 +1,8 @@
 <?php
-	include_once "utentes.php";
 	include_once "gereutentes.php";
 	
 	$gere_utentes = new GereUtentes();
-	$utentes = new Utentes(0, "", 0, "", 0, "", "");
+	$utentes = new Utentes(0, "", 0, "", "", "", "",true);
 	
 	$utentes = $gere_utentes->listarUtentes();
 
@@ -173,14 +172,14 @@
 									echo'<div class="list-group-item">';
 									
 									// substituir pelos getters certos
-									echo'    <span style="min-width: 40px; display: inline-block;">' . $utentes[$i]->getId() . '</span> ';
-									echo'    <span style="min-width: 100px; display: inline-block;">' . $utentes[$i]->getId() . '</span>';
-									echo'    <span style="min-width: 90px; display: inline-block;">' . $utentes[$i]->getId() . '</span>';
-									echo'    <span style="min-width: 160px; display: inline-block;">' . $utentes[$i]->getId() . '</span>';
-									echo'    <span style="min-width: 80px; display: inline-block;">' . $utentes[$i]->getId() . '</span>';
-									echo'    <span style="min-width: 120px; display: inline-block;">' . $utentes[$i]->getId() . '</span>';
-									echo'    <span style="min-width: 110px; display: inline-block;">' . $utentes[$i]->getId() . '</span>';
-									echo'    <span style="min-width: 80px; display: inline-block;"><a href="alterar_utente.php?id=' . $utentes[$i]->getId() . '" class="btn btn-xs" >Ver / Alterar</a></span>';
+									echo'    <span style="min-width: 40px; display: inline-block;">' . $utentes[$i]->getIdUtentes() . '</span> ';
+									echo'    <span style="min-width: 100px; display: inline-block;">' . $utentes[$i]->getNome() . '</span>';
+									echo'    <span style="min-width: 90px; display: inline-block;">' . $utentes[$i]->getNumeroSNS() . '</span>';
+									echo'    <span style="min-width: 160px; display: inline-block;">' . $utentes[$i]->getMorada() . '</span>';
+									echo'    <span style="min-width: 80px; display: inline-block;">' . $utentes[$i]->getTelefone() . '</span>';
+									echo'    <span style="min-width: 120px; display: inline-block;">' . $utentes[$i]->getDataNascimento() . '</span>';
+									echo'    <span style="min-width: 110px; display: inline-block;">' . $utentes[$i]->getDataRegisto() . '</span>';
+									echo'    <span style="min-width: 80px; display: inline-block;"><a href="alterar_utente.php?id=' . $utentes[$i]->getIdUtentes() . '" class="btn btn-xs" >Ver / Alterar</a></span>';
 									echo'</div>';
 								}
 								?>
