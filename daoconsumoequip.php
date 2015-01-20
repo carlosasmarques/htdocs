@@ -31,7 +31,18 @@
 		
 		function adicionarConsumoEquip(ConsumoEquip $consumoequip){
 		
-                    /*fazer da mesma maneira que o daoutilizador*/
+                    $sql = "INSERT INTO `fmt`.`abastecimentos` (`V_ID`, `A_QUANTIDADECOMBUSTIVEL`, `A_QUILOMETRAGEMATUAL`, `A_DATAABASTECIMENTO`, `A_CONSUMOMEDIO`) "
+                            . "VALUES (:V_ID, :A_QUANTIDADECOMBUSTIVEL, :A_QUILOMETRAGEMATUAL, :A_DATAABASTECIMENTO, :A_CONSUMOMEDIO);";
+		
+                          $dados_consumoequip = array (
+                              'V_ID'=> $consumoequip->get(),/* DUVIDA FALTA ATRIBUTO? */
+                              'A_QUANTIDADECOMBUSTIVEL'=> $consumoequip->get(),/* DUVIDA ATRIBUTO */
+                              'A_QUILOMETRAGEMATUAL'=> $consumoequip->get(), /* DUVIDA ATRIBUTO */
+                              'A_DATAABASTECIMENTO'=> $consumoequip->getDataDeConsumo(), 
+                              'A_CONSUMOMEDIO'=> $consumoequip->get()/* FALTA METODO */
+                              );
+                          
+                    $this->bd->inserir($sql, $dados_consumoequip);
                     
                 }
 		

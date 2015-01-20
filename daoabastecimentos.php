@@ -37,30 +37,20 @@
 		/*****************************************************************************
 			Nota: Não existe o atributo "matricula" na base de dados
 		*****************************************************************************/
-		public function adicionarAbastecimento($matricula, $quantidadeCombustivel, $dataAbastecimento, $mediaDesteAbastecimento){
+		public function adicionarAbastecimento(Abastecimentos $abastecimento){
+		 
+                    $sql = "INSERT INTO `fmt`.`consumo_artigos` (`E_ID`, `C_QUANTIDADECONSUMIDA`, `C_DATA`, `C_DESCRICAOCONSUMO`) "
+                            . "VALUES (:E_ID, :C_QUANTIDADECONSUMIDA, :C_DATA, :C_DESCRICAOCONSUMO);";
 		
-			try{
-				// Preparar a instrução sql de inserção
-				/*********************************************************************
-					Nota: falta o parametro "quilometragem atual"
-				*********************************************************************/
-				$instrucao = $LigacaoBD->prepare("INSERT INTO ABASTECIMENTOS (
-				A_QUANTIDADECOMBUSTIVEL, A_DATAABASTECIMENTO, A_CONSUMOMEDIO) VALUES (?, ?, ?)");
-				$instrucao->bind_param($quantidadeCombustivel, $dataAbastecimento, $mediaDesteAbastecimento);
-				
-				// Executar
-				$sucesso_funcao = $instrucao->execute();
-				$instrucao->close();
-				
-			}catch(PDOException $e){
-				echo $e->getMessage();
-			}
-			
-			if($sucesso_funcao){
-				return "Abastecimento registado com sucesso<br />";
-			}else{
-				return "Erro ao registar o abastecimento!<br />";
-			}
+                          $dados_consumoequip = array (
+                              'E_ID'=> $abastecimento->get(),/* FALTA ATRIBUTO? */
+                              'C_QUANTIDADECONSUMIDA'=> $abastecimento->getQuantidadeConsumida(),
+                              'C_DATA'=> $abastecimento->getDataDeConsumo(), 
+                              'C_DESCRICAOCONSUMO'=> $abastecimento->getDescricaoConsumo()
+                              );
+                          
+                    $this->bd->inserir($sql, $dados_consumoequip);
+                    
 		}
 		
 		/*********************************************************************
