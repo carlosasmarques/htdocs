@@ -3,11 +3,13 @@
 
 	include "daoutilizador.php";
     include_once "utilizadores.php";
+	
+	session_start();
 
 	// accao "logout" - terminar a sessão, se for pedido
 	if(
-		isset($_GET["accao"]) && !empty($_GET["accao"]) &&
-		!strcmp($_GET["accao"], "logout")
+		isset($_GET["logout"]) && !empty($_GET["logout"]) &&
+		!strcmp($_GET["logout"], "1")
 	){
 		$_SESSION = array();
 		if(isset($_COOKIE[session_name()])){
@@ -15,7 +17,7 @@
 		}
 		session_destroy();
 		
-		header("Location: index.php?erro=3");
+		header("Location: index.php?logout=1");
 		exit;
 	}
 	
