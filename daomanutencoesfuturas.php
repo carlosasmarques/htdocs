@@ -16,25 +16,19 @@
 	include "conf.php";
 	 
 	class DaoManutencoesFuturas{
-		private $LigacaoBD;
+		private $bd;
 		
 		// Ligar á base de dados
-		function __construct(){
-			try{
-				$this->LigacaoBD = new PDO("mysql:host=$servidor;dbname=$bd", $user, $pass);
-			}catch(PDOException $e){
-				echo $e->getMessage();
-				return false;
-			}
-			return true;
-		}
+		public function __construct() {
+                    $this->bd = new BaseDados();
+                }
 		
 		/*
 		Desligar da base de dados
 		(assim que seja apagada a ultima referencia ao objeto)
 		*/
 		function __destruct(){
-			$this->LigacaoBD == null;
+			$this->bd == null;
 		}
 	
 		/*****************************************************************************
@@ -47,7 +41,7 @@
 				/*********************************************************************
 					Nota: falta o parametro "quilometragem atual"
 				*********************************************************************/
-				$instrucao = $LigacaoBD->prepare("INSERT INTO MANUTENCOESFUTURAS (V_ID, MF_DESCRICAOMANUTENCAO, MF_DATAMANUTENCAO, MF_QUILOMETRAGEMFUTURA, MF_ESTADO) VALUES (?, ?, ?, ?, ?)");
+				$instrucao =$bd->prepare("INSERT INTO MANUTENCOESFUTURAS (V_ID, MF_DESCRICAOMANUTENCAO, MF_DATAMANUTENCAO, MF_QUILOMETRAGEMFUTURA, MF_ESTADO) VALUES (?, ?, ?, ?, ?)");
 				$instrucao->bind_param($id_viatura, $descricaoManutencao, $data, $quilometragem, $estado);
 				
 				// Executar
@@ -244,4 +238,5 @@
 			}
 			return $dados;
 		}
+        }
 ?>
