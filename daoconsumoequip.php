@@ -121,7 +121,7 @@
 					$ConsumoEquip->setDescricao($registo["E_descricao"]);
 						$ConsumoEquip->setQuantidade($registo["C_quantidadeConsumida"]);
 						$ConsumoEquip->setData($registo["C_data"]);
-						$ConsumoEquip->setDescconsumo($registo["C_descricaoConsumo");
+						$ConsumoEquip->setDescconsumo($registo["C_descricaoConsumo"]);
 						$dados[] = $ConsumoEquip;
 					}
 				}
@@ -149,7 +149,7 @@
 						$ConsumoEquip->setDescricao($registo["E_descricao"]);
 						$ConsumoEquip->setQuantidade($registo["C_quantidadeConsumida"]);
 						$ConsumoEquip->setData($registo["C_data"]);
-						$ConsumoEquip->setDescconsumo($registo["C_descricaoConsumo");
+						$ConsumoEquip->setDescconsumo($registo["C_descricaoConsumo"]);
 						$dados[] = $ConsumoEquip;
 					}
 				}
@@ -182,7 +182,7 @@
 						$ConsumoEquip->setDescricao($registo["E_descricao"]);
 						$ConsumoEquip->setQuantidade($registo["C_quantidadeConsumida"]);
 						$ConsumoEquip->setData($registo["C_data"]);
-						$ConsumoEquip->setDescconsumo($registo["C_descricaoConsumo");
+						$ConsumoEquip->setDescconsumo($registo["C_descricaoConsumo"]);
 						$dados[] = $ConsumoEquip;
 					}
 				}
