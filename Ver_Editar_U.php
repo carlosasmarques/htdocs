@@ -60,7 +60,7 @@
                     <li class="drop-menu" style="z-index: 1">
                         <a>Utilizador <span class="caret"></span></a>
                         <ul class="sub-menu">
-                            <li><a href="alterar_utilizador.html">Alterar Password</a>
+                            <li><a href="alterar_utilizador.php">Alterar Password</a>
                             </li>
                             <li><a href="#">Sair</a>
                             </li>
@@ -79,37 +79,37 @@
                     <li><a href="inicial.php"><span>Principal</span></a>
                     </li>
 
-                    <li><a href="Gestao_stock_U.html"><span>Gerir Stocks</span></a>
+                    <li><a href="Gestao_stock_U.php"><span>Gerir Stocks</span></a>
                     </li>
                     <li class='has-sub'><a><span>Viaturas</span></a>
                         <ul>
-                            <li><a href="gerir_viaturas.html"><span>Gerir Viaturas</span></a>
-                                <li><a href="manutencao.html"><span>Manutenções</span></a>
-                                    <li><a href="abastecer_viatura.html"><span>Abastecimentos</span></a>
-                                        <li><a href="gerir_inspecoes.html"><span>Inspeções</span></a>
+                            <li><a href="gerir_viaturas.php"><span>Gerir Viaturas</span></a>
+                                <li><a href="manutencao.php"><span>Manutenções</span></a>
+                                    <li><a href="abastecer_viatura.php"><span>Abastecimentos</span></a>
+                                        <li><a href="gerir_inspecoes.php"><span>Inspeções</span></a>
                         </ul>
                         </li>
                         <li class='has-sub'><a><span>Transporte de Doentes</span></a>
                             <ul>
-                                <li><a href="adicionar_transporte_doentes.html"><span>Adicionar Novo Transporte</span></a>
+                                <li><a href="adicionar_transporte_doentes.php"><span>Adicionar Novo Transporte</span></a>
                                 </li>
-                                <li><a href="gerir_transporte_doentes.html"><span>Gerir Transporte de Doentes</span></a>
-                                    <li><a href='gerir_utente.html'><span>Gerir Utentes</span></a>
+                                <li><a href="gerir_transporte_doentes.php"><span>Gerir Transporte de Doentes</span></a>
+                                    <li><a href='gerir_utente.php'><span>Gerir Utentes</span></a>
                             </ul>
                             </li>
 
-                            <li><a href='registo_consumos.html'><span>Registo de Consumos</span></a>
+                            <li><a href='registo_consumos.php'><span>Registo de Consumos</span></a>
 
                             </li>
 
 
                             <li class='has-sub'><a><span>Mensagens</span></a>
                                 <ul>
-                                    <li><a href='enviar_mensagem.html'><span>Nova Mensagem</span></a>
+                                    <li><a href='enviar_mensagem.php'><span>Nova Mensagem</span></a>
                                     </li>
-                                    <li><a href='mensagens_recebidas.html'><span>Mensagens Recebidas</span></a>
+                                    <li><a href='mensagens_recebidas.php'><span>Mensagens Recebidas</span></a>
                                     </li>
-                                    <li><a href='mensagens_enviadas.html'><span>Mensagens Enviadas</span></a>
+                                    <li><a href='mensagens_enviadas.php'><span>Mensagens Enviadas</span></a>
                                     </li>
                                 </ul>
                             </li>
@@ -124,7 +124,7 @@
                     <ol class="breadcrumb" style="width: 800px">
                         <li><a href="inicial.php">Utilizador</a>
                         </li>
-                        <li><a href="Gestao_stock_U.html">Gestão de Stocks</a>
+                        <li><a href="Gestao_stock_U.php">Gestão de Stocks</a>
                         </li>
                         <li class="active">Ver/Editar</li>
                     </ol>
@@ -180,7 +180,7 @@
                                 </select>
                             </div>
                             <div class="pull-right">
-                                <a href="./Gestao_stock_U.html" class="btn btn-danger btn-xl pull-right"> Voltar </a>
+                                <a href="./Gestao_stock_U.php" class="btn btn-danger btn-xl pull-right"> Voltar </a>
                                 <a class="btn btn-primary btn-xl pull-right" > Guardar Alterações </a>
                                 <br/>
                             </div>

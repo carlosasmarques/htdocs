@@ -60,7 +60,7 @@
                     <li class="drop-menu" style="z-index: 1">
                         <a>Utilizador <span class="caret"></span></a>
                         <ul class="sub-menu">
-                            <li><a href="alterar_utilizador.html">Alterar Password</a>
+                            <li><a href="alterar_utilizador.php">Alterar Password</a>
                             </li>
                             <li><a href="#">Sair</a>
                             </li>
@@ -79,37 +79,37 @@
                     <li><a href="inicial.php"><span>Principal</span></a>
                     </li>
 
-                    <li><a href="Gestao_stock_U.html"><span>Gerir Stocks</span></a>
+                    <li><a href="Gestao_stock_U.php"><span>Gerir Stocks</span></a>
                     </li>
                     <li class='has-sub'><a><span>Viaturas</span></a>
                         <ul>
-                            <li><a href="gerir_viaturas.html"><span>Gerir Viaturas</span></a>
-                                <li><a href="manutencao.html"><span>Manutenções</span></a>
-                                    <li><a href="abastecer_viatura.html"><span>Abastecimentos</span></a>
-                                        <li><a href="gerir_inspecoes.html"><span>Inspeções</span></a>
+                            <li><a href="gerir_viaturas.php"><span>Gerir Viaturas</span></a>
+                                <li><a href="manutencao.php"><span>Manutenções</span></a>
+                                    <li><a href="abastecer_viatura.php"><span>Abastecimentos</span></a>
+                                        <li><a href="gerir_inspecoes.php"><span>Inspeções</span></a>
                         </ul>
                         </li>
                         <li class='has-sub'><a><span>Transporte de Doentes</span></a>
                             <ul>
-                                <li><a href="adicionar_transporte_doentes.html"><span>Adicionar Novo Transporte</span></a>
+                                <li><a href="adicionar_transporte_doentes.php"><span>Adicionar Novo Transporte</span></a>
                                 </li>
-                                <li><a href="gerir_transporte_doentes.html"><span>Gerir Transporte de Doentes</span></a>
-                                    <li><a href='gerir_utente.html'><span>Gerir Utentes</span></a>
+                                <li><a href="gerir_transporte_doentes.php"><span>Gerir Transporte de Doentes</span></a>
+                                    <li><a href='gerir_utente.php'><span>Gerir Utentes</span></a>
                             </ul>
                             </li>
 
-                            <li><a href='registo_consumos.html'><span>Registo de Consumos</span></a>
+                            <li><a href='registo_consumos.php'><span>Registo de Consumos</span></a>
 
                             </li>
 
 
                             <li class='has-sub'><a><span>Mensagens</span></a>
                                 <ul>
-                                    <li><a href='enviar_mensagem.html'><span>Nova Mensagem</span></a>
+                                    <li><a href='enviar_mensagem.php'><span>Nova Mensagem</span></a>
                                     </li>
-                                    <li><a href='mensagens_recebidas.html'><span>Mensagens Recebidas</span></a>
+                                    <li><a href='mensagens_recebidas.php'><span>Mensagens Recebidas</span></a>
                                     </li>
-                                    <li><a href='mensagens_enviadas.html'><span>Mensagens Enviadas</span></a>
+                                    <li><a href='mensagens_enviadas.php'><span>Mensagens Enviadas</span></a>
                                     </li>
                                 </ul>
                             </li>
@@ -169,7 +169,7 @@
 
 
                     </div>
-                    <a class="btn btn-primary btn-xl" href="./Adicionar_Stock.html" style="margin-left:375px;"> Adicionar Novo </a>
+                    <a class="btn btn-primary btn-xl" href="./Adicionar_Stock.php" style="margin-left:375px;"> Adicionar Novo </a>
                     <br/>
                     <div id="openModal" class="modalDialog">
                         <div>
@@ -186,8 +186,8 @@
                                     <input type="text" class="form-control" id="PrecoU" placeholder="Inserir os dados">
                                 </div>
 
-                                <a href="./Gestao_stock_U.html" class="btn btn-danger btn-xl pull-right"> Voltar </a>
-                                <a class="btn btn-primary btn-xl pull-right" href="./Gestao_stoc_U.html"> Adicionar Novo </a>
+                                <a href="./Gestao_stock_U.php" class="btn btn-danger btn-xl pull-right"> Voltar </a>
+                                <a class="btn btn-primary btn-xl pull-right" href="./Gestao_stoc_U.php"> Adicionar Novo </a>
                                 <br/>
                             </form>
                             <?php
@@ -217,7 +217,7 @@
                                         <span class="descrição" style="min-width: 100px; display: inline-block;">Lâmpadas</span> 
                                         <span class="tipo" style="min-width: 250px; display: inline-block;">Equipamento Diverso</span> 
                                         <span class="quantidade" style="min-width: 100px; display: inline-block;">10</span>
-                                        <a href="./Ver_Editar_U.html" class="btn btn-xs">Ver/Editar</a>
+                                        <a href="./Ver_Editar_U.php" class="btn btn-xs">Ver/Editar</a>
                                         <a class="btn btn-xs" href="#openModal">Repor</a>
 
                                     </div>
