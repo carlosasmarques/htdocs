@@ -1,5 +1,4 @@
 <?php
-include "conf.php";
 include "Utentes.php";
 include "acessobd.php";
 
@@ -8,19 +7,9 @@ class DaoUtentes{
     private $bd;
 
     public function __construct() {
-	global $conf_servidor;
-        global $conf_bd;
-        global $conf_user;
-        global $conf_pass;
-        
-		
         $this->bd = new BaseDados();
-     
     }
-    function __destruct(){
-        $this->bd == null;
-    }
-	
+    
     public function adicionarUtente(Utentes $utente){
         $sql = "INSERT INTO `fmt`.`utentes` (`UT_nome`, `UT_morada`, `UT_contactoTelefonico`, "
                 . "`UT_dataNascimento`, `UT_dataRegisto`, `UT_sns`, "
@@ -176,33 +165,15 @@ class DaoUtentes{
     public function listarUtentes(){
 		$dados = array();
         
-        try{
-            $instrucao = $this->LigacaoBD->prepare("SELECT * FROM utentes");
-            //Executar
-			$instrucao->setFetchMode(PDO::FETCH_ASSOC);
-           
-        }catch(PDOException $e){
-            echo $e->getMessage();
-        }
-        if($instrucao->execute()){
+                $instrucao = $this->bd->query("SELECT * FROM utentes");
             
-            while($registo = $instrucao->fetch()){
-                	$dados[] = new Utentes($registo["UT_ID"],$registo["UT_NOME"],$registo["UT_SNS"],$registo["UT_MORADA"],$registo["UT_CONTACTOTELEFONICO"],$registo["UT_DATANASCIMENTO"],$registo["UT_DATAREGISTO"],$registo["UT_ACTIVO"]);
-
-                    /*$listar->setidUtentes($registo["t_idUtentes"]);
-                    $listar->setnome($registo["t_nome"]);
-                    $listar->setnumeroSNS($registo["t_numeroSNS"]);
-                    $listar->setmorada($registo["t_morada"]);
-                    $listar->settelefone($registo["t_telefone"]);
-                    $listar->setdataNascimento($registo["t_dataNascimento"]);
-                    $listar->setdataRegisto($registo["t_dataRegisto"]);
                 
-                $dados[] = $listar;*/
-            }
+            
+                	$dados[] = new Utentes($instrucao[$i]["UT_ID"],$instrucao[$i]["UT_NOME"],$instrucao[$i]["UT_SNS"],$instrucao[$i]["UT_MORADA"],$instrucao[$i]["UT_CONTACTOTELEFONICO"],$instrucao[$i]["UT_DATANASCIMENTO"],$instrucao[$i]["UT_DATAREGISTO"],$instrucao[$i]["UT_ACTIVO"]);
+
+
             return $dados;
-        } else {
-            return NULL;
-        }
+
     }
 }
 ?>

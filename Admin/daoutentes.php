@@ -1,5 +1,5 @@
 <?php
-include "conf.php";
+
 include "Utentes.php";
 include "acessobd.php";
 
