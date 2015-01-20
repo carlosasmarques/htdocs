@@ -50,7 +50,7 @@
            <li class="drop-menu" style="z-index: 1">
                   <a>Utilizador <span class="caret"></span></a>
                   <ul class="sub-menu">
-                    <li><a href="alterar_utilizador.html">Alterar Password</a></li>
+                    <li><a href="alterar_utilizador.php">Alterar Password</a></li>
                     <li><a href="#">Sair</a></li>
                   </ul>
                </li>
@@ -66,34 +66,34 @@
 <ul>
    <li><a href="inicial.php"><span>Principal</span></a></li>
 		
-	  <li><a href="Gestao_stock_U.html"><span>Gerir Stocks</span></a>
+	  <li><a href="Gestao_stock_U.php"><span>Gerir Stocks</span></a>
    </li>
    	  <li class='has-sub'><a><span>Viaturas</span></a>
 		<ul>
-		  <li ><a href="gerir_viaturas.html"><span>Gerir Viaturas</span></a>
-          <li ><a href="manutencao.html"><span>Manutencoes</span></a>
-          <li ><a href="abastecer_viatura.html"><span>Abastecimentos</span></a>
-		  <li ><a href="gerir_inspecoes.html"><span>Inspeções</span></a>
+		  <li ><a href="gerir_viaturas.php"><span>Gerir Viaturas</span></a>
+          <li ><a href="manutencao.php"><span>Manutencoes</span></a>
+          <li ><a href="abastecer_viatura.php"><span>Abastecimentos</span></a>
+		  <li ><a href="gerir_inspecoes.php"><span>Inspeções</span></a>
 		</ul>
    </li>
 	  <li class='has-sub'><a><span>Transporte de Doentes</span></a>
 		<ul>
-		  <li ><a href="adicionar_transporte_doentes.html"><span>Adicionar Novo Transporte</span></a></li>
-		  <li ><a href="gerir_transporte_doentes.html"><span>Gerir Transporte de Doentes</span></a>
-		  <li><a href='gerir_utente.html'><span>Gerir Utentes</span></a>
+		  <li ><a href="adicionar_transporte_doentes.php"><span>Adicionar Novo Transporte</span></a></li>
+		  <li ><a href="gerir_transporte_doentes.php"><span>Gerir Transporte de Doentes</span></a>
+		  <li><a href='gerir_utente.php'><span>Gerir Utentes</span></a>
 		</ul>
    </li>
           
-        <li><a href='registo_consumos.html'><span>Registo de Consumos</span></a>
+        <li><a href='registo_consumos.php'><span>Registo de Consumos</span></a>
                                   
         </li>
     
     
    	    <li class='has-sub'><a><span>Mensagens</span></a>
             <ul>
-                <li ><a href='enviar_mensagem.html'><span>Nova Mensagem</span></a></li>
-				<li ><a href='mensagens_recebidas.html'><span>Mensagens Recebidas</span></a></li>
-				<li ><a href='mensagens_enviadas.html'><span>Mensagens Enviadas</span></a></li>
+                <li ><a href='enviar_mensagem.php'><span>Nova Mensagem</span></a></li>
+				<li ><a href='mensagens_recebidas.php'><span>Mensagens Recebidas</span></a></li>
+				<li ><a href='mensagens_enviadas.php'><span>Mensagens Enviadas</span></a></li>
 			</ul>
         </li>
     
@@ -143,7 +143,7 @@
 							<br />
 							<br />
 						</div>
-						<a class="btn btn-primary btn-xl pull-right"  href="./manutencao_interna.html"> Nova Manutenção </a>
+						<a class="btn btn-primary btn-xl pull-right"  href="./manutencao_interna.php"> Nova Manutenção </a>
 					</form>
 				</div>
 
@@ -179,7 +179,7 @@
 							<span class="Quantidade" style="min-width: 140px; display: inline-block;" >14/05/2014</span>
 							<span class="Descrição" style="min-width: 90px; display: inline-block;" >-</span> 
                            
-							<a href="manutencao_interna_ver.html" class="btn btn-xs" >Ver</a>
+							<a href="manutencao_interna_ver.php" class="btn btn-xs" >Ver</a>
 							</div>
 							
 							<div  class="list-group-item">
@@ -189,7 +189,7 @@
 							<span class="Quantidade" style="min-width: 100px; display: inline-block;" >13-AH-35</span>
 							<span class="Quantidade" style="min-width: 140px; display: inline-block;" >06/10/2014</span>
 							<span class="Descrição" style="min-width: 90px; display: inline-block;" >130</span> 
-							<a href="manutencao_externa_ver.html" class="btn btn-xs" >Ver</a>
+							<a href="manutencao_externa_ver.php" class="btn btn-xs" >Ver</a>
 							</div>
 							
 							<div  class="list-group-item">
@@ -200,7 +200,7 @@
 							<span class="Quantidade" style="min-width: 140px; display: inline-block;" >18/11/2014</span>
 							<span class="Descrição" style="min-width: 90px; display: inline-block;" >50</span> 
      
-							<a href="manutencao_futura_ver.html" class="btn btn-xs" >Ver</a>
+							<a href="manutencao_futura_ver.php" class="btn btn-xs" >Ver</a>
 							</div>
 						<br>
 
