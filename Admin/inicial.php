@@ -44,7 +44,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="inicial.html">FireManTool</a>
+                <a class="navbar-brand" href="inicial.php">FireManTool</a>
             </div>
             <div class="navbar-collapse collapse" style="background-color: #FFCC33;">
                 <ul class="nav navbar-nav navbar-right">
@@ -67,7 +67,7 @@
         <div class="centered">
             <div id='cssmenu'>
                 <ul>
-                    <li><a href="inicial.html"><span>Principal</span></a>
+                    <li><a href="inicial.php"><span>Principal</span></a>
                     </li>
                     <li class='has-sub'><a><span>Administrador</span></a>
                         <ul>
