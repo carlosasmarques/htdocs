@@ -176,7 +176,11 @@
 									for($i=0; $i<count($transporte); $i++){
 												
                                                 echo'<div class="list-group-item">';
-											
+                                                    if($transporte[$i]->getAtiva()==1){
+                                                        $estado = "Ativo";
+                                                    }else{
+                                                        $estado = "Desativo";
+                                                    }					
                                                 echo'    <span style="min-width: 80px; display: inline-block;">' . $transporte[$i][0] . '</span> ';
                                                 echo'    <span style="min-width: 160px; display: inline-block;">' . $transporte[$i][1] . '</span>';
                                                 echo'    <span style="min-width: 160px; display: inline-block;">' . $transporte[$i][2] . '</span>';
@@ -184,7 +188,7 @@
                                                 echo'    <span style="min-width: 100px; display: inline-block;">' . $transporte[$i][4] . '</span>';
                                                 echo'    <span style="min-width: 120px; display: inline-block;">' . $transporte[$i][5] . '</span>';
                                                 echo'    <span style="min-width: 80px; display: inline-block;"><a href="alterar_transporte_doentes.php?id=' . $transporte[$i][0] . '" class="btn btn-xs" >Repor</a></span>';
-
+                                                echo'    <span style="min-width: 80px; display: inline-block;"><a href="alterar_utente.php?id=' . $transporte[$i][0] . '" class="btn btn-xs" >' .$estado. '</a></span>';
                                                 echo'</div>';
                                         }
 										

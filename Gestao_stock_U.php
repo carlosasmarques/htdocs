@@ -213,15 +213,6 @@
 
                                     </span>
 
-                                    <div class="list-group-item">
-                                        <span class="codigo" style="min-width: 70px; display: inline-block;">00001</span> 
-                                        <span class="descrição" style="min-width: 100px; display: inline-block;">Lâmpadas</span> 
-                                        <span class="tipo" style="min-width: 250px; display: inline-block;">Equipamento Diverso</span> 
-                                        <span class="quantidade" style="min-width: 100px; display: inline-block;">10</span>
-                                        <a href="./Ver_Editar_U.php" class="btn btn-xs">Ver/Editar</a>
-                                        <a class="btn btn-xs" href="#openModal">Repor</a>
-
-                                    </div>
                                     
                                     <?php
 											for($i=0; $i<count($equipamentos); $i++){
