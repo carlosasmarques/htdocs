@@ -49,7 +49,9 @@
 			
 			if(!$STH->execute($dados)){
 				echo "Ocorreu um erro ao inserir os dados!<br>";
-			}
+			} else {
+                return "True";
+            }
 		
 		}catch(PDOException $e){
 			echo $e->getMessage();

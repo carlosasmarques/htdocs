@@ -31,7 +31,12 @@ class DaoUtilizador {
             'U_FUNCAO' => $utilizador->getFuncao()
         );
 
-        $this->bd->inserir($sql, $dados_utilizador);
+        $resultado = $this->bd->inserir($sql, $dados_utilizador);
+        if($resultado){
+            return "True";
+        } else {
+            return "False";
+        }
     }
 
     function alterarPalavraPasse($palavraPasse, $id) {

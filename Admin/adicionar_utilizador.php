@@ -1,5 +1,6 @@
 <?php
-$gereAdministracao = new GereAdministracao();
+include "GereUtilizadores.php";
+$gereUtilizadores = new GereUtilizadores();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -132,7 +133,7 @@ $gereAdministracao = new GereAdministracao();
                         </li>
                         <li class="active">Adicionar Utilizador</li>
                     </ol>
-                    <form style="width : 800px" method="post" action="<?php $gereAdministracao->adicionarUtilizador()?>">
+                    <form style="width : 800px" method="post" action="<?php $gereUtilizadores->adicionarUtilizador()?>">
                     <div style="float: left">
                     <img src="../exavatar.png" style="float: left" class="img-responsive" alt="Responsive image">
                     <br style="clear: both">

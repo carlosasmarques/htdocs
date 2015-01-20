@@ -28,6 +28,15 @@ if(isset($_GET["logout"])){
         }
         
     }
+        public function adicionarUtilizador(){
+            $utilizador = new Utilizadores(Null, $_POST["nome"], $_POST["numero"], $_POST["username"], $_POST["password"], $_POST["tipoUtilizador"],"1" ,$_POST["morada"], $_POST["contacto"], $_POST["dataNascimento"], $_POST["funcao"], 1, $_POST["caminhoFoto"]);
+            $daoUtilizador = new DaoUtilizador();
+            if($daoUtilizador->adicionarUtilizador($utilizador)){
+                return "True";
+            } else {
+                return "False";
+            }
+        }
     
         public function alterarDadosUtilizador(){
         

@@ -3,6 +3,8 @@ include "acessobd.php";
 
 class DaoAdministracao{
 
+    function __construct(){}
+
     public function adicionarUtilizador($utilizador){
         try{
             $DBH = getDBH();
