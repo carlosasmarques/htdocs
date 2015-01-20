@@ -12,14 +12,12 @@ if(isset($_GET["logout"])){
 
     class GereUtentes{
         
-        public function adicionarUtente(){
+        public function adicionarUtente(Utentes $utentes){
 
 
-            $utente = new Utentes($_POST["nome"],$_POST["$numeroSNS"],$_POST["$morada"],$_POST["$telefone"],$_POST["$dataNascimento"],$_POST["$dataRegisto"]);
-            if($utente->adicionarUtente($utente)){
-                return "O Utente foi adicionado com sucesso!";
-            }
-                return "O Utente não foi adicionado com sucesso!";
+            $daoutentes = new DaoUtentes();
+            
+            $daoutentes->adicionarUtente($utentes);
        
         }
 

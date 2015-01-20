@@ -1,16 +1,27 @@
 <?php
-include_once "acessobd.php";
-include_once "Utentes.php";
+include "conf.php";
+include "Utentes.php";
+include "acessobd.php";
 
 class DaoUtentes{
 
-     private $bd;
+    private $bd;
 
     public function __construct() {
+	global $conf_servidor;
+        global $conf_bd;
+        global $conf_user;
+        global $conf_pass;
+        
+		
         $this->bd = new BaseDados();
+     
+    }
+    function __destruct(){
+        $this->bd == null;
     }
 	
-    public function adicionarUtente(utentes $utente){
+    public function adicionarUtente(Utentes $utente){
         $sql = "INSERT INTO `fmt`.`utentes` (`UT_nome`, `UT_morada`, `UT_contactoTelefonico`, "
                 . "`UT_dataNascimento`, `UT_dataRegisto`, `UT_sns`, "
                 . "`UT_ativo`, VALUES (:UT_nome, :UT_morada, "
@@ -26,7 +37,7 @@ class DaoUtentes{
 				'UT_sns' => $utente->getNumeroSNS(),
 				'UT_ativo' => $utente->getAtivo()
                 );
-        $this->LigacaoBD->inserir($sql, $dados_utentes);
+        $this->bd->inserir($sql, $dados_utentes);
     }
 
     public function editarDadosUtente($utente){
@@ -164,13 +175,19 @@ class DaoUtentes{
 
     public function listarUtentes(){
 		$dados = array();
-
-            $instrucao = $this->bd->query("SELECT * FROM utentes");
-
         
+        try{
+            $instrucao = $this->LigacaoBD->prepare("SELECT * FROM utentes");
+            //Executar
+			$instrucao->setFetchMode(PDO::FETCH_ASSOC);
+           
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+        if($instrucao->execute()){
             
-            for($i=0; $i<count($instrucao); $i++){
-                	$dados[] = new Utentes($instrucao[$i]["UT_ID"],$instrucao[$i]["UT_NOME"],$instrucao[$i]["UT_SNS"],$instrucao[$i]["UT_MORADA"],$instrucao[$i]["UT_CONTACTOTELEFONICO"],$instrucao[$i]["UT_DATANASCIMENTO"],$instrucao[$i]["UT_DATAREGISTO"],$instrucao[$i]["UT_ACTIVO"]);
+            while($registo = $instrucao->fetch()){
+                	$dados[] = new Utentes($registo["UT_ID"],$registo["UT_NOME"],$registo["UT_SNS"],$registo["UT_MORADA"],$registo["UT_CONTACTOTELEFONICO"],$registo["UT_DATANASCIMENTO"],$registo["UT_DATAREGISTO"],$registo["UT_ACTIVO"]);
 
                     /*$listar->setidUtentes($registo["t_idUtentes"]);
                     $listar->setnome($registo["t_nome"]);
@@ -183,6 +200,9 @@ class DaoUtentes{
                 $dados[] = $listar;*/
             }
             return $dados;
+        } else {
+            return NULL;
+        }
     }
 }
 ?>
