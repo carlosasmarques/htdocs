@@ -81,7 +81,7 @@
                 <input type="checkbox" value="remember-me">Lembra-te de mim
             </label>
             <label class="">
-                <a href="esquecer_pass.html">Esqueceu-se da palavra-passe?</a>
+                <a href="esquecer_pass.php">Esqueceu-se da palavra-passe?</a>
             </label>
 			<input class="btn btn-lg btn-primary btn-block" type="submit" id= "input-login" name="input-login" value="Entrar" />
         </form>
