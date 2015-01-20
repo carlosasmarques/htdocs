@@ -43,14 +43,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="inicial.html">FireManTool</a>
+          <a class="navbar-brand" href="inicial.php">FireManTool</a>
         </div>
         <div class="navbar-collapse collapse" style="background-color: #FFCC33;">
           <ul class="nav navbar-nav navbar-right">
             <li class="drop-menu" style="z-index: 1">
                   <a>Administrador <span class="caret"></span></a>
                   <ul class="sub-menu">
-                    <li><a href="alterar_utilizador.html">Perfil</a></li>
+                    <li><a href="alterar_utilizador.php">Perfil</a></li>
                     <li><a href="#">Sair</a></li>
                   </ul>
                </li>
@@ -64,44 +64,44 @@
       <div class="centered">
         <div id='cssmenu'>
 <ul>
-   <li><a href="inicial.html"><span>Principal</span></a></li>
+   <li><a href="inicial.php"><span>Principal</span></a></li>
 	  <li class='has-sub'><a><span>Administrador</span></a>
 		<ul>
-		  <li ><a href="gerir_utilizadores.html"><span>Gerir Utilizadores</span></a></li>
-		  <li ><a href="ver_log_global.html"><span>Ver Log Global</span></a></li>
-          <li ><a href="ver_registo_consumo.html"><span>Ver / Editar Registo de Consumos</span></a></li> 
+		  <li ><a href="gerir_utilizadores.php"><span>Gerir Utilizadores</span></a></li>
+		  <li ><a href="ver_log_global.php"><span>Ver Log Global</span></a></li>
+          <li ><a href="ver_registo_consumo.php"><span>Ver / Editar Registo de Consumos</span></a></li> 
 		  
 		</ul>
    </li>
 		
-	  <li><a href="Gestao_stock.html"><span>Gerir Stocks</span></a>
+	  <li><a href="Gestao_stock.php"><span>Gerir Stocks</span></a>
    </li>
    	  <li class='has-sub'><a><span>Viaturas</span></a>
 		<ul>
-		  <li ><a href="gerir_viaturas.html"><span>Gerir Viaturas</span></a>
-          <li ><a href="manutencao.html"><span>Manutencões</span></a>
-          <li ><a href="abastecer_viatura.html"><span>Abastecimentos</span></a>
-		  <li ><a href="gerir_inspecoes.html"><span>Inspeções</span></a>
+		  <li ><a href="gerir_viaturas.php"><span>Gerir Viaturas</span></a>
+          <li ><a href="manutencao.php"><span>Manutencões</span></a>
+          <li ><a href="abastecer_viatura.php"><span>Abastecimentos</span></a>
+		  <li ><a href="gerir_inspecoes.php"><span>Inspeções</span></a>
 		</ul>
    </li>
 	  <li class='has-sub'><a><span>Transporte de Doentes</span></a>
 		<ul>
-		  <li ><a href="adicionar_transporte_doentes.html"><span>Adicionar Novo Transporte</span></a></li>
-		  <li ><a href="gerir_transporte_doentes.html"><span>Gerir Transporte de Doentes</span></a>
-		  <li><a href='gerir_utente.html'><span>Gerir Utentes</span></a>
+		  <li ><a href="adicionar_transporte_doentes.php"><span>Adicionar Novo Transporte</span></a></li>
+		  <li ><a href="gerir_transporte_doentes.php"><span>Gerir Transporte de Doentes</span></a>
+		  <li><a href='gerir_utente.php'><span>Gerir Utentes</span></a>
 		</ul>
    </li>
           
-        <li><a href='registo_consumos.html'><span>Registo de Consumos</span></a>
+        <li><a href='registo_consumos.php'><span>Registo de Consumos</span></a>
                                   
         </li>
     
     
    	    <li class='has-sub'><a><span>Mensagens</span></a>
             <ul>
-                <li ><a href='enviar_mensagem.html'><span>Nova Mensagem</span></a></li>
-				<li ><a href='mensagens_recebidas.html'><span>Mensagens Recebidas</span></a></li>
-				<li ><a href='mensagens_enviadas.html'><span>Mensagens Enviadas</span></a></li>
+                <li ><a href='enviar_mensagem.php'><span>Nova Mensagem</span></a></li>
+				<li ><a href='mensagens_recebidas.php'><span>Mensagens Recebidas</span></a></li>
+				<li ><a href='mensagens_enviadas.php'><span>Mensagens Enviadas</span></a></li>
 			</ul>
         </li>
     
@@ -113,8 +113,8 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 		
 		<ol class="breadcrumb" style="width: 800px">
-				<li><a href="./inicial.html">Administrador</a></li>
-				<li><a href="./manutencao.html">Manutenção de Viaturas</a></li>
+				<li><a href="./inicial.php">Administrador</a></li>
+				<li><a href="./manutencao.php">Manutenção de Viaturas</a></li>
 				<li > Manutenção Interna de Viatura </li>
 			</ol>
 		  <h2 class="sub-header">Manutenção Interna</h2>
@@ -221,8 +221,8 @@
 			</div>
 	
 		</div>	
-		  		<a href="./manutencao.html" class="btn btn-danger btn-xl pull-right" > Voltar </a>
-			<a class="btn btn-primary btn-xl pull-right"  href="./manutencao.html"> Guardar </a><br/>
+		  		<a href="./manutencao.php" class="btn btn-danger btn-xl pull-right" > Voltar </a>
+			<a class="btn btn-primary btn-xl pull-right"  href="./manutencao.php"> Guardar </a><br/>
 	</div>
 	</div>
     </div>

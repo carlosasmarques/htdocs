@@ -44,14 +44,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="inicial.html">FireManTool</a>
+                <a class="navbar-brand" href="inicial.php">FireManTool</a>
             </div>
             <div class="navbar-collapse collapse" style="background-color: #FFCC33;">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="drop-menu" style="z-index: 1">
                         <a>Administrador <span class="caret"></span></a>
                         <ul class="sub-menu">
-                            <li><a href="alterar_utilizador.html">Perfil</a>
+                            <li><a href="alterar_utilizador.php">Perfil</a>
                             </li>
                             <li><a href="#">Sair</a>
                             </li>
@@ -67,51 +67,51 @@
         <div class="centered">
             <div id='cssmenu'>
                 <ul>
-                    <li><a href="inicial.html"><span>Principal</span></a>
+                    <li><a href="inicial.php"><span>Principal</span></a>
                     </li>
                     <li class='has-sub'><a><span>Administrador</span></a>
                         <ul>
-                            <li><a href="gerir_utilizadores.html"><span>Gerir Utilizadores</span></a>
+                            <li><a href="gerir_utilizadores.php"><span>Gerir Utilizadores</span></a>
                             </li>
-                            <li><a href="ver_log_global.html"><span>Ver Log Global</span></a>
+                            <li><a href="ver_log_global.php"><span>Ver Log Global</span></a>
                             </li>
-                            <li><a href="ver_registo_consumo.html"><span>Ver / Editar Registo de Consumos</span></a>
+                            <li><a href="ver_registo_consumo.php"><span>Ver / Editar Registo de Consumos</span></a>
                             </li>
 
                         </ul>
                     </li>
 
-                    <li><a href="Gestao_stock.html"><span>Gerir Stocks</span></a>
+                    <li><a href="Gestao_stock.php"><span>Gerir Stocks</span></a>
                     </li>
                     <li class='has-sub'><a><span>Viaturas</span></a>
                         <ul>
-                            <li><a href="gerir_viaturas.html"><span>Gerir Viaturas</span></a>
-                                <li><a href="manutencao.html"><span>Manutencões</span></a>
-                                    <li><a href="abastecer_viatura.html"><span>Abastecimentos</span></a>
-                                        <li><a href="gerir_inspecoes.html"><span>Inspeções</span></a>
+                            <li><a href="gerir_viaturas.php"><span>Gerir Viaturas</span></a>
+                                <li><a href="manutencao.php"><span>Manutencões</span></a>
+                                    <li><a href="abastecer_viatura.php"><span>Abastecimentos</span></a>
+                                        <li><a href="gerir_inspecoes.php"><span>Inspeções</span></a>
                         </ul>
                         </li>
                         <li class='has-sub'><a><span>Transporte de Doentes</span></a>
                             <ul>
-                                <li><a href="adicionar_transporte_doentes.html"><span>Adicionar Novo Transporte</span></a>
+                                <li><a href="adicionar_transporte_doentes.php"><span>Adicionar Novo Transporte</span></a>
                                 </li>
-                                <li><a href="gerir_transporte_doentes.html"><span>Gerir Transporte de Doentes</span></a>
-                                    <li><a href='gerir_utente.html'><span>Gerir Utentes</span></a>
+                                <li><a href="gerir_transporte_doentes.php"><span>Gerir Transporte de Doentes</span></a>
+                                    <li><a href='gerir_utente.php'><span>Gerir Utentes</span></a>
                             </ul>
                             </li>
 
-                            <li><a href='registo_consumos.html'><span>Registo de Consumos</span></a>
+                            <li><a href='registo_consumos.php'><span>Registo de Consumos</span></a>
 
                             </li>
 
 
                             <li class='has-sub'><a><span>Mensagens</span></a>
                                 <ul>
-                                    <li><a href='enviar_mensagem.html'><span>Nova Mensagem</span></a>
+                                    <li><a href='enviar_mensagem.php'><span>Nova Mensagem</span></a>
                                     </li>
-                                    <li><a href='mensagens_recebidas.html'><span>Mensagens Recebidas</span></a>
+                                    <li><a href='mensagens_recebidas.php'><span>Mensagens Recebidas</span></a>
                                     </li>
-                                    <li><a href='mensagens_enviadas.html'><span>Mensagens Enviadas</span></a>
+                                    <li><a href='mensagens_enviadas.php'><span>Mensagens Enviadas</span></a>
                                     </li>
                                 </ul>
                             </li>
@@ -122,7 +122,7 @@
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
                     <ol class="breadcrumb" style="width: 800px">
-                        <li><a href="./inicial.html">Administrador</a>
+                        <li><a href="./inicial.php">Administrador</a>
                         </li>
                         <li class="active">Gestão Stocks</li>
                     </ol>
@@ -152,7 +152,7 @@
 
 
                     </div>
-                    <a class="btn btn-primary btn-xl" href="./adicionar_stock.html" style="margin-left:375px;"> Adicionar Novo </a>
+                    <a class="btn btn-primary btn-xl" href="./adicionar_stock.php" style="margin-left:375px;"> Adicionar Novo </a>
                     <br/>
                     <div id="openModal" class="modalDialog">
                         <div>
@@ -169,8 +169,8 @@
                                     <input type="text" class="form-control" id="nu" placeholder="Inserir os dados">
                                 </div>
 
-                                <a href="./Gestao_stock.html" class="btn btn-danger btn-xl pull-right"> Voltar </a>
-                                <a class="btn btn-primary btn-xl pull-right" href="./Gestao_stock.html"> Adicionar Novo </a>
+                                <a href="./Gestao_stock.php" class="btn btn-danger btn-xl pull-right"> Voltar </a>
+                                <a class="btn btn-primary btn-xl pull-right" href="./Gestao_stock.php"> Adicionar Novo </a>
                                 <br/>
                             </form>
 
@@ -196,7 +196,7 @@
                                         <span class="descrição" style="min-width: 100px; display: inline-block;">Lampadas</span> 
                                         <span class="tipo" style="min-width: 250px; display: inline-block;">Equipamento Diverso</span> 
                                         <span class="quantidade" style="min-width: 100px; display: inline-block;">10</span>
-                                        <a href="./Ver_Editar.html" class="btn btn-xs">Ver/Editar</a>
+                                        <a href="./Ver_Editar.php" class="btn btn-xs">Ver/Editar</a>
                                         <a class="btn btn-xs" href="#openModal">Repor</a>
                                         <a class="btn btn-danger btn-xs" style="width:70px;">Desativar</a>
                                     </div>
@@ -206,7 +206,7 @@
                                         <span class="descrição" style="min-width: 100px; display: inline-block;">Pneus</span> 
                                         <span class="tipo" style="min-width: 250px; display: inline-block;">Equipamento Manutencão automóvel</span> 
                                         <span class="quantidade" style="min-width: 100px; display: inline-block;">2</span>
-                                        <a href="./Ver_Editar.html" class="btn btn-xs">Ver/Editar</a>
+                                        <a href="./Ver_Editar.php" class="btn btn-xs">Ver/Editar</a>
                                         <a class="btn btn-xs" href="#openModal">Repor</a>
                                         <a class="btn btn-primary btn-xs" style="width:70px;">Ativar</a>
                                     </div>
@@ -216,7 +216,7 @@
                                         <span class="descrição" style="min-width: 100px; display: inline-block;">Seringas</span> 
                                         <span class="tipo" style="min-width: 250px; display: inline-block;">Equipamento Primeiros Socorros</span> 
                                         <span class="quantidade" style="min-width: 100px; display: inline-block;">5</span>
-                                        <a href="./Ver_Editar.html" class="btn btn-xs">Ver/Editar</a>
+                                        <a href="./Ver_Editar.php" class="btn btn-xs">Ver/Editar</a>
                                         <a class="btn btn-xs" href="#openModal">Repor</a>
                                         <a class="btn btn-primary btn-xs" style="width:70px;">Ativar</a>
                                     </div>
@@ -226,7 +226,7 @@
                                         <span class="descrição" style="min-width: 100px; display: inline-block;">Machados</span> 
                                         <span class="tipo" style="min-width: 250px; display: inline-block;">Equipamento De Bombeiros</span> 
                                         <span class="quantidade" style="min-width: 100px; display: inline-block;">10</span>
-                                        <a href="./Ver_Editar.html" class="btn btn-xs">Ver/Editar</a>
+                                        <a href="./Ver_Editar.php" class="btn btn-xs">Ver/Editar</a>
                                         <a class="btn btn-xs" href="#openModal">Repor</a>
                                         <a class="btn btn-primary btn-xs" style="width:70px;">Ativar</a>
                                     </div>
