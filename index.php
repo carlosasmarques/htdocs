@@ -69,12 +69,12 @@
 					if($_GET["erro"] == 2){
 						echo '<div class="alert alert-danger">Não inseriu o utilizador ou palavra-passe!</div>';
 					}
-					
-					if($_GET["erro"] == 3){
-						echo '<div class="alert alert-success">Acabou de fazer logout!</div>';
-					}
+
 				}
 				
+				if(isset($_GET["logout"]) && !empty($_GET["logout"]) && $_GET["logout"] == 1){
+						echo '<div class="alert alert-success">Acabou de fazer logout!</div>';
+				}
 			?>
 			
             <label class="checkbox">
