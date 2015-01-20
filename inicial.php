@@ -53,7 +53,7 @@
                         <ul class="sub-menu">
                             <li><a href="alterar_utilizador.html">Alterar Password</a>
                             </li>
-                            <li><a href="#">Sair</a>
+                            <li><a href="login.php?accao=logout">Sair</a>
                             </li>
                         </ul>
                     </li>
