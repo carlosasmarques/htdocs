@@ -54,7 +54,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="inicial.html">FireManTool</a>
+                <a class="navbar-brand" href="inicial.php">FireManTool</a>
             </div>
             <div class="navbar-collapse collapse" style="background-color: #FFCC33;">
                 <ul class="nav navbar-nav navbar-right">
@@ -77,7 +77,7 @@
         <div class="centered">
             <div id='cssmenu'>
                 <ul>
-                    <li><a href="inicial.html"><span>Principal</span></a>
+                    <li><a href="inicial.php"><span>Principal</span></a>
                     </li>
 
                     <li><a href="Gestao_stock_U.html"><span>Gerir Stocks</span></a>
@@ -122,7 +122,7 @@
             <div class="conteudo">
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <ol class="breadcrumb" style="width: 800px">
-                        <li><a href="inicial.html">Utilizador</a>
+                        <li><a href="inicial.php">Utilizador</a>
                         </li>
                         <li class="active">Gerir Utentes</li>
                     </ol>
