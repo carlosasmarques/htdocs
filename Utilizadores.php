@@ -284,6 +284,9 @@
             $this->caminhoFoto = $caminhoFoto;
         }
 
-
+		function obtemUtilizadorUsername(){
+			
+			
+		}
     }
 ?>
