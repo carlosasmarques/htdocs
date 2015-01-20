@@ -14,7 +14,7 @@
 		$utilizador = $daoutilizador->obtemUtilizadorUsername($_POST["username"]);
 		 
 		// verifica se foi carregado um objeto na variável "utilizador"
-		if ($utilizador = null){
+		if ($utilizador == null){
 			header("Location: index.php?erro=1");
 		}else{
 						
@@ -22,14 +22,13 @@
 			if(
 				!strcmp($_POST["username"], $utilizador->getUsername()) &&
 				!strcmp($_POST["password"], $utilizador->getPassword()) &&
-				$utilizador->getActivo() == true
-			){
+				$utilizador->getActivo() == 1){
 				// Guardar o nome de utilizador da sessão
 				$_SESSION["user"] = $utilizador->getUsername(); 
 				
 				// Verificar se se trata de um utilizador comum ou administrador
 				$_SESSION["tipo_user"] = $utilizador->getTipoUtilizador();
-					
+				header("Location: inicial.html");	
 			}else{
 				header("Location: index.php?erro=1");
 			}
