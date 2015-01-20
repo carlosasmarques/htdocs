@@ -51,7 +51,7 @@
                     <li class="drop-menu" style="z-index: 1">
                         <a><?php echo $_SESSION["user"]; ?><span class="caret"></span></a>
                         <ul class="sub-menu">
-                            <li><a href="alterar_utilizador.html">Alterar Password</a>
+                            <li><a href="alterar_utilizador.php">Alterar Password</a>
                             </li>
                             <li><a href="login.php?accao=logout">Sair</a>
                             </li>
@@ -70,37 +70,37 @@
                     <li><a href="inicial.php"><span>Principal</span></a>
                     </li>
 
-                    <li><a href="Gestao_stock_U.html"><span>Gerir Stocks</span></a>
+                    <li><a href="Gestao_stock_U.php"><span>Gerir Stocks</span></a>
                     </li>
                     <li class='has-sub'><a><span>Viaturas</span></a>
                         <ul>
-                            <li><a href="gerir_viaturas.html"><span>Gerir Viaturas</span></a>
-                                <li><a href="manutencao.html"><span>Manutenções</span></a>
-                                    <li><a href="abastecer_viatura.html"><span>Abastecimentos</span></a>
-                                        <li><a href="gerir_inspecoes.html"><span>Inspeções</span></a>
+                            <li><a href="gerir_viaturas.php"><span>Gerir Viaturas</span></a>
+                                <li><a href="manutencao.php"><span>Manutenções</span></a>
+                                    <li><a href="abastecer_viatura.php"><span>Abastecimentos</span></a>
+                                        <li><a href="gerir_inspecoes.php"><span>Inspeções</span></a>
                         </ul>
                         </li>
                         <li class='has-sub'><a><span>Transporte de Doentes</span></a>
                             <ul>
-                                <li><a href="adicionar_transporte_doentes.html"><span>Adicionar Novo Transporte</span></a>
+                                <li><a href="adicionar_transporte_doentes.php"><span>Adicionar Novo Transporte</span></a>
                                 </li>
-                                <li><a href="gerir_transporte_doentes.html"><span>Gerir Transporte de Doentes</span></a>
-                                    <li><a href='gerir_utente.html'><span>Gerir Utentes</span></a>
+                                <li><a href="gerir_transporte_doentes.php"><span>Gerir Transporte de Doentes</span></a>
+                                    <li><a href='gerir_utente.php'><span>Gerir Utentes</span></a>
                             </ul>
                             </li>
 
-                            <li><a href='registo_consumos.html'><span>Registo de Consumos</span></a>
+                            <li><a href='registo_consumos.php'><span>Registo de Consumos</span></a>
 
                             </li>
 
 
                             <li class='has-sub'><a><span>Mensagens</span></a>
                                 <ul>
-                                    <li><a href='enviar_mensagem.html'><span>Nova Mensagem</span></a>
+                                    <li><a href='enviar_mensagem.php'><span>Nova Mensagem</span></a>
                                     </li>
-                                    <li><a href='mensagens_recebidas.html'><span>Mensagens Recebidas</span></a>
+                                    <li><a href='mensagens_recebidas.php'><span>Mensagens Recebidas</span></a>
                                     </li>
-                                    <li><a href='mensagens_enviadas.html'><span>Mensagens Enviadas</span></a>
+                                    <li><a href='mensagens_enviadas.php'><span>Mensagens Enviadas</span></a>
                                     </li>
                                 </ul>
                             </li>
@@ -117,38 +117,38 @@
 
                     <p>
 
-                        <a href="mensagens_recebidas.html">
+                        <a href="mensagens_recebidas.php">
                             <img src="mensagem.png" alt="HTML tutorial" style="width:50px;height:50px;border:0">
                         </a>
-                        <a href="mensagens_recebidas.html">Novas Mensagens (0).</a> 
+                        <a href="mensagens_recebidas.php">Novas Mensagens (0).</a> 
                     </p>
 
                     <p>
-                        <a href="manutencao.html">
+                        <a href="manutencao.php">
                             <img src="manut.png" alt="HTML tutorial" style="width:50px;height:50px;border:0">
                         </a>
-                        <a href="manutencao.html">Novas Manutenções de Viaturas (0).</a> 
+                        <a href="manutencao.php">Novas Manutenções de Viaturas (0).</a> 
                     </p>
 
                     <p>
-                        <a href="Gestao_stock.html">
+                        <a href="Gestao_stock.php">
                             <img src="stocks.png" alt="HTML tutorial" style="width:50px;height:50px;border:0">
                         </a>
-                        <a href="Gestao_stock_U.html">Stock em Falta (0).</a> 
+                        <a href="Gestao_stock_U.php">Stock em Falta (0).</a> 
                     </p>
 
                     <p>
-                        <a href="Gerir_viaturas.html">
+                        <a href="Gerir_viaturas.php">
                             <img src="via.png" alt="HTML tutorial" style="width:50px;height:50px;border:0">
                         </a>
-                        <a href="Gerir_viaturas.html">Frota Automóvel (0).</a> 
+                        <a href="Gerir_viaturas.php">Frota Automóvel (0).</a> 
                     </p>
 
                     <p>
-                        <a href="gerir_transporte_doentes.html">
+                        <a href="gerir_transporte_doentes.php">
                             <img src="tran.png" alt="HTML tutorial" style="width:50px;height:50px;border:0">
                         </a>
-                        <a href="gerir_transporte_doentes.html">Transporte de Doentes (0).</a> 
+                        <a href="gerir_transporte_doentes.php">Transporte de Doentes (0).</a> 
                     </p>
 
                     <div id="imgpos">
