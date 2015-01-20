@@ -60,7 +60,7 @@
                     <li class="drop-menu" style="z-index: 1">
                         <a href="#">Utilizador <span class="caret"></span></a>
                         <ul class="sub-menu">
-                            <li><a href="alterar_utilizador.html">Alterar Password</a>
+                            <li><a href="alterar_utilizador.php">Alterar Password</a>
                             </li>
                             <li><a href="#">Sair</a>
                             </li>
@@ -79,37 +79,37 @@
                     <li><a href="inicial.php"><span>Principal</span></a>
                     </li>
 
-                    <li><a href="Gestao_stock_U.html"><span>Gerir Stocks</span></a>
+                    <li><a href="Gestao_stock_U.php"><span>Gerir Stocks</span></a>
                     </li>
                     <li class='has-sub'><a><span>Viaturas</span></a>
                         <ul>
-                            <li><a href="gerir_viaturas.html"><span>Gerir Viaturas</span></a>
-                                <li><a href="manutencao.html"><span>Manutencoes</span></a>
-                                    <li><a href="abastecer_viatura.html"><span>Abastecimentos</span></a>
-                                        <li><a href="gerir_inspecoes.html"><span>Inspeções</span></a>
+                            <li><a href="gerir_viaturas.php"><span>Gerir Viaturas</span></a>
+                                <li><a href="manutencao.php"><span>Manutencoes</span></a>
+                                    <li><a href="abastecer_viatura.php"><span>Abastecimentos</span></a>
+                                        <li><a href="gerir_inspecoes.php"><span>Inspeções</span></a>
                         </ul>
                         </li>
                         <li class='has-sub'><a><span>Transporte de Doentes</span></a>
                             <ul>
-                                <li><a href="adicionar_transporte_doentes.html"><span>Adicionar Novo Transporte</span></a>
+                                <li><a href="adicionar_transporte_doentes.php"><span>Adicionar Novo Transporte</span></a>
                                 </li>
-                                <li><a href="gerir_transporte_doentes.html"><span>Gerir Transporte de Doentes</span></a>
-                                    <li><a href='gerir_utente.html'><span>Gerir Utentes</span></a>
+                                <li><a href="gerir_transporte_doentes.php"><span>Gerir Transporte de Doentes</span></a>
+                                    <li><a href='gerir_utente.php'><span>Gerir Utentes</span></a>
                             </ul>
                             </li>
 
-                            <li><a href='registo_consumos.html'><span>Registo de Consumos</span></a>
+                            <li><a href='registo_consumos.php'><span>Registo de Consumos</span></a>
 
                             </li>
 
 
                             <li class='has-sub'><a><span>Mensagens</span></a>
                                 <ul>
-                                    <li><a href='enviar_mensagem.html'><span>Nova Mensagem</span></a>
+                                    <li><a href='enviar_mensagem.php'><span>Nova Mensagem</span></a>
                                     </li>
-                                    <li><a href='mensagens_recebidas.html'><span>Mensagens Recebidas</span></a>
+                                    <li><a href='mensagens_recebidas.php'><span>Mensagens Recebidas</span></a>
                                     </li>
-                                    <li><a href='mensagens_enviadas.html'><span>Mensagens Enviadas</span></a>
+                                    <li><a href='mensagens_enviadas.php'><span>Mensagens Enviadas</span></a>
                                     </li>
                                 </ul>
                             </li>
@@ -149,8 +149,8 @@
                         <div class="pull-right">
                             <form class="form-inline">
                                 <div>
-                                    <a href="adicionar_transporte_doentes.html" class="btn btn-primary btn-xl">Novo Transporte</a>
-                                    <a href="adicionar_utente.html" class="btn btn-primary btn-xl">Novo Utente</a>
+                                    <a href="adicionar_transporte_doentes.php" class="btn btn-primary btn-xl">Novo Transporte</a>
+                                    <a href="adicionar_utente.php" class="btn btn-primary btn-xl">Novo Utente</a>
                                     <br />
                                     <br />
                                 </div>
@@ -182,21 +182,13 @@
                                                 echo'    <span style="min-width: 100px; display: inline-block;">' . $transporte[$i][3] . '</span>';
                                                 echo'    <span style="min-width: 100px; display: inline-block;">' . $transporte[$i][4] . '</span>';
                                                 echo'    <span style="min-width: 120px; display: inline-block;">' . $transporte[$i][5] . '</span>';
-                                                echo'    <span style="min-width: 80px; display: inline-block;"><a href="Gestao_Stock_U.php?id=' . $transporte[$i][0] . '" class="btn btn-xs" >Repor</a></span>';
+                                                echo'    <span style="min-width: 80px; display: inline-block;"><a href="alterar_transporte_doentes.php?id=' . $transporte[$i][0] . '" class="btn btn-xs" >Repor</a></span>';
 
                                                 echo'</div>';
                                         }
 										
                                     ?>
-                                <div class="list-group-item">
-                                    <span style="min-width: 80px; display: inline-block;">0001</span> 
-                                    <span style="min-width: 160px; display: inline-block;">Ricardo Matias</span>
-                                    <span style="min-width: 160px; display: inline-block;">01-01-2001</span>
-                                    <span style="min-width: 100px; display: inline-block;">Mealhada</span>
-                                    <span style="min-width: 100px; display: inline-block;">Coimbra</span>
-                                    <span style="min-width: 120px; display: inline-block;">Ferrari F50</span>
-                                    <span style="min-width: 80px; display: inline-block;"><a href="alterar_transporte_doentes.html" class="btn btn-xs" >Ver / Alterar</a></span>
-                                </div>
+                                
 
                             </div>
                             <br>
