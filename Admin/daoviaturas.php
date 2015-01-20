@@ -12,7 +12,7 @@
 			`- listarViaturas()
 	*/
 
-        include_once "acessobd.php";
+        include_once "../acessobd.php";
         include "Viaturas.php";
 	 
 	class DaoViaturas{

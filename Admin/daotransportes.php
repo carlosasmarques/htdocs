@@ -11,7 +11,7 @@
 			`- verManutInterna(id da manutenção interna)
 	*/
 
-	include_once "acessobd.php";
+	include_once "../acessobd.php";
 	include "Transportes.php"; 
         
 	class DaoTransportes{

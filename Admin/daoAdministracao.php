@@ -1,5 +1,5 @@
 <?php
-include "acessobd.php";
+include "../acessobd.php";
 
 class DaoAdministracao{
 

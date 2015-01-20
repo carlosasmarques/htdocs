@@ -1,6 +1,6 @@
 <?php
 include "Utentes.php";
-include "acessobd.php";
+include "../acessobd.php";
 
 class DaoUtentes{
 
