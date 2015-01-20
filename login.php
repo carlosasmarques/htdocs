@@ -1,7 +1,6 @@
 <?php
 	// login.php - trata de iniciar a sessão dos utilizadores
 
-	include "acessobd.php";
 	include "daoutilizador.php";
 
 	if(
@@ -46,6 +45,6 @@
 			}
 		}
 	}else{
-		header("Location: index.php?erro=1");
+		header("Location: index.php?erro=2");
 	}
 ?>
