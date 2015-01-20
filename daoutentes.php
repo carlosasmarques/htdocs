@@ -1,16 +1,29 @@
 <?php
 include_once "conf.php";
-include_once "acessobd.php";
 include_once "Utentes.php";
 
 class DaoUtentes{
 
-    private $LigacaoBD;
+    private $LigacaoBD=null;
 
     public function __construct() {
-        $LigacaoBD = new BaseDados();
+	    global $conf_servidor;
+        global $conf_bd;
+        global $conf_user;
+        global $conf_pass;
+        
+		try{
+            $this->LigacaoBD = new PDO("mysql:host=$conf_servidor;dbname=$conf_bd", $conf_user, $conf_pass);
+        }catch(PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+        return true;
     }
-
+    function __destruct(){
+        $this->LigacaoBD == null;
+    }
+	
     public function adicionarUtente($utente){
         try{
             $instrucao = $LigacaoBD->prepare("INSERT INTO Utentes (
@@ -167,22 +180,22 @@ class DaoUtentes{
     }
 
     public function listarUtentes(){
-        
-        $listar = new listar();
+		$dados = array();
         
         try{
-            $instrucao = $LigacaoBD->prepare("SELECT * FROM Utentes");
+            $instrucao = $this->LigacaoBD->prepare("SELECT * FROM utentes");
             //Executar
-
-            $sucesso_funcao = $instrucao->execute();
+			$instrucao->setFetchMode(PDO::FETCH_ASSOC);
+           
         }catch(PDOException $e){
             echo $e->getMessage();
         }
-        if($sucesso_funcao){
-            $instrucao->setFetchMode(PDO::FETCH_ASSOC);
+        if($instrucao->execute()){
+            
             while($registo = $instrucao->fetch()){
-                
-                    $listar->setidUtentes($registo["t_idUtentes"]);
+                	$dados[] = new Utentes($registo["UT_ID"],$registo["UT_NOME"],$registo["UT_SNS"],$registo["UT_MORADA"],$registo["UT_CONTACTOTELEFONICO"],$registo["UT_DATANASCIMENTO"],$registo["UT_DATAREGISTO"],$registo["UT_ACTIVO"]);
+
+                    /*$listar->setidUtentes($registo["t_idUtentes"]);
                     $listar->setnome($registo["t_nome"]);
                     $listar->setnumeroSNS($registo["t_numeroSNS"]);
                     $listar->setmorada($registo["t_morada"]);
@@ -190,7 +203,7 @@ class DaoUtentes{
                     $listar->setdataNascimento($registo["t_dataNascimento"]);
                     $listar->setdataRegisto($registo["t_dataRegisto"]);
                 
-                $dados[] = $listar;
+                $dados[] = $listar;*/
             }
             return $dados;
         } else {
