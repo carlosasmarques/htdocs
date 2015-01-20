@@ -30,6 +30,8 @@
 				
 				// Verificar se se trata de um utilizador comum ou administrador
 				$_SESSION["tipo_user"] = $utilizador->getTipoUtilizador();
+				
+				// login ok
 				header("Location: inicial.php");	
 			}else{
 				header("Location: index.php?erro=3");
