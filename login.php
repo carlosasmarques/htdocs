@@ -2,10 +2,29 @@
 	// login.php - trata de iniciar a sessão dos utilizadores
 
 	include "daoutilizador.php";
-        include_once "utilizadores.php";
+    include_once "utilizadores.php";
 
-	if(isset($_POST["username"]) && !empty($_POST["username"]) &&
-           isset($_POST["password"]) && !empty($_POST["password"])){
+	// accao "logout" - terminar a sessão, se for pedido
+	if(
+		isset($_GET["accao"]) && !empty($_GET["accao"]) &&
+		!strcmp($_GET["accao"], "logout")
+	){
+		$_SESSION = array();
+		if(isset($_COOKIE[session_name()])){
+			setcookie(session_name(), '', time()-42000, '/');
+		}
+		session_destroy();
+		
+		header("Location: index.php?erro=3");
+		exit;
+	}
+	
+	
+
+	if(
+		isset($_POST["username"]) && !empty($_POST["username"]) &&
+        isset($_POST["password"]) && !empty($_POST["password"])){
+		
 		// abrir ligação à base de dados
 		$bd = new BaseDados();
 		$daoutilizador = new DaoUtilizador();
@@ -34,7 +53,7 @@
 				// login ok
 				header("Location: inicial.php");	
 			}else{
-				header("Location: index.php?erro=3");
+				header("Location: index.php?erro=1");
 			}
 		}
 	}else{
