@@ -1,5 +1,6 @@
 <?php
 include "conf.php";
+include "daotransportes.php";
 session_start();
 // Ligação
 
@@ -56,9 +57,11 @@ if(isset($_GET["logout"])){
                 return NULL;
         }
         public function listarTransporte(){
+			
            $daotransportes = new DaoTransportes();
            if(($transporte = $daotransportes ->listarTransportes()) != NULL){
-               return $transporte;
+               
+			   return $transporte;
            }else{
                return NULL;
            }
@@ -81,7 +84,7 @@ if(isset($_GET["logout"])){
                 }
         }
         
-        private function listarTransporte(){
+        /*private function listarTransporte(){
            $daotransportes = new DaoTransportes();
            if(($transporte = $daotransportes ->listarTransportes()) != NULL){
                return $transporte;
@@ -89,6 +92,6 @@ if(isset($_GET["logout"])){
                return NULL;
         }
         
-        }
+        }*/
     }
 ?>

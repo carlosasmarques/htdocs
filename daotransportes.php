@@ -12,29 +12,29 @@
 	*/
 
 	include "conf.php";
-	 
+	include "Transportes.php"; 
+        
 	class DaoTransportes{
-		private $LigacaoBD;
-		
-		// Ligar á base de dados
-		function __construct(){
-			try{
-				$this->LigacaoBD = new PDO("mysql:host=$servidor;dbname=$bd", $user, $pass);
-			}catch(PDOException $e){
-				echo $e->getMessage();
-				return false;
-			}
-			return true;
-		}
-		
-		/*
-		Desligar da base de dados
-		(assim que seja apagada a ultima referencia ao objeto)
-		*/
-		function __destruct(){
-			$this->LigacaoBD == null;
-		}
-	
+		public $LigacaoBD=null;
+
+                function __construct(){
+                    global $conf_servidor;
+                    global $conf_bd;
+                    global $conf_user;
+                    global $conf_pass;
+                    try{
+                        $this->LigacaoBD = new PDO("mysql:host=$conf_servidor;dbname=$conf_bd", $conf_user, $conf_pass);
+                    }catch(PDOException $e){
+                        echo $e->getMessage();
+                        return false;
+                    }
+                    return true;
+                }
+
+                function __destruct(){
+                    $this->LigacaoBD == null;
+                }
+
 		/*****************************************************************************
 			Nota: Não faz sentido passar a matricula da viatura porque a base de dados utiliza o id
 			Nota: Não faz sentido usar o numero de SNS porque é um dado a guardar
@@ -217,5 +217,32 @@
 					 verTransporte()
 					 listarTransportes()
 		*/
+                function listarTransportes(){
+				$dados = array();
+
+                    try{
+
+                        $instrucao = $this->LigacaoBD->prepare("SELECT T_ID,U_NOME,T_DATATRANSPORTE,T_ORIGEM,T_DESTINO,V_MATRICULA FROM transportes,utilizadores,viatura where transportes.U_ID=utilizadores.U_ID and transportes.V_ID=viatura.V_ID");
+                        $instrucao->FETCH(PDO::FETCH_ASSOC);
+                    }catch(PDOException $e){
+                        echo $e->getMessage();
+                    }
+					
+                   if($instrucao->execute()){
+						
+
+                            WHILE($registo = $instrucao->fetch()){
+                                            $dados[] = Array($registo["T_ID"],$registo["U_NOME"],$registo["T_DATATRANSPORTE"],$registo["T_ORIGEM"],$registo["T_DESTINO"],$registo["V_MATRICULA"]);
+                                            	
+
+                            } 
+                        }else{
+
+                            return NULL;
+                        }
+
+                        return $dados;
+
+                    }
         }
 ?>

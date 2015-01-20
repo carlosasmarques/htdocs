@@ -1,14 +1,14 @@
 <?php
 /**Classe para objectos Utentes
- * Esta classe contem os atributos necessários para gerir os utentes.
+ * Esta classe contem os atributos necessï¿½rios para gerir os utentes.
  * Atributo nome:
  * -Nome do utente.
  * Atributo numeroSNS:
- * -Número de serviço nacional de saúde.
+ * -Nï¿½mero de serviï¿½o nacional de saï¿½de.
  * Atributo morada:
  * -Morada do utente.
  * Atributo telefone:
- * -Contacto telefónico do utente.
+ * -Contacto telefï¿½nico do utente.
  * Atributo dataNascimento:
  * -Data de nascimento do utente.
  * Atributo dataRegisto:
@@ -22,7 +22,7 @@
         private $telefone;
         private $dataNascimento;
         private $dataRegisto;
-		private $ativo;
+	private $ativo;
         /**
 	 * Construtor da Classe Utentes
 	 * @param idUtentes
@@ -43,7 +43,7 @@
             $this->telefone = $telefone;
             $this->dataNascimento = $dataNascimento;
             $this->dataRegisto = $dataRegisto;
-			$this->ativo = $ativo;
+            $this->ativo = $ativo;
         }
         /**
 	 * Getter da classe Utentes
