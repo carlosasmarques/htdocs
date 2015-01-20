@@ -51,10 +51,10 @@ class DaoUtilizador {
 
     function verDadosUtilizador($id) {
         try {
-            $registo = $this->bd->query("SELECT * FROM Utilizadores WHERE U_ID = :U_ID", $id);
- 
+            $registo = $this->bd->query("SELECT * FROM Utilizadores WHERE U_ID = :U_ID", $id);          
+            
             if (isset($dados)) {
-                $utilizador = new Utilizadores($registo["u_id"], $registo["u_nome"], $registo["u_numerofuncionario"], 
+                $utilizador = new Utilizadores($registo["U_ID"], $registo["u_nome"], $registo["u_numerofuncionario"], 
                                            $registo["u_nomeutilizador"], $registo["u_palavrapasse"], 
                                            $registo["u_tipoutilizador"], $registo["u_dataregisto"], 
                                            $registo["u_morada"], $registo["u_contatotelefonico"], 
@@ -75,16 +75,15 @@ class DaoUtilizador {
         try {
             $user = array('U_USERNAME' => $nomeUtilizador);
             
-            $registo = $this->bd->query("SELECT * FROM Utilizadores WHERE U_NOMEUTILIZADOR = :U_USERNAME", $user);
- 
+            $registo = $this->bd->query("SELECT * FROM UTILIZADORES WHERE U_NOMEUTILIZADOR = :U_USERNAME", $user);
+            
             if (!$registo == null) {
-                $utilizador = new Utilizadores($registo["u_id"], $registo["u_nome"], $registo["u_numerofuncionario"], 
+                $utilizador = new Utilizadores($registo[0]["U_ID"], $registo["U_NOME"], $registo["u_numerofuncionario"], 
                                            $registo["u_nomeutilizador"], $registo["u_palavrapasse"], 
                                            $registo["u_tipoutilizador"], $registo["u_dataregisto"], 
                                            $registo["u_morada"], $registo["u_contatotelefonico"], 
                                            $registo["u_datanascimento"], $registo["u_funcao"],
                                            $registo["u_ativo"], $registo["u_fotografia"]);
-                echo "aqui";
                 return $utilizador;
             }else{
                 return NULL;
