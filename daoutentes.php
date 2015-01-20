@@ -7,7 +7,7 @@ class DaoUtentes{
     private $LigacaoBD=null;
 
     public function __construct() {
-	    global $conf_servidor;
+	global $conf_servidor;
         global $conf_bd;
         global $conf_user;
         global $conf_pass;
@@ -24,26 +24,12 @@ class DaoUtentes{
         $this->LigacaoBD == null;
     }
 	
-    public function adicionarUtente($utente){
-        try{
-            $instrucao = $LigacaoBD->prepare("INSERT INTO Utentes (
-            UT_nome, UT_morada, UT_contactoTelefonico, UT_dataNascimento, UT_dataRegisto, UT_sns, UT_ativo) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            $instrucao->bind_param($utente->nome,
-                $utente->morada, $utente->telefone, $utente->dataNascimento,
-                $utente->dataRegisto, $utente->sns, "True");
-            // Executar
-    
-            $sucesso_funcao = $instrucao->execute();
-            $instrucao->close();
-
-        }catch(PDOException $e){
-            echo $e->getMessage();
-        }
-        if($sucesso_funcao){
-            return "True";
-        }else{
-            return "False";
-        }
+    public function adicionarUtente(utentes $utente){
+        $sql = "INSERT INTO `fmt`.`utentes` (`UT_nome`, `UT_morada`, `UT_contactoTelefonico`, "
+                . "`UT_dataNascimento`, `UT_dataRegisto`, `UT_sns`, "
+                . "`UT_ativo`,`UT_CONTACTOTELEFONICO`, VALUES (:UT_nome, :UT_morada, "
+                . ":UT_contactoTelefonico, :UT_dataNascimento, :UT_dataRegisto, "
+                . ":UT_sns, :UT_ativo,:UT_CONTACTOTELEFONICO ";
     }
 
     public function editarDadosUtente($utente){

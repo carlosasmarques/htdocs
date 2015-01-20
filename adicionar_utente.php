@@ -1,5 +1,5 @@
 <?php
-	include "utentes.php";
+	include "Utentes.php";
 	include "gereutentes.php";
 	
 	$gere_utentes = new GereUtentes();
@@ -230,6 +230,7 @@
                         <br />
                         <br />
                         <br />
+                        
 
                         <div class="pull-right">
                             <br />
