@@ -10,7 +10,7 @@
 			`- verAbastecimento(id)
 	*/
 
-	include "conf.php";
+	include "../conf.php";
 	 
 	class DaoAbastecimentos {
 		private $LigacaoBD;

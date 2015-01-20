@@ -1,6 +1,6 @@
 <?php
 include_once "../sessaoOk.php";
-include "conf.php";
+include "../conf.php";
 include "daoequipamento.php";
 
 

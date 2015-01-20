@@ -13,7 +13,7 @@
 			`- verInspecaoPer(id da inspeção)
 	*/
 
-	include "conf.php";
+	include "../conf.php";
         include "Inspecoes.php";
 	 
 	class DaoInspecoes{

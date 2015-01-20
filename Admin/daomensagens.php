@@ -1,5 +1,5 @@
 <?php
-include "conf.php";
+include "../conf.php";
 
 class DaoMensagens{
 
