@@ -76,10 +76,6 @@
 						echo '<div class="alert alert-success">Acabou de fazer logout!</div>';
 				}
 			?>
-			
-            <label class="checkbox">
-                <input type="checkbox" value="remember-me">Lembra-te de mim
-            </label>
             <label class="">
                 <a href="esquecer_pass.php">Esqueceu-se da palavra-passe?</a>
             </label>
