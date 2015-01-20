@@ -50,29 +50,18 @@
 			Nota: Não faz sentido passar a matricula da viatura a inspecionar
 			      até porque a base de dados utiliza o id da viatura
 		*****************************************************************************/
-		public function adicionarInspecaoPer($id_viatura, $datalimite, $estado){
+		public function adicionarInspecaoPer(Inspecoes $inspecao){
 		
-			try{
-				// Preparar a instrução sql de inserção
-				/*********************************************************************
-					Nota: falta o parametro "quilometragem atual"
-				*********************************************************************/
-				$instrucao = $LigacaoBD->prepare("INSERT INTO INSPECOES (V_ID, I_DATAINSPECAO, I_ESTADO) VALUES (?, ?, ?)");
-				$instrucao->bind_param($id_viatura, $datalimite, $estado);
-				
-				// Executar
-				$sucesso_funcao = $instrucao->execute();
-				$instrucao->close();
-				
-			}catch(PDOException $e){
-				echo $e->getMessage();
-			}
-			
-			if($sucesso_funcao){
-				return "Inspeção registada com sucesso<br />";
-			}else{
-				return "Erro ao registar a inspeção!<br />";
-			}
+                    $sql = " INSERT INTO `fmt`.`inspecoes` (`V_ID`, `I_DATAINSPECAO`, `I_ESTADO`) "
+                            . "VALUES (:V_ID, :I_DATAINSPECAO, :I_ESTADO); ";
+                    
+                    $dados_inspecao = array (
+                              'V_ID'=> $inspecao->getIdInspecoes(), 
+                              'I_DATAINSPECAO'=> $inspecao->getDataLimite(), 
+                              'I_ESTADO'=> $inspecao->getEstado()             
+                              );
+                    $this->bd->inserir($sql, $dados_inspecao);
+                    
 		}
 		
 		/*****************************************************************************

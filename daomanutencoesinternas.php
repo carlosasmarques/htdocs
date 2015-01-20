@@ -44,13 +44,14 @@
                                 . "VALUES (:V_ID, :MI_DATAMANUETENCAO, :MI_DESCRICAOMANUTENCAO, :MI_MATERIALGASTO, :MI_QUANTIDADEMATERIALGASTO);";
 		
                           $dados_manutencaoInter = array (
-                              'V_ID'=> $manutencaoInter->get(), /*DVUIDA: NÃO EXISTE O ATRIBUTO*/
+                              'V_ID'=> $manutencaoInter->getIdViatura(), 
                               'MI_DATAMANUETENCAO'=> $manutencaoInter->getDataManutencao(), 
                               'MI_DESCRICAOMANUTENCAO'=> $manutencaoInter->getDescricaoAvaria(), 
-                              'MI_MATERIALGASTO'=> $manutencaoInter->get(),/*DVUIDA: NÃO EXISTE O ATRIBUTO*/
+                              'MI_MATERIALGASTO'=> $manutencaoInter->getMaterialGasto(),
                               'MI_QUANTIDADEMATERIALGASTO'=> $manutencaoInter->getQuantidadeMaterialGasto()
                               );
-                        
+                    $this->bd->inserir($sql, $dados_manutencaoInter);
+
                 }
 		
 		public function editarManutencaoInter($id, $id_viatura, $dataManutencao, $descricaoAvaria, $quantidadeMaterialGasto){
