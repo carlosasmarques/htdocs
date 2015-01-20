@@ -26,28 +26,23 @@
 			Nota: Não faz sentido usar o numero de SNS porque é um dado a guardar
 			      na tabela de utentes
 		*****************************************************************************/
-		public function adicionarTransporte($id_viatura, $numero, $dataTransporte, $horaDePartida, $horaDeChegada, $origem, $destino, $observacoes, $condicaoUtente, $quilometros){
+		public function adicionarTransporte(Transportes $transporte){
 		
-			try{
-				// Preparar a instrução sql de inserção
-				$instrucao = $LigacaoBD->prepare("INSERT INTO TRANSPORTES (V_ID, U_ID, T_DATATRANSPORTE, T_HORAPARTIDA, T_HORACHEGADA, T_ORIGEM, T_DESTINO, T_OBSERVACOES, T_CONDICAO, T_TOTALQUILOMETROS) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-				$instrucao->bind_param($id_viatura, $numero, $dataTransporte, $horaDePartida, $horaDeChegada, $origem, $destino, $observacoes, $condicaoUtente, $quilometros);
-				
-				// Executar
-				$sucesso_funcao = $instrucao->execute();
-				$instrucao->close();
-				
-			}catch(PDOException $e){
-				echo $e->getMessage();
-			}
-			
-			if($sucesso_funcao){
-				return "Transporte registado com sucesso<br />";
-			}else{
-				return "Erro ao registar o transporte!<br />";
-			}
-		}
-		
+                            $sql = "INSERT INTO `fmt`.`transportes` (`T_ID`, `T_DATATRANSPORTE`, `T_HORAPARTIDA`, `T_HORACHEGADA`, `T_ORIGEM`, `T_DESTINO`, `T_OBSERVACOES`) "
+                                    . "VALUES (:T_ID , :T_DATATRANSPORTE, :T_HORAPARTIDA, :T_HORACHEGADA, :T_ORIGEM, :T_DESTINO, :T_OBSERVACOES);";
+                            
+                            $dados_Transporte = array (
+                                'T_ID'=> $transporte -> getIdTransportes(),
+                                'T_DATATRANSPORTE' => $transporte -> getDataTransporte(), 
+                                'T_HORAPARTIDA' => $transporte -> getHoraDePartida(), 
+                                'T_HORACHEGADA' => $transporte ->getHoraDeChegada(),
+                                'T_ORIGEM' => $transporte -> getOrigem(),
+                                'T_DESTINO' => $transporte -> getDestino(),
+                                'T_OBSERVACOES' => $transporte ->getObservacoes()
+                            );			
+                        $this->bd->inserir($sql, $dados_Transporte);
+                    
+                }
 		/*****************************************************************************
 			Nota: Não faz sentido passar objetos porque nos outros métodos de
 			      edição são passados os dados por parâmetros individuais
