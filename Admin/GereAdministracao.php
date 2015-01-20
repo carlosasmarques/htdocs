@@ -11,7 +11,7 @@ if(isset($_GET["logout"])){
 
 	class GereAdministracao{
 		public function adicionarUtilizador(){
-            $utilizador = new Utilizador($_POST["nome"], $_POST["numero"],$_POST["morada"], $_POST["contacto"], 1, $_POST["tipoUtilizador"], $_POST["username"], $_POST["password"], $_POST["dataRegisto"], $_POST["dataNascimento"], $_POST["funcao"]);
+            $utilizador = new Utilizadores($_POST["nome"], $_POST["numero"],$_POST["morada"], $_POST["contacto"], 1, $_POST["tipoUtilizador"], $_POST["username"], $_POST["password"], $_POST["dataRegisto"], $_POST["dataNascimento"], $_POST["funcao"]);
             $daoAdmin = new DaoAdminstracao();
 			if($daoAdmin->adicionarUtilizador($utilizador)){
 				return "O Utilizador foi adicionado com sucesso!";

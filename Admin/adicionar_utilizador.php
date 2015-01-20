@@ -1,3 +1,6 @@
+<?php
+$gereAdministracao = new GereAdministracao();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -129,7 +132,7 @@
                         </li>
                         <li class="active">Adicionar Utilizador</li>
                     </ol>
-                    <form style="width : 800px">
+                    <form style="width : 800px" method="post" action="<?php $gereAdministracao->adicionarUtilizador()?>">
                     <div style="float: left">
                     <img src="../exavatar.png" style="float: left" class="img-responsive" alt="Responsive image">
                     <br style="clear: both">
@@ -144,7 +147,7 @@
                                     <div style="float: inherit; margin-right: 5px; margin-left: 5px">
                                     <label class="numerofuncionario">Número de Funcionário:</label>
                                     <br style="clear: both">
-                                    <input type="text" style="width : 120px;" class="form-control" id="nf" placeholder="Inserir dados" name="numeroFuncionario" >
+                                    <input type="text" style="width : 120px;" class="form-control" id="nf" placeholder="Inserir dados" name="numero" >
                                         <br style="clear: both">
                                     </div>
                                     <div style="float: inherit; margin-right: 5px; margin-left: 5px">
@@ -180,7 +183,7 @@
                                     <div style="float: inherit; margin-right: 5px; margin-left: 5px">
                                     <label class="contacto">Contacto:</label>
                                 <br style="clear: both">
-                                    <input type="text" style="width : 120px;" class="form-control" id="contacto" placeholder="Inserir dados" name="contactoTelefonico">
+                                    <input type="text" style="width : 120px;" class="form-control" id="contacto" placeholder="Inserir dados" name="contacto">
                                 <br style="clear: both">
                                         </div>
                                         <div style="float: inherit; margin-right: 5px; margin-left: 5px">
@@ -189,17 +192,24 @@
                                     <input type="date" style="width : 170px;" class="form-control" id="datanascimento" name="dataNascimento">
                                 <br style="clear: both">
                                       </div>
+                                    div style="float: inherit; margin-right: 5px; margin-left: 5px">
+                                    <label class="datanascimento">Tipo Utilizador:</label>
+                                    <br style="clear: both">
+                                    <input type="date" style="width : 170px;" class="form-control" value="Utilizador" id="tipoUtilizador" name="TipoUtilizador">
+                                    <br style="clear: both">
                                 </div>
+                                </div>
+                        <div class="pull-right">
+                            <br />
+                            <a href="gerir_utilizadores.php" class="btn btn-danger btn-xl"> Voltar </a>
+                            <input type="submit" class="btn btn-primary btn-xl"> Adicionar </a>
+                            <br/>
+                        </div>
                             </form>
                     </div>
                 </div>
             </div>
-                        <div class="pull-right">
-                            <br />
-                            <a href="gerir_utilizadores.php" class="btn btn-danger btn-xl"> Voltar </a>
-                            <a class="btn btn-primary btn-xl" href="gerir_utilizadores.php"> Adicionar </a>
-                            <br/>
-                        </div>
+
 
                     </div>
 

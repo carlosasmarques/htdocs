@@ -12,11 +12,11 @@
     <title>FMT | Esqueci-me da Palavra Passe</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
 
-    <link href="../Login.css" rel="stylesheet">
+    <link href="Login.css" rel="stylesheet">
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
@@ -31,7 +31,7 @@
     <![endif]-->
 </head>
 
-<body style="background-image: url(../fmt2.jpg);">
+<body style="background-image: url(fmt2.jpg);">
 
     <div class="container pull-right">
 
@@ -46,7 +46,7 @@
                         <div class="control-group">
                             <div class="controls">
 
-                                <input type="text" class="form-control" placeholder="Nome de Administrador" id="name" required data-validation-required-message="Insira o Nome de Administrador" />
+                                <input type="text" class="form-control" placeholder="Nome de Utilizador" id="name" required data-validation-required-message="Insira o Nome de Utilizador" />
                                 <p class="help-block"></p>
                             </div>
                         </div>
