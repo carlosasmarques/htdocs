@@ -76,15 +76,16 @@ class DaoUtilizador {
         try {
             $user = array('U_USERNAME' => $nomeUtilizador);
             
-            $registo = $this->bd->query("SELECT * FROM Utilizadores WHERE U_USERNAME = :U_USERNAME", $user);
+            $registo = $this->bd->query("SELECT * FROM Utilizadores WHERE U_NOMEUTILIZADOR = :U_USERNAME", $user);
  
-            if (isset($dados)) {
+            if (!$registo == null) {
                 $utilizador = new Utilizadores($registo["u_id"], $registo["u_nome"], $registo["u_numerofuncionario"], 
                                            $registo["u_nomeutilizador"], $registo["u_palavrapasse"], 
                                            $registo["u_tipoutilizador"], $registo["u_dataregisto"], 
                                            $registo["u_morada"], $registo["u_contatotelefonico"], 
                                            $registo["u_datanascimento"], $registo["u_funcao"],
                                            $registo["u_ativo"], $registo["u_fotografia"]);
+                echo "aqui";
                 return $utilizador;
             }else{
                 return NULL;
