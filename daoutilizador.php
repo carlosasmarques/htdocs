@@ -74,18 +74,17 @@ class DaoUtilizador {
     function obtemUtilizadorUsername($nomeUtilizador) {
         
         try {
-            $user = array('U_USERNAME' => $nomeUtilizador);
+            $user = array('U_NOMEUTILIZADOR' => $nomeUtilizador);
             
-            $registo = $this->bd->query("SELECT * FROM Utilizadores WHERE U_NOMEUTILIZADOR = :U_USERNAME", $user);
+            $registo = $this->bd->query("SELECT * FROM Utilizadores WHERE U_NOMEUTILIZADOR = :U_NOMEUTILIZADOR", $user);
  
             if (!$registo == null) {
-                $utilizador = new Utilizadores($registo["u_id"], $registo["u_nome"], $registo["u_numerofuncionario"],
-                                           $registo["u_nomeutilizador"], $registo["u_palavrapasse"],
-                                           $registo["u_tipoutilizador"], $registo["u_dataregisto"],
-                                           $registo["u_morada"], $registo["u_contatotelefonico"],
-                                           $registo["u_datanascimento"], $registo["u_funcao"],
-                                           $registo["u_ativo"], $registo["u_fotografia"]);
-                echo "aqui";
+                $utilizador = new Utilizadores($registo[0]["U_ID"], $registo[0]["U_NOME"], $registo[0]["U_NUMEROFUNCIONARIO"],
+                                           $registo[0]["U_NOMEUTILIZADOR"], $registo[0]["U_PALAVRAPASSE"],
+                                           $registo[0]["U_TIPOUTILIZADOR"], $registo[0]["U_DATAREGISTO"],
+                                           $registo[0]["U_MORADA"], $registo[0]["U_CONTACTOTELEFONICO"],
+                                           $registo[0]["U_DATANASCIMENTO"], $registo[0]["U_FUNCAO"],
+                                           $registo[0]["U_ACTIVO"], $registo[0]["U_FOTOGRAFIA"]);
                 return $utilizador;
             }else{
                 return NULL;

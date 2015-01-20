@@ -9,7 +9,8 @@
 		// abrir ligação à base de dados
 		$bd = new BaseDados();
 		$daoutilizador = new DaoUtilizador();
-                $utilizador = new Utilizadores("", "", "", "", "", "", "", "", "", "", "", "", "");
+        $utilizador = new Utilizadores("", "", "", "", "", "", "", "", "", "", "", "", "");
+		
 		// carrega o utilizador com o username dado
 		$utilizador = $daoutilizador->obtemUtilizadorUsername($_POST["username"]);
 		 
@@ -22,18 +23,19 @@
 			if(
 				!strcmp($_POST["username"], $utilizador->getUsername()) &&
 				!strcmp($_POST["password"], $utilizador->getPassword()) &&
-				$utilizador->getActivo() == 1){
+				$utilizador->getAtivo() == 1){
+					
 				// Guardar o nome de utilizador da sessão
 				$_SESSION["user"] = $utilizador->getUsername(); 
 				
 				// Verificar se se trata de um utilizador comum ou administrador
 				$_SESSION["tipo_user"] = $utilizador->getTipoUtilizador();
-				header("Location: inicial.html");	
+				header("Location: inicial.php");	
 			}else{
-				header("Location: index.php?erro=1");
+				header("Location: index.php?erro=3");
 			}
 		}
 	}else{
-		header("Location: index.php?erro=2");
+		//header("Location: index.php?erro=2");
 	}
 ?>
