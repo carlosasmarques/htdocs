@@ -30,6 +30,17 @@ class DaoUtentes{
                 . "`UT_ativo`,`UT_CONTACTOTELEFONICO`, VALUES (:UT_nome, :UT_morada, "
                 . ":UT_contactoTelefonico, :UT_dataNascimento, :UT_dataRegisto, "
                 . ":UT_sns, :UT_ativo,:UT_CONTACTOTELEFONICO ";
+        
+        $dados_utentes = array(
+				'UT_nome' => $utente->getNome(),
+				'UT_morada' => $utente->getMorada(),
+				'UT_contactoTelefonico' => $utente->getTelefone(),
+				'UT_dataNascimento' => $utente->getDataNascimento(),
+				'UT_dataRegisto' => $utente->getDataRegisto(),
+				'UT_sns' => $utente->getNumeroSNS(),
+				'UT_ativo' => $utente->getAtivo()
+                );
+        $this->bd->inserir($sql, $dados_utentes);
     }
 
     public function editarDadosUtente($utente){
