@@ -1,5 +1,4 @@
 <?php
-
 include "Utentes.php";
 include "acessobd.php";
 
@@ -167,12 +166,10 @@ class DaoUtentes{
 		$dados = array();
         
                 $instrucao = $this->bd->query("SELECT * FROM utentes");
-            
-                
-            
+				
+				for($i=0; $i<count($instrucao); $i++){
                 	$dados[] = new Utentes($instrucao[$i]["UT_ID"],$instrucao[$i]["UT_NOME"],$instrucao[$i]["UT_SNS"],$instrucao[$i]["UT_MORADA"],$instrucao[$i]["UT_CONTACTOTELEFONICO"],$instrucao[$i]["UT_DATANASCIMENTO"],$instrucao[$i]["UT_DATAREGISTO"],$instrucao[$i]["UT_ACTIVO"]);
-
-
+				}
             return $dados;
 
     }
