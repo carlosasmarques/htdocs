@@ -38,6 +38,6 @@
 			}
 		}
 	}else{
-		//header("Location: index.php?erro=2");
+		header("Location: index.php?erro=2");
 	}
 ?>
