@@ -1,3 +1,9 @@
+<?php
+	
+	// verificar se a sessão está iniciada
+	include "sessaoOk.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,7 +59,7 @@
                         <ul class="sub-menu">
                             <li><a href="alterar_utilizador.php">Alterar Password</a>
                             </li>
-                            <li><a href="login.php?accao=logout">Sair</a>
+                            <li><a href="login.php?logout=1">Sair</a>
                             </li>
                         </ul>
                     </li>
