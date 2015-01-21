@@ -1,11 +1,20 @@
 <?php
 	include_once "sessaoOk.php";
 	include_once "GereTransportes.php";
+	include_once "GereUtilizadores.php";
+	include_once "gereviaturas.php";
+	
+	$gere_utilizador = new GereUtilizadores();
+	$utilizador = new Utilizadores(0, "", 0, "", "", "", "", "", 0, "", "", 0, "");
+	$utilizador = $gere_utilizador->listarUtilizador();
 	
 	$gere_transportes = new GereTransportes();
 	$transportes = new Transportes(0, 0, 0, "", "", "", "", "", "", "", 0);
-	
 	$gere_transportes->adicionarTransporte($transportes);
+
+	$gere_viaturas = new GereViaturas();
+	$viaturas = new Viaturas(0, "", "", "", "", 0, 0, 0, 0, 0, 0, 0, "", 0);
+	$viaturas = $gere_viaturas->listarViaturas();
 
 ?>
 
@@ -138,22 +147,25 @@
                             
                             	<div class="form-group">
                                     <label class="funci">Funcionário:</label>
-                                    <select class="form-control">
-                                        <option value="desc">Escolha Funcionário...</option>
-                                        <option value="data">Américo</option>
-                                        <option value="hora">Abélio</option>
-                                        <option value="hora">Almeida</option>
+                                    <select class="form-control" id="func">
+                                    	<option value="desc">Escolha Funcionário...</option>
+                                    	<?php
+                                    	for($u=0; $u<count($utilizador); $u++){
+											echo '<option value="' . $utilizador[$u]->getIdUtilizadores() . '">' . $utilizador[$u]->getNome() . '</option>';
+										}
+                                    	?>
                                     </select>
                                 </div>
                                 
                                 <div class="form-group">
                                     <label class="viatura">Viatura:</label>
-                                    <select class="form-control">
+                                    <select class="form-control" id="viatur">
                                         <option value="desc">Escolha Viatura...</option>
-                                        <option value="data">Mercedes</option>
-                                        <option value="hora">BMW</option>
-                                        <option value="hora">Mclaren</option>
-                                        <option value="hora">Fiat Punto dos Velhos</option>
+										<?php
+										for($v=0; $v<count($viaturas); $v++){
+											echo '<option value="' . $viaturas[$v]->getIdViaturas() . '">' . $viaturas[$v]->getMarca() . '</option>';
+										}
+										?>
                                     </select>
                                 </div>
                                 
@@ -204,7 +216,7 @@
 							
 								<div class="form-group">
 	                                <label class="cond">Condição Utente:</label>
-									<select class="form-control">
+									<select class="form-control" id="condut">
 										<option value="cond">Escolha Condição...</option>
 										<option value="sentado">Sentado</option>
 										<option value="acamado">Acamado</option>
@@ -247,14 +259,24 @@
                             <br />
                             <br />
 							<a class="btn btn-danger btn-xl" href="gerir_transporte_doentes.php"> Voltar </a>
-                            <a class="btn btn-primary btn-xl" href="gerir_transporte_doentes.php"> Adicionar </a>
+                            <a class="btn btn-primary btn-xl" href="gerir_transporte_doentes.php" type="submit"> Adicionar </a>
                             <br/>
                         </div>
                             
-                         <?php
-                           if(isset($_POST["dataTransporte"]) && !empty($_POST["dataTransporte"])&& isset($_POST["horaDePartida"]) && !empty($_POST["horaDePartida"]) && isset($_POST["horaDeChegada"]) && !empty($_POST["horaDeChegada"]) && isset($_POST["origem"]) && !empty($_POST["origem"]) && isset($_POST["destino"]) && !empty($_POST["destino"]) && isset($_POST["observacoes"]) && !empty($_POST["observacoes"])&& isset($_POST["quilometrospartida"]) && !empty($_POST["quilometrospartida"])&& isset($_POST["quilometroschegada"]) && !empty($_POST["quilometroschegada"])){
-                                $transportes = $gere_transportes->adicionarTransporte();   
-                            }
+						<?php
+							if(
+								isset($_POST["func"]) && !empty($_POST["func"]) && 
+								isset($_POST["viatur"]) && !empty($_POST["viatur"]) &&
+								isset($_POST["dataTransporte"]) && !empty($_POST["dataTransporte"]) &&
+								isset($_POST["horaDePartida"]) && !empty($_POST["horaDePartida"]) &&
+								isset($_POST["horaDeChegada"]) && !empty($_POST["horaDeChegada"]) &&
+								isset($_POST["origem"]) && !empty($_POST["origem"]) &&
+								isset($_POST["destino"]) && !empty($_POST["destino"]) &&
+								isset($_POST["observacoes"]) && !empty($_POST["observacoes"]) &&
+								isset($_POST["condut"]) && !empty($_POST["condut"]) &&
+								isset($_POST["quilometrospartida"]) && !empty($_POST["quilometrospartida"]) ){
+	                                $transportes = $gere_transportes->adicionarTransporte();   
+	                            }
                            
                            ?>
 
