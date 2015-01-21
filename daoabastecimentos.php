@@ -45,7 +45,7 @@
                           $dados = array (
                               'V_ID'=> $abastecimento->getIdViatura(),
                               'A_QUANTIDADECOMBUSTIVEL'=> $abastecimento->getQuantidadeCombustivel(),
-                               'A_QUILOMETRAGEMATUAL'=> $abastecimento->getQuilometragemActual(),
+                              'A_QUILOMETRAGEMATUAL'=> $abastecimento->getQuilometragemActual(),
                               'A_DATAABASTECIMENTO'=> $abastecimento->getDataAbastecimento(), 
                               'A_CONSUMOMEDIO'=> $abastecimento->getMediaDesteAbastecimento()
                               );

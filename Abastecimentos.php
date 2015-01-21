@@ -14,7 +14,6 @@
 class Abastecimentos {
     private $idAbastecimentos;
     private $idViatura;
-    private $localAbast;
     private $quantidadeCombustivel;
     private $quilometragemActual;
     private $dataAbastecimento;

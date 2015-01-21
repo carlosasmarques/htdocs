@@ -6,10 +6,11 @@
 * Atributo dataDeConsumo:
 * - Data do gasto de um determinado artigo.
 * Atributo descricaoConsumo:
-* - Descrição que explique sucintamente para que foi gasto um determinado artigo.
+* - Descriï¿½ï¿½o que explique sucintamente para que foi gasto um determinado artigo.
 */
     class ConsumoEquip{
         private $idConsumoArtigos;
+        private $idEquipamento;
         private $quantidadeConsumida;
         private $dataDeConsumo;
         private $descricaoConsumo;
@@ -21,17 +22,27 @@
          * @param descricaoConsumo
 	 * @return 
 	 */
-        function __construct($idConsumoArtigos, $quantidadeConsumida, $dataDeConsumo, $descricaoConsumo) {
+        function __construct($idConsumoArtigos, $idEquipamento, $quantidadeConsumida, $dataDeConsumo, $descricaoConsumo) {
             $this->idConsumoArtigos = $idConsumoArtigos;
+            $this->idEquipamento = $idEquipamento;
             $this->quantidadeConsumida = $quantidadeConsumida;
             $this->dataDeConsumo = $dataDeConsumo;
             $this->descricaoConsumo = $descricaoConsumo;
         }
+
         /**
 	 * Getter da classe ConsumoEquip
 	 * @param 
 	 * @return idConsumoArtigos
 	 */
+        function getIdEquipamento() {
+            return $this->idEquipamento;
+        }
+
+        function setIdEquipamento($idEquipamento) {
+            $this->idEquipamento = $idEquipamento;
+        }
+
         function getIdConsumoArtigos() {
             return $this->idConsumoArtigos;
         }
