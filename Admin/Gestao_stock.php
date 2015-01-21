@@ -217,9 +217,9 @@
                                                         echo' <span style="min-width: 100px; display: inline-block;">' . $equipamentos[$i]->getDescricao() . '</span>';
                                                         echo' <span style="min-width: 90px; display: inline-block;">' . $equipamentos[$i]->getTipoEquipamentos() . '</span>';
                                                         echo' <span style="min-width: 160px; display: inline-block;">' . $equipamentos[$i]->getQuantidadeExistente() . '</span>';
-                                                        echo' <span style="min-width: 80px; display: inline-block;"><a href="Ver_Editar_U.php?id=' . $equipamentos[$i]->getIdEquipamentos() . '" class="btn btn-xs" >Ver / Editar</a></span>';
-                                                        echo' <span style="min-width: 80px; display: inline-block;"><a href="Gestao_Stock_U.php?id=' . $equipamentos[$i]->getIdEquipamentos() . '" class="btn btn-xs" >Repor</a></span>';
-                                                        echo' <span style="min-width: 80px; display: inline-block;"><a href="alterar_utente.php?id=' . $equipamentos[$i]->getIdEquipamentos() . '" class="btn btn-xs" >' .$estado. '</a></span>';
+                                                        echo' <span style="min-width: 80px; display: inline-block;"><a href="Ver_Editar.php?id=' . $equipamentos[$i]->getIdEquipamentos() . '" class="btn btn-xs" >Ver / Editar</a></span>';
+                                                        echo' <span style="min-width: 80px; display: inline-block;"><a href="Gestao_Stock.php?id=' . $equipamentos[$i]->getIdEquipamentos() . '" class="btn btn-xs" >Repor</a></span>';
+                                                        echo' <span style="min-width: 80px; display: inline-block;"><a href="Gestao_Stock.php?id=' . $equipamentos[$i]->getIdEquipamentos() . '" class="btn btn-xs" >' .$estado. '</a></span>';
                                                         echo'</div>';
                                                     }
                                              ?>
