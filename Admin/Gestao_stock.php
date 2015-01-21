@@ -1,5 +1,15 @@
 <?php
-	include_once "../sessaoOk.php";
+
+        include "GereEquipamentos.php";
+        include_once "../sessaoOk.php";
+        
+        $gere_equipamento = new GereEquipamentos();
+        $equipamentos = new Equipamentos(0,"","",0,0,"",0,"",false);
+        $idEquip = $_GET["id"];
+        $equipamentos = $gere_equipamento->listarEquipamentos();
+	
+
+	
 ?>
 
 <!DOCTYPE html>
@@ -193,45 +203,27 @@
 
                                     </span>
 
-                                    <div class="list-group-item">
-                                        <span class="codigo" style="min-width: 70px; display: inline-block;">00001</span> 
-                                        <span class="descrição" style="min-width: 100px; display: inline-block;">Lampadas</span> 
-                                        <span class="tipo" style="min-width: 250px; display: inline-block;">Equipamento Diverso</span> 
-                                        <span class="quantidade" style="min-width: 100px; display: inline-block;">10</span>
-                                        <a href="./Ver_Editar.php" class="btn btn-xs">Ver/Editar</a>
-                                        <a class="btn btn-xs" href="#openModal">Repor</a>
-                                        <a class="btn btn-danger btn-xs" style="width:70px;">Desativar</a>
-                                    </div>
+                                            <?php
+                                                    for($i=0; $i<count($equipamentos); $i++){
 
-                                    <div class="list-group-item">
-                                        <span class="codigo" style="min-width: 70px; display: inline-block;">00002</span> 
-                                        <span class="descrição" style="min-width: 100px; display: inline-block;">Pneus</span> 
-                                        <span class="tipo" style="min-width: 250px; display: inline-block;">Equipamento Manutencão automóvel</span> 
-                                        <span class="quantidade" style="min-width: 100px; display: inline-block;">2</span>
-                                        <a href="./Ver_Editar.php" class="btn btn-xs">Ver/Editar</a>
-                                        <a class="btn btn-xs" href="#openModal">Repor</a>
-                                        <a class="btn btn-primary btn-xs" style="width:70px;">Ativar</a>
-                                    </div>
+                                                        if($equipamentos[$i]->getActivo()==1){
+                                                        $estado = "Ativo";
+                                                        }else{
+                                                        $estado = "Desativo";
+                                                        }
+                                                        echo'<div class="list-group-item">';
 
-                                    <div class="list-group-item">
-                                        <span class="codigo" style="min-width: 70px; display: inline-block;">00003</span> 
-                                        <span class="descrição" style="min-width: 100px; display: inline-block;">Seringas</span> 
-                                        <span class="tipo" style="min-width: 250px; display: inline-block;">Equipamento Primeiros Socorros</span> 
-                                        <span class="quantidade" style="min-width: 100px; display: inline-block;">5</span>
-                                        <a href="./Ver_Editar.php" class="btn btn-xs">Ver/Editar</a>
-                                        <a class="btn btn-xs" href="#openModal">Repor</a>
-                                        <a class="btn btn-primary btn-xs" style="width:70px;">Ativar</a>
-                                    </div>
+                                                        echo' <span style="min-width: 40px; display: inline-block;">' . $equipamentos[$i]->getCodigo() . '</span> ';
+                                                        echo' <span style="min-width: 100px; display: inline-block;">' . $equipamentos[$i]->getDescricao() . '</span>';
+                                                        echo' <span style="min-width: 90px; display: inline-block;">' . $equipamentos[$i]->getTipoEquipamentos() . '</span>';
+                                                        echo' <span style="min-width: 160px; display: inline-block;">' . $equipamentos[$i]->getQuantidadeExistente() . '</span>';
+                                                        echo' <span style="min-width: 80px; display: inline-block;"><a href="Ver_Editar_U.php?id=' . $equipamentos[$i]->getIdEquipamentos() . '" class="btn btn-xs" >Ver / Editar</a></span>';
+                                                        echo' <span style="min-width: 80px; display: inline-block;"><a href="Gestao_Stock_U.php?id=' . $equipamentos[$i]->getIdEquipamentos() . '" class="btn btn-xs" >Repor</a></span>';
+                                                        echo' <span style="min-width: 80px; display: inline-block;"><a href="alterar_utente.php?id=' . $equipamentos[$i]->getIdEquipamentos() . '" class="btn btn-xs" >' .$estado. '</a></span>';
+                                                        echo'</div>';
+                                                    }
+                                             ?>
 
-                                    <div class="list-group-item">
-                                        <span class="codigo" style="min-width: 70px; display: inline-block;">00004</span> 
-                                        <span class="descrição" style="min-width: 100px; display: inline-block;">Machados</span> 
-                                        <span class="tipo" style="min-width: 250px; display: inline-block;">Equipamento De Bombeiros</span> 
-                                        <span class="quantidade" style="min-width: 100px; display: inline-block;">10</span>
-                                        <a href="./Ver_Editar.php" class="btn btn-xs">Ver/Editar</a>
-                                        <a class="btn btn-xs" href="#openModal">Repor</a>
-                                        <a class="btn btn-primary btn-xs" style="width:70px;">Ativar</a>
-                                    </div>
 
                                     <br>
 

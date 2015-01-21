@@ -1,5 +1,14 @@
 <?php
 	include_once "../sessaoOk.php";
+        include_once "gereutentes.php";
+	
+	$gere_utentes = new GereUtentes();
+        $utentes = new Utentes(0, "", 0, "", "", "", "",true);
+	
+	$utentes = $gere_utentes->listarUtentes();
+
+	
+
 ?>
 
 <!DOCTYPE html>
@@ -171,46 +180,28 @@
                                     <span style="min-width: 110px; display: inline-block;">Data Registo</span>
                                     <span style="min-width: 80px; display: inline-block;">Opções</span>
                                 </div>
-                                <div class="list-group-item">
-                                    <span style="min-width: 40px; display: inline-block;">0001</span> 
-                                    <span style="min-width: 100px; display: inline-block;">João Manuel</span>
-                                    <span style="min-width: 90px; display: inline-block;">123456789</span>
-                                    <span style="min-width: 160px; display: inline-block;">Rua das Casas Nº4</span>
-                                    <span style="min-width: 80px; display: inline-block;">123456789</span>
-                                    <span style="min-width: 120px; display: inline-block;">01-01-0001</span>
-                                    <span style="min-width: 110px; display: inline-block;">01-01-0001</span>
-                                    <span style="min-width: 80px; display: inline-block;"><a href="alterar_utente.php" class="btn btn-xs" >Ver / Alterar</a><a href="#" class="btn btn-primary btn-xs">Ativar</a></span>
-                                </div>
-                                <div class="list-group-item">
-                                    <span style="min-width: 40px; display: inline-block;">0001</span> 
-                                    <span style="min-width: 100px; display: inline-block;">João Manuel</span>
-                                    <span style="min-width: 90px; display: inline-block;">123456789</span>
-                                    <span style="min-width: 160px; display: inline-block;">Rua das Casas Nº4</span>
-                                    <span style="min-width: 80px; display: inline-block;">123456789</span>
-                                    <span style="min-width: 120px; display: inline-block;">01-01-0001</span>
-                                    <span style="min-width: 110px; display: inline-block;">01-01-0001</span>
-                                    <span style="min-width: 80px; display: inline-block;"><a href="alterar_utente.php" class="btn btn-xs" >Ver / Alterar</a><a href="#" class="btn btn-danger btn-xs">Desativar</a></span>
-                                </div>
-                                <div class="list-group-item">
-                                    <span style="min-width: 40px; display: inline-block;">0001</span> 
-                                    <span style="min-width: 100px; display: inline-block;">João Manuel</span>
-                                    <span style="min-width: 90px; display: inline-block;">123456789</span>
-                                    <span style="min-width: 160px; display: inline-block;">Rua das Casas Nº4</span>
-                                    <span style="min-width: 80px; display: inline-block;">123456789</span>
-                                    <span style="min-width: 120px; display: inline-block;">01-01-0001</span>
-                                    <span style="min-width: 110px; display: inline-block;">01-01-0001</span>
-                                    <span style="min-width: 80px; display: inline-block;"><a href="alterar_utente.php" class="btn btn-xs" >Ver / Alterar</a><a href="#" class="btn btn-danger btn-xs">Desativar</a></span>
-                                </div>
-                                <div class="list-group-item">
-                                    <span style="min-width: 40px; display: inline-block;">0001</span> 
-                                    <span style="min-width: 100px; display: inline-block;">João Manuel</span>
-                                    <span style="min-width: 90px; display: inline-block;">123456789</span>
-                                    <span style="min-width: 160px; display: inline-block;">Rua das Casas Nº4</span>
-                                    <span style="min-width: 80px; display: inline-block;">123456789</span>
-                                    <span style="min-width: 120px; display: inline-block;">01-01-0001</span>
-                                    <span style="min-width: 110px; display: inline-block;">01-01-0001</span>
-                                    <span style="min-width: 80px; display: inline-block;"><a href="alterar_utente.php" class="btn btn-xs" >Ver / Alterar</a><a href="#" class="btn btn-primary btn-xs">Ativar</a></span>
-                                </div>
+                                 <?php
+                                    for($i=0; $i<count($utentes); $i++){
+                                    echo'<div class="list-group-item">';
+                                    if($utentes[$i]->getAtivo()==1){
+                                        $estado = "Ativo";
+                                        }else{
+                                       $estado = "Desativo";
+                                        }
+                                                // substituir pelos getters certos
+                                                echo' <span style="min-width: 40px; display: inline-block;">' . $utentes[$i]->getIdUtentes() . '</span> ';
+                                                echo' <span style="min-width: 100px; display: inline-block;">' . $utentes[$i]->getNome() . '</span>';
+                                                echo' <span style="min-width: 90px; display: inline-block;">' . $utentes[$i]->getNumeroSNS() . '</span>';
+                                                echo' <span style="min-width: 160px; display: inline-block;">' . $utentes[$i]->getMorada() . '</span>';
+                                                echo' <span style="min-width: 80px; display: inline-block;">' . $utentes[$i]->getTelefone() . '</span>';
+                                                echo' <span style="min-width: 120px; display: inline-block;">' . $utentes[$i]->getDataNascimento() . '</span>';
+                                                echo' <span style="min-width: 110px; display: inline-block;">' . $utentes[$i]->getDataRegisto() . '</span>';
+                                                echo' <span style="min-width: 80px; display: inline-block;"><a href="alterar_utente.php?id=' . $utentes[$i]->getIdUtentes() . '" class="btn btn-xs" >Ver / Alterar</a></span>';
+                                                echo' <span style="min-width: 80px; display: inline-block;"><a href="alterar_utente.php?id=' . $utentes[$i]->getIdUtentes() . '" class="btn btn-xs" >' .$estado. '</a></span>';
+                                                echo'</div>';
+                                                }
+                                ?>
+                                
 
                             </div>
                             <br>

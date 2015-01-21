@@ -1,5 +1,11 @@
 <?php
 	include_once "../sessaoOk.php";
+        include "GereTransportes.php";
+
+ $gere_transportes = new GereTransportes();
+ $transportes = new Transportes(0, "", "", "", "", "", "", "", 0, 0);
+
+ $transporte = $gere_transportes->listarTransporte();
 ?>
 
 <!DOCTYPE html>
@@ -175,34 +181,23 @@
                                     <span style="min-width: 120px; display: inline-block;">Viatura Utilizada</span>
                                     <span style="min-width: 80px; display: inline-block;">Opções</span>
                                 </div>
-                                <div class="list-group-item">
-                                    <span style="min-width: 80px; display: inline-block;">0001</span> 
-                                    <span style="min-width: 160px; display: inline-block;">Ricardo Matias</span>
-                                    <span style="min-width: 160px; display: inline-block;">01-01-2001</span>
-                                    <span style="min-width: 100px; display: inline-block;">Mealhada</span>
-                                    <span style="min-width: 100px; display: inline-block;">Coimbra</span>
-                                    <span style="min-width: 120px; display: inline-block;">Ferrari F50</span>
-                                    <span style="min-width: 80px; display: inline-block;"><a href="alterar_transporte_doentes.php" class="btn btn-xs" >Ver / Alterar</a></span>
-                                </div>
-                                <div class="list-group-item">
-                                    <span style="min-width: 80px; display: inline-block;">0001</span> 
-                                    <span style="min-width: 160px; display: inline-block;">Ricardo Matias</span>
-                                    <span style="min-width: 160px; display: inline-block;">01-01-2001</span>
-                                    <span style="min-width: 100px; display: inline-block;">Mealhada</span>
-                                    <span style="min-width: 100px; display: inline-block;">Coimbra</span>
-                                    <span style="min-width: 120px; display: inline-block;">Ferrari F50</span>
-                                    <span style="min-width: 80px; display: inline-block;"><a href="alterar_transporte_doentes.php" class="btn btn-xs" >Ver / Alterar</a></span>
-                                </div>
-                                <div class="list-group-item">
-                                    <span style="min-width: 80px; display: inline-block;">0001</span> 
-                                    <span style="min-width: 160px; display: inline-block;">Ricardo Matias</span>
-                                    <span style="min-width: 160px; display: inline-block;">01-01-2001</span>
-                                    <span style="min-width: 100px; display: inline-block;">Mealhada</span>
-                                    <span style="min-width: 100px; display: inline-block;">Coimbra</span>
-                                    <span style="min-width: 120px; display: inline-block;">Ferrari F50</span>
-                                    <span style="min-width: 80px; display: inline-block;"><a href="alterar_transporte_doentes.php" class="btn btn-xs" >Ver / Alterar</a></span>
-                                </div>
+                                     <?php
+                                            for($i=0; $i<count($transporte); $i++){
 
+                                             echo'<div class="list-group-item">';
+
+                                             echo' <span style="min-width: 80px; display: inline-block;">' . $transporte[$i][0] . '</span> ';
+                                             echo' <span style="min-width: 160px; display: inline-block;">' . $transporte[$i][1] . '</span>';
+                                             echo' <span style="min-width: 160px; display: inline-block;">' . $transporte[$i][2] . '</span>';
+                                             echo' <span style="min-width: 100px; display: inline-block;">' . $transporte[$i][3] . '</span>';
+                                             echo' <span style="min-width: 100px; display: inline-block;">' . $transporte[$i][4] . '</span>';
+                                             echo' <span style="min-width: 120px; display: inline-block;">' . $transporte[$i][5] . '</span>';
+                                             echo' <span style="min-width: 80px; display: inline-block;"><a href="alterar_transporte_doentes.php?id=' . $transporte[$i][0] . '" class="btn btn-xs" >Repor</a></span>';
+
+                                             echo'</div>';
+                                             }
+	
+                                    ?>
                             </div>
                             <br>
                         </div>
