@@ -55,15 +55,13 @@
 		}
 		
 		public function ativarDesativarViatura($estado, $id){
-		
 			$dados = array(
 				'V_ACTIVO' => $estado,
 				'V_ID' => $id
 			);
 			$this->bd->editar("UPDATE `fmt`.`viatura` SET `V_ACTIVO`=:V_ACTIVO WHERE  `V_ID`=:V_ID;", $dados);
 		}
-			
-		
+
 		public function editarViatura(
 		$id, $matricula, $marca, $modelo, $tipo, $dataMatricula, $combustivel, $quilometragem,
 		$consumoMedio, $lugaresSentados, $lugaresDeitados, $enderecoFoto, $ativa){
@@ -150,38 +148,29 @@
 		
 		public function verViatura($id){
 			$dados = null;
-                        $viatura = new Viaturas();
-			try{
-				// Obter os dados da viatura com o id especificado
-				$instrucao = $LigacaoBD->prepare("SELECT * FROM viaturas WHERE id=?");
-				$instrucao->bind_param($id);
+            $viatura = new Viaturas(0, "", "", "", "", 0, 0, 0, 0, 0, 0, 0, "", 0);
+		
+			// Obter os dados da viatura com o id especificado
+			$dados = array(
+				"V_ID" => $id
+			);
+			$viatura_array = $this->bd->query("SELECT * FROM `fmt`.`viatura` WHERE `V_ID`=:V_ID", $dados);
+			
+			$viatura->setActiva($viatura_array[0]["V_ACTIVO"]);
+			$viatura->setCapacidadeDeposito($viatura_array[0]["V_CAPACIDADEDEPOSITO"]);
+			$viatura->setCombustivel($viatura_array[0]["V_COMBUSTIVEL"]);
+			$viatura->setConsumoMedio($viatura_array[0]["V_CONSUMOMEDIO"]);
+			$viatura->setDataMatricula($viatura_array[0]["V_DATAMATRICULA"]);
+			$viatura->setEnderecoFoto($viatura_array[0]["V_FOTOGRAFIA"]);
+			$viatura->setIdViaturas($viatura_array[0]["V_ID"]);
+			$viatura->setLugaresDeitados($viatura_array[0]["V_NUMEROLUGARESDEITADOS"]);
+			$viatura->setLugaresSentados($viatura_array[0]["V_NUMEROLUGARESSENTADOS"]);
+			$viatura->setMarca($viatura_array[0]["V_MARCA"]);
+			$viatura->setMatricula($viatura_array[0]["V_MATRICULA"]);
+			$viatura->setModelo($viatura_array[0]["V_MODELO"]);
+			$viatura->setQuilometragem($viatura_array[0]["V_QUILOMETRAGEM"]);
+			$viatura->setTipo($viatura_array[0]["V_TIPOVIATURA"]);
 
-				// Executar
-				$sucesso_funcao = $instrucao->execute();
-				
-				// Se o id foi encontrado, obter os dados
-				if($sucesso_funcao){
-					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
-                                            while($registo = $instrucao->fetch()){
-						$viatura->setActiva($registo["V_Ati"]);
-                                                $viatura->setCapacidadeDeposito($registo["V_CDe"]);
-                                                $viatura->setCombustivel($registo["V_Cum"]);
-                                                $viatura->setConsumoMedio($registo["V_ConM"]);
-                                                $viatura->setDataMatricula($registo["V_DataM"]);
-                                                $viatura->setEnderecoFoto($registo["V_EndFo"]);
-                                                $viatura->setIdViaturas($registo["V_IdV"]);
-                                                $viatura->setLugaresDeitados($registo["V_LDe"]);
-                                                $viatura->setLugaresSentados($registo["V_LSe"]);
-                                                $viatura->setMarca($registo["V_Marca"]);
-                                                $viatura->setMatricula($registo["V_Matri"]);
-                                                $viatura->setModelo($registo["V_Mod"]);
-                                                $viatura->setQuilometragem($registo["V_Quil"]);
-                                                $viatura->setTipo($registo["V_Tipo"]);
-					}
-				}
-			}catch(PDOException $e){
-				echo $e->getMessage();
-			}
 			return $viatura;
 		}
 		
