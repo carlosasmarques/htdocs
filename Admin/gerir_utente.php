@@ -25,7 +25,6 @@
 		// desativar
 		if(!strcmp($_GET["accao"], "desativar")){
 			$daoutentes->activarDesativarUtente(0, $_GET["id"]);
-                        echo "tou aqui2";
 		}
 	}
        
