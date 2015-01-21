@@ -137,7 +137,7 @@
 
 
                         <div class="col-sm-6 col-md-11">
-                            <form method="post" action="adicionar_utente.php.php" onSubmit=''>
+                            <form method="post" action="adicionar_utente.php" onSubmit=''>
                                 <div class="form-group">
                                     <label class="nomeutente">Nome Utente:</label>
                                     <input type="text" class="form-control" id="UT_nome" placeholder="Inserir Nome do Utente">
@@ -147,7 +147,7 @@
 
 
                         <div class="col-sm-6 col-md-4">
-                            <form method="post" action="adicionar_utente.php.php" onSubmit=''>
+                            <form method="post" action="adicionar_utente.php" onSubmit=''>
                                 <div class="form-group">
                                     <label class="numerosns">Número SNS:</label>
                                     <input type="text" class="form-control" id="UT_sns" placeholder="Inserir Nº SNS">
@@ -156,7 +156,7 @@
                         </div>
 
                         <div class="col-sm-6 col-md-4">
-                            <form method="post" action="adicionar_utente.php.php" onSubmit=''>
+                            <form method="post" action="adicionar_utente.php" onSubmit=''>
                                 <div class="form-group">
                                     <label class="datanasc">Data Nascimento:</label>
                                     <input type="date" class="form-control" id="UT_dataNascimento">
@@ -165,7 +165,7 @@
                         </div>
 
                         <div class="col-sm-6 col-md-3">
-                            <form method="post" action="adicionar_utente.php.php" onSubmit=''>
+                            <form method="post" action="adicionar_utente.php" onSubmit=''>
                                 <div class="form-group">
                                     <label class="numtelefone">Número Telefone:</label>
                                     <input type="text" class="form-control" id="UT_contactoTelefonico" placeholder="Nº de Telefone">
@@ -174,7 +174,7 @@
                         </div>
 
                         <div class="col-sm-6 col-md-11">
-                            <form method="post" action="adicionar_utente.php.php" onSubmit=''>
+                            <form method="post" action="adicionar_utente.php" onSubmit=''>
                                 <div class="form-group">
                                     <p>
                                         <label class="rua">Morada:</label>
@@ -200,7 +200,7 @@
                         <br />
 
                         <div class="col-sm-6 col-md-2">
-                           <form method="post" action="adicionar_utente.php.php" onSubmit=''>
+                           <form method="post" action="adicionar_utente.php" onSubmit=''>
                                 <div class="form-group">
                                     <label class="nporta">Nº Porta:</label>
                                     <input type="text" class="form-control" id="nporta" placeholder="Inserir Nº de Porta">
@@ -209,7 +209,7 @@
                         </div>
 
                         <div class="col-sm-6 col-md-4">
-                            <form method="post" action="adicionar_utente.php.php" onSubmit=''>
+                            <form method="post" action="adicionar_utente.php" onSubmit=''>
                                 <div class="form-group">
                                     <label class="localidade">Localidade:</label>
                                     <input type="text" class="form-control" id="localidade" placeholder="Inserir a Localidade">
@@ -218,7 +218,7 @@
                         </div>
 
                         <div class="col-sm-6 col-md-3">
-                           <form method="post" action="adicionar_utente.php.php" onSubmit=''>
+                           <form method="post" action="adicionar_utente.php" onSubmit=''>
                                 <div class="form-group">
                                     <label class="cp">Código Postal:</label>
                                     <input type="text" class="form-control" id="cp" maxlength="8" placeholder="XXXX-YYY">
@@ -235,11 +235,11 @@
                         <div class="pull-right">
                             <br />
                             <a href="gerir_utente.php" class="btn btn-danger btn-xl"> Voltar </a>
-                            <a class="btn btn-primary btn-xl" onclick="return gerir_utente.php" href="gerir_utente.php"> Adicionar </a>
+                            <a class="btn btn-primary btn-xl" href="gerir_utente.php"> Adicionar </a>
                             <br/>
                         </div>
                            <?php
-                           $result= new Admin();
+                           
                            
                            if(isset($_POST["UT_nome"]) && !empty($_POST["UT_nome"])&& isset($_POST["UT_sns"]) && !empty($_POST["UT_sns"]) && isset($_POST["UT_dataNascimento"]) && !empty($_POST["UT_dataNascimento"]) && isset($_POST["UT_contactoTelefonico"]) && !empty($_POST["UT_contactoTelefonico"]) && isset($_POST["UT_morada"]) && !empty($_POST["UT_morada"]) ){
                                 $utentes = $gere_utentes->adicionarUtente();   
