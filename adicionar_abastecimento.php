@@ -126,7 +126,7 @@
 			<div class="centered">
 				 <h2 class="sub-header">Abastecer Viatura</h2>
 				<div class="col-sm-6 col-md-4">				
-                                    <form method="POST">
+                                    <form method="post" action="adicionar_abastecimento.php" onSubmit=''>
 						<div class="form-group">
 							<label class="viatura">Viatura:</label>
 							<select class="form-control">
@@ -141,13 +141,13 @@
 						</div>					
 					</form>
 					
-					<form method="POST">
+					<form method="post" action="adicionar_abastecimento.php" onSubmit=''>
 						<div class="form-group">
 							<label class="horapar">Quantidade de Combustível:</label>
 							<input type="text" class="form-control" id="A_QUANTIDADECOMBUSTIVEL" placeholder="Quantidade em Litros" maxlength="5">
 						</div>
 					</form>	
-					<form method="POST">
+					<form method="post" action="adicionar_abastecimento.php" onSubmit=''>
 						<div class="form-group">
 							<label class="data">Consumo Médio:</label>
 							<input type="text" class="form-control" id="localAbast" placeholder="Inserir dados">
@@ -157,7 +157,7 @@
 				</div>
 				
 				<div class="col-sm-6 col-md-4">				
-					<form method="POST">
+					<form method="post" action="adicionar_abastecimento.php" onSubmit=''>
 						<div class="form-group">
 							<label class="data">Data do abastecimento:</label>
 							<input type="date" class="form-control" id="dataAbastecimento">
@@ -165,7 +165,7 @@
 					</form>	
 					
 				
-					<form method="POST">
+					<form method="post" action="adicionar_abastecimento.php" onSubmit=''>
 						<div class="form-group">
 							<label class="kc">Quilómetros:</label>
 							<input type="text" class="form-control" id="A_QUILOMETRAGEMATUAL" placeholder="Altere os dados">
