@@ -28,11 +28,10 @@ class AcoesUtilizadores {
          * @param descricao
          * @return 
          *          */
-    function __construct($idAcoesUtilizadores, $utilizador, $data, $hora, $descricao) {
+    function __construct($idAcoesUtilizadores, $utilizador, $datahora, $descricao) {
         $this->idAcoesUtilizadores = $idAcoesUtilizadores;
         $this->utilizador = $utilizador;
-        $this->data = $data;
-        $this->hora = $hora;
+        $this->datahora = $datahora;
         $this->descricao = $descricao;
     }
     /*
@@ -56,8 +55,8 @@ class AcoesUtilizadores {
          * @param 
          * @return data 
          */
-    function getData() {
-        return $this->data;
+    function getDataHora() {
+        return $this->datahora;
     }
      /*
          * Getter da classe AcoesUtilizadores
@@ -96,8 +95,8 @@ class AcoesUtilizadores {
          * @param utilizador
          * @return  
          */
-    function setData($data) {
-        $this->data = $data;
+    function setDataHora($dataHora) {
+        $this->dataHora = $dataHora;
     }
 /*
          * Setter da classe hora
