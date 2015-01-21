@@ -1,6 +1,13 @@
 <?php
 	include_once "../sessaoOk.php";
-?>
+        include "GereInspecoes.php";
+        
+        $gere_inspecoes = new GereInspecoes();
+        $inspecoes = new Inspecoes(0, 0, "", "");
+        
+        $inspecoes = $gere_inspecoes->listarInspecoesPer();        
+?>            
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -158,30 +165,22 @@
 								
 								</span>
 							
-							<div  class="list-group-item" style="width:600px">
-                            <span class="Codigo" style="min-width: 60px; display: inline-block;">001</span> 
-							<span class="Quantidade" style="min-width: 100px; display: inline-block;" >45-AI-10</span>
-							<span class="Descrição" style="min-width: 120px; display: inline-block;" >14/09/2014</span> 
-                            <span class="Descrição" style="min-width: 120px; display: inline-block;" >Efetuada</span> 
-							<a href="inspecao_periodica_ver.php" class="btn btn-xs" >Ver/Editar</a>
-							</div>
-							
-							<div  class="list-group-item" style="width:600px">
-                            <span class="Codigo" style="min-width: 60px; display: inline-block;">002</span> 
-							<span class="Quantidade" style="min-width: 100px; display: inline-block;" >13-AH-35</span>
-							<span class="Descrição" style="min-width: 120px; display: inline-block;" >08/01/2015</span> 
-							<span class="Descrição" style="min-width: 120px; display: inline-block;" >Não Efetuada</span> 
-							<a href="inspecao_periodica_ver.php" class="btn btn-xs" >Ver/Editar</a>
-							</div>
-							
-							<div  class="list-group-item" style="width:600px">
-                            <span class="Codigo" style="min-width: 60px; display: inline-block;">003</span> 
-							<span class="Quantidade" style="min-width: 100px; display: inline-block;" >21-38-XT</span>
-							<span class="Descrição" style="min-width: 120px; display: inline-block;" >23/05/2015</span> 
-							<span class="Descrição" style="min-width: 120px; display: inline-block;" >Não Efetuada</span> 
-     
-							<a href="inspecao_periodica_ver.php" class="btn btn-xs" >Ver/Editar</a>
-							</div>
+                                            <?php
+                                                    for($i=0; $i<count($inspecoes); $i++){
+
+                                                        $matricula=$gere_inspecoes->pesquisarInspecaoMatric($inspecoes[$i]->getIdViatura());
+                                                        echo'<div class="list-group-item">';
+
+                                                        echo' <span style="min-width: 40px; display: inline-block;">' . $inspecoes[$i]->getIdInspecoes() . '</span> ';
+                                                        echo' <span style="min-width: 100px; display: inline-block;">' . $matricula . '</span>';
+                                                        echo' <span style="min-width: 90px; display: inline-block;">' . $inspecoes[$i]->getDataLimite() . '</span>';
+                                                        echo' <span style="min-width: 160px; display: inline-block;">' . $inspecoes[$i]->getEstado() . '</span>';
+                                                        echo' <span style="min-width: 80px; display: inline-block;"><a href="Ver_Editar.php?id=' . $inspecoes[$i]->getIdInspecoes() . '" class="btn btn-xs" >Ver / Editar</a></span>';
+                                                        echo' <span style="min-width: 80px; display: inline-block;"><a href="Gestao_Stock.php?id=' . $inspecoes[$i]->getIdInspecoes() . '" class="btn btn-xs" >Repor</a></span>';
+                                                        
+                                                        echo'</div>';
+                                                    }
+                                             ?>
 						<br>
 
 		  </div>
