@@ -1,6 +1,6 @@
 <?php
 include_once "sessaoOk.php";
-include_once "conf.php";
+include "conf.php";
 
 if(isset($_GET["logout"])){
     if($_GET["logout"]== true)

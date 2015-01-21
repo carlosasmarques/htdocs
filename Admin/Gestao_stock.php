@@ -1,6 +1,6 @@
 <?php
 
-        include_once "GereEquipamentos.php";
+        include "GereEquipamentos.php";
         include_once "../sessaoOk.php";
         
         $gere_equipamento = new GereEquipamentos();

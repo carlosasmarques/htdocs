@@ -10,15 +10,15 @@
 			`- verAbastecimento(id)
 	*/
 
-	include_once "conf.php";
+	include "conf.php";
 	 
 	class DaoAbastecimentos {
-		private $LigacaoBD;
+		private $bd;
 		
 		// Ligar á base de dados
 		function __construct(){
 			try{
-				$this->LigacaoBD = new PDO("mysql:host=$servidor;dbname=$bd", $user, $pass);
+				$this->bd = new PDO("mysql:host=$servidor;dbname=$bd", $user, $pass);
 			}catch(PDOException $e){
 				echo $e->getMessage();
 				return false;
@@ -31,7 +31,7 @@
 		(assim que seja apagada a ultima referencia ao objeto)
 		*/
 		function __destruct(){
-			$this->LigacaoBD == null;
+			$this->bd == null;
 		}
 		
 		/*****************************************************************************

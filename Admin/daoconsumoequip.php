@@ -11,7 +11,7 @@
 			`- listarConsumoEquip()
 	*/
 
-	include_once "../conf.php";
+	include "../conf.php";
 	 
 	class DaoConsumoEquip{
 		private $bd;

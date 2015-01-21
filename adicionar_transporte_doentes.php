@@ -1,21 +1,12 @@
 <?php
 	include_once "sessaoOk.php";
-	include_once "transportes.php";
 	include_once "GereTransportes.php";
-        include_once "utentes.php";
 	
 	$gere_transportes = new GereTransportes();
-	$transportes = new Transportes(0, "", "", "", "", "", "", "",0);
+	$transportes = new Transportes(0, 0, 0, "", "", "", "", "", "", "", 0);
 	
-	$transportes = $gere_transportes->adicionarTransporte();
+	$gere_transportes->adicionarTransporte($transportes);
 
-	include_once "utentes.php";
-	include_once "gereutentes.php";
-	
-	$gere_utentes = new GereUtentes();
-	$utentes = new Utentes(0, "", 0, "", 0, "", "");
-	
-	$utentes = $gere_utentes->listarUtentes();
 ?>
 
 

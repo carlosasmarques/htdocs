@@ -1,7 +1,7 @@
 <?php
 	include_once "sessaoOk.php";
-	include_once "manutencaoExter.php";
-	include_once "geremanutencoesExter.php";
+	include "manutencaoExter.php";
+	include "geremanutencoesExter.php";
 	
 	$gere_manutencaoExter = new GereManutencoesExter();
 	$manutencaoexter = new ManutencaoExter(0, 0, "", "", "","","",0);

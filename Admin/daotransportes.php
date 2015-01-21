@@ -12,7 +12,7 @@
 	*/
 
 	include_once "../acessobd.php";
-	include_once "Transportes.php"; 
+	include "Transportes.php"; 
         
 	class DaoTransportes{
             private $bd;

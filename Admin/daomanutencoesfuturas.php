@@ -13,7 +13,7 @@
 			`- verManutencaoFuturas(id da manutenção futura)
 	*/
 
-	include_once "../conf.php";
+	include "../conf.php";
 	 
 	class DaoManutencoesFuturas{
 		private $bd;

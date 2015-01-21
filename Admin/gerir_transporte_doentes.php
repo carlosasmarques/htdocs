@@ -1,6 +1,6 @@
 <?php
 	include_once "../sessaoOk.php";
-        include_once "GereTransportes.php";
+        include "GereTransportes.php";
 
  $gere_transportes = new GereTransportes();
  $transportes = new Transportes(0, "", "", "", "", "", "", "", 0, 0);

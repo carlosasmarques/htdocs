@@ -11,7 +11,7 @@
 			`- verManutExternas(id da manutenção externa)
 	*/
 
-	include_once "../conf.php";
+	include "../conf.php";
 	 
 	class DaoManutencoesExternas{
 		private $LigacaoBD;

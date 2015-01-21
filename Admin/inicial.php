@@ -1,7 +1,7 @@
 <?php
 	
 	// verificar se a sessão está iniciada
-	include_once "../sessaoOk.php";
+	include "../sessaoOk.php";
 ?>
 
 <!DOCTYPE html>

@@ -10,15 +10,15 @@
 			`- verAbastecimento(id)
 	*/
 
-	include_once "../conf.php";
+	include "../conf.php";
 	 
 	class DaoAbastecimentos {
-		private $LigacaoBD;
+		private $bd;
 		
 		// Ligar á base de dados
 		function __construct(){
 			try{
-				$this->LigacaoBD = new PDO("mysql:host=$servidor;dbname=$bd", $user, $pass);
+				$this->bd = new PDO("mysql:host=$servidor;dbname=$bd", $user, $pass);
 			}catch(PDOException $e){
 				echo $e->getMessage();
 				return false;
@@ -31,7 +31,7 @@
 		(assim que seja apagada a ultima referencia ao objeto)
 		*/
 		function __destruct(){
-			$this->LigacaoBD == null;
+			$this->bd == null;
 		}
 		
 		/*****************************************************************************
@@ -39,34 +39,19 @@
 		*****************************************************************************/
 		public function adicionarAbastecimento($matricula, $quantidadeCombustivel, $dataAbastecimento, $mediaDesteAbastecimento){
 		
-			try{
-				// Preparar a instrução sql de inserção
-				/*********************************************************************
-					Nota: falta o parametro "quilometragem atual"
-				*********************************************************************/
-				$instrucao = $LigacaoBD->prepare("INSERT INTO ABASTECIMENTOS (
-				A_QUANTIDADECOMBUSTIVEL, A_DATAABASTECIMENTO, A_CONSUMOMEDIO) VALUES (?, ?, ?)");
-				$instrucao->bind_param($quantidadeCombustivel, $dataAbastecimento, $mediaDesteAbastecimento);
-				
-				// Executar
-				$sucesso_funcao = $instrucao->execute();
-				$instrucao->close();
-				
-			}catch(PDOException $e){
-				echo $e->getMessage();
-			}
-			
-			if($sucesso_funcao){
-				return "Abastecimento registado com sucesso<br />";
-			}else{
-				return "Erro ao registar o abastecimento!<br />";
-			}
-		}
+			 $sql = "INSERT INTO `fmt`.`abastecimentos` (`V_ID`,`A_QUANTIDADECOMBUSTIVEL`, `A_QUILOMETRAGEMATUAL`, `A_DATAABASTECIMENTO`, `A_CONSUMOMEDIO`) "
+                            . "VALUES (:V_ID,:A_QUANTIDADECOMBUSTIVEL, :A_QUILOMETRAGEMATUAL, :A_DATAABASTECIMENTO, :A_CONSUMOMEDIO);";
 		
-		/*********************************************************************
-			Nota: falta o parametro "id"
-			Nota: Não existe o atributo "matricula" na base de dados
-		*********************************************************************/
+                          $dados = array (
+                              'V_ID'=> $abastecimento->getIdViatura(),
+                              'A_QUANTIDADECOMBUSTIVEL'=> $abastecimento->getQuantidadeCombustivel(),
+                              'A_QUILOMETRAGEMATUAL'=> $abastecimento->getQuilometragemActual(),
+                              'A_DATAABASTECIMENTO'=> $abastecimento->getDataAbastecimento(), 
+                              'A_CONSUMOMEDIO'=> $abastecimento->getMediaDesteAbastecimento()
+                              );
+                          
+                    $this->bd->inserir($sql, $dados);
+                }
 		public function editarAbastecimento($id, $matricula, $quantidadeCombustivel, $dataAbastecimento, $mediaDesteAbastecimento){
 			
 			try{

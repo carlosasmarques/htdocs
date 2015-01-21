@@ -1,7 +1,18 @@
 <?php
 	include_once "../sessaoOk.php";
-?>
+	include_once "Abastecimentos.php";
+	include "GereAbastecimentos.php";
+	include "Viaturas.php";
+	include "GereViaturas.php";
+        
+        $gere_abastecimento = new GereAbastecimentos();
+        $abastecimento = new Abastecimentos(0,"","",0, "", "", "");
+        $gere_viaturas = new GereViaturas();
+        $viaturas = new Viaturas(0, "", "", "", "", "", 0, 0, 0, 0, 0, 0, "", true);
+        
 
+        $gere_viaturas ->adicionarViatura($viaturas);
+?>
 <!DOCTYPE html>
 <html lang="en">
  <head>
@@ -123,55 +134,59 @@
 			<div class="centered">
 				 <h2 class="sub-header">Abastecer Viatura</h2>
 				<div class="col-sm-6 col-md-4">				
-					<form>
+                                    <form method="post" action="adicionar_abastecimento.php" onSubmit=''>
 						<div class="form-group">
 							<label class="viatura">Viatura:</label>
 							<select class="form-control">
-								<option value="desc">Indique a Matrícula da viatura...</option>
-								
-								<option value="hora">45-AI-10</option>
-								<option value="hora">13-AH-35</option>
-								<option value="hora">21-38-XT</option>
-								
+								<option id="V_ID">Indique a ID da viatura...</option>
+					<?php
+                                            for($i=0; $i<count($viaturas); $i++){
+							echo "<option>".$viaturas[$i]->getIdViaturas()."</option>";
+			
+                                            }
+                                        ?>			
 							</select>
 						</div>					
 					</form>
 					
-					<form>
+					<form method="post" action="adicionar_abastecimento.php" onSubmit=''>
 						<div class="form-group">
 							<label class="horapar">Quantidade de Combustível:</label>
-							<input type="text" class="form-control" id="horap" placeholder="Quantidade em Litros" maxlength="5">
+							<input type="text" class="form-control" id="A_QUANTIDADECOMBUSTIVEL" placeholder="Quantidade em Litros" maxlength="5">
 						</div>
 					</form>	
-					<form>
+					<form method="post" action="adicionar_abastecimento.php" onSubmit=''>
 						<div class="form-group">
-							<label class="data">Local:</label>
-							<input type="text" class="form-control" id="nome" placeholder="Inserir dados">
+							<label class="data">Consumo Médio:</label>
+							<input type="text" class="form-control" id="A_CONSUMOMEDIO" placeholder="Inserir dados">
 						</div>				
 					</form>	
 										
 				</div>
 				
 				<div class="col-sm-6 col-md-4">				
-					<form>
+					<form method="post" action="adicionar_abastecimento.php" onSubmit=''>
 						<div class="form-group">
 							<label class="data">Data do abastecimento:</label>
-							<input type="date" class="form-control" id="nome2">
+							<input type="date" class="form-control" id="A_DATAABASTECIMENTO">
 						</div>				
 					</form>	
 					
 				
-					<form>
+					<form method="post" action="adicionar_abastecimento.php" onSubmit=''>
 						<div class="form-group">
 							<label class="kc">Quilómetros:</label>
-							<input type="text" class="form-control" id="kc" placeholder="Altere os dados">
+							<input type="text" class="form-control" id="A_QUILOMETRAGEMATUAL" placeholder="Altere os dados">
 						</div>
 					</form>	
 						
 				</div>
 				
-				
-				
+				<?php
+                                 if(isset($_POST["A_QUANTIDADECOMBUSTIVEL"]) && !empty($_POST["A_QUANTIDADECOMBUSTIVEL"])&& isset($_POST["A_QUILOMETRAGEMATUAL"]) && !empty($_POST["A_QUILOMETRAGEMATUAL"]) && isset($_POST["A_DATAABASTECIMENTO"]) && !empty($_POST["A_DATAABASTECIMENTO"]) && isset($_POST["A_CONSUMOMEDIO"]) && !empty($_POST["A_CONSUMOMEDIO"]) && isset($_POST["V_ID"]) && !empty($_POST["V_ID"])){
+                                    $abastecimento =$gere_abastecimento->adicionarAbastecimento();
+                                }
+                        ?>
 				
 
 		

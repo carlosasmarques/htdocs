@@ -1,7 +1,7 @@
 <?php
 include_once "../sessaoOk.php";
-include_once "../conf.php";
-include_once "daoabastecimentos.php";
+include "../conf.php";
+include "daoabastecimentos.php";
 
 
 if(isset($_GET["logout"])){
@@ -10,13 +10,9 @@ if(isset($_GET["logout"])){
 }
     class GereAbastecimentos{
         public function adicionarAbastecimento(){
-            $abastecimento = new abastecimentos($_POST["matricula"],$_POST["localAbast"],$_POST["quantidadeCombustivel"],$_POST["quilometragem"],$_POST["dataAbastecimento"],$_POST["mediaDesteAbastecimento"]);
-            $daoAbastecimento = new DaoAbastecimentos();
-            if($daoAbastecimento->adicionarAbastecimento($abastecimento)){
-				return "O abastecimento foi adicionado com sucesso!";
-			} else {
-				return "Não foi possivel adicionar o abastecimento!";
-			}
+             $daoabastecimentos = new DaoAbastecimentos();
+            
+            $daoabastecimentos->adicionarAbastecimento($abastecimento);
         }
         public function editarAbastecimento($idAbast){
             $abastecimento = new abastecimentos($idAbast, $_POST["matricula"],$_POST["localAbast"],$_POST["quantidadeCombustivel"],$_POST["quilometragem"],$_POST["dataAbastecimento"],$_POST["mediaDesteAbastecimento"]);

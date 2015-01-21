@@ -1,5 +1,5 @@
 <?php
-	include_once "acessobd.php";
+	include "acessobd.php";
 	
 	$bd = new BaseDados();
 

@@ -1,6 +1,6 @@
 <?php
 
-include_once "Equipamentos.php";
+include "Equipamentos.php";
 include_once "../acessobd.php";
 
 class DaoEquipamento{

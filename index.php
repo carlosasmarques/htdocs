@@ -5,7 +5,7 @@
 		Era só jajão!
 	*/
 	
-	include_once "acessobd.php";
+	include "acessobd.php";
 	$bd = new BaseDados();
 	if($bd->contar("utilizadores") == 0){
 		header("Location: verificaSessao.php");

@@ -1,7 +1,7 @@
 <?php
 	// teste.php - teste de funções/métodos individualmente
 	
-	include_once "daoutilizador.php";
+	include "daoutilizador.php";
 	
 	$daoutilizador = new DaoUtilizador();
 	

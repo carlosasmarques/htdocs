@@ -1,21 +1,13 @@
 <?php
-include_once "conf.php";
+include "conf.php";
+include "../AcoesUtilizadores.php";
 
 class DaoAcoesUtilizadores{
-    private $LigacaoBD;
-    function __construct(){
-        try{
-            $this->LigacaoBD = new PDO("mysql:host=$servidor;dbname=$bd", $user, $pass);
-        }catch(PDOException $e){
-            echo $e->getMessage();
-            return false;
-        }
-        return true;
-    }
+            private $bd;
 
-    function __destruct(){
-        $this->LigacaoBD == null;
-    }
+            public function __construct() {
+                $this->bd = new BaseDados();
+            }
     function guardarAcaoUtilizador($acao){
         try{
             $instrucao = $LigacaoBD->prepare("INSERT INTO Logs SET (U_id, L_dataHora, L_descricao) VALUES(?, ?, ?)");
@@ -32,23 +24,30 @@ class DaoAcoesUtilizadores{
             return "False";
         }
     }
+		public function listarViaturas(){
+			$dados = array();
 
+				$instrucao = $this->bd->query("SELECT * FROM viatura");
+
+					for($i=0; $i<count($instrucao); $i++){
+                                                $dados[] = new Viaturas($instrucao[$i]["V_ID"],$instrucao[$i]["V_MATRICULA"],$instrucao[$i]["V_MARCA"],$instrucao[$i]["V_MODELO"],$instrucao[$i]["V_TIPOVIATURA"],$instrucao[$i]["V_DATAMATRICULA"],$instrucao[$i]["V_COMBUSTIVEL"],$instrucao[$i]["V_CAPACIDADEDEPOSITO"],$instrucao[$i]["V_QUILOMETRAGEM"],$instrucao[$i]["V_CONSUMOMEDIO"],$instrucao[$i]["V_NUMEROLUGARESSENTADOS"],$instrucao[$i]["V_NUMEROLUGARESDEITADOS"],$instrucao[$i]["V_FOTOGRAFIA"],$instrucao[$i]["V_ACTIVO"]);
+
+                                            
+                                        }
+
+			return $dados;
+		}
     function listarAcoesUtilizadores(){
-        try{
-            $instrucao = $LigacaoBD->prepare("SELECT * FROM Logs");
-            $sucesso_funcao = $instrucao->execute();
-        } catch(PDOException $e){
-            echo $e->getMessage();
-        }
-        if($sucesso_funcao){
-            $instrucao->setFetchMode(PDO::FETCH_ASSOC);
-            while($registo = $instrucao->fetch()){
-                $dados[] = $registo;
-            }
+        $dados = array();
+
+                $instrucao = $this->bd->query("SELECT * FROM logs");
+
+                for($i=0; $i<count($instrucao); $i++){
+                        $dados[] = new AcoesUtilizadores($instrucao[$i]["L_ID"],$instrucao[$i]["U_ID"],$instrucao[$i]["L_DATAHORA"],$instrucao[$i]["L_DESCRICAO"]);
+
+                }
             return $dados;
-        } else {
-            return NULL;
-        }
+
     }
 
     function pesquisarAcoesData($dataHora){

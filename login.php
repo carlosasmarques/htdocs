@@ -1,7 +1,7 @@
 <?php
 	// login.php - trata de iniciar a sessão dos utilizadores
 
-	include_once "daoutilizador.php";
+	include "daoutilizador.php";
     include_once "utilizadores.php";
 	
 	session_start();

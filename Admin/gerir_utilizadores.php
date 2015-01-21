@@ -1,6 +1,6 @@
 <?php
 	include_once "../sessaoOk.php";
-	include_once "../GereUtilizadores.php";
+	include "../GereUtilizadores.php";
 	
 	$gere_utilizador = new GereUtilizadores();
 	$utilizador = new Utilizadores(0, "", 0, "", "", "", "", "", 0, "", "", true, "");

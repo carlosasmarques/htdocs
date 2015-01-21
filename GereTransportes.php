@@ -10,14 +10,11 @@ if(isset($_GET["logout"])){
 
 
     class GereTransportes{
-        public function adicionarTransporte(){
+    	public function adicionarTransporte(Transportes $transporte){
+            $daotransportes = new DaoTransportes();
             
-            $transporte = new Transportes($_POST["nome"],$_POST["$numeroSNS"],$_POST["$morada"],$_POST["$telefone"],$_POST["$dataNascimento"],$_POST["$dataRegisto"]);
-            $daotranporte = new DaoTransportes();
-            if($transporte = $daotranporte ->adicionarUtente($transporte)){
-                return "O Transporte foi adicionado com sucesso!";
-            }
-                return "O Transporte não foi adicionado com sucesso!";
+            $daotransportes->adicionarTransporte($transporte);
+        	
         }
         
         public function editarTransporte(){

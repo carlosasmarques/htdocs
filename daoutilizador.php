@@ -1,7 +1,7 @@
 <?php
 
 // daoutilizador.php - acesso aos dados dos utilizadores registados na base de dados
-include_once "Utilizadores.php";
+include "Utilizadores.php";
 include_once "acessobd.php";
 
 class DaoUtilizador {

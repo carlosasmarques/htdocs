@@ -1,9 +1,9 @@
 <?php
 	include_once "sessaoOk.php";
-	include_once "mensenv.php";
-	include_once "mensrec.php";
-	include_once "geremensenv.php";
-	include_once "geremensrec.php";
+	include "mensenv.php";
+	include "mensrec.php";
+	include "geremensenv.php";
+	include "geremensrec.php";
 	
 	$mens_env = new GereMensEnv();
 	$mensenv = new MensEnv(0, "", "", "", "", "", "", "");

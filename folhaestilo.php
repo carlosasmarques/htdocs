@@ -10,8 +10,8 @@
 			`- função1(parametro1 , parametro2, parametro3)
 	*/
 	
-	include_once "ficheiro1-a-incluir.php";
-	include_once "ficheiro2-a-incluir.php";
+	include "ficheiro1-a-incluir.php";
+	include "ficheiro2-a-incluir.php";
 	
 	class NomeDaClasse{
 		private $atributoDaClasse;

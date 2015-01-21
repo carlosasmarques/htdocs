@@ -13,8 +13,8 @@
 			`- verInspecaoPer(id da inspeção)
 	*/
 
-	include_once "conf.php";
-        include_once "Inspecoes.php";
+	include "conf.php";
+        include "Inspecoes.php";
 	 
 	class DaoInspecoes{
             public $LigacaoBD = null;

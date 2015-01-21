@@ -1,6 +1,6 @@
 <?php
 include_once "../sessaoOk.php";
-include_once "daoutilizador.php";
+include "daoutilizador.php";
 
 if(isset($_GET["logout"])){
     if($_GET["logout"]== true)
