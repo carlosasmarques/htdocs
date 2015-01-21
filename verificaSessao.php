@@ -1,7 +1,7 @@
 <?php
 
-include 'daoutilizador.php';
-include 'utilizadores.php';
+include_once 'daoutilizador.php';
+include_once 'utilizadores.php';
 
 $bd = new BaseDados();
 
