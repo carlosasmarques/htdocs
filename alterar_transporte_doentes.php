@@ -1,8 +1,8 @@
 <?php
 	include_once "sessaoOk.php";
-	include "transportes.php";
-	include "GereTransportes.php";
-        include "utentes.php";
+	include_once "transportes.php";
+	include_once "GereTransportes.php";
+        include_once "utentes.php";
 	
 	$gere_transportes = new GereTransportes();
 	$transportes = new Transportes(0, "", "", "", "", "", "", "",0);

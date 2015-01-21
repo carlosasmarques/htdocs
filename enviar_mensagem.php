@@ -1,7 +1,7 @@
 <?php
 	include_once "sessaoOk.php";
-	include "MensEnv.php";
-	include "GereMensEnv.php";
+	include_once "MensEnv.php";
+	include_once "GereMensEnv.php";
         
 	
 	$gere_mensenv = new GereMensEnv();

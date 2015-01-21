@@ -11,7 +11,7 @@
 			`- verManutInterna(id da manutenção interna)
 	*/
 
-	include "../conf.php";
+	include_once "../conf.php";
 	 
 	class DaoManutencoesInternas{
 		private $LigacaoBD;

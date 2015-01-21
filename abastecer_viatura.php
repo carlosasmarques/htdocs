@@ -1,7 +1,7 @@
 <?php
 	include_once "sessaoOk.php";
-	include "Viaturas.php";
-	include "GereViaturas.php";
+	include_once "Viaturas.php";
+	include_once "GereViaturas.php";
 	
         $gere_viaturas = new GereViaturas();
         $viaturas = new Viaturas(0, "", "", "", "", "", "", "", 0, "", 0, 0, "", true);

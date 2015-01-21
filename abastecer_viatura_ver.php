@@ -1,7 +1,7 @@
 <?php
 	include_once "sessaoOk.php";
-    include "Abastecimentos.php";
-	include "GereAbastecimentos.php";
+    include_once "Abastecimentos.php";
+	include_once "GereAbastecimentos.php";
 
         $gere_abastecimento = new GereAbastecimentos();
         $abastecimento = new Abastecimentos(0,"","",0, "", "", "");
