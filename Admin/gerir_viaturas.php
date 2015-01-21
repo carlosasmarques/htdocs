@@ -14,7 +14,7 @@
 	if(
 		// verificar variaveis GET
 		isset($_GET["id"]) && !empty($_GET["id"]) &&
-		isset($_GET["accao"]) && !empty($_GET["accao"]) &&
+		isset($_GET["accao"]) && !empty($_GET["accao"])
 	){
 		// ativar
 		if(!strcmp($_GET["accao"], "ativar")){
