@@ -1,5 +1,5 @@
 <?php
-include_once "../sessaoOk.php";
+include_once "sessaoOk.php";
 include_once "../conf.php";
 include_once "daoinspecoes.php";
 

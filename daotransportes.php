@@ -27,11 +27,7 @@
 			      na tabela de utentes
 		*****************************************************************************/
 	public function adicionarTransporte(Transportes $transporte){
-			$sql = "INSERT INTO `fmt`.`transportes` (`U_ID`, `V_ID`, `T_DATATRANSPORTE`, "
-					. "`T_HORAPARTIDA`, `T_HORACHEGADA`, `T_ORIGEM`, `T_DESTINO`, `T_OBSERVACOES`, "
-					. "`T_CONDICAO`, `T_TOTALQUILOMETRO`), "
-					. "VALUES (:U_ID, :V_ID , :T_DATATRANSPORTE, :T_HORAPARTIDA, :T_HORACHEGADA, "
-					. ":T_ORIGEM, :T_DESTINO, :T_OBSERVACOES, :T_CONDICAO, :T_TOTALQUILOMETRO );";
+			$sql = "INSERT INTO `fmt`.`transportes` (`U_ID`, `V_ID`, `T_DATATRANSPORTE`, `T_HORAPARTIDA`, `T_HORACHEGADA`, `T_ORIGEM`, `T_DESTINO`, `T_OBSERVACOES`, `T_CONDICAO`, `T_TOTALQUILOMETROS`) VALUES (:U_ID, :V_ID, :T_DATATRANSPORTE, :T_HORAPARTIDA, :T_HORACHEGADA, :T_ORIGEM, :T_DESTINO, :T_OBSERVACOES, :T_CONDICAO, :T_TOTALQUILOMETROS);";
                             
             $dados_Transporte = array (
             'U_ID'=> $transporte -> getIdUtilizador(),
@@ -43,7 +39,7 @@
             'T_DESTINO' => $transporte -> getDestino(),
             'T_OBSERVACOES' => $transporte ->getObservacoes(),
             'T_CONDICAO' => $transporte ->getCondicaoUtente(), 
-            'T_TOTALQUILOMETRO' => $transporte->getTotalQuilometros());			
+            'T_TOTALQUILOMETROS' => $transporte->getTotalQuilometros());			
             $this->bd->inserir($sql, $dados_Transporte);
 		}
 		/*****************************************************************************

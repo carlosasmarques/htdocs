@@ -1,5 +1,5 @@
 <?php
-	include_once "../sessaoOk.php";
+	include_once "sessaoOk.php";
         include_once "gereutentes.php";
         include_once "daoutentes.php";
 	

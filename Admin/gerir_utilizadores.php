@@ -1,5 +1,5 @@
 <?php
-	include_once "../sessaoOk.php";
+	include_once "sessaoOk.php";
 	include_once "../GereUtilizadores.php";
         include_once "daoutilizador.php";
 	

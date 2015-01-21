@@ -47,7 +47,8 @@
 				$utilizador->getAtivo() == 1){
 					
 				// Guardar o nome de utilizador da sessão
-				$_SESSION["user"] = $utilizador->getUsername(); 
+				$_SESSION["user"] = $utilizador->getUsername();
+				$_SESSION["tipo_user"] = $utilizador->getTipoUtilizador();
 				
 				// Verificar se se trata de um utilizador comum ou administrador
 				if($utilizador->getTipoUtilizador() == "Administrador"){
