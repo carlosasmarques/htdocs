@@ -1,11 +1,10 @@
 <?php
 	include_once "../sessaoOk.php";
 	include_once "../GereUtilizadores.php";
+        include_once "daoutilizador.php";
 	
 	$gere_utilizador = new GereUtilizadores();
 	$utilizador = new Utilizadores(0, "", 0, "", "", "", "", "", 0, "", "", 0, "");
-	
-	$utilizador = $gere_utilizador->listarUtilizador();
         
         $daoutilizador = new DaoUtilizador();
         
@@ -23,7 +22,9 @@
 		if(!strcmp($_GET["accao"], "desativar")){
 			$daoutilizador->ativarDesativarUtilizador(0, $_GET["id"]);
 		}
-	}	
+	}
+        
+        $utilizador = $gere_utilizador->listarUtilizador();
 
 ?>
 <!DOCTYPE html>
@@ -202,13 +203,13 @@
 									echo'    <span style="min-width: 160px; display: inline-block;">' . $utilizador[$i]->getNome() . '</span>';
 									echo'    <span style="min-width: 160px; display: inline-block;">' . $utilizador[$i]->getFuncao() . '</span>';
 									echo'    <span style="min-width: 160px; display: inline-block;">' . $utilizador[$i]->getTelefone() . '</span>';
-									echo '<a href="alterar_utilizador.php?id=' . $utilizador[$i]->getIdUtilizadores() . '&accao=editar" class="btn btn-xs" >Ver / Editar</a>';
-                                                                        echo '<a href="alterar_utilizador.php?id=' . $utilizador[$i]->getIdUtilizadores() .
+									echo '<a href="alterar_utilizador.php?id=' . $utilizador[$i]->getIdUtilizadores() . '" class="btn btn-xs" >Ver / Editar</a>';
+                                                                        echo '<a href="gerir_utilizadores.php?id=' . $utilizador[$i]->getIdUtilizadores() .
                                                                                     '&accao=' . ($utilizador[$i]->getAtivo()==1 ? "desativar" : "ativar") .
                                                                                     '" class="btn ' . ($utilizador[$i]->getAtivo()==1 ? "btn-danger" : "btn-primary") .
-                                                                                    ' btn-xs" >' . ($utilizador[$i]->getAtivo()==1 ? "Desativar" : "Ativar") . '</a></div>';
-                                                                        
-                                                                }                                                                      
+                                                                                    ' btn-xs" >' . ($utilizador[$i]->getAtivo()==1 ? "Desativar" : "Ativar") . '</a></div>';                                                                       
+                                                                                                                                            
+                                                                }                                                                       
 								?>
 
                             </div>

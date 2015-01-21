@@ -110,10 +110,10 @@ class DaoUtilizador {
     public function ativarDesativarUtilizador($estado, $id){
 		
 			$dados = array(
-				'V_ACTIVO' => $estado,
-				'V_ID' => $id
+				'U_ACTIVO' => $estado,
+				'U_ID' => $id
 			);
-			$this->bd->editar("UPDATE `fmt`.`utilizadores` SET `V_ACTIVO`=:V_ACTIVO WHERE  `V_ID`=:V_ID;", $dados);
+			$this->bd->editar("UPDATE `fmt`.`utilizadores` SET `U_ACTIVO`=:U_ACTIVO WHERE  `U_ID`=:U_ID;", $dados);
 		}
 
 }
