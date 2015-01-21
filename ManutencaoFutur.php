@@ -14,6 +14,7 @@
  */
 class ManutencaoFutur {
    private $idManutencaoFutur;
+   private $idViatura;
    private $descricaoManutencao;
    private $data;
    private $quilometragem;
@@ -28,19 +29,29 @@ class ManutencaoFutur {
          * @param estado
          * @return 
          *          */
-   function __construct($idManutencaoFutur, $descricaoManutencao, $data, $quilometragem, $estado) {
-       $this->idManutencaoFutur = $idManutencaoFutur;
-       $this->descricaoManutencao = $descricaoManutencao;
-       $this->data = $data;
-       $this->quilometragem = $quilometragem;
-       $this->estado = $estado;
-   }
-/*
+        function __construct($idManutencaoFutur, $idViatura, $descricaoManutencao, $data, $quilometragem, $estado) {
+            $this->idManutencaoFutur = $idManutencaoFutur;
+            $this->idViatura = $idViatura;
+            $this->descricaoManutencao = $descricaoManutencao;
+            $this->data = $data;
+            $this->quilometragem = $quilometragem;
+            $this->estado = $estado;
+        }
+
+        /*
          * Getter da classe ManutencaoFutur
          * @param 
          * @return idManutencaoFutur
          */
-   function getIdManutencaoFutur() {
+        function getIdViatura() {
+            return $this->idViatura;
+        }
+
+        function setIdViatura($idViatura) {
+            $this->idViatura = $idViatura;
+        }
+
+           function getIdManutencaoFutur() {
        return $this->idManutencaoFutur;
    }
 /*

@@ -1,5 +1,11 @@
 <?php
 	include_once "../sessaoOk.php";
+        include_once "GereUtentes.php";
+	
+	$gere_utentes = new GereUtentes();
+	$utentes = new Utentes(0, "", 0, "", 0, "", "",0);
+	
+	$gere_utentes->adicionarUtente($utentes);
 ?>
 
 <!DOCTYPE html>
@@ -139,50 +145,50 @@
 
 
                         <div class="col-sm-6 col-md-11">
-                            <form>
+                            <form method="post" action="adicionar_utente.php" onSubmit=''>
                                 <div class="form-group">
                                     <label class="nomeutente">Nome Utente:</label>
-                                    <input type="text" class="form-control" id="nu" placeholder="Inserir dados">
+                                    <input type="text" class="form-control" id="UT_nome" placeholder="Inserir Nome do Utente">
                                 </div>
                             </form>
                         </div>
 
 
                         <div class="col-sm-6 col-md-4">
-                            <form>
+                            <form method="post" action="adicionar_utente.php" onSubmit=''>
                                 <div class="form-group">
                                     <label class="numerosns">Número SNS:</label>
-                                    <input type="text" class="form-control" id="nsn" placeholder="Inserir dados">
+                                    <input type="text" class="form-control" id="UT_sns" placeholder="Inserir Nº SNS">
                                 </div>
                             </form>
                         </div>
 
                         <div class="col-sm-6 col-md-4">
-                            <form>
+                            <form method="post" action="adicionar_utente.php" onSubmit=''>
                                 <div class="form-group">
                                     <label class="datanasc">Data Nascimento:</label>
-                                    <input type="date" class="form-control" id="datanasc">
+                                    <input type="date" class="form-control" id="UT_dataNascimento" placeholder="Inserir DNASCIMENTO">
                                 </div>
                             </form>
                         </div>
 
                         <div class="col-sm-6 col-md-3">
-                            <form>
+                            <form method="post" action="adicionar_utente.php" onSubmit=''>
                                 <div class="form-group">
                                     <label class="numtelefone">Número Telefone:</label>
-                                    <input type="text" class="form-control" id="numtelefone" placeholder="Inserir dados">
+                                   <input type="text" class="form-control" id="UT_contactoTelefonico" placeholder="Nº de Telefone">
                                 </div>
                             </form>
                         </div>
 
                         <div class="col-sm-6 col-md-11">
-                            <form>
+                            <form method="post" action="adicionar_utente.php" onSubmit=''>
                                 <div class="form-group">
                                     <p>
                                         <label class="rua">Morada:</label>
                                     </p>
                                     <label class="rua">Rua:</label>
-                                    <input type="text" class="form-control" id="rua" placeholder="Inserir dados">
+                                     <input type="text" class="form-control" id="UT_morada" placeholder="Inserir a Rua">
                                 </div>
                             </form>
                         </div>
@@ -202,7 +208,7 @@
                         <br />
 
                         <div class="col-sm-6 col-md-2">
-                            <form>
+                            <form method="post" action="adicionar_utente.php" onSubmit=''>
                                 <div class="form-group">
                                     <label class="nporta">Nº Porta:</label>
                                     <input type="text" class="form-control" id="nporta" placeholder="Inserir dados">
@@ -211,7 +217,7 @@
                         </div>
 
                         <div class="col-sm-6 col-md-4">
-                            <form>
+                            <form method="post" action="adicionar_utente.php" onSubmit=''>
                                 <div class="form-group">
                                     <label class="localidade">Localidade:</label>
                                     <input type="text" class="form-control" id="localidade" placeholder="Inserir dados">
@@ -220,7 +226,7 @@
                         </div>
 
                         <div class="col-sm-6 col-md-3">
-                            <form>
+                            <form method="post" action="adicionar_utente.php" onSubmit=''>
                                 <div class="form-group">
                                     <label class="cp">Código Postal:</label>
                                     <input type="text" class="form-control" id="cp" maxlength="8" placeholder="XXXX-YYY">
@@ -240,6 +246,14 @@
                             <br/>
                         </div>
 
+                         <?php
+                           
+                           
+                           if(isset($_POST["UT_nome"]) && !empty($_POST["UT_nome"])&& isset($_POST["UT_sns"]) && !empty($_POST["UT_sns"]) && isset($_POST["UT_dataNascimento"]) && !empty($_POST["UT_dataNascimento"]) && isset($_POST["UT_contactoTelefonico"]) && !empty($_POST["UT_contactoTelefonico"]) && isset($_POST["UT_morada"]) && !empty($_POST["UT_morada"]) ){
+                                $utentes = $gere_utentes->adicionarUtente();   
+                            }
+                           
+                           ?>
                     </div>
 
                 </div>

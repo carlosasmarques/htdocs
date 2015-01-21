@@ -3,28 +3,28 @@ include_once "acessobd.php";
 
 class DaoAdministracao{
 
-    public function adicionarUtilizador($utilizador){
-        try{
-            $DBH = getDBH();
-            $instrucao = $DBH->prepare("INSERT INTO Utilizadores (
-				U_numeroFuncionario, U_nome, U_morada, U_contactoTelefonico, U_dataNascimento, U_nomeUtilizador, U_palavraPasse, U_tipoUtilizador, U_dataRegisto, U_fotografia, U_funcao, U_activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $instrucao->bind_param($utilizador->numero, $utilizador->nome,
-                $utilizador->morada, $utilizador->telefone, $utilizador->dataNascimento,
-                $utilizador->username, $utilizador->password, $utilizador->tipoUtilizador,
-                $utilizador->dataRegisto, $utilizador->caminhoFoto, $utilizador->funcao, "True");
-            // Executar
+    public function adicionarUtilizador(Utilizadores $utilizador){
+        
+        $sql=" INSERT INTO `fmt`.`utilizadores` (`U_NUMEROFUNCIONARIO`, `U_NOME`, `U_MORADA`, `U_CONTACTOTELEFONICO`, `U_DATANASCIMENTO`, `U_NOMEUTILIZADOR`, `U_PALAVRAPASSE`, `U_TIPOUTILIZADOR`, `U_DATAREGISTO`, `U_FOTOGRAFIA`, `U_ACTIVO`, `U_FUNCAO`) "
+                . "VALUES (:U_NUMEROFUNCIONARIO, :U_NOME, :U_MORADA, :U_CONTACTOTELEFONICO, :U_DATANASCIMENTO, :U_NOMEUTILIZADOR, :U_PALAVRAPASSE, :U_TIPOUTILIZADOR, :U_DATAREGISTO, :U_FOTOGRAFIA, U_ACTIVO, :U_FUNCAO); ";
+        
+         $dados = array (
+                            'U_NUMEROFUNCIONARIO'=> $utilizador->getNumero(),
+                            'U_NOME'=> $utilizador->getNome(),
+                            'U_MORADA'=> $utilizador->getMorada(),
+                            'U_CONTACTOTELEFONICO'=> $utilizador->getTelefone(),
+                            'U_DATANASCIMENTO'=> $utilizador->getDataNascimento(),
+                            'U_NOMEUTILIZADOR'=> $utilizador->getUsername(),
+                            'U_PALAVRAPASSE'=> $utilizador->getPassword(),
+                            'U_TIPOUTILIZADOR'=> $utilizador->getTipoUtilizador(),
+                            'U_DATAREGISTO'=> $utilizador->getDataDeRegisto(),
+                            'U_FOTOGRAFIA'=> $utilizador->getCaminhoFoto(),
+                            'U_ACTIVO'=> $utilizador->getAtivo(),
+                            'U_FUNCAO'=> $utilizador->getFuncao()
 
-            $sucesso_funcao = $instrucao->execute();
-            $instrucao->close();
-
-        }catch(PDOException $e){
-            echo $e->getMessage();
-        }
-        if($sucesso_funcao){
-            return "True";
-        }else{
-            return "False";
-        }
+                              );
+                          
+                    $this->bd->inserir($sql, $dados);
     }
     public function editarUtilizador($id, $nome, $username, $password, $tipoUtilizador, $dataRegisto, $morada, $dataNascimento, $funcao, $caminhoFoto, $numero, $telefone){
         try{
