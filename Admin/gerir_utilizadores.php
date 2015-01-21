@@ -3,9 +3,27 @@
 	include "../GereUtilizadores.php";
 	
 	$gere_utilizador = new GereUtilizadores();
-	$utilizador = new Utilizadores(0, "", 0, "", "", "", "", "", 0, "", "", true, "");
+	$utilizador = new Utilizadores(0, "", 0, "", "", "", "", "", 0, "", "", 0, "");
 	
 	$utilizador = $gere_utilizador->listarUtilizador();
+        
+        $daoutilizador = new DaoUtilizador();
+        
+        if(
+		// verificar variaveis GET
+		isset($_GET["id"]) && !empty($_GET["id"]) &&
+		isset($_GET["accao"]) && !empty($_GET["accao"])
+	){
+		// ativar
+		if(!strcmp($_GET["accao"], "ativar")){
+			$daoutilizador->ativarDesativarUtilizador(1, $_GET["id"]);
+		}
+		
+		// desativar
+		if(!strcmp($_GET["accao"], "desativar")){
+			$daoutilizador->ativarDesativarUtilizador(0, $_GET["id"]);
+		}
+	}	
 
 ?>
 <!DOCTYPE html>
@@ -166,39 +184,31 @@
                         <br />
                         <div class="tab-content">
                             <div class="tab-pane fade in active" id="home">
-                                <div class="list-group-item">
+                                      <div class="list-group">
+						<span class="list-group-item">
                                     <span style="min-width: 160px; display: inline-block;">ID</span> 
                                     <span style="min-width: 160px; display: inline-block;">Nome</span>
                                     <span style="min-width: 160px; display: inline-block;">Função</span>
                                     <span style="min-width: 160px; display: inline-block;">Contacto</span>
                                     <span style="min-width: 160px; display: inline-block;">Opções</span>
-                                </div>
-                                <div class="list-group-item">
-                                    <span style="min-width: 160px; display: inline-block;">0001</span> 
-                                    <span style="min-width: 160px; display: inline-block;">Manuel Ribeiro</span>
-                                    <span style="min-width: 160px; display: inline-block;">Camionista</span>
-                                    <span style="min-width: 160px; display: inline-block;">123456789</span>
-                                    <span style="min-width: 160px; display: inline-block;"><a href="alterar_utilizador.php" class="btn btn-xs" >Ver / Alterar</a><a href="ver_log_utilizador.php" class="btn btn-xs" >Ver log</a><a href="#" class="btn btn-danger btn-xs">Desativar</a></span>
-                                </div>
+                                </span>
+                               
 								<?php
 								for($i=0; $i<count($utilizador); $i++){
 									echo'<div class="list-group-item">';
-									if($utilizador[$i]->getAtivo()==1){
-                                                                            $estado = "Ativo";
-                                                                        }else{
-                                                                            $estado = "Desativo";
-                                                                        } 
-									// substituir pelos getters certos
-									echo'    <span style="min-width: 40px; display: inline-block;">' . $utilizador[$i]->getIdUtilizadores() . '</span> ';
-									echo'    <span style="min-width: 100px; display: inline-block;">' . $utilizador[$i]->getNome() . '</span>';
-									echo'    <span style="min-width: 90px; display: inline-block;">' . $utilizador[$i]->getFuncao() . '</span>';
-									echo'    <span style="min-width: 160px; display: inline-block;">' . $utilizador[$i]->getTelefone() . '</span>';
-									echo'    <span style="min-width: 80px; display: inline-block;"><a href="alterar_utente.php?id=' . $utilizador[$i]->getIdUtilizadores() . '" class="btn btn-xs" >Ver / Alterar</a></span>';
-									echo'    <span style="min-width: 80px; display: inline-block;"><a href="alterar_utente.php?id=' . $utilizador[$i]->getIdUtilizadores() . '" class="btn btn-xs" >Ver log</a></span>';
-									echo'    <span style="min-width: 80px; display: inline-block;"><a href="alterar_utente.php?id=' . $utilizador[$i]->getIdUtilizadores() . '" class="btn btn-xs" >' .$estado. '</a></span>';
 									
-									echo'</div>';
-								}
+									// substituir pelos getters certos
+									echo'    <span style="min-width: 160px; display: inline-block;">' . $utilizador[$i]->getIdUtilizadores() . '</span> ';
+									echo'    <span style="min-width: 160px; display: inline-block;">' . $utilizador[$i]->getNome() . '</span>';
+									echo'    <span style="min-width: 160px; display: inline-block;">' . $utilizador[$i]->getFuncao() . '</span>';
+									echo'    <span style="min-width: 160px; display: inline-block;">' . $utilizador[$i]->getTelefone() . '</span>';
+									echo '<a href="alterar_utilizador.php?id=' . $utilizador[$i]->getIdUtilizadores() . '&accao=editar" class="btn btn-xs" >Ver / Editar</a>';
+                                                                        echo '<a href="alterar_utilizador.php?id=' . $utilizador[$i]->getIdUtilizadores() .
+                                                                                    '&accao=' . ($utilizador[$i]->getAtivo()==1 ? "desativar" : "ativar") .
+                                                                                    '" class="btn ' . ($utilizador[$i]->getAtivo()==1 ? "btn-danger" : "btn-primary") .
+                                                                                    ' btn-xs" >' . ($utilizador[$i]->getAtivo()==1 ? "Desativar" : "Ativar") . '</a></div>';
+                                                                        
+                                                                }                                                                      
 								?>
 
                             </div>
