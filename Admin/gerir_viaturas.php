@@ -1,5 +1,13 @@
 <?php
-	include_once "../sessaoOk.php";
+	include_once "sessaoOk.php";
+	include_once "gereviaturas.php";
+	
+	$gere_viaturas = new GereViaturas();
+	$viaturas = new Viaturas("", "", "", "", "", "", "", "", "", "", "", "");
+	
+	$viaturas = $gere_viaturas->listarViaturas();		
+?>
+        
 ?>
 
 <!DOCTYPE html>
@@ -163,41 +171,26 @@
 								</span>
 							
 							<div  class="list-group-item">
-                            <span class="Codigo" style="min-width: 40px; display: inline-block;">001</span> 
-							<span class="Quantidade" style="min-width: 100px; display: inline-block;" >Ligeiro</span>
-							<span class="Quantidade" style="min-width: 100px; display: inline-block;" >Mercedes</span>
-							<span class="Quantidade" style="min-width: 100px; display: inline-block;" >45-AI-10</span>
-							<span class="Descrição" style="min-width: 100px; display: inline-block;" >Diesel</span> 
-                            <span class="Descrição" style="min-width: 100px; display: inline-block;" >6.5</span> 
-					
-							<a href="editar_viatura.php" class="btn btn-xs" >Ver/Editar</a>
-							<a class="btn btn-primary btn-xs" style="width:70px;">Ativar</a>
-							</div>
-							
-							<div  class="list-group-item">
-                            <span class="Codigo" style="min-width: 40px; display: inline-block;">002</span> 
-							<span class="Quantidade" style="min-width: 100px; display: inline-block;" >Pesado</span>
-							<span class="Quantidade" style="min-width: 100px; display: inline-block;" >Man</span>
-							<span class="Quantidade" style="min-width: 100px; display: inline-block;" >13-AH-35</span>
-							<span class="Descrição" style="min-width: 100px; display: inline-block;" >Diesel</span> 
-							<span class="Descrição" style="min-width: 100px; display: inline-block;" >7.0</span> 
-						 
-							<a href="editar_viatura.php" class="btn btn-xs" >Ver/Editar</a>
-							<a class="btn btn-danger btn-xs" style="width:70px;">Desativar</a>
-							</div>
-							
-							<div  class="list-group-item">
-                            <span class="Codigo" style="min-width: 40px; display: inline-block;">003</span> 
-							<span class="Quantidade" style="min-width: 100px; display: inline-block;" >Pesado</span>
-							<span class="Quantidade" style="min-width: 100px; display: inline-block;" >Mercedes</span>
-							<span class="Quantidade" style="min-width: 100px; display: inline-block;" >21-38-XT</span>
-							<span class="Descrição" style="min-width: 100px; display: inline-block;" >Diesel</span> 
-							<span class="Descrição" style="min-width: 100px; display: inline-block;" >8.0</span> 
-						
-     
-							<a href="editar_viatura.php" class="btn btn-xs" >Ver/Editar</a>
-							<a class="btn btn-danger btn-xs" style="width:70px;">Desativar</a>
-							</div>
+                                                            
+                                                            <?php
+                                                            for ($i = 0; $i < count($viaturas); $i++) {
+                                                                echo'<div class="list-group-item">';
+                                                                
+                                                                if($viaturas[$i]->getActiva()==1){
+                                                                    $estado = "Ativo";                                                
+                                                                }else{
+                                                                    $estado = "Desativo";
+                                                                }
+                                                                // substituir pelos getters certos
+                                                                echo'    <span class="TipoViatura" style="min-width: 100px; display: inline-block;">' . $viaturas[$i]->getTipo() . '</span> ';
+                                                                echo'    <span class="Marca" style="min-width: 100px; display: inline-block;">' . $viaturas[$i]->getMarca() . '</span>';
+                                                                echo'    <span class="Matricula" style="min-width: 100px; display: inline-block;">' . $viaturas[$i]->getDataMatricula() . '</span>';
+                                                                echo'    <span class="Combustivel" style="min-width: 100px; display: inline-block;">' . $viaturas[$i]->getCombustivel() . '</span>';
+                                                                echo'    <span style="min-width: 80px; display: inline-block;"><a href="editar_viatura.php?id=' . $viaturas[$i]->getIdViaturas() . '" class="btn btn-xs" >Ver / Editar</a></span>';
+                                                                echo'    <span style="min-width: 80px; display: inline-block;"><a href="gerir_viaturas.php?id=' . $viaturas[$i]->getIdViaturas() . '" class="btn btn-xs" >' .$estado. '</a></span>';
+                                                                echo'</div>';
+                                                            }
+                                                            ?>                                                                                     														
 						<br>
 
 		  </div>
