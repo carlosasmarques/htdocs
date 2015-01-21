@@ -5,27 +5,32 @@
 	
 	$gere_utentes = new GereUtentes();
         $utentes = new Utentes(0, "", 0, "", 0, "", "",0);
-	
-	$utentes = $gere_utentes->listarUtentes();
-        
+	        
         $daoutentes = new DaoUtentes();
         
         // ações "desativar", "ativar"
+       
 	if(
+             
 		// verificar variaveis GET
 		isset($_GET["id"]) && !empty($_GET["id"]) &&
 		isset($_GET["accao"]) && !empty($_GET["accao"])
 	){
+            
 		// ativar
 		if(!strcmp($_GET["accao"], "ativar")){
-			$daoutentes->ativarDesativarUtentes(1, $_GET["id"]);
+			$daoutentes->activarDesativarUtente(1, $_GET["id"]);
 		}
 		
 		// desativar
 		if(!strcmp($_GET["accao"], "desativar")){
-			$daoutentes->ativarDesativarUtentes(0, $_GET["id"]);
+			$daoutentes->activarDesativarUtente(0, $_GET["id"]);
+                        echo "tou aqui2";
 		}
-	}	
+	}
+       
+        
+        $utentes = $gere_utentes->listarUtentes();
 
 ?>
 
@@ -212,7 +217,7 @@
                                                 echo' <span style="min-width: 120px; display: inline-block;">' . $utentes[$i]->getDataNascimento() . '</span>';
                                                 echo' <span style="min-width: 110px; display: inline-block;">' . $utentes[$i]->getDataRegisto() . '</span>';
                                                 echo '<a href="alterar_utente.php?id=' . $utentes[$i]->getIdUtentes() . '&accao=editar" class="btn btn-xs" >Ver / Editar</a>';
-                                                echo '<a href="alterar_utente.php?id=' . $utentes[$i]->getIdUtentes() .
+                                                echo '<a href="gerir_utente.php?id=' . $utentes[$i]->getIdUtentes() .
                                                         '&accao=' . ($utentes[$i]->getAtivo()==1 ? "desativar" : "ativar") .
                                                         '" class="btn ' . ($utentes[$i]->getAtivo()==1 ? "btn-danger" : "btn-primary") .
                                                         ' btn-xs" >' . ($utentes[$i]->getAtivo()==1 ? "Desativar" : "Ativar") . '</a></div>';
