@@ -1,6 +1,7 @@
 <?php
 	include_once "../sessaoOk.php";
         include_once "../GereAcoesUtilizadores.php";
+	include_once "../AcoesUtilizadores.php";
 	
 	$gere_logs = new GereAcoesUtilizadores();
         $logs = new AcoesUtilizadores(0,0,"","");
