@@ -34,29 +34,23 @@
 		/*****************************************************************************
 			Nota: Não faz sentido passar a matricula da viatura porque a base de dados utiliza o id
 		*****************************************************************************/
-		public function adicionarManutencaoFutur($id_viatura, $descricaoManutencao, $data, $quilometragem, $estado){
+		public function adicionarManutencaoFutur(ManutencaoFutur $manutencao){
 		
-			try{
-				// Preparar a instrução sql de inserção
-				/*********************************************************************
-					Nota: falta o parametro "quilometragem atual"
-				*********************************************************************/
-				$instrucao =$bd->prepare("INSERT INTO MANUTENCOESFUTURAS (V_ID, MF_DESCRICAOMANUTENCAO, MF_DATAMANUTENCAO, MF_QUILOMETRAGEMFUTURA, MF_ESTADO) VALUES (?, ?, ?, ?, ?)");
-				$instrucao->bind_param($id_viatura, $descricaoManutencao, $data, $quilometragem, $estado);
-				
-				// Executar
-				$sucesso_funcao = $instrucao->execute();
-				$instrucao->close();
-				
-			}catch(PDOException $e){
-				echo $e->getMessage();
-			}
+                    $sql = "INSERT INTO `fmt`.`manutencoesfuturas` (`V_ID`,`MF_DESCRICAOMANUTENCAO`, `MF_DATAMANUTENCAO`, `MF_QUILOMETRAGEMFUTURA`, `MF_ESTADO`)"
+                            . " VALUES (:V_ID,:MF_DESCRICAOMANUTENCAO, :MF_DATAMANUTENCAO, :MF_QUILOMETRAGEMFUTURA, :MF_ESTADO);"; 
+                    
+                  
+                        
+                     $dados = array (
+                              'V_ID'=> $manutencao->getIdViatura(), 
+                              'MF_DESCRICAOMANUTENCAO'=> $manutencao->getDescricaoManutencao(), 
+                              'MF_DATAMANUTENCAO'=> $manutencao->getData(), 
+                              'MF_QUILOMETRAGEMFUTURA'=> $manutencao->getQuilometragem(), 
+                              'MF_ESTADO'=> $manutencao->getEstado()
+                              );
+                    $this->bd->inserir($sql, $dados);
+                    
 			
-			if($sucesso_funcao){
-				return "Manutenção futura registada com sucesso<br />";
-			}else{
-				return "Erro ao registar a manutenção futura!<br />";
-			}
 		}
 		
 		public function editarManutencaoFutur($id, $id_viatura, $descricaoManutencao, $data, $quilometragem, $estado){
