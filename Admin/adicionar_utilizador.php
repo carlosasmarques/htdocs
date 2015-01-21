@@ -1,6 +1,7 @@
 <?php
 include_once "../sessaoOk.php";
-$gereAdministracao = new GereAdministracao();
+
+
 
 ?>
 <!DOCTYPE html>
@@ -70,153 +71,128 @@ $gereAdministracao = new GereAdministracao();
         <div class="centered">
             <div id='cssmenu'>
                 <ul>
-                    <li><a href="inicial.php"><span>Principal</span></a>
-                    </li>
+                    <li><a href="inicial.php"><span>Principal</span></a></li>
                     <li class='has-sub'><a><span>Administrador</span></a>
                         <ul>
-                            <li><a href="gerir_utilizadores.php"><span>Gerir Utilizadores</span></a>
-                            </li>
-                            <li><a href="ver_log_global.php"><span>Ver Log Global</span></a>
-                            </li>
-                            <li><a href="ver_registo_consumo.php"><span>Ver / Editar Registo de Consumos</span></a>
-                            </li>
-
+                            <li><a href="gerir_utilizadores.php"><span>Gerir Utilizadores</span></a></li>
+                            <li><a href="ver_log_global.php"><span>Ver Log Global</span></a></li>
+                            <li><a href="ver_registo_consumo.php"><span>Ver / Editar Registo de Consumos</span></a></li>
                         </ul>
                     </li>
 
-                    <li><a href="Gestao_stock.php"><span>Gerir Stocks</span></a>
-                    </li>
+                    <li><a href="Gestao_stock.php"><span>Gerir Stocks</span></a></li>
                     <li class='has-sub'><a><span>Viaturas</span></a>
                         <ul>
                             <li><a href="gerir_viaturas.php"><span>Gerir Viaturas</span></a>
-                                <li><a href="manutencao.php"><span>Manutencões</span></a>
-                                    <li><a href="abastecer_viatura.php"><span>Abastecimentos</span></a>
-                                        <li><a href="gerir_inspecoes.php"><span>Inspeções</span></a>
+                            <li><a href="manutencao.php"><span>Manutencões</span></a>
+                            <li><a href="abastecer_viatura.php"><span>Abastecimentos</span></a>
+                            <li><a href="gerir_inspecoes.php"><span>Inspeções</span></a>
                         </ul>
-                        </li>
-                        <li class='has-sub'><a><span>Transporte de Doentes</span></a>
-                            <ul>
-                                <li><a href="adicionar_transporte_doentes.php"><span>Adicionar Novo Transporte</span></a>
-                                </li>
-                                <li><a href="gerir_transporte_doentes.php"><span>Gerir Transporte de Doentes</span></a>
-                                    <li><a href='gerir_utente.php'><span>Gerir Utentes</span></a>
-                            </ul>
-                            </li>
-
-                            <li><a href='registo_consumos.php'><span>Registo de Consumos</span></a>
-
-                            </li>
-
-
-                            <li class='has-sub'><a><span>Mensagens</span></a>
-                                <ul>
-                                    <li><a href='enviar_mensagem.php'><span>Nova Mensagem</span></a>
-                                    </li>
-                                    <li><a href='mensagens_recebidas.php'><span>Mensagens Recebidas</span></a>
-                                    </li>
-                                    <li><a href='mensagens_enviadas.php'><span>Mensagens Enviadas</span></a>
-                                    </li>
-                                </ul>
-                            </li>
-
+                    </li>
+                    <li class='has-sub'><a><span>Transporte de Doentes</span></a>
+                        <ul>
+                            <li><a href="adicionar_transporte_doentes.php"><span>Adicionar Novo Transporte</span></a></li>
+                            <li><a href="gerir_transporte_doentes.php"><span>Gerir Transporte de Doentes</span></a>
+                            <li><a href='gerir_utente.php'><span>Gerir Utentes</span></a>
+                        </ul>
+                    </li>
+                    <li><a href='registo_consumos.php'><span>Registo de Consumos</span></a></li>
+                    <li class='has-sub'><a><span>Mensagens</span></a>
+                        <ul>
+                            <li><a href='enviar_mensagem.php'><span>Nova Mensagem</span></a> </li>
+                            <li><a href='mensagens_recebidas.php'><span>Mensagens Recebidas</span></a></li>
+                            <li><a href='mensagens_enviadas.php'><span>Mensagens Enviadas</span></a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
-
-
-            <div class="conteudo">
-                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <ol class="breadcrumb" style="width: 800px">
-                        <li><a href="inicial.php">Administrador</a>
-                        </li>
-                        <li><a href="gerir_utilizadores.php">Gerir Utilizadores</a>
-                        </li>
-                        <li class="active">Adicionar Utilizador</li>
-                    </ol>
-                    <form style="width : 800px" method="post" action="<?php $gereAdministracao->adicionarUtilizador()?>">
+        </div>
+        
+        <div class="conteudo">
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <ol class="breadcrumb" style="width: 800px">
+                    <li><a href="inicial.php">Administrador</a></li>
+                    <li><a href="gerir_utilizadores.php">Gerir Utilizadores</a></li>
+                    <li class="active">Adicionar Utilizador</li>               
+                </ol>
+            </div>
+                <form class="form-signin" action="GereUtilizadores.php" method="post">
                     <div style="float: left">
-                    <img src="../exavatar.png" style="float: left" class="img-responsive" alt="Responsive image">
-                    <br style="clear: both">
-                    <input type="button" value="Escolher Imagem" style="float: left" class="btn btn-primary btn-xl">
+                        <img src="../exavatar.png" style="float: left" class="img-responsive" alt="Responsive image">
+                        <br style="clear: both">
+                        <input type="button" value="Escolher Imagem" style="float: left" class="btn btn-primary btn-xl">
                         <br style="clear: both">
                         <input type="radio" name="sex" value="male">Administrador
                         <input type="radio" name="sex" value="female">Utilizador
                     </div>
-                                <div style=" width: 600px; float: right">
-
-                                <br style="clear: both">
-                                    <div style="float: inherit; margin-right: 5px; margin-left: 5px">
-                                    <label class="numerofuncionario">Número de Funcionário:</label>
-                                    <br style="clear: both">
-                                    <input type="text" style="width : 120px;" class="form-control" id="nf" placeholder="Inserir dados" name="numero" >
-                                        <br style="clear: both">
-                                    </div>
-                                    <div style="float: inherit; margin-right: 5px; margin-left: 5px">
-                                    <label class="nomefuncionario">Nome Utilizador:</label>
-                                    <br style="clear: both">
-                                    <input type="text" style="width : 120px;" class="form-control" id="nu" placeholder="Inserir dados" name="username">
-                                    <br style="clear: both">
-                                    </div>
-                                    <div style="float: inherit; margin-right: 5px; margin-left: 5px">
-                                    <label class="funcao">Função:</label>
-                                    <br style="clear: both">
-                                    <input type="text" style="width : 120px;" class="form-control" id="f" placeholder="Inserir dados" name="funcao">
-                                    <br style="clear: both">
-                                    </div>
-                                    <div style="float: inherit; margin-right: 5px; margin-left: 5px">
-                                    <label class="password">Password:</label>
-                                <br style="clear: both">
-                                    <input type="password" style="width : 120px;" class="form-control" id="pass" placeholder="Inserir dados" name="password">
-                                <br style="clear: both">
-                                        </div>
-                                    <div style="float: inherit; margin-right: 5px; margin-left: 5px">
-                                    <label class="nome">Nome:</label>
-                                <br style="clear: both">
-                                    <input type="text" style="width : 120px;" class="form-control" id="nome" placeholder="Inserir dados" name="nome">
-                                <br style="clear: both">
-                                        </div>
-                                    <div style="float: inherit; margin-right: 5px; margin-left: 5px">
-                                    <label class="morada">Morada:</label>
-                                <br style="clear: both">
-                                    <input type="text" style="width : 120px;" class="form-control" id="mor" placeholder="Inserir dados" name="morada">
-                                <br style="clear: both">
-                                        </div>
-                                    <div style="float: inherit; margin-right: 5px; margin-left: 5px">
-                                    <label class="contacto">Contacto:</label>
-                                <br style="clear: both">
-                                    <input type="text" style="width : 120px;" class="form-control" id="contacto" placeholder="Inserir dados" name="contacto">
-                                <br style="clear: both">
-                                        </div>
-                                        <div style="float: inherit; margin-right: 5px; margin-left: 5px">
-                                    <label class="datanascimento">Data Nascimento:</label>
-                                <br style="clear: both">
-                                    <input type="date" style="width : 170px;" class="form-control" id="datanascimento" name="dataNascimento">
-                                <br style="clear: both">
-                                      </div>
-                                    div style="float: inherit; margin-right: 5px; margin-left: 5px">
-                                    <label class="datanascimento">Tipo Utilizador:</label>
-                                    <br style="clear: both">
-                                    <input type="date" style="width : 170px;" class="form-control" value="Utilizador" id="tipoUtilizador" name="TipoUtilizador">
-                                    <br style="clear: both">
-                                </div>
-                                </div>
-                        <div class="pull-right">
+                    <div style=" width: 600px; float: left">
+                        <br style="clear: both">
+                        <div style="float: inherit; margin-right: 5px; margin-left: 5px">
+                            <label class="numerofuncionario">Número de Funcionário:</label>
+                            <br style="clear: both">
+                            <input type="text" style="width : 120px;" class="form-control" id="nf" placeholder="Inserir dados" name="numero" >
+                            <br style="clear: both">
+                        </div>
+                        <div style="float: inherit; margin-right: 5px; margin-left: 5px">
+                            <label class="nomefuncionario">Nome Utilizador:</label>
+                            <br style="clear: both">
+                            <input type="text" style="width : 120px;" class="form-control" id="nu" placeholder="Inserir dados" name="username">
+                            <br style="clear: both">
+                        </div>
+                        <div style="float: inherit; margin-right: 5px; margin-left: 5px">
+                            <label class="funcao">Função:</label>
+                            <br style="clear: both">
+                            <input type="text" style="width : 120px;" class="form-control" id="f" placeholder="Inserir dados" name="funcao">
+                            <br style="clear: both">
+                        </div>
+                        <div style="float: inherit; margin-right: 5px; margin-left: 5px">
+                            <label class="password">Password:</label>
+                            <br style="clear: both">
+                            <input type="password" style="width : 120px;" class="form-control" id="pass" placeholder="Inserir dados" name="password">
+                            <br style="clear: both">
+                        </div>
+                        <div style="float: inherit; margin-right: 5px; margin-left: 5px">
+                            <label class="nome">Nome:</label>
+                            <br style="clear: both">
+                            <input type="text" style="width : 120px;" class="form-control" id="nome" placeholder="Inserir dados" name="nome">
+                            <br style="clear: both">
+                        </div>
+                        <div style="float: inherit; margin-right: 5px; margin-left: 5px">
+                            <label class="morada">Morada:</label>
+                            <br style="clear: both">
+                            <input type="text" style="width : 120px;" class="form-control" id="mor" placeholder="Inserir dados" name="morada">
+                            <br style="clear: both">
+                        </div>
+                        <div style="float: inherit; margin-right: 5px; margin-left: 5px">
+                            <label class="contacto">Contacto:</label>
+                            <br style="clear: both">
+                            <input type="text" style="width : 120px;" class="form-control" id="contacto" placeholder="Inserir dados" name="contacto">
+                            <br style="clear: both">
+                        </div>
+                        <div style="float: inherit; margin-right: 5px; margin-left: 5px">
+                            <label class="datanascimento">Data Nascimento:</label>
+                            <br style="clear: both">
+                            <input type="date" style="width : 170px;" class="form-control" id="datanascimento" name="dataNascimento">
+                            <br style="clear: both">
+                        </div>
+                        <div style="float: inherit; margin-right: 5px; margin-left: 5px">
+                            <label class="datanascimento">Tipo Utilizador:</label>
+                            <br style="clear: both">
+                            <input type="date" style="width : 170px;" class="form-control" value="Utilizador" id="tipoUtilizador" name="TipoUtilizador">
+                            <br style="clear: both">
+                        </div>
+                    
+                        <div class="pull-right" float="bottom">
                             <br />
                             <a href="gerir_utilizadores.php" class="btn btn-danger btn-xl"> Voltar </a>
-                            <input type="submit" class="btn btn-primary btn-xl"> Adicionar </a>
+                            <input type="submit" class="btn btn-primary btn-xl">
                             <br/>
                         </div>
-                            </form>
                     </div>
-                </div>
-            </div>
-
-
-                    </div>
-
-                </div>
+                </form>
             </div>
         </div>
-    </div>
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
