@@ -1,14 +1,33 @@
 <?php
-	include_once "sessaoOk.php";
+	include_once "../sessaoOk.php";
 	include_once "gereviaturas.php";
+	include_once "daoviaturas.php";
 	
 	$gere_viaturas = new GereViaturas();
-	$viaturas = new Viaturas("", "", "", "", "", "", "", "", "", "", "", "");
+	$viaturas = new Viaturas(0, "", "", "", "", 0, 0, 0, 0, 0, 0, 0, "", 0);
 	
-	$viaturas = $gere_viaturas->listarViaturas();		
+	$viaturas = $gere_viaturas->listarViaturas();
+	
+	$daoViaturas = new DaoViaturas();
+
+	// ações "desativar", "ativar"
+	if(
+		// verificar variaveis GET
+		isset($_GET["id"]) && !empty($_GET["id"]) &&
+		isset($_GET["accao"]) && !empty($_GET["accao"]) &&
+	){
+		// ativar
+		if(!strcmp($_GET["accao"], "ativar")){
+			$daoViaturas->ativarDesativarViatura(1, $_GET["id"]);
+		}
+		
+		// desativar
+		if(!strcmp($_GET["accao"], "desativar")){
+			$daoViaturas->ativarDesativarViatura(0, $_GET["id"]);
+		}
+	}	
 ?>
         
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -168,30 +187,29 @@
 								
 								<span class="opcao" style="min-width: 120px; display: inline-block;">Opções</span>
 								
-								</span>
+						</span>
 							
-							<div  class="list-group-item">
+							
                                                             
-                                                            <?php
-                                                            for ($i = 0; $i < count($viaturas); $i++) {
-                                                                echo'<div class="list-group-item">';
-                                                                
-                                                                if($viaturas[$i]->getActiva()==1){
-                                                                    $estado = "Ativo";                                                
-                                                                }else{
-                                                                    $estado = "Desativo";
-                                                                }
-                                                                // substituir pelos getters certos
-                                                                echo'    <span class="TipoViatura" style="min-width: 100px; display: inline-block;">' . $viaturas[$i]->getTipo() . '</span> ';
-                                                                echo'    <span class="Marca" style="min-width: 100px; display: inline-block;">' . $viaturas[$i]->getMarca() . '</span>';
-                                                                echo'    <span class="Matricula" style="min-width: 100px; display: inline-block;">' . $viaturas[$i]->getDataMatricula() . '</span>';
-                                                                echo'    <span class="Combustivel" style="min-width: 100px; display: inline-block;">' . $viaturas[$i]->getCombustivel() . '</span>';
-                                                                echo'    <span style="min-width: 80px; display: inline-block;"><a href="editar_viatura.php?id=' . $viaturas[$i]->getIdViaturas() . '" class="btn btn-xs" >Ver / Editar</a></span>';
-                                                                echo'    <span style="min-width: 80px; display: inline-block;"><a href="gerir_viaturas.php?id=' . $viaturas[$i]->getIdViaturas() . '" class="btn btn-xs" >' .$estado. '</a></span>';
-                                                                echo'</div>';
-                                                            }
-                                                            ?>                                                                                     														
-						<br>
+		<?php
+		for ($i = 0; $i < count($viaturas); $i++) {
+			
+			echo '<div  class="list-group-item">';
+			
+			// substituir pelos getters certos
+			echo '<span class="TipoViatura" style="min-width: 40px; display: inline-block;">' . $viaturas[$i]->getIdViaturas() . '</span> ';
+			echo '<span class="TipoViatura" style="min-width: 100px; display: inline-block;">' . $viaturas[$i]->getTipo() . '</span> ';
+			echo '<span class="Marca" style="min-width: 100px; display: inline-block;">' . $viaturas[$i]->getMarca() . '</span>';
+			echo '<span class="Matricula" style="min-width: 110px; display: inline-block;">' . $viaturas[$i]->getDataMatricula() . '</span>';
+			echo '<span class="Combustivel" style="min-width: 100px; display: inline-block;">' . $viaturas[$i]->getCombustivel() . '</span>';
+			echo '<span class="Combustivel" style="min-width: 100px; display: inline-block;">' . $viaturas[$i]->getConsumoMedio() . '</span>';
+			echo '<a href="editar_viatura.php?id=' . $viaturas[$i]->getIdViaturas() . '&accao=editar" class="btn btn-xs" >Ver / Editar</a>';
+			echo '<a href="gerir_viaturas.php?id=' . $viaturas[$i]->getIdViaturas() .
+				'&accao=' . ($viaturas[$i]->getActiva()==1 ? "desativar" : "ativar") .
+				'" class="btn ' . ($viaturas[$i]->getActiva()==1 ? "btn-danger" : "btn-primary") .
+				' btn-xs" >' . ($viaturas[$i]->getActiva()==1 ? "Desativar" : "Ativar") . '</a></div>';
+		}
+		?>                                                                                     														
 
 		  </div>
         </div>
