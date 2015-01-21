@@ -24,8 +24,6 @@
 */
     class Transportes{
         private $idTransportes;
-        private $idUtilizador;
-        private $idViatura;
         private $dataTransporte;
         private $horaDePartida;
         private $horaDeChegada;
@@ -33,7 +31,8 @@
         private $destino;
         private $observacoes;
         private $condicaoUtente;
-        private $totalQuilometros;
+        private $quilometroschegada;
+        private $quilometrospartida;
         /**
 	 * Construtor da Classe Transportes
 	 * @param idTransportes
@@ -47,10 +46,8 @@
          * @param quilometros
 	 * @return 
 	 */
-    function __construct($idTransportes, $idUtilizador, $idViatura, $dataTransporte, $horaDePartida, $horaDeChegada, $origem, $destino, $observacoes, $condicaoUtente, $totalQuilometros) {
+        function __construct($idTransportes, $dataTransporte, $horaDePartida, $horaDeChegada, $origem, $destino, $observacoes, $condicaoUtente, $quilometroschegada, $quilometrospartida) {
             $this->idTransportes = $idTransportes;
-            $this->idUtilizador = $idUtilizador;
-            $this->idViatura = $idViatura;
             $this->dataTransporte = $dataTransporte;
             $this->horaDePartida = $horaDePartida;
             $this->horaDeChegada = $horaDeChegada;
@@ -58,7 +55,8 @@
             $this->destino = $destino;
             $this->observacoes = $observacoes;
             $this->condicaoUtente = $condicaoUtente;
-            $this->totalQuilometros = $totalQuilometros;
+            $this->quilometroschegada = $quilometroschegada;
+            $this->quilometrospartida = $quilometrospartida;
         }
         /**
 	 * Getter da classe Transportes
@@ -73,14 +71,6 @@
 	 * @param 
 	 * @return dataTransporte
 	 */
-        function getIdUtilizador(){
-        	return  $this->idUtilizador;
-        }
-        
-        function getIdViatura(){
-        	return  $this->idViatura;
-        }
-        
         function getDataTransporte() {
             return $this->dataTransporte;
         }
@@ -137,10 +127,17 @@
 	 * @param 
 	 * @return quilometros
 	 */
-    	function getTotalQuilometros() {
-            return $this->totalQuilometros;
+        function getQuilometroschegada() {
+            return $this->quilometroschegada;
         }
-        
+        /**
+	 * Setter da classe Transportes
+	 * @param idTransportes
+	 * @return 
+	 */
+         function getQuilometrospartida() {
+            return $this->quilometrospartida;
+        }
         /**
 	 * Setter da classe Transportes
 	 * @param idTransportes
@@ -154,16 +151,6 @@
 	 * @param dataTransporte
 	 * @return 
 	 */
-        
-        function setIdUtilizador($idUtilizador){
-        	$this->idUtilizador = $idUtilizador;
-        }
-        
-        function setIdViatura($idViatura){
-        	$this->idViatura = $idViatura;
-        }
-        
-        
         function setDataTransporte($dataTransporte) {
             $this->dataTransporte = $dataTransporte;
         }
@@ -220,8 +207,12 @@
 	 * @param quilometros
 	 * @return 
 	 */
-    	function setTotalQuilometros($totalQuilometros) {
-            $this->totalQuilometros = $totalQuilometros;
+        function setQuilometroschegada($quilometroschegada) {
+            $this->quilometroschegada = $quilometroschegada;
+        }
+
+        function setQuilometrospartida($quilometrospartida) {
+            $this->quilometrospartida = $quilometrospartida;
         }
 
     }

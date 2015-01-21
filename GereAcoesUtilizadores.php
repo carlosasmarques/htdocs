@@ -1,7 +1,6 @@
 <?php
 include_once "sessaoOk.php";
 include "conf.php";
-include "../daoacoesutilizadores.php";
 
 if(isset($_GET["logout"])){
     if($_GET["logout"]== true)

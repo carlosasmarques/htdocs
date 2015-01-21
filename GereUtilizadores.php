@@ -27,32 +27,7 @@ if(isset($_GET["logout"])){
         
     }
     
-    function inserirUtilizador() {
-
-        // definir o fuso horario para deixar de dar Warnings
-        date_default_timezone_set('Europe/Lisbon');
-
-        $nome = $_GET["nome"];
-        $numero = $_GET["numero"];
-        $username = $_GET["username"];
-        $password = $_GET["password"];
-        $tipoUtilizador = $_GET["name"];
-        $dataDeRegisto = date('Y-m-d', time());
-        $morada = $_GET["morada"];
-        $telefone = $_GET["contacto"];
-        $dataNascimento = date('Y-m-d', time());
-        $funcao = $_GET["funcao"];
-        $ativo = $_GET["1"];
-        $caminhoFoto = "./fotografias/administrador.png";
-
-        $user = new Utilizadores(NULL, $nome, $numero, $username, $password, $tipoUtilizador, $dataDeRegisto, $morada, $telefone, $dataNascimento, $funcao, $ativo, $caminhoFoto);
-
-        $daoUtilizador = new DaoUtilizador();
-
-        $daoUtilizador->adicionarUtilizador($user);
-    }
-
-    public function alterarDadosUtilizador(){
+        public function alterarDadosUtilizador(){
         
 
              

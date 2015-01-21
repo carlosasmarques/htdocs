@@ -1,7 +1,3 @@
-<?php
-	include_once "../sessaoOk.php";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>FMT | Ver Log Global</title>
+    <title>FMT | Gerir Utilizadores</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../bootstrap.min.css" rel="stylesheet">
@@ -48,15 +44,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="inicial.php">FireManTool</a>
+                <a class="navbar-brand" href="inicial.html">FireManTool</a>
             </div>
             <div class="navbar-collapse collapse" style="background-color: #FFCC33;">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="drop-menu" style="z-index: 1">
-                        <a><?php echo $_SESSION["user"]; ?><span class="caret"></span></a>
+                        <a>Administrador <span class="caret"></span></a>
                         <ul class="sub-menu">
-                            <li><a href="alterar_utilizador.php">Perfil</a></li>
-                            <li><a href="../login.php?logout=1">Sair</a></li>
+                            <li><a href="alterar_utilizador.html">Perfil</a>
+                            </li>
+                            <li><a href="#">Sair</a>
+                            </li>
                         </ul>
                     </li>
 
@@ -69,51 +67,51 @@
         <div class="centered">
             <div id='cssmenu'>
                 <ul>
-                    <li><a href="inicial.php"><span>Principal</span></a>
+                    <li><a href="inicial.html"><span>Principal</span></a>
                     </li>
                     <li class='has-sub'><a><span>Administrador</span></a>
                         <ul>
-                            <li><a href="gerir_utilizadores.php"><span>Gerir Utilizadores</span></a>
+                            <li><a href="gerir_utilizadores.html"><span>Gerir Utilizadores</span></a>
                             </li>
-                            <li><a href="ver_log_global.php"><span>Ver Log Global</span></a>
+                            <li><a href="ver_log_global.html"><span>Ver Log Global</span></a>
                             </li>
-                            <li><a href="ver_registo_consumo.php"><span>Ver / Editar Registo de Consumos</span></a>
+                            <li><a href="ver_registo_consumo.html"><span>Ver / Editar Registo de Consumos</span></a>
                             </li>
 
                         </ul>
                     </li>
 
-                    <li><a href="Gestao_stock.php"><span>Gerir Stocks</span></a>
+                    <li><a href="Gestao_stock.html"><span>Gerir Stocks</span></a>
                     </li>
                     <li class='has-sub'><a><span>Viaturas</span></a>
                         <ul>
-                            <li><a href="gerir_viaturas.php"><span>Gerir Viaturas</span></a>
-                                <li><a href="manutencao.php"><span>Manutencões</span></a>
-                                    <li><a href="abastecer_viatura.php"><span>Abastecimentos</span></a>
-                                        <li><a href="gerir_inspecoes.php"><span>Inspeções</span></a>
+                            <li><a href="gerir_viaturas.html"><span>Gerir Viaturas</span></a>
+                                <li><a href="manutencao.html"><span>Manutencões</span></a>
+                                    <li><a href="abastecer_viatura.html"><span>Abastecimentos</span></a>
+                                        <li><a href="gerir_inspecoes.html"><span>Inspeções</span></a>
                         </ul>
                         </li>
                         <li class='has-sub'><a><span>Transporte de Doentes</span></a>
                             <ul>
-                                <li><a href="adicionar_transporte_doentes.php"><span>Adicionar Novo Transporte</span></a>
+                                <li><a href="adicionar_transporte_doentes.html"><span>Adicionar Novo Transporte</span></a>
                                 </li>
-                                <li><a href="gerir_transporte_doentes.php"><span>Gerir Transporte de Doentes</span></a>
-                                    <li><a href='gerir_utente.php'><span>Gerir Utentes</span></a>
+                                <li><a href="gerir_transporte_doentes.html"><span>Gerir Transporte de Doentes</span></a>
+                                    <li><a href='gerir_utente.html'><span>Gerir Utentes</span></a>
                             </ul>
                             </li>
 
-                            <li><a href='registo_consumos.php'><span>Registo de Consumos</span></a>
+                            <li><a href='registo_consumos.html'><span>Registo de Consumos</span></a>
 
                             </li>
 
 
                             <li class='has-sub'><a><span>Mensagens</span></a>
                                 <ul>
-                                    <li><a href='enviar_mensagem.php'><span>Nova Mensagem</span></a>
+                                    <li><a href='enviar_mensagem.html'><span>Nova Mensagem</span></a>
                                     </li>
-                                    <li><a href='mensagens_recebidas.php'><span>Mensagens Recebidas</span></a>
+                                    <li><a href='mensagens_recebidas.html'><span>Mensagens Recebidas</span></a>
                                     </li>
-                                    <li><a href='mensagens_enviadas.php'><span>Mensagens Enviadas</span></a>
+                                    <li><a href='mensagens_enviadas.html'><span>Mensagens Enviadas</span></a>
                                     </li>
                                 </ul>
                             </li>
@@ -125,22 +123,27 @@
             <div class="conteudo">
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <ol class="breadcrumb" style="width: 800px">
-                        <li><a href="inicial.php">Administrador</a>
+                        <li><a href="inicial.html">Administrador</a>
                         </li>
-                        <li class="active">Ver Log Global</li>
+                        <li class="active">Gerir Utilizadores</li>
                     </ol>
+
 
                     <div class="centered">
 
-                        <h2 class="sub-header">Log Global</h2>
+                        <h2 class="sub-header">Gerir Utilizador</h2>
+
+                        <div class="pull-right">
+                            <a href="adicionar_utilizador.html" class="btn btn-primary btn-xl">Adicionar Utilizador</a>
+                        </div>
+
 
                         <div class="pull-left">
                             <form class="form-inline">
                                 <div class="btn-group">
                                     <select class="form-control">
-                                        <option value="desc">Descrição</option>
-                                        <option value="data">Data</option>
-                                        <option value="data">Nome</option>
+                                        <option value="Nome">Nome</option>
+                                        <option value="Nº Funcionário">Nº Funcionário</option>
                                     </select>
                                     &nbsp;
                                     <input class="form-control" type="text" id="procurar" placeholder="Procurar">
@@ -156,40 +159,41 @@
                         <div class="tab-content">
                             <div class="tab-pane fade in active" id="home">
                                 <div class="list-group-item">
-                                    <span style="min-width: 160px; display: inline-block;">Nº</span> 
+                                    <span style="min-width: 160px; display: inline-block;">ID</span> 
                                     <span style="min-width: 160px; display: inline-block;">Nome</span>
-                                    <span style="min-width: 160px; display: inline-block;">Data</span>
-                                    <span style="min-width: 160px; display: inline-block;">Hora</span>
-                                    <span style="min-width: 160px; display: inline-block;">Descrição</span>
+                                    <span style="min-width: 160px; display: inline-block;">Função</span>
+                                    <span style="min-width: 160px; display: inline-block;">Contacto</span>
+                                    <span style="min-width: 160px; display: inline-block;">Opções</span>
                                 </div>
                                 <div class="list-group-item">
                                     <span style="min-width: 160px; display: inline-block;">0001</span> 
-                                    <span style="min-width: 160px; display: inline-block;">João Manuel</span>
-                                    <span style="min-width: 160px; display: inline-block;">01-01-2001</span>
-                                    <span style="min-width: 160px; display: inline-block;">00:00</span>
-                                    <span style="min-width: 160px; display: inline-block;">Fez alguma coisa</span>
+                                    <span style="min-width: 160px; display: inline-block;">Manuel Ribeiro</span>
+                                    <span style="min-width: 160px; display: inline-block;">Camionista</span>
+                                    <span style="min-width: 160px; display: inline-block;">123456789</span>
+                                    <span style="min-width: 160px; display: inline-block;"><a href="alterar_utilizador.html" class="btn btn-xs" >Ver / Alterar</a><a href="ver_log_utilizador.html" class="btn btn-xs" >Ver log</a><a href="#" class="btn btn-danger btn-xs">Desativar</a></span>
                                 </div>
                                 <div class="list-group-item">
                                     <span style="min-width: 160px; display: inline-block;">0002</span> 
-                                    <span style="min-width: 160px; display: inline-block;">Francisco Manuel</span>
-                                    <span style="min-width: 160px; display: inline-block;">01-01-2001</span>
-                                    <span style="min-width: 160px; display: inline-block;">00:00</span>
-                                    <span style="min-width: 160px; display: inline-block;">Fez alguma coisa</span>
+                                    <span style="min-width: 160px; display: inline-block;">Zeca Baleiro</span>
+                                    <span style="min-width: 160px; display: inline-block;">Mecanico</span>
+                                    <span style="min-width: 160px; display: inline-block;">123456789</span>
+                                    <span style="min-width: 160px; display: inline-block;"><a href="alterar_utilizador.html" class="btn btn-xs" >Ver / Alterar</a><a href="ver_log_utilizador.html" class="btn btn-xs" >Ver log</a><a href="#" class="btn btn-primary btn-xs">Ativar</a></span>
                                 </div>
                                 <div class="list-group-item">
                                     <span style="min-width: 160px; display: inline-block;">0003</span> 
-                                    <span style="min-width: 160px; display: inline-block;">João Olaio</span>
-                                    <span style="min-width: 160px; display: inline-block;">01-01-2001</span>
-                                    <span style="min-width: 160px; display: inline-block;">00:00</span>
-                                    <span style="min-width: 160px; display: inline-block;">Fez alguma coisa</span>
+                                    <span style="min-width: 160px; display: inline-block;">Gonçalo Filipe</span>
+                                    <span style="min-width: 160px; display: inline-block;">Mecanico</span>
+                                    <span style="min-width: 160px; display: inline-block;">123456789</span>
+                                    <span style="min-width: 160px; display: inline-block;"><a href="alterar_utilizador.html" class="btn btn-xs" >Ver / Alterar</a><a href="ver_log_utilizador.html" class="btn btn-xs" >Ver log</a><a href="#" class="btn btn-primary btn-xs">Ativar</a></span>
                                 </div>
                                 <div class="list-group-item">
-                                    <span style="min-width: 160px; display: inline-block;">0004</span> 
-                                    <span style="min-width: 160px; display: inline-block;">Ricardo Quaresma</span>
-                                    <span style="min-width: 160px; display: inline-block;">01-01-2001</span>
-                                    <span style="min-width: 160px; display: inline-block;">00:00</span>
-                                    <span style="min-width: 160px; display: inline-block;">Fez alguma coisa</span>
+                                    <span style="min-width: 160px; display: inline-block;">0002</span> 
+                                    <span style="min-width: 160px; display: inline-block;">Tomás Prodêncio</span>
+                                    <span style="min-width: 160px; display: inline-block;">Mecanico</span>
+                                    <span style="min-width: 160px; display: inline-block;">123456789</span>
+                                    <span style="min-width: 160px; display: inline-block;"><a href="alterar_utilizador.html" class="btn btn-xs" >Ver / Alterar</a><a href="ver_log_utilizador.html" class="btn btn-xs" >Ver log</a><a href="#" class="btn btn-primary btn-xs">Ativar</a></span>
                                 </div>
+
                             </div>
                             <br>
                         </div>

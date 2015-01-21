@@ -1,24 +1,3 @@
-<?php
-	include_once "sessaoOk.php";
-	include "transportes.php";
-	include "GereTransportes.php";
-        include "utentes.php";
-	
-	$gere_transportes = new GereTransportes();
-	$transportes = new Transportes(0, "", "", "", "", "", "", "",0);
-	
-	$transportes = $gere_transportes->adicionarTransporte();
-
-	include "utentes.php";
-	include "gereutentes.php";
-	
-	$gere_utentes = new GereUtentes();
-	$utentes = new Utentes(0, "", 0, "", 0, "", "");
-	
-	$utentes = $gere_utentes->listarUtentes();
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>FMT | Adicionar Transporte Doentes</title>
+    <title>FMT | Alterar Transporte Doentes</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap.min.css" rel="stylesheet">
@@ -65,16 +44,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="inicial.php">FireManTool</a>
+                <a class="navbar-brand" href="inicial.html">FireManTool</a>
             </div>
             <div class="navbar-collapse collapse" style="background-color: #FFCC33;">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="drop-menu" style="z-index: 1">
-                        <a><?php echo $_SESSION["user"]; ?><span class="caret"></span></a>
+                        <a href="#">Utilizador <span class="caret"></span></a>
                         <ul class="sub-menu">
-                            <li><a href="alterar_utilizador.php">Alterar Password</a>
+                            <li><a href="alterar_utilizador.html">Alterar Password</a>
                             </li>
-                            <li><a href="login.php?logout=1">Sair</a>
+                            <li><a href="#">Sair</a>
                             </li>
                         </ul>
                     </li>
@@ -88,40 +67,40 @@
         <div class="centered">
             <div id='cssmenu'>
                 <ul>
-                    <li><a href="inicial.php"><span>Principal</span></a>
+                    <li><a href="inicial.html"><span>Principal</span></a>
                     </li>
 
-                    <li><a href="Gestao_stock_U.php"><span>Gerir Stocks</span></a>
+                    <li><a href="Gestao_stock_U.html"><span>Gerir Stocks</span></a>
                     </li>
                     <li class='has-sub'><a><span>Viaturas</span></a>
                         <ul>
-                            <li><a href="gerir_viaturas.php"><span>Gerir Viaturas</span></a>
-                                <li><a href="manutencao.php"><span>Manutencoes</span></a>
-                                    <li><a href="abastecer_viatura.php"><span>Abastecimentos</span></a>
-                                        <li><a href="gerir_inspecoes.php"><span>Inspeções</span></a>
+                            <li><a href="gerir_viaturas.html"><span>Gerir Viaturas</span></a>
+                                <li><a href="manutencao.html"><span>Manutencoes</span></a>
+                                    <li><a href="abastecer_viatura.html"><span>Abastecimentos</span></a>
+                                        <li><a href="gerir_inspecoes.html"><span>Inspeções</span></a>
                         </ul>
                         </li>
                         <li class='has-sub'><a><span>Transporte de Doentes</span></a>
                             <ul>
-                                <li><a href="adicionar_transporte_doentes.php"><span>Adicionar Novo Transporte</span></a>
+                                <li><a href="adicionar_transporte_doentes.html"><span>Adicionar Novo Transporte</span></a>
                                 </li>
-                                <li><a href="gerir_transporte_doentes.php"><span>Gerir Transporte de Doentes</span></a>
-                                    <li><a href='gerir_utente.php'><span>Gerir Utentes</span></a>
+                                <li><a href="gerir_transporte_doentes.html"><span>Gerir Transporte de Doentes</span></a>
+                                    <li><a href='gerir_utente.html'><span>Gerir Utentes</span></a>
                             </ul>
                             </li>
 
-                            <li><a href='registo_consumos.php'><span>Registo de Consumos</span></a>
+                            <li><a href='registo_consumos.html'><span>Registo de Consumos</span></a>
 
                             </li>
 
 
                             <li class='has-sub'><a><span>Mensagens</span></a>
                                 <ul>
-                                    <li><a href='enviar_mensagem.php'><span>Nova Mensagem</span></a>
+                                    <li><a href='enviar_mensagem.html'><span>Nova Mensagem</span></a>
                                     </li>
-                                    <li><a href='mensagens_recebidas.php'><span>Mensagens Recebidas</span></a>
+                                    <li><a href='mensagens_recebidas.html'><span>Mensagens Recebidas</span></a>
                                     </li>
-                                    <li><a href='mensagens_enviadas.php'><span>Mensagens Enviadas</span></a>
+                                    <li><a href='mensagens_enviadas.html'><span>Mensagens Enviadas</span></a>
                                     </li>
                                 </ul>
                             </li>
@@ -129,15 +108,14 @@
                 </ul>
             </div>
 
-
             <div class="conteudo">
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <ol class="breadcrumb" style="width: 800px">
-                        <li><a href="inicial.php">Utilizador</a>
+                        <li><a href="inicial.html">Utilizador</a>
                         </li>
-                        <li><a href="gerir_transporte_doentes.php">Gestão Transporte Doentes</a>
+                        <li><a href="gerir_transporte_doentes.html">Gestão Transporte Doentes</a>
                         </li>
-                        <li>Adicionar Transporte Doentes</li>
+                        <li>Alterar Transporte Doentes</li>
                     </ol>
 
                     <div class="centered">
@@ -181,19 +159,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                
-                                <?php
-                            echo'    <tr> ';
-                            echo'        <td>' . $utentes->getidUtentes() . '</td>';
-                            echo'        <td>' . $utentes->getnome() . '</td>';
-                            echo'        <td>   sssss  </td>'; // erro
-                            echo'        <td><a href="#" class="btn btn-danger btn-xl">Remover</a>';
-                            echo'        </td>';
-                            echo'    </tr>';
-                                ?>
-                                
                                 <tr>
-                                    <td>   </td>
+                                    <td>0001</td>
+                                    <td>Ricardo Matias</td>
+                                    <td>Sentado</td>
+                                    <td><a href="#" class="btn btn-danger btn-xl">Remover</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>0002</td>
+                                    <td>Daniel Dias</td>
+                                    <td>Acamado</td>
+                                    <td><a href="#" class="btn btn-danger btn-xl">Remover</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>...</td>
                                     <td>
                                         <form>
                                             <div class="form-group">
@@ -218,18 +199,17 @@
                                             </div>
                                         </form>
                                     </td>
-                                    <td><a href="adicionar_utente.php" class="btn btn-primary btn-xl">Adicionar Utente</a>
+                                    <td><a href="#" class="btn btn-primary btn-xl">Adicionar Utente</a>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
 
-
                         <div class="col-sm-6 col-md-3">
                             <form>
                                 <div class="form-group">
-                                    <label class="data">Data Transporte :</label>
-                                    <input type="date" class="form-control" id="dataTransporte">
+                                    <label class="data">Data Transporte:</label>
+                                    <input type="date" class="form-control" id="nome">
                                 </div>
                             </form>
                         </div>
@@ -238,7 +218,7 @@
                             <form>
                                 <div class="form-group">
                                     <label class="horapar">Hora Partida:</label>
-                                    <input type="text" class="form-control" id="horaDePartida" placeholder="hh:mm" maxlength="5">
+                                    <input type="text" class="form-control" id="horap" placeholder="hh:mm" maxlength="5">
                                 </div>
                             </form>
                         </div>
@@ -247,7 +227,7 @@
                             <form>
                                 <div class="form-group">
                                     <label class="horache">Hora Chegada:</label>
-                                    <input type="text" class="form-control" id="horaDeChegada" placeholder="hh:mm" maxlength="5">
+                                    <input type="text" class="form-control" id="horac" placeholder="hh:mm" maxlength="5">
                                 </div>
                             </form>
                         </div>
@@ -256,7 +236,7 @@
                             <form>
                                 <div class="form-group">
                                     <label class="origem">Origem Transporte:</label>
-                                    <input type="text" class="form-control" id="origem" placeholder="Inserir dados">
+                                    <input type="text" class="form-control" id="origem" placeholder="Altere os dados">
                                 </div>
                             </form>
                         </div>
@@ -265,7 +245,7 @@
                             <form>
                                 <div class="form-group">
                                     <label class="destino">Destino Transporte:</label>
-                                    <input type="text" class="form-control" id="destino" placeholder="Inserir dados">
+                                    <input type="text" class="form-control" id="destino" placeholder="Altere os dados">
                                 </div>
                             </form>
                         </div>
@@ -274,7 +254,7 @@
                             <form>
                                 <div class="form-group">
                                     <label class="Desc">Descrição:</label>
-                                    <textarea class="form-control"  id = "observacoes" rows="5" cols="30" placeholder="Insira a Descrição"></textarea>
+                                    <textarea class="form-control" rows="5" cols="30" placeholder="Insira a Descrição"></textarea>
                                 </div>
                             </form>
                         </div>
@@ -283,7 +263,7 @@
                             <form>
                                 <div class="form-group">
                                     <label class="ks">Quilómetros Saída:</label>
-                                    <input type="text" class="form-control" id="quilometrospartida" placeholder="Insira os dados">
+                                    <input type="text" class="form-control" id="ks" placeholder="Altere os dados">
                                 </div>
                             </form>
                         </div>
@@ -292,11 +272,10 @@
                             <form>
                                 <div class="form-group">
                                     <label class="kc">Quilómetros Chegada:</label>
-                                    <input type="text" class="form-control" id="quilometroschegada" placeholder="Insira os dados">
+                                    <input type="text" class="form-control" id="kc" placeholder="Altere os dados">
                                 </div>
                             </form>
                         </div>
-
 
                         <div class="pull-right">
                             <br />
@@ -304,17 +283,11 @@
                             <br />
                             <br />
                             <br />
-							<a class="btn btn-danger btn-xl" href="gerir_transporte_doentes.php"> Voltar </a>
-                            <a class="btn btn-primary btn-xl" href="gerir_transporte_doentes.php"> Adicionar </a>
+                            <a href="gerir_transporte_doentes.html" class="btn btn-danger btn-xl"> Voltar </a>
+                            <a class="btn btn-primary btn-xl" href="gerir_transporte_doentes.html"> Aplicar </a>
                             <br/>
                         </div>
-                            
-                         <?php
-                           if(isset($_POST["dataTransporte"]) && !empty($_POST["dataTransporte"])&& isset($_POST["horaDePartida"]) && !empty($_POST["horaDePartida"]) && isset($_POST["horaDeChegada"]) && !empty($_POST["horaDeChegada"]) && isset($_POST["origem"]) && !empty($_POST["origem"]) && isset($_POST["destino"]) && !empty($_POST["destino"]) && isset($_POST["observacoes"]) && !empty($_POST["observacoes"])&& isset($_POST["quilometrospartida"]) && !empty($_POST["quilometrospartida"])&& isset($_POST["quilometroschegada"]) && !empty($_POST["quilometroschegada"])){
-                                $transportes = $gere_transportes->adicionarTransporte();   
-                            }
-                           
-                           ?>
+
 
                     </div>
 
