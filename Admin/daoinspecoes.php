@@ -17,34 +17,17 @@
         include "Inspecoes.php";
 	 
 	class DaoInspecoes{
-            public $LigacaoBD = null;
-            
-            
+                private $bd;
 
-
-            // Ligar á base de dados
-		function __construct(){
-                    global $servidor;
-                    global $bd;
-                    global $user;
-                    global $pass;
-                    
-			try{
-				$this->LigacaoBD = new PDO("mysql:host=$servidor;dbname=$bd", $user, $pass);
-			}catch(PDOException $e){
-				echo $e->getMessage();
-				return false;
-			}
-			return true;
-		}
+            public function __construct() {
+                $this->bd = new BaseDados();
+            }
 		
 		/*
 		Desligar da base de dados
 		(assim que seja apagada a ultima referencia ao objeto)
 		*/
-		function __destruct(){
-			$this->LigacaoBD == null;
-		}
+
 		
 		/*****************************************************************************
 			Nota: Não faz sentido passar a matricula da viatura a inspecionar
@@ -220,33 +203,19 @@
 		}
 		
 		public function listarInspecoesPer(){
-			$dados = array ();
-                        
-                        
-                        
-			try{
+			$dados = array();
+		
 				// Obter apenas os dados necessários das inspeções
-				$instrucao = $this->LigacaoBD->prepare("SELECT I_ID, V_MATRICULA, I_DATAINSPECAO, I_ESTADO FROM INSPECOES, VIATURA WHERE INSPECOES.V_ID = VIATURA.V_ID");
+				$instrucao = $this->bd->query("SELECT * FROM INSPECOES");
+                                
+                                for($i=0; $i<count($instrucao); $i++){
+                                        $dados[] = new Inspecoes($instrucao[$i]["I_ID"], $instrucao[$i]["V_ID"], $instrucao[$i]["I_DATAINSPECAO"], $instrucao[$i]["I_ESTADO"]);
 
-				// Executar
-				$sucesso_funcao = $instrucao->execute();
-				
-				// Percorrer os dados da query e guardar num array
-				if($instrucao->execute()){
-					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
-					while($registo = $instrucao->fetch()){
-                                            $dados[] = new inspecoes ($registo["I_ID"],$registo["V_MATRICULA"],$registo["I_DATAINSPECAO"],
-                                                    $registo["I_ESTADO"]);
-                                            
-                                            
-                                            
-                                            
-						$dados[] = $registo;
-					}
-				}
-			}catch(PDOException $e){
-				echo $e->getMessage();
-			}
+
+                                }
+
+
+
 			return $dados;
 		}
 		

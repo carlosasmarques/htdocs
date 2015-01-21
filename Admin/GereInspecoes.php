@@ -1,6 +1,7 @@
 <?php
 include_once "../sessaoOk.php";
 include "../conf.php";
+include "daoinspecoes.php";
 
 
 if(isset($_GET["logout"])){
@@ -58,8 +59,9 @@ if(isset($_GET["logout"])){
         }
         public function listarInspecoesPer(){
             $daoInspecao = new DaoInspecoes();
-            if($inspecao = $daoInspecao->listarInspecoesPer($idViatura)!= NULL){
-                    return $viaturas;
+            if($inspecao = $daoInspecao->listarInspecoesPer()!= NULL){
+                    return $inspecao;
+                    print_r($inspecoes);
                 } else {
                 	return NULL;
 		}
