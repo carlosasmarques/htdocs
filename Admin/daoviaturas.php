@@ -144,41 +144,21 @@
 			return $dados;
 		}
 		
-		public function pesquisarPorMatricula($matricula){
+		public function pesquisarPorMatricula($id){
 			$dados = null;
-                        $viatura = new Viaturas();
-			try{
+                        $dados = array('V_ID' => $id);
 				// Pesquisar por matricula
-				$instrucao = $LigacaoBD->prepare("SELECT * FROM viaturas WHERE V_matricula=?");
-				$instrucao->bind_param($matricula);
-
-				// Executar
-				$sucesso_funcao = $instrucao->execute();
+				$instrucao = $this->bd->query("SELECT * FROM viaturas WHERE V_ID=",$dados);
 				
-				// Percorrer os dados da query e guardar num array
-				if($sucesso_funcao){
-					$instrucao->setFetchMode(PDO::FETCH_ASSOC);
-					while($registo = $instrucao->fetch()){
-						$viatura->setActiva($registo["V_Ati"]);
-                                                $viatura->setCapacidadeDeposito($registo["V_CDe"]);
-                                                $viatura->setCombustivel($registo["V_Cum"]);
-                                                $viatura->setConsumoMedio($registo["V_ConM"]);
-                                                $viatura->setDataMatricula($registo["V_DataM"]);
-                                                $viatura->setEnderecoFoto($registo["V_EndFo"]);
-                                                $viatura->setIdViaturas($registo["V_IdV"]);
-                                                $viatura->setLugaresDeitados($registo["V_LDe"]);
-                                                $viatura->setLugaresSentados($registo["V_LSe"]);
-                                                $viatura->setMarca($registo["V_Marca"]);
-                                                $viatura->setMatricula($registo["V_Matri"]);
-                                                $viatura->setModelo($registo["V_Mod"]);
-                                                $viatura->setQuilometragem($registo["V_Quil"]);
-                                                $viatura->setTipo($registo["V_Tipo"]);
-					}
-				}
-			}catch(PDOException $e){
-				echo $e->getMessage();
-			}
-			return $viatura;
+                                for($i=0; $i<count($instrucao); $i++){
+                                        $dados[] = new Viaturas($instrucao[$i]["V_ID"],$instrucao[$i]["V_MATRICULA"],$instrucao[$i]["V_MARCA"],$instrucao[$i]["V_MODELO"],$instrucao[$i]["V_TIPOVIATURA"],$instrucao[$i]["V_DATAMATRICULA"],$instrucao[$i]["V_COMBUSTIVEL"],$instrucao[$i]["V_CAPACIDADEDEPOSITO"],$instrucao[$i]["V_QUILOMETRAGEM"],$instrucao[$i]["V_CONSUMOMEDIO"],$instrucao[$i]["V_NUMEROLUGARESSENTADOS"],$instrucao[$i]["V_NUMEROLUGARESDEITADOS"],$instrucao[$i]["V_FOTOGRAFIA"],$instrucao[$i]["V_ACTIVO"]);
+
+
+                                }
+
+			return $dados;
+
+
 		}
 		
 		public function verViatura($id){

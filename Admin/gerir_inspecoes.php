@@ -1,11 +1,15 @@
 <?php
 	include_once "../sessaoOk.php";
         include "GereInspecoes.php";
+        include "GereViaturas.php";
         
         $gere_inspecoes = new GereInspecoes();
         $inspecoes = new Inspecoes(0, 0, "", "");
+        $gere_viaturas = new GereViaturas();
+        $viaturas = new Viaturas("", "", "", "", "", "", "", "", "", "", "", "","","");
         
         $inspecoes = $gere_inspecoes->listarInspecoesPer();        
+        
 ?>            
 
 
@@ -168,15 +172,16 @@
                                             <?php
                                                     for($i=0; $i<count($inspecoes); $i++){
 
-                                                        $matricula=$gere_inspecoes->pesquisarInspecaoMatric($inspecoes[$i]->getIdViatura());
+                                                        $viaturas=$gere_viaturas->pesquisaPorMatricula($inspecoes[$i]->getIdViatura());
+                                                        
+                               
                                                         echo'<div class="list-group-item">';
 
                                                         echo' <span style="min-width: 40px; display: inline-block;">' . $inspecoes[$i]->getIdInspecoes() . '</span> ';
-                                                        echo' <span style="min-width: 100px; display: inline-block;">' . $matricula . '</span>';
+                                                        echo' <span style="min-width: 100px; display: inline-block;">' . $viaturas[$i]->getMatricula() . '</span>';
                                                         echo' <span style="min-width: 90px; display: inline-block;">' . $inspecoes[$i]->getDataLimite() . '</span>';
                                                         echo' <span style="min-width: 160px; display: inline-block;">' . $inspecoes[$i]->getEstado() . '</span>';
                                                         echo' <span style="min-width: 80px; display: inline-block;"><a href="Ver_Editar.php?id=' . $inspecoes[$i]->getIdInspecoes() . '" class="btn btn-xs" >Ver / Editar</a></span>';
-                                                        echo' <span style="min-width: 80px; display: inline-block;"><a href="Gestao_Stock.php?id=' . $inspecoes[$i]->getIdInspecoes() . '" class="btn btn-xs" >Repor</a></span>';
                                                         
                                                         echo'</div>';
                                                     }
