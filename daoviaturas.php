@@ -22,36 +22,34 @@
                 $this->bd = new BaseDados();
             }
 		
-		public function adicionarViatura(
-		$matricula, $marca, $modelo, $tipo, $dataMatricula, $combustivel, $capacidadeDeposito, $quilometragem,
-		$consumoMedio, $lugaresSentados, $lugaresDeitados, $enderecoFoto){
+		public function adicionarViatura(Viaturas $viatura){
+                    $sql = "INSERT INTO `fmt`.`viatura` (`V_MARCA`, `V_MODELO`, `V_MATRICULA`, `V_DATAMATRICULA`, `V_TIPOVIATURA`, `V_COMBUSTIVEL`, `V_CAPACIDADEDEPOSITO`, `V_QUILOMETRAGEM`, `V_CONSUMOMEDIO`, `V_NUMEROLUGARESSENTADOS`, `V_NUMEROLUGARESDEITADOS`, `V_FOTOGRAFIA`, `V_ACTIVO`) "
+                            . "VALUES (:V_MARCA, :V_MODELO, :V_MATRICULA, :V_DATAMATRICULA, :V_TIPOVIATURA, :V_COMBUSTIVEL, :V_CAPACIDADEDEPOSITO, :V_QUILOMETRAGEM, :V_CONSUMOMEDIO, :V_NUMEROLUGARESSENTADOS, :V_NUMEROLUGARESDEITADOS, :V_FOTOGRAFIA, :V_ACTIVO);";
 		
-			try{
-				// Preparar a instrução sql de inserção
-				$instrucao = $LigacaoBD->prepare("INSERT INTO viatura (
-				V_marca, V_modelo, V_matricula, V_dataMatricula, V_tipoViatura, V_combustivel, V_capacidadeDeposito,
-				V_quilometragem, V_consumoMedio, V_numeroLugaresSentados, V_numeroLugaresDeitados, V_fotografia,
-				V_activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-				$instrucao->bind_param($marca, $modelo, $matricula, $dataMatricula, $tipo, $combustivel,
-				$capacidadeDeposito, $quilometragem, $consumoMedio, $lugaresSentados, $lugaresDeitados,
-				$enderecoFoto, true);
-				
-				// Executar
-				$sucesso_funcao = $instrucao->execute();
-				$instrucao->close();
-				
-			}catch(PDOException $e){
-				echo $e->getMessage();
-			}
-			
-			if($sucesso_funcao){
-				return "Viatura registada com sucesso:<br />" .
-				$tipo . "<br />"  .
-				$marca . " " . $modelo . "<br />" .
-				$matricula . "<br />";
-			}else{
-				return "Erro ao registar a viatura!<br />";
-			}
+                    
+                    
+                    
+                          $dados = array (
+                              'V_MARCA'=> $viatura->getMarca(),
+                              'V_MODELO'=> $viatura->getModelo(),
+                              'V_MATRICULA'=> $viatura->getMatricula(),
+                              'V_DATAMATRICULA'=> $viatura->getDataMatricula(),
+                              'V_TIPOVIATURA'=> $viatura->getTipo(),
+                              'V_COMBUSTIVEL'=> $viatura->getCombustivel(),
+                              'V_CAPACIDADEDEPOSITO'=> $viatura->getCapacidadeDeposito(),
+                              'V_QUILOMETRAGEM'=> $viatura->getQuilometragem(),
+                              'V_CONSUMOMEDIO'=> $viatura->getConsumoMedio(),
+                              'V_NUMEROLUGARESSENTADOS'=> $viatura->getLugaresSentados(),                           
+                              'V_NUMEROLUGARESDEITADOS'=> $viatura->getLugaresDeitados(),
+                              'V_FOTOGRAFIA'=> $viatura->getEnderecoFoto(),    
+                              'V_ACTIVO'=> $viatura->getActiva(),    
+                              );
+                    
+                    
+                    
+                    
+                    $this->bd->inserir($sql, $dados);
+
 		}
 		
 		public function ativarDesativarViatura($estado, $id){
