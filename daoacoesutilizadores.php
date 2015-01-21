@@ -1,21 +1,16 @@
 <?php
-include_once "conf.php";
+
+include_once "acessobd.php";
+include_once "acoesutilizadores.php";
+
+
 
 class DaoAcoesUtilizadores{
-    private $LigacaoBD;
-    function __construct(){
-        try{
-            $this->LigacaoBD = new PDO("mysql:host=$servidor;dbname=$bd", $user, $pass);
-        }catch(PDOException $e){
-            echo $e->getMessage();
-            return false;
-        }
-        return true;
-    }
+            private $bd;
 
-    function __destruct(){
-        $this->LigacaoBD == null;
-    }
+            public function __construct() {
+                $this->bd = new BaseDados();
+            }
     function guardarAcaoUtilizador($acao){
         try{
             $instrucao = $LigacaoBD->prepare("INSERT INTO Logs SET (U_id, L_dataHora, L_descricao) VALUES(?, ?, ?)");
@@ -34,21 +29,16 @@ class DaoAcoesUtilizadores{
     }
 
     function listarAcoesUtilizadores(){
-        try{
-            $instrucao = $LigacaoBD->prepare("SELECT * FROM Logs");
-            $sucesso_funcao = $instrucao->execute();
-        } catch(PDOException $e){
-            echo $e->getMessage();
-        }
-        if($sucesso_funcao){
-            $instrucao->setFetchMode(PDO::FETCH_ASSOC);
-            while($registo = $instrucao->fetch()){
-                $dados[] = $registo;
+            $dados=array();
+            $instrucao = $this->bd->query("SELECT * FROM logs");
+           
+            
+            for($i=0; $i<count($instrucao); $i++){
+                    $dados[] = new AcoesUtilizadores($instrucao[$i]["L_ID"],$instrucao[$i]["U_ID"],$instrucao[$i]["L_DATAHORA"],$instrucao[$i]["L_DESCRICAO"]);
+
+
             }
             return $dados;
-        } else {
-            return NULL;
-        }
     }
 
     function pesquisarAcoesData($dataHora){
