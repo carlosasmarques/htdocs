@@ -1,21 +1,12 @@
 <?php
 	include_once "sessaoOk.php";
-	include "transportes.php";
-	include "GereTransportes.php";
-        include "utentes.php";
+	include_once "GereTransportes.php";
 	
 	$gere_transportes = new GereTransportes();
-	$transportes = new Transportes(0, "", "", "", "", "", "", "",0);
+	$transportes = new Transportes(0, 0, 0, "", "", "", "", "", "", "", 0);
 	
-	$transportes = $gere_transportes->adicionarTransporte();
+	$gere_transportes->adicionarTransporte($transportes);
 
-	include "utentes.php";
-	include "gereutentes.php";
-	
-	$gere_utentes = new GereUtentes();
-	$utentes = new Utentes(0, "", 0, "", 0, "", "");
-	
-	$utentes = $gere_utentes->listarUtentes();
 ?>
 
 
@@ -143,7 +134,18 @@
                     <div class="centered">
 
                         <div class="col-sm-6 col-md-4">
-                            <form>
+							<form>
+                            
+                            	<div class="form-group">
+                                    <label class="funci">Funcionário:</label>
+                                    <select class="form-control">
+                                        <option value="desc">Escolha Funcionário...</option>
+                                        <option value="data">Américo</option>
+                                        <option value="hora">Abélio</option>
+                                        <option value="hora">Almeida</option>
+                                    </select>
+                                </div>
+                                
                                 <div class="form-group">
                                     <label class="viatura">Viatura:</label>
                                     <select class="form-control">
@@ -154,151 +156,91 @@
                                         <option value="hora">Fiat Punto dos Velhos</option>
                                     </select>
                                 </div>
-                            </form>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4">
-                            <form>
-                                <div class="form-group">
-                                    <label class="funci">Funcionário:</label>
-                                    <select class="form-control">
-                                        <option value="desc">Escolha Funcionário...</option>
-                                        <option value="data">Américo</option>
-                                        <option value="hora">Abélio</option>
-                                        <option value="hora">Almeida</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Número</th>
-                                    <th>Utente</th>
-                                    <th>Condição Utente</th>
-                                    <th>Opções</th>
-                                </tr>
-                            </thead>
-                            <tbody>
                                 
-                                <?php
-                            echo'    <tr> ';
-                            echo'        <td>' . $utentes->getidUtentes() . '</td>';
-                            echo'        <td>' . $utentes->getnome() . '</td>';
-                            echo'        <td>   sssss  </td>'; // erro
-                            echo'        <td><a href="#" class="btn btn-danger btn-xl">Remover</a>';
-                            echo'        </td>';
-                            echo'    </tr>';
-                                ?>
-                                
-                                <tr>
-                                    <td>   </td>
-                                    <td>
-                                        <form>
-                                            <div class="form-group">
-                                                <select class="form-control">
-                                                    <option value="desc">Escolha Utente para o Transporte...</option>
-                                                    <option value="data">Amilcar</option>
-                                                    <option value="hora">João</option>
-                                                    <option value="hora">Freitas</option>
-                                                </select>
-                                            </div>
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <form>
-                                            <div class="form-group">
-                                                <select class="form-control">
-                                                    <option value="cond">Escolha Condição...</option>
-                                                    <option value="sentado">Sentado</option>
-                                                    <option value="acamado">Acamado</option>
-                                                    <option value="cadeirarodas">Cadeira de Rodas</option>
-                                                </select>
-                                            </div>
-                                        </form>
-                                    </td>
-                                    <td><a href="adicionar_utente.php" class="btn btn-primary btn-xl">Adicionar Utente</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-
-                        <div class="col-sm-6 col-md-3">
-                            <form>
                                 <div class="form-group">
                                     <label class="data">Data Transporte :</label>
                                     <input type="date" class="form-control" id="dataTransporte">
                                 </div>
-                            </form>
-                        </div>
-
-                        <div class="col-sm-6 col-md-2">
-                            <form>
+                                
                                 <div class="form-group">
                                     <label class="horapar">Hora Partida:</label>
                                     <input type="text" class="form-control" id="horaDePartida" placeholder="hh:mm" maxlength="5">
                                 </div>
-                            </form>
-                        </div>
-
-                        <div class="col-sm-6 col-md-2">
-                            <form>
+                                
                                 <div class="form-group">
                                     <label class="horache">Hora Chegada:</label>
                                     <input type="text" class="form-control" id="horaDeChegada" placeholder="hh:mm" maxlength="5">
                                 </div>
-                            </form>
-                        </div>
-
-                        <div class="col-sm-6 col-md-6">
-                            <form>
+                                
                                 <div class="form-group">
                                     <label class="origem">Origem Transporte:</label>
                                     <input type="text" class="form-control" id="origem" placeholder="Inserir dados">
                                 </div>
-                            </form>
-                        </div>
-
-                        <div class="col-sm-6 col-md-6">
-                            <form>
+                                
                                 <div class="form-group">
                                     <label class="destino">Destino Transporte:</label>
                                     <input type="text" class="form-control" id="destino" placeholder="Inserir dados">
                                 </div>
-                            </form>
-                        </div>
-
-                        <div class="col-sm-6 col-md-6">
-                            <form>
-                                <div class="form-group">
-                                    <label class="Desc">Descrição:</label>
-                                    <textarea class="form-control"  id = "observacoes" rows="5" cols="30" placeholder="Insira a Descrição"></textarea>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="col-sm-6 col-md-3">
-                            <form>
-                                <div class="form-group">
-                                    <label class="ks">Quilómetros Saída:</label>
-                                    <input type="text" class="form-control" id="quilometrospartida" placeholder="Insira os dados">
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="col-sm-6 col-md-3">
-                            <form>
-                                <div class="form-group">
-                                    <label class="kc">Quilómetros Chegada:</label>
-                                    <input type="text" class="form-control" id="quilometroschegada" placeholder="Insira os dados">
-                                </div>
-                            </form>
-                        </div>
-
+                                
+                                
+						</div>      
+                              
+                        <div class="col-sm-6 col-md-4">  
+                        
+                        		<div class="form-group">
+                                	<label class="utent">Utente:</label>
+									<select class="form-control">
+										<option value="desc">Escolha Utente para o Transporte...</option>
+										<option value="data">Amilcar</option>
+										<option value="hora">João</option>
+										<option value="hora">Freitas</option>
+									</select>
+								</div>
+								
+								<div class="form-group">
+	                                <label class="Desc">Descrição:</label>
+	                                <textarea class="form-control"  id = "observacoes" rows="5" cols="30" placeholder="Insira a Descrição"></textarea>
+	                            </div>
+							
+								<div class="form-group">
+	                                <label class="cond">Condição Utente:</label>
+									<select class="form-control">
+										<option value="cond">Escolha Condição...</option>
+										<option value="sentado">Sentado</option>
+										<option value="acamado">Acamado</option>
+										<option value="cadeirarodas">Cadeira de Rodas</option>
+									</select>
+								</div>
+								
+								<div class="form-group">
+	                                 <label class="ks">Quilómetros Saída:</label>
+	                                 <input type="text" class="form-control" id="quilometrospartida" placeholder="Insira os dados">
+	                            </div>	
+								
+							</form>
+                         </div>                          
 
                         <div class="pull-right">
+                        	<br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
                             <br />
                             <br />
                             <br />
