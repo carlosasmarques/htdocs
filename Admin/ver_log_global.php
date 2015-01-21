@@ -1,5 +1,11 @@
 <?php
 	include_once "../sessaoOk.php";
+        include "../GereAcoesUtilizadores.php";
+	
+	$gere_log = new GereAcoesUtilizadores();
+        $log = new AcoesUtilizadores(0, 0,"","");
+	
+	$log = $gere_log->listarAcoesUtilizador();
 ?>
 
 <!DOCTYPE html>
@@ -162,34 +168,19 @@
                                     <span style="min-width: 160px; display: inline-block;">Hora</span>
                                     <span style="min-width: 160px; display: inline-block;">Descrição</span>
                                 </div>
-                                <div class="list-group-item">
-                                    <span style="min-width: 160px; display: inline-block;">0001</span> 
-                                    <span style="min-width: 160px; display: inline-block;">João Manuel</span>
-                                    <span style="min-width: 160px; display: inline-block;">01-01-2001</span>
-                                    <span style="min-width: 160px; display: inline-block;">00:00</span>
-                                    <span style="min-width: 160px; display: inline-block;">Fez alguma coisa</span>
-                                </div>
-                                <div class="list-group-item">
-                                    <span style="min-width: 160px; display: inline-block;">0002</span> 
-                                    <span style="min-width: 160px; display: inline-block;">Francisco Manuel</span>
-                                    <span style="min-width: 160px; display: inline-block;">01-01-2001</span>
-                                    <span style="min-width: 160px; display: inline-block;">00:00</span>
-                                    <span style="min-width: 160px; display: inline-block;">Fez alguma coisa</span>
-                                </div>
-                                <div class="list-group-item">
-                                    <span style="min-width: 160px; display: inline-block;">0003</span> 
-                                    <span style="min-width: 160px; display: inline-block;">João Olaio</span>
-                                    <span style="min-width: 160px; display: inline-block;">01-01-2001</span>
-                                    <span style="min-width: 160px; display: inline-block;">00:00</span>
-                                    <span style="min-width: 160px; display: inline-block;">Fez alguma coisa</span>
-                                </div>
-                                <div class="list-group-item">
-                                    <span style="min-width: 160px; display: inline-block;">0004</span> 
-                                    <span style="min-width: 160px; display: inline-block;">Ricardo Quaresma</span>
-                                    <span style="min-width: 160px; display: inline-block;">01-01-2001</span>
-                                    <span style="min-width: 160px; display: inline-block;">00:00</span>
-                                    <span style="min-width: 160px; display: inline-block;">Fez alguma coisa</span>
-                                </div>
+                                 <?php
+                                    for($i=0; $i<count($log); $i++){
+
+                                                // substituir pelos getters certos
+                                                echo' <span style="min-width: 40px; display: inline-block;">' . $log[$i]->getIdAcoesUtilizadores() . '</span> ';
+                                                echo' <span style="min-width: 40px; display: inline-block;">' . $log[$i]->getUtilizador() . '</span>';
+                                                echo' <span style="min-width: 120px; display: inline-block;">' . $log[$i]->getData() . '</span>';
+                                                echo' <span style="min-width: 800px; display: inline-block;">' . $log[$i]->getHora() . '</span>';
+                                                echo' <span style="min-width: 800px; display: inline-block;">' . $log[$i]->getDescricao() . '</span>';
+
+                                                echo'</div>';
+                                                }
+                                ?>
                             </div>
                             <br>
                         </div>
