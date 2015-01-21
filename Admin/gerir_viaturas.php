@@ -6,8 +6,6 @@
 	$gere_viaturas = new GereViaturas();
 	$viaturas = new Viaturas(0, "", "", "", "", 0, 0, 0, 0, 0, 0, 0, "", 0);
 	
-	$viaturas = $gere_viaturas->listarViaturas();
-	
 	$daoViaturas = new DaoViaturas();
 
 	// ações "desativar", "ativar"
@@ -25,7 +23,9 @@
 		if(!strcmp($_GET["accao"], "desativar")){
 			$daoViaturas->ativarDesativarViatura(0, $_GET["id"]);
 		}
-	}	
+	}
+	
+	$viaturas = $gere_viaturas->listarViaturas();
 ?>
         
 
@@ -203,7 +203,7 @@
 			echo '<span class="Matricula" style="min-width: 110px; display: inline-block;">' . $viaturas[$i]->getDataMatricula() . '</span>';
 			echo '<span class="Combustivel" style="min-width: 100px; display: inline-block;">' . $viaturas[$i]->getCombustivel() . '</span>';
 			echo '<span class="Combustivel" style="min-width: 100px; display: inline-block;">' . $viaturas[$i]->getConsumoMedio() . '</span>';
-			echo '<a href="editar_viatura.php?id=' . $viaturas[$i]->getIdViaturas() . '&accao=editar" class="btn btn-xs" >Ver / Editar</a>';
+			echo '<a href="editar_viatura.php?id=' . $viaturas[$i]->getIdViaturas() . '" class="btn btn-xs" >Ver / Editar</a>';
 			echo '<a href="gerir_viaturas.php?id=' . $viaturas[$i]->getIdViaturas() .
 				'&accao=' . ($viaturas[$i]->getActiva()==1 ? "desativar" : "ativar") .
 				'" class="btn ' . ($viaturas[$i]->getActiva()==1 ? "btn-danger" : "btn-primary") .
