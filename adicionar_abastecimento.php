@@ -130,7 +130,7 @@
 						<div class="form-group">
 							<label class="viatura">Viatura:</label>
 							<select class="form-control">
-								<option id="matricula">Indique a ID da viatura...</option>
+								<option id="V_ID">Indique a ID da viatura...</option>
 					<?php
                                             for($i=0; $i<count($viaturas); $i++){
 							echo "<option>".$viaturas[$i]->getIdViaturas()."</option>";
