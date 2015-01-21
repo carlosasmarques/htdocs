@@ -3,7 +3,7 @@
     include "GereTransportes.php";
 
     $gere_transportes = new GereTransportes();
-    $transportes = new Transportes(0, "", "", "", "", "", "", "", 0, 0);
+    $transportes = new Transportes(0, 0, 0, "", "", "", "", "", "", "", 0);
 
     $transporte = $gere_transportes->listarTransporte();
 	
