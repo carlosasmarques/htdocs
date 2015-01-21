@@ -1,7 +1,7 @@
 <?php
 	include_once "sessaoOk.php";
-	include "manutencaointer.php";
-	include "geremanutencaointer.php";
+	include_once "manutencaointer.php";
+	include_once "geremanutencaointer.php";
 	
 	$gere_manutencoesinter = new GereManutencoesInter();
 	$manutencaointer = new manutencaoInter(0, "", "", 0);

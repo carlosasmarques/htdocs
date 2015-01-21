@@ -1,7 +1,7 @@
 <?php
 	include_once "sessaoOk.php";
-	include "inspecoes.php";
-	include "gereInspecoes.php";
+	include_once "inspecoes.php";
+	include_once "gereInspecoes.php";
 	
 	$gere_inspecoes = new GereInspecoes();
 	$inspecoes = new Inspecoes(0, "", 0);

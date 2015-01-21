@@ -1,5 +1,5 @@
 <?php
-    include "conf.php";
+    include_once "conf.php";
     class DaoTipoEquip{
         private $LigacaoBD;
         function __construct(){

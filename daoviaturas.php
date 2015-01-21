@@ -13,7 +13,7 @@
 	*/
 
         include_once "acessobd.php";
-        include "Viaturas.php";
+        include_once "Viaturas.php";
 	 
 	class DaoViaturas{
             private $bd;

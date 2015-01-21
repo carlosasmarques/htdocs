@@ -1,9 +1,9 @@
 <?php
 	include_once "../sessaoOk.php";
 	include_once "Abastecimentos.php";
-	include "GereAbastecimentos.php";
-	include "Viaturas.php";
-	include "GereViaturas.php";
+	include_once "GereAbastecimentos.php";
+	include_once "Viaturas.php";
+	include_once "GereViaturas.php";
         
         $gere_abastecimento = new GereAbastecimentos();
         $abastecimento = new Abastecimentos(0,"","",0, "", "", "");

@@ -1,7 +1,7 @@
 <?php
 	include_once "sessaoOk.php";
-	include "manutencaofutur.php";
-	include "geremanutencoesfutur.php";
+	include_once "manutencaofutur.php";
+	include_once "geremanutencoesfutur.php";
 	
 	$gere_manutencoesfutur = new GereManutencoesFutur();
 	$manutencaofutur = new ManutencaoFutur(0, "", "", 0, "");

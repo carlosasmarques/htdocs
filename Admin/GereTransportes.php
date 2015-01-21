@@ -1,7 +1,7 @@
 <?php
 include_once "../sessaoOk.php";
-include "../conf.php";
-include "daotransportes.php";
+include_once "../conf.php";
+include_once "daotransportes.php";
 
 if(isset($_GET["logout"])){
     if($_GET["logout"]== true)
