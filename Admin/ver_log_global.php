@@ -1,5 +1,11 @@
 <?php
 	include_once "../sessaoOk.php";
+        include_once "../GereAcoesUtilizadores.php";
+	
+	$gere_logs = new GereAcoesUtilizadores();
+        $logs = new AcoesUtilizadores(0,0,"","");
+	
+	$logs = $gere_logs->listarAcoesUtilizador();
 ?>
 
 <!DOCTYPE html>
@@ -162,34 +168,19 @@
                                     <span style="min-width: 160px; display: inline-block;">Hora</span>
                                     <span style="min-width: 160px; display: inline-block;">Descrição</span>
                                 </div>
-                                <div class="list-group-item">
-                                    <span style="min-width: 160px; display: inline-block;">0001</span> 
-                                    <span style="min-width: 160px; display: inline-block;">João Manuel</span>
-                                    <span style="min-width: 160px; display: inline-block;">01-01-2001</span>
-                                    <span style="min-width: 160px; display: inline-block;">00:00</span>
-                                    <span style="min-width: 160px; display: inline-block;">Fez alguma coisa</span>
-                                </div>
-                                <div class="list-group-item">
-                                    <span style="min-width: 160px; display: inline-block;">0002</span> 
-                                    <span style="min-width: 160px; display: inline-block;">Francisco Manuel</span>
-                                    <span style="min-width: 160px; display: inline-block;">01-01-2001</span>
-                                    <span style="min-width: 160px; display: inline-block;">00:00</span>
-                                    <span style="min-width: 160px; display: inline-block;">Fez alguma coisa</span>
-                                </div>
-                                <div class="list-group-item">
-                                    <span style="min-width: 160px; display: inline-block;">0003</span> 
-                                    <span style="min-width: 160px; display: inline-block;">João Olaio</span>
-                                    <span style="min-width: 160px; display: inline-block;">01-01-2001</span>
-                                    <span style="min-width: 160px; display: inline-block;">00:00</span>
-                                    <span style="min-width: 160px; display: inline-block;">Fez alguma coisa</span>
-                                </div>
-                                <div class="list-group-item">
-                                    <span style="min-width: 160px; display: inline-block;">0004</span> 
-                                    <span style="min-width: 160px; display: inline-block;">Ricardo Quaresma</span>
-                                    <span style="min-width: 160px; display: inline-block;">01-01-2001</span>
-                                    <span style="min-width: 160px; display: inline-block;">00:00</span>
-                                    <span style="min-width: 160px; display: inline-block;">Fez alguma coisa</span>
-                                </div>
+                                <?php
+                                    for($i=0; $i<count($logs); $i++){
+                                    echo'<div class="list-group-item">';
+
+                                                // substituir pelos getters certos
+                                                echo' <span style="min-width: 160px; display: inline-block;">' . $logs[$i]->getIdAcoesUtilizadores() . '</span> ';
+                                                echo' <span style="min-width: 160px; display: inline-block;">' . $logs[$i]->getUtilizador() . '</span>';
+                                                echo' <span style="min-width: 160px; display: inline-block;">' . $logs[$i]->getDataHora() . '</span>';
+                                                echo' <span style="min-width: 160px; display: inline-block;">' . $logs[$i]->getDescricao() . '</span>';
+                                       
+                                                echo'</div>';
+                                    }
+                                ?>
                             </div>
                             <br>
                         </div>
