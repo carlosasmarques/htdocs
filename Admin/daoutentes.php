@@ -53,12 +53,12 @@ class DaoUtentes{
         }
     }
 
-    public function activarDesativarUtente($id, $estado){
-        $dados = array(
-				'UT_ACTIVO' => $estado,
-				'UT_ID' => $id
-			);
-			$this->bd->editar("UPDATE `fmt`.`utentes` SET `UT_ACTIVO`=:UT_ACTIVO WHERE  `UT_ID`=:UT_ID;", $dados);
+    public function activarDesativarUtente($estado, $id){
+		$dados = array(
+			'UT_ACTIVO' => $estado,
+			'UT_ID' => $id
+		);
+		$this->bd->editar("UPDATE `fmt`.`utentes` SET `UT_ACTIVO`=:UT_ACTIVO WHERE  `UT_ID`=:UT_ID;", $dados);
     }
 
     public function pesquisarUtenteNome($nome){
