@@ -23,7 +23,7 @@
 		
 		// desativar
 		if(!strcmp($_GET["accao"], "desativar")){
-			$daoViaturas->ativarDesativarUtentes(0, $_GET["id"]);
+			$daoutentes->ativarDesativarUtentes(0, $_GET["id"]);
 		}
 	}	
 
