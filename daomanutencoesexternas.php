@@ -38,26 +38,26 @@
 		/*****************************************************************************
 			Nota: Não faz sentido passar a matricula da viatura porque a base de dados utiliza o id
 		*****************************************************************************/
-		public function adicionarManutencaoExt($id_viatura, $descricaoAvaria, $descReparacao, $dataAvaria, $dataReparacao, $custoReparacao){
+		public function adicionarManutencaoExt(manutencaoExter $manutencao){
 		
-			try{
-				// Preparar a instrução sql de inserção
-				$instrucao = $LigacaoBD->prepare("INSERT INTO MANUTENCOESEXTERNAS (V_ID, ME_DESCRICAOAVARIA, ME_DESCRICAOREPARACAO, ME_DATAAVARIA, ME_DATAREPARACAO, ME_CUSTOREPARACAO) VALUES (?, ?, ?, ?, ?, ?)");
-				$instrucao->bind_param($id_viatura, $descricaoAvaria, $descReparacao, $dataAvaria, $dataReparacao, $custoReparacao);
-				
-				// Executar
-				$sucesso_funcao = $instrucao->execute();
-				$instrucao->close();
-				
-			}catch(PDOException $e){
-				echo $e->getMessage();
-			}
-			
-			if($sucesso_funcao){
-				return "Manutenção externa registada com sucesso<br />";
-			}else{
-				return "Erro ao registar a manutenção externa!<br />";
-			}
+                    $sql = "INSERT INTO `fmt`.`manutencoesexternas` (`V_ID`,`ME_NOMEOFICINA`, `ME_DESCRICAOAVARIA`, `ME_DESCRICAOREPARACAO`, `ME_DATAAVARIA`, `ME_DATAREPARACAO`, `ME_CUSTOREPARACAO`) "
+                            . "VALUES (:V_ID,:ME_NOMEOFICINA, :ME_DESCRICAOAVARIA, :ME_DESCRICAOREPARACAO, :ME_DATAAVARIA, :ME_DATAREPARACAO, :ME_CUSTOREPARACAO);"; 
+                    
+                  
+                        
+                     $dados = array (
+                              'V_ID'=> $manutencao->getIdViatura(), 
+                              'ME_NOMEOFICINA'=> $manutencao->getOficina(), 
+                              'ME_DESCRICAOAVARIA'=> $manutencao->getDescricaoAvaria(), 
+                              'ME_DESCRICAOREPARACAO'=> $manutencao->getDescReparacao(), 
+                              'ME_DATAAVARIA'=> $manutencao->getDataAvaria(), 
+                              'ME_DATAREPARACAO'=> $manutencao->getDataReparacao(), 
+                              'ME_CUSTOREPARACAO'=> $manutencao->getCustoReparacao() 
+                              );
+                    $this->bd->inserir($sql, $dados);
+                    
+                    
+                    
 		}
 		
 		public function editarManutencaoExt($id, $id_viatura, $descricaoAvaria, $descReparacao, $dataAvaria, $dataReparacao, $custoReparacao){
