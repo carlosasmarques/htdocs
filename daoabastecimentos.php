@@ -39,17 +39,18 @@
 		*****************************************************************************/
 		public function adicionarAbastecimento(Abastecimentos $abastecimento){
 		 
-                    $sql = "INSERT INTO `fmt`.`consumo_artigos` (`E_ID`, `C_QUANTIDADECONSUMIDA`, `C_DATA`, `C_DESCRICAOCONSUMO`) "
-                            . "VALUES (:E_ID, :C_QUANTIDADECONSUMIDA, :C_DATA, :C_DESCRICAOCONSUMO);";
+                    $sql = "INSERT INTO `fmt`.`abastecimentos` (`V_ID`,`A_QUANTIDADECOMBUSTIVEL`, `A_QUILOMETRAGEMATUAL`, `A_DATAABASTECIMENTO`, `A_CONSUMOMEDIO`) "
+                            . "VALUES (:V_ID,:A_QUANTIDADECOMBUSTIVEL, :A_QUILOMETRAGEMATUAL, :A_DATAABASTECIMENTO, :A_CONSUMOMEDIO);";
 		
-                          $dados_consumoequip = array (
-                              'E_ID'=> $abastecimento->get(),/* FALTA ATRIBUTO? */
-                              'C_QUANTIDADECONSUMIDA'=> $abastecimento->getQuantidadeConsumida(),
-                              'C_DATA'=> $abastecimento->getDataDeConsumo(), 
-                              'C_DESCRICAOCONSUMO'=> $abastecimento->getDescricaoConsumo()
+                          $dados = array (
+                              'V_ID'=> $abastecimento->getIdViatura(),
+                              'A_QUANTIDADECOMBUSTIVEL'=> $abastecimento->getQuantidadeCombustivel(),
+                               'A_QUILOMETRAGEMATUAL'=> $abastecimento->getQuilometragemActual(),
+                              'A_DATAABASTECIMENTO'=> $abastecimento->getDataAbastecimento(), 
+                              'A_CONSUMOMEDIO'=> $abastecimento->getMediaDesteAbastecimento()
                               );
                           
-                    $this->bd->inserir($sql, $dados_consumoequip);
+                    $this->bd->inserir($sql, $dados);
                     
 		}
 		
