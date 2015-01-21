@@ -56,26 +56,13 @@
 		
 		public function ativarDesativarViatura($estado, $id){
 		
-			try{
-				// Preparar a instrução sql de atualização
-				$instrucao = $LigacaoBD->prepare("UPDATE viatura SET V_activo=? WHERE id=?");
-				$instrucao->bind_param($estado, $id);
-				
-				// Executar
-				$sucesso_funcao = $instrucao->execute();
-				$instrucao->close();
-			
-			}catch(PDOException $e){
-				echo $e->getMessage();
-			}
-			
-			if($sucesso_funcao){
-				return "O estado da viatura foi alterado para " . ($estado == true ? "ATIVA" : "DESATIVA") . "<br />";
-			}else{
-				return "Erro ao alterar o estado da viatura!<br />";
-			}
-			
+			$dados = array(
+				'V_ACTIVO' => $estado,
+				'V_ID' => $id
+			);
+			$this->bd->editar("UPDATE `fmt`.`viatura` SET `V_ACTIVO`=:V_ACTIVO WHERE  `V_ID`=:V_ID;", $dados);
 		}
+			
 		
 		public function editarViatura(
 		$id, $matricula, $marca, $modelo, $tipo, $dataMatricula, $combustivel, $quilometragem,

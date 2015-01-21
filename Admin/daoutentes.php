@@ -54,22 +54,11 @@ class DaoUtentes{
     }
 
     public function activarDesativarUtente($id, $ativo){
-        try{
-            $instrucao = $LigacaoBD->prepare("UPDATE Utentes SET (UT_ativo) VALUES (?) WHERE UT_id = ?");
-            $instrucao->bind_param($ativo, $id);
-            //Executar
-
-            $sucesso_funcao = $instrucao->execute();
-            $instrucao->close();
-
-        }catch(PDOException $e){
-            echo $e->getMessage();
-        }
-        if($sucesso_funcao){
-            return "True";
-        } else {
-            return "False";
-        }
+        $dados = array(
+				'V_ACTIVO' => $estado,
+				'V_ID' => $id
+			);
+			$this->bd->editar("UPDATE `fmt`.`utentes` SET `V_ACTIVO`=:V_ACTIVO WHERE  `V_ID`=:V_ID;", $dados);
     }
 
     public function pesquisarUtenteNome($nome){

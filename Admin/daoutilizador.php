@@ -106,6 +106,15 @@ class DaoUtilizador {
             }
             return $dados;
     }
+    
+    public function ativarDesativarUtilizador($estado, $id){
+		
+			$dados = array(
+				'V_ACTIVO' => $estado,
+				'V_ID' => $id
+			);
+			$this->bd->editar("UPDATE `fmt`.`utilizadores` SET `V_ACTIVO`=:V_ACTIVO WHERE  `V_ID`=:V_ID;", $dados);
+		}
 
 }
 
