@@ -1,18 +1,36 @@
 <?php
 	include_once "../sessaoOk.php";
         include_once "gereutentes.php";
+        include_once "daoutentes.php";
 	
 	$gere_utentes = new GereUtentes();
-        $utentes = new Utentes(0, "", 0, "", "", "", "",true);
+        $utentes = new Utentes(0, "", 0, "", 0, "", "",0);
 	
 	$utentes = $gere_utentes->listarUtentes();
-
-	
+        
+        $daoutentes = new DaoUtentes();
+        
+        // ações "desativar", "ativar"
+	if(
+		// verificar variaveis GET
+		isset($_GET["id"]) && !empty($_GET["id"]) &&
+		isset($_GET["accao"]) && !empty($_GET["accao"])
+	){
+		// ativar
+		if(!strcmp($_GET["accao"], "ativar")){
+			$daoutentes->ativarDesativarUtentes(1, $_GET["id"]);
+		}
+		
+		// desativar
+		if(!strcmp($_GET["accao"], "desativar")){
+			$daoutentes->ativarDesativarUtentes(0, $_GET["id"]);
+		}
+	}	
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 
 <head>
     <meta charset="utf-8">
@@ -170,7 +188,8 @@
                         <br />
                         <div class="tab-content">
                             <div class="tab-pane fade in active" id="home">
-                                <div class="list-group-item">
+                                <div class="list-group">
+						<span class="list-group-item">
                                     <span style="min-width: 40px; display: inline-block;">ID</span> 
                                     <span style="min-width: 100px; display: inline-block;">Nome</span>
                                     <span style="min-width: 90px; display: inline-block;">Número SNS</span>
@@ -179,15 +198,11 @@
                                     <span style="min-width: 120px; display: inline-block;">Data Nascimento</span>
                                     <span style="min-width: 110px; display: inline-block;">Data Registo</span>
                                     <span style="min-width: 80px; display: inline-block;">Opções</span>
-                                </div>
+                                </span>
                                  <?php
                                     for($i=0; $i<count($utentes); $i++){
                                     echo'<div class="list-group-item">';
-                                    if($utentes[$i]->getAtivo()==1){
-                                        $estado = "Ativo";
-                                        }else{
-                                       $estado = "Desativo";
-                                        }
+                                    
                                                 // substituir pelos getters certos
                                                 echo' <span style="min-width: 40px; display: inline-block;">' . $utentes[$i]->getIdUtentes() . '</span> ';
                                                 echo' <span style="min-width: 100px; display: inline-block;">' . $utentes[$i]->getNome() . '</span>';
@@ -196,13 +211,13 @@
                                                 echo' <span style="min-width: 80px; display: inline-block;">' . $utentes[$i]->getTelefone() . '</span>';
                                                 echo' <span style="min-width: 120px; display: inline-block;">' . $utentes[$i]->getDataNascimento() . '</span>';
                                                 echo' <span style="min-width: 110px; display: inline-block;">' . $utentes[$i]->getDataRegisto() . '</span>';
-                                                echo' <span style="min-width: 80px; display: inline-block;"><a href="alterar_utente.php?id=' . $utentes[$i]->getIdUtentes() . '" class="btn btn-xs" >Ver / Alterar</a></span>';
-                                                echo' <span style="min-width: 80px; display: inline-block;"><a href="alterar_utente.php?id=' . $utentes[$i]->getIdUtentes() . '" class="btn btn-xs" >' .$estado. '</a></span>';
-                                                echo'</div>';
+                                                echo '<a href="alterar_utente.php?id=' . $utentes[$i]->getIdUtentes() . '&accao=editar" class="btn btn-xs" >Ver / Editar</a>';
+                                                echo '<a href="alterar_utente.php?id=' . $utentes[$i]->getIdUtentes() .
+                                                        '&accao=' . ($utentes[$i]->getAtivo()==1 ? "desativar" : "ativar") .
+                                                        '" class="btn ' . ($utentes[$i]->getAtivo()==1 ? "btn-danger" : "btn-primary") .
+                                                        ' btn-xs" >' . ($utentes[$i]->getAtivo()==1 ? "Desativar" : "Ativar") . '</a></div>';
                                                 }
                                 ?>
-                                
-
                             </div>
                             <br>
                         </div>
