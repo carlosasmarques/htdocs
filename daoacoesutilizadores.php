@@ -16,21 +16,19 @@ class DaoAcoesUtilizadores{
     function __destruct(){
         $this->LigacaoBD == null;
     }
-    function guardarAcaoUtilizador($acao){
-        try{
-            $instrucao = $LigacaoBD->prepare("INSERT INTO Logs SET (U_id, L_dataHora, L_descricao) VALUES(?, ?, ?)");
-            $instrucao->bind_param($acao->userId, $acao->dataHora, $acao->descricao);
-            $sucesso_funcao = $instrucao->execute();
-            $instrucao->close();
-        } catch(PDOException $e){
-            echo $e->getMessage();
-        }
-
-        if($sucesso_funcao){
-            return "True";
-        } else {
-            return "False";
-        }
+    function guardarAcaoUtilizador(AcoesUtilizadores $acao){
+        
+          $sql = "INSERT INTO `fmt`.`logs` (`U_ID`,`L_DATAHORA`, `L_DESCRICAO`) "
+                  . "VALUES (:U_ID ,:L_DATAHORA, :L_DESCRICAO);";
+          
+          $dados = array (
+                            'U_ID'=> $acao->getUtilizador(),
+                            'L_DATAHORA'=> $acao->getData(),
+                            'L_DESCRICAO'=> $acao->getDescricao()
+                              );
+                          
+                    $this->bd->inserir($sql, $dados);
+        
     }
 
     function listarAcoesUtilizadores(){
