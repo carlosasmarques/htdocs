@@ -49,11 +49,14 @@
 			
 			if(!$STH->execute($dados)){
 				echo "Ocorreu um erro ao inserir os dados!<br>";
+				return false;
 			}
 		
 		}catch(PDOException $e){
 			echo $e->getMessage();
+			return false;
 		}
+		return true;
 	}
 		
 		// acutalizar dados de uma tabela
@@ -63,11 +66,14 @@
 				
 				if(!$STH->execute($dados)){
 					echo "Ocorreu um erro ao actualizar os dados!<br>";
+					return false;
 				}
 			
 			}catch(PDOException $e){
 				echo $e->getMessage();
+				return false;
 			}
+			return true;
 		}
 		
 		// apagar dados de uma tabela
@@ -78,15 +84,18 @@
 
 				if(!$STH->execute()){
 					echo "Ocorreu um erro ao apagar os dados!<br>";
+					return false;
 				}
 			}catch(PDOException $e){
 				echo $e->getMessage();
+				return false;
 			}
+			return true;
 		}
 		
 		// obter registos de uma tabela
 		public function query($sql, $param = null){
-			$dados =null;
+			$dados = null;
 		
 			try{
 				$STH = $this->DBH->prepare($sql);
@@ -114,6 +123,7 @@
 				}
 			}catch(PDOException $e){
 				echo $e->getMessage();
+				return 0;
 			}
 			return 0;
 		}
