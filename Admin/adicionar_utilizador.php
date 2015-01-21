@@ -1,8 +1,7 @@
 <?php
 include_once "../sessaoOk.php";
-
-
-
+include "GereAdministracao.php";
+$gereAdministracao = new GereAdministracao();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -116,7 +115,7 @@ include_once "../sessaoOk.php";
                     <li class="active">Adicionar Utilizador</li>               
                 </ol>
             </div>
-                <form class="form-signin" action="GereUtilizadores.php" method="post">
+                <form class="form-signin" action="adicionarUtilizador.php" method="post">
                     <div style="float: left">
                         <img src="../exavatar.png" style="float: left" class="img-responsive" alt="Responsive image">
                         <br style="clear: both">
@@ -178,7 +177,7 @@ include_once "../sessaoOk.php";
                         <div style="float: inherit; margin-right: 5px; margin-left: 5px">
                             <label class="datanascimento">Tipo Utilizador:</label>
                             <br style="clear: both">
-                            <input type="date" style="width : 170px;" class="form-control" value="Utilizador" id="tipoUtilizador" name="TipoUtilizador">
+                            <input type="text" style="width : 170px;" class="form-control" value="Utilizador" id="tipoUtilizador" name="tipoUtilizador">
                             <br style="clear: both">
                         </div>
                     

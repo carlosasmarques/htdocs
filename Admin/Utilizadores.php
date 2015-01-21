@@ -58,20 +58,20 @@
 	 * @return 
 	 */
         
-        function __construct($idUtilizadores, $nome, $numero, $username, $password, $tipoUtilizador, $dataDeRegisto, $morada, $telefone, $dataNascimento, $funcao, $ativo, $caminhoFoto) {
+        function __construct($idUtilizadores, $nome, $numero, $username, $password, $tipoUtilizador, $morada, $telefone, $dataNascimento, $funcao) {
             $this->idUtilizadores = $idUtilizadores;
             $this->nome = $nome;
             $this->numero = $numero;
             $this->username = $username;
             $this->password = $password;
             $this->tipoUtilizador = $tipoUtilizador;
-            $this->dataDeRegisto = $dataDeRegisto;
+            $this->dataDeRegisto = date('Y-m-d', time());
             $this->morada = $morada;
             $this->telefone = $telefone;
-            $this->dataNascimento = $dataNascimento;
+            $this->dataNascimento = date('Y-m-d', $dataNascimento);
             $this->funcao = $funcao;
-            $this->ativo = $ativo;
-            $this->caminhoFoto = $caminhoFoto;
+            $this->ativo = 1;
+            $this->caminhoFoto = "aqui";
         }
 
 
