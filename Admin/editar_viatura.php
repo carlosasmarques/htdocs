@@ -1,5 +1,23 @@
 <?php
 	include_once "../sessaoOk.php";
+	include_once "gereviaturas.php";
+	include_once "daoviaturas.php";
+	
+	$gere_viaturas = new GereViaturas();
+	$viatura = new Viaturas(0, "", "", "", 0, "", 0, 0, 0, 0, 0, 0, "", 0);
+	
+	$daoViaturas = new DaoViaturas();
+	
+	// obter o id da viatura a editar
+	if(isset($_GET["id"]) && !empty($_GET["id"])){
+		
+		$viatura = $daoViaturas->verViatura($_GET["id"]);
+	}else{
+		
+		// mandar o utilizador para a pagina de gestão de viaturas se não for especificado o id
+		header("Location: gerir_viaturas.php");
+	}
+
 ?>
 
 <!DOCTYPE html>
@@ -130,94 +148,76 @@
                          
 
                         </div>
-				<div class="col-sm-6 col-md-4">				
-					<form>
-						<div class="form-group">
-							<label class="viatura">Tipo de transporte:</label>
-							<select class="form-control">
-								<option value="desc">Pesado</option>
-								<option value="data">Ligeiro</option>
 								
-							
-							</select>
-						</div>					
-					</form>
-					
 					<form>
-						<div class="form-group">
-							<label class="horapar">Data da Matrícula:</label>
-							<input type="text" class="form-control" id="horap2" placeholder="09/07" maxlength="5">
-						</div>
-					</form>	
-					<form>
-						<div class="form-group">
-							<label class="data">Marca:</label>
-							<input type="text" class="form-control" id="nome1" placeholder="Mercedes">
-						</div>				
-					</form>	
-					<form>
-						<div class="form-group">
-							<label class="kc">Quilómetros:</label>
-							<input type="text" class="form-control" id="kc2" placeholder="100.000">
-						</div>
-					</form>	
-					<form>
-						<div class="form-group">
-							<label class="data">Lugares Sentados:</label>
-							<input type="text" class="form-control" id="nome2" placeholder="8">
-						</div>				
-					</form>					
-				</div>
-				
-				<div class="col-sm-6 col-md-4">				
-					<form>
-						<div class="form-group">
-							<label class="viatura">Tipo de Combustível:</label>
-							<select class="form-control">
-								
-								<option value="data">Diesel</option>
-								<option value="hora">Gasolina</option>
-								<option value="hora">Gás</option>
-							</select>
-						</div>					
-					</form>
-					<form>
-						<div class="form-group">
-							<label class="horache">Capacidade do depósito:</label>
-							<input type="text" class="form-control" id="horac1" placeholder="70" >
-						</div>
-					</form>	
-					<form>
-						<div class="form-group">
-							<label class="data">Modelo:</label>
-							<input type="text" class="form-control" id="nome3" placeholder="Benz Sprinter">
-						</div>				
-					</form>	
-					<form>
-						<div class="form-group">
-							<label class="Desc">Matrícula:</label>
-							<input type="text" class="form-control" id="horac" placeholder="45-AI-10" >
-						</div>
-					</form>
-						<form>
-						<div class="form-group">
-							<label class="data">Lugares Deitados:</label>
-							<input type="text" class="form-control" id="nome" placeholder="0">
-						</div>				
-					</form>
-						
-				</div>
-				
-				
-				
-				
+						<div class="col-sm-6 col-md-4">
+							<div class="form-group">
+								<label class="viatura">Tipo de transporte:</label>
+								<select class="form-control">
+									<option value="desc"<?php echo ($viatura->getTipo()==1 ? " selected" : ""); ?>>Pesado</option>
+									<option value="data"<?php echo ($viatura->getTipo()==2 ? " selected" : ""); ?>>Ligeiro</option>
+								</select>
+							</div>
 
-		
+							<div class="form-group">
+								<label class="horapar">Data da Matrícula:</label>
+								<input type="text" class="form-control" id="horap2" value="<?php echo $viatura->getDataMatricula(); ?>" maxlength="10">
+							</div>
+
+							<div class="form-group">
+								<label class="data">Marca:</label>
+								<input type="text" class="form-control" id="nome1" value="<?php echo $viatura->getMarca(); ?>" maxlength="15">
+							</div>				
+
+							<div class="form-group">
+								<label class="kc">Quilómetros:</label>
+								<input type="text" class="form-control" id="kc2" value="<?php echo $viatura->getQuilometragem(); ?>" maxlength="9">
+							</div>
+
+							<div class="form-group">
+								<label class="data">Lugares Sentados:</label>
+								<input type="text" class="form-control" id="nome2" value="<?php echo $viatura->getLugaresSentados(); ?>"  maxlength="99">
+							</div>				
+						</div>
+				
+						<div class="col-sm-6 col-md-4">				
+						
+							<div class="form-group">
+								<label class="viatura">Tipo de Combustível:</label>
+								<select class="form-control">
+									<option value="data"<?php echo ($viatura->getCombustivel()==1 ? " selected" : ""); ?>>Diesel</option>
+									<option value="hora"<?php echo ($viatura->getCombustivel()==2 ? " selected" : ""); ?>>Gasolina</option>
+									<option value="hora"<?php echo ($viatura->getCombustivel()==3 ? " selected" : ""); ?>>Gás</option>
+								</select>
+							</div>					
+
+							<div class="form-group">
+								<label class="horache">Capacidade do depósito:</label>
+								<input type="text" class="form-control" id="horac1" value="<?php echo $viatura->getCapacidadeDeposito(); ?>"  maxlength="9">
+							</div>
+
+							<div class="form-group">
+								<label class="data">Modelo:</label>
+								<input type="text" class="form-control" id="nome3" value="<?php echo $viatura->getModelo(); ?>" maxlength="15">
+							</div>				
+
+							<div class="form-group">
+								<label class="Desc">Matrícula:</label>
+								<input type="text" class="form-control" id="horac" value="<?php echo $viatura->getMatricula(); ?>" maxlength="8">
+							</div>
+
+							<div class="form-group">
+								<label class="data">Lugares Deitados:</label>
+								<input type="text" class="form-control" id="nome" value="<?php echo $viatura->getLugaresDeitados(); ?>" maxlength="1">
+							</div>
+							
+							<a href="gerir_viaturas.php" class="btn btn-xl btn-danger pull-right" > Voltar </a>
+							<input class="btn btn-xl btn-primary pull-right" type="submit" id="input-guardar" name="input-login" value=" Guardar " />
+						</div>
+					</form>
+				</div>
 			</div>
-	
 		</div>	
-      		<a href="./gerir_viaturas.php" class="btn btn-danger btn-xl pull-right" > Voltar </a>
-			<a class="btn btn-primary btn-xl pull-right"  href="./gerir_viaturas.php"> Guardar </a><br/>
 	</div>
 
       </div>
